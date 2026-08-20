@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<title>Belong — Como você vai aprender inglês aqui • V3</title>
-<style>
-:root{
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Belong | Como você vai aprender inglês • V22</title>
+<style>:root{
   --belong-magenta:#87014E;
   --belong-magenta-dark:#68003C;
   --belong-green:#019838;
@@ -72,11 +72,33 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 .small{font-size:14px;line-height:1.48}
 
 .card{
-  background:var(--paper);border:1px solid var(--line);border-radius:22px;
-  padding:clamp(18px,3vw,30px);box-shadow:0 10px 30px rgba(80,15,54,.055);margin:18px 0
+  background:#FFFFFF;border:1px solid var(--line);border-radius:22px;
+  padding:clamp(18px,3vw,30px);box-shadow:0 10px 30px rgba(80,15,54,.055);margin:18px 0;
+  color:var(--ink)
 }
-.card.green{background:var(--belong-green-soft);border-color:#CCEAD7}
-.card.pink{background:var(--belong-pink-soft);border-color:#ECD3E1}
+/* padrão visual dos balões:
+   - dica/callout: fundo verde suave + texto bordô
+   - informação/exemplo: fundo branco + texto escuro */
+.card.green{
+  background:var(--belong-green-soft);
+  border-color:#CCEAD7;
+  color:var(--belong-magenta-dark)
+}
+.card.green p,
+.card.green li,
+.card.green h3,
+.card.green .big,
+.card.green .quote{color:var(--belong-magenta-dark)}
+.card.pink{
+  background:#FFFFFF;
+  border-color:var(--line);
+  color:var(--ink)
+}
+.card.pink p,
+.card.pink li,
+.card.pink h3,
+.card.pink .big,
+.card.pink .quote{color:var(--ink)}
 .quote{
   font-size:clamp(22px,3.5vw,34px);line-height:1.42;font-weight:800;color:var(--belong-magenta);
   padding:8px 0
@@ -180,22 +202,22 @@ hr{border:0;border-top:1px solid var(--line);margin:24px 0}
   padding:18px;
   background:var(--belong-green-soft);
   border:1px solid #CBE9D5;
+  color:var(--belong-magenta-dark);
 }
 .game-message .yes{
-  color:var(--belong-green-dark);
+  color:var(--belong-magenta-dark);
   font-size:clamp(22px,3.2vw,30px);
   font-weight:900;
   margin-bottom:6px;
 }
 .game-message .twist{
-  color:var(--belong-magenta);
+  color:var(--belong-magenta-dark);
   font-size:clamp(18px,2.7vw,23px);
   font-weight:850;
 }
 
 
-/* Belong V6 — refined visual system */
-:root{
+/* Belong V6: refined visual system */:root{
   --belong-magenta:#8B0A57;
   --belong-magenta-dark:#64103F;
   --belong-green:#09A447;
@@ -424,6 +446,44 @@ p{
   box-shadow:0 7px 22px rgba(77,20,51,.05);
 }
 
+/* BELONG: padrão semântico dos balões
+   DICA / ORIENTAÇÃO / IDEIA PARA GUARDAR: fundo verde suave + texto bordô
+   INFORMAÇÃO / EXEMPLO / EXERCÍCIO: fundo branco + texto preto
+*/
+.bubble-tip{
+  background:var(--belong-green-soft)!important;
+  border-color:#C9E8D3!important;
+  color:var(--belong-magenta-dark)!important;
+}
+.bubble-tip p,
+.bubble-tip h3,
+.bubble-tip .quote,
+.bubble-tip .big,
+.bubble-tip strong,
+.bubble-tip .muted{
+  color:var(--belong-magenta-dark)!important;
+}
+.bubble-info{
+  background:#FFFFFF!important;
+  border-color:var(--line)!important;
+  color:var(--ink)!important;
+}
+.bubble-info p,
+.bubble-info h3,
+.bubble-info .quote,
+.bubble-info .big,
+.bubble-info strong,
+.bubble-info .muted{
+  color:var(--ink)!important;
+}
+.bubble-info .example{
+  background:#FFFFFF;
+  color:var(--ink);
+}
+.bubble-info .example strong{
+  color:var(--ink)!important;
+}
+
 @media (max-width:760px){
   .grid2,.compare{grid-template-columns:1fr}
   .grid4{grid-template-columns:1fr 1fr}
@@ -443,670 +503,815 @@ p{
   .footer-nav button{flex:1;min-width:0}
   .inline-input,.answer-input{max-width:118px}
 }
+
+/* V19: mobile first, one idea per screen */
+@media (max-width:600px){
+  .topbar{min-height:56px;padding:0 10px;gap:8px}
+  .brand{font-size:21px}
+  .progress{height:5px}
+  .counter{font-size:10px;min-width:58px}
+  .slide{padding:18px 14px 92px}
+  .wrap{max-width:100%}
+  .eyebrow{font-size:10px;padding:5px 8px;margin-bottom:12px}
+  h1{font-size:34px;line-height:1.02;margin-bottom:13px}
+  h2{font-size:29px;line-height:1.05;margin-bottom:13px}
+  h3{font-size:21px;margin:12px 0 7px}
+  p{font-size:16px;line-height:1.42;margin-bottom:11px}
+  .lead{font-size:18px;line-height:1.42}
+  .small{font-size:12px}
+  .card{padding:14px 15px;border-radius:17px;margin:11px 0;box-shadow:0 6px 18px rgba(77,20,51,.045)}
+  .quote{font-size:21px;line-height:1.34;padding:2px 0}
+  .big{font-size:27px}
+  .grid2,.grid4,.compare{gap:10px}
+  .type-card{min-height:0;padding:14px;border-radius:16px}
+  .type-card .type{font-size:17px}
+  .type-card .pt{min-height:0;font-size:12px}
+  .type-card .sample{font-size:18px;margin:10px 0 6px}
+  .examples{gap:7px;margin:10px 0}
+  .example,.answer-row{font-size:16px;padding:10px 12px;border-radius:12px}
+  .quizline{font-size:17px;line-height:1.65}
+  .chunk-box{padding:11px 12px;margin:7px 0}
+  .chunk-box .chunk{font-size:18px}
+  .grammar-box{font-size:13px;padding:11px}
+  .flow{gap:6px;margin-top:12px}
+  .flow span{padding:8px 10px;font-size:13px}
+  .action{padding:11px 17px;font-size:14px}
+  .footer-nav{padding:16px 12px max(10px,env(safe-area-inset-bottom))}
+}
+
+
+/* V20: compactação para celular, máximo de 30 telas */
+.merged-divider{
+  height:1px;
+  background:var(--line);
+  margin:14px 0;
+}
+.merged-subtitle{
+  font-size:clamp(19px,3.2vw,24px);
+  margin:8px 0 10px;
+  color:var(--belong-magenta);
+}
+@media (max-width:600px){
+  .slide{padding:14px 12px 86px}
+  .eyebrow{font-size:9px;padding:4px 7px;margin-bottom:9px}
+  h1{font-size:31px;line-height:1.01;margin-bottom:10px}
+  h2{font-size:25px;line-height:1.04;margin-bottom:10px}
+  h3,.merged-subtitle{font-size:18px;line-height:1.12;margin:8px 0 8px}
+  p{font-size:14.5px;line-height:1.38;margin-bottom:8px}
+  .lead{font-size:16.5px;line-height:1.38}
+  .small{font-size:10.5px;line-height:1.34}
+  .card{padding:11px 12px;border-radius:15px;margin:8px 0}
+  .quote{font-size:19px;line-height:1.28}
+  .big{font-size:23px}
+  .grid2,.grid4,.compare{gap:8px}
+  .type-card{padding:11px}
+  .type-card .type{font-size:15.5px}
+  .type-card .pt{font-size:11px}
+  .type-card .sample{font-size:16px;padding:7px 8px;margin:7px 0 4px}
+  .examples{gap:5px;margin:7px 0}
+  .example,.answer-row{font-size:14px;line-height:1.35;padding:8px 9px}
+  .quizline{font-size:15px;line-height:1.55}
+  .chunk-box{padding:8px 10px;margin:5px 0}
+  .chunk-box .chunk{font-size:16px}
+  .grammar-box{font-size:11.5px;line-height:1.4;padding:8px}
+  .flow{gap:5px;margin-top:8px}
+  .flow span{font-size:11.5px;padding:6px 8px}
+  .action{padding:9px 14px;font-size:13px}
+  .inline-input,.answer-input{min-width:55px;max-width:105px;padding:1px 3px}
+  .merged-divider{margin:9px 0}
+  .footer-nav{padding:12px 10px max(8px,env(safe-area-inset-bottom))}
+}
+
+
+/* Tela 2: palavras e combinações alinhadas em pares */
+.lexical-pair-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 18px;
+  margin:18px 0 20px;
+}
+.pair-heading{
+  font-weight:900;
+  color:var(--belong-magenta);
+  font-size:17px;
+  padding:0 2px 2px;
+}
+.pair-cell{
+  margin:0;
+  display:flex;
+  align-items:center;
+  min-height:58px;
+}
+@media (max-width:600px){
+  .lexical-pair-grid{
+    gap:7px 9px;
+    margin:12px 0 14px;
+  }
+  .pair-heading{
+    font-size:12px;
+    line-height:1.2;
+  }
+  .pair-cell{
+    min-height:46px;
+    font-size:13.5px;
+    padding:8px 9px;
+  }
+}
+
+
+50%{transform:scale(1.025)}
+}
+
+
+/* V27: comportamento unificado para todos os exercícios de preencher */
+.fill-activity .inline-input.ok,
+.fill-activity .answer-input.ok{
+  background:#EDF8F1;
+  border-color:var(--good);
+}
+.fill-activity .inline-input.no,
+.fill-activity .answer-input.no{
+  background:#FFF0F2;
+  border-color:var(--bad);
+}
+.fill-activity .auto-filled{
+  background:#FFF4C7!important;
+  border-color:var(--belong-magenta)!important;
+  box-shadow:0 0 0 4px rgba(139,10,87,.12);
+  animation:fillAttention 1.05s ease 2;
+}
+.fill-autofill-notice{
+  margin:10px 0 0;
+  padding:10px 12px;
+  border-radius:13px;
+  background:var(--belong-green-soft);
+  color:var(--belong-magenta-dark);
+  font-size:13px;
+  font-weight:800;
+  line-height:1.35;
+}
+@keyframes fillAttention{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.025)}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
-
 <header class="topbar">
-  <div class="brand-lockup">
-    <div class="brand">bel<span class="on">on</span>g</div>
-    <div class="system-name">inglês completo • 100% online</div>
-  </div>
-  <div class="progress"><div id="bar"></div></div>
-  <div class="counter" id="counter">Tela 1 / 26</div>
+<div class="brand-lockup">
+<div class="brand">bel<span class="on">on</span>g</div>
+<div class="system-name">inglês completo • 100% online</div>
+</div>
+<div class="progress"><div id="bar"></div></div>
+<div class="counter" id="counter">Tela 1 / 26</div>
 </header>
-
 <main class="stage">
-
 <!-- 1 -->
 <section class="slide active">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 1</span> • Antes da primeira aula</div>
-    <h1>Como você vai aprender inglês na Belong</h1>
-    <p class="lead">Na Belong, você vai aprender inglês a partir de <strong>The Lexical Approach</strong> — uma forma de ensino que coloca a língua em uso, seus padrões e suas combinações no centro da aprendizagem.</p>
-    <div class="card green">
-      <p class="quote">Antes de começar o curso, queremos que você entenda como enxergamos uma língua — e por que nossas aulas serão diferentes.</p>
-    </div>
-    <p>Você vai experimentar primeiro algumas ideias no português que já existe na sua cabeça. Depois vamos levar essa mesma lógica para o inglês.</p>
-    <p class="small muted">Avance no seu ritmo. Cada tela apresenta uma ideia por vez.</p>
-  </div>
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 1</span> • Antes da primeira aula</div>
+<h1>Como você vai aprender inglês na Belong</h1>
+<p class="lead">Na Belong, você aprenderá inglês de acordo com a <strong>abordagem lexical</strong>, uma forma de ensino que coloca a língua em uso, seus padrões e suas combinações no centro da aprendizagem.</p>
+<div class="card bubble-tip">
+<p class="quote">Antes de começar o curso, queremos que você entenda como enxergamos uma língua e por que nossas aulas serão diferentes.</p>
+</div>
+<p>Você vai experimentar primeiro algumas ideias no português que já existe na sua cabeça. Depois vamos levar essa mesma lógica para o inglês.</p>
+<p class="small muted">Avance no seu ritmo. Cada tela apresenta uma ideia por vez.</p>
+</div>
 </section>
-
 <!-- 2 -->
 <section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 2</span> • Começando pelo básico</div>
-    <h2>O que é léxico?</h2>
-    <p class="lead"><strong>Léxico</strong> é o repertório de palavras e de combinações de palavras que uma língua — e cada falante — tem disponível para compreender e comunicar significados.</p>
-    <div class="grid2">
-      <div class="card">
-        <h3>Não é só uma lista</h3>
-        <p>Seu léxico inclui palavras como:</p>
-        <div class="examples">
-          <div class="example">casa</div>
-          <div class="example">atenção</div>
-          <div class="example">decisão</div>
-        </div>
-      </div>
-      <div class="card green">
-        <h3>Também inclui conexões</h3>
-        <div class="examples">
-          <div class="example">prestar <strong>atenção</strong></div>
-          <div class="example">tomar uma <strong>decisão</strong></div>
-          <div class="example">voltar <strong>para casa</strong></div>
-        </div>
-      </div>
-    </div>
-    <p>Quando falamos em <strong>léxico mental</strong>, estamos falando dessa rede que existe na sua memória: palavras, sentidos, combinações e padrões ligados uns aos outros.</p>
-  </div>
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 2</span> • Começando pelo básico</div>
+<h2>O que é léxico?</h2>
+<p class="lead"><strong>Léxico</strong> é o conjunto de palavras e combinações de palavras que temos disponíveis para compreender e comunicar significados.</p>
+<div class="lexical-pair-grid">
+<div class="pair-heading">Palavra isolada</div>
+<div class="pair-heading">Como ela aparece em uma combinação</div>
+<div class="example pair-cell">casa</div>
+<div class="example pair-cell">voltar <strong>pra casa</strong></div>
+<div class="example pair-cell">atenção</div>
+<div class="example pair-cell">prestar <strong>atenção</strong></div>
+<div class="example pair-cell">decisão</div>
+<div class="example pair-cell">tomar uma <strong>decisão</strong></div>
+</div>
+<p>Quando falamos em <strong>léxico mental</strong>, estamos falando dessa rede que existe na sua memória, formada por palavras, sentidos, combinações e padrões ligados uns aos outros.</p>
+</div>
 </section>
-
 <!-- 3 -->
 <section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 3</span> • O método</div>
-    <h2>O que é The Lexical Approach?</h2>
-    <p class="lead">É uma forma de olhar para o ensino de línguas que coloca o léxico — e não uma sequência de tópicos gramaticais — no centro da organização do curso.</p>
-    <div class="card pink">
-      <p class="big">A língua não é só<br/>“palavras + regras”.</p>
-      <p>Grande parte do que dizemos aparece em combinações, expressões e padrões que encontramos repetidamente e aprendemos a reconhecer e recuperar com rapidez.</p>
-    </div>
-    <p>Isso não significa eliminar a gramática. Significa entender que <strong>vocabulário, padrões e gramática funcionam juntos dentro da língua real</strong>.</p>
-  </div>
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 3</span> • O método</div>
+<h2>O que é a abordagem lexical?</h2>
+<p class="lead">É uma forma de olhar para o ensino de línguas que coloca o léxico no centro da organização do curso, em vez de organizar a aprendizagem como uma sequência de tópicos gramaticais.</p>
+<div class="card bubble-info">
+<p class="big">A língua não é só<br/>“palavras + regras”.</p>
+<p>Grande parte do que dizemos aparece em combinações, expressões e padrões que encontramos repetidamente e aprendemos a reconhecer e recuperar com rapidez.</p>
+</div>
+<p>Isso não significa eliminar a gramática. Significa entender que <strong>vocabulário, padrões e gramática funcionam juntos dentro da língua real</strong>.</p>
+</div>
 </section>
-
 <!-- 4 -->
 <section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 4</span> • De onde veio?</div>
-    <h2>Por que surgiu essa forma de olhar para a língua?</h2>
-    <p class="lead"><strong>The Lexical Approach</strong> ganhou forma especialmente nos anos 1990, associada ao trabalho do professor e autor <strong>Michael Lewis</strong>.</p>
-    <div class="card">
-      <p>Ela se desenvolveu em um momento em que estudos de língua em uso, linguagem formulaica, <span class="tech">collocations</span> <span class="tech-pt">(combinações recorrentes)</span> e grandes coleções de textos reais ajudavam a mostrar algo importante:</p>
-      <p class="quote">Falantes não criam toda frase do zero, palavra por palavra.</p>
-    </div>
-    <p>Uma pessoa pode conhecer muitas regras e muitas palavras isoladas e ainda ter dificuldade para produzir inglês de forma rápida e natural. A proposta lexical chama atenção justamente para <strong>os padrões e combinações que tornam a língua utilizável</strong>.</p>
-  </div>
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 4</span> • De onde veio?</div>
+<h2>A abordagem lexical ganhou força a partir dos anos 1990</h2>
+<p class="lead">Ela ficou especialmente associada ao trabalho de <strong>Michael Lewis</strong>, professor de inglês, formador de professores e autor especializado em ensino de inglês como língua estrangeira.</p>
+<div class="card bubble-info">
+<p>Em 1993, Lewis publicou <em>The Lexical Approach: The State of ELT and a Way Forward</em>, obra que deu nome e uma forma mais clara à proposta.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Saber regras e palavras isoladas não explica tudo</h3>
+<p class="lead">Estudos sobre língua em uso mostravam que falantes recorrem constantemente a combinações e padrões recorrentes.</p>
+<div class="card bubble-tip">
+<p><strong>Ideia para guardar:</strong> grande parte da língua não é construída do zero, palavra por palavra, toda vez que falamos.</p>
+</div>
+<p class="small muted">Lewis reúne e desenvolve esse olhar ao longo do livro de 1993.</p>
+</div>
 </section>
-
 <!-- 5 -->
 <section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 5</span> • Uma frase central</div>
-    <h2>“Language consists of grammaticalized lexis, not lexicalized grammar.”</h2>
-    <div class="card green">
-      <p class="quote">“A língua consiste em léxico gramaticalizado, não em gramática lexicalizada.”</p>
-      <p class="small muted">Formulação associada a Michael Lewis e a <strong>The Lexical Approach</strong>.</p>
-    </div>
-    <p class="lead">O que isso quer dizer de forma simples?</p>
-    <div class="compare">
-      <div class="col traditional">
-        <div class="title">Uma visão possível</div>
-        <p>Primeiro existe uma “estrutura gramatical vazia”. Depois colocamos palavras dentro dela.</p>
-        <div class="grammar-box">GRAMÁTICA + palavras → frase</div>
-      </div>
-      <div class="col lexical">
-        <div class="title">A visão lexical</div>
-        <p>Muitos padrões gramaticais já aparecem <strong>dentro de combinações lexicais recorrentes</strong> que aprendemos e reutilizamos.</p>
-        <div class="chunk-box"><span class="chunk">What's your _____?</span></div>
-      </div>
-    </div>
-    <p>Não é uma negação da gramática. É uma mudança de perspectiva: <strong>muito do que chamamos de gramática é aprendido e percebido dentro de padrões de língua que realmente usamos.</strong></p>
-  </div>
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 5</span> • Um dos pilares da abordagem lexical</div>
+<h2>O léxico está no centro da língua</h2>
+<div class="card bubble-info">
+<p class="quote">“Language consists of grammaticalised lexis, not lexicalised grammar.”</p>
+<p><strong>“A língua consiste em léxico gramaticalizado, e não em gramática lexicalizada.”</strong></p>
+<p class="small muted">Michael Lewis, <em>The Lexical Approach</em>, 1993, p. vi. O princípio é retomado nas pp. 34 e 89.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Léxico é mais do que uma lista de palavras</h3>
+<div class="card bubble-info">
+<p>Lewis questiona uma separação rígida entre <strong>gramática</strong> e <strong>vocabulário</strong>.</p>
+<p>Para ele, o léxico inclui diferentes tipos de <strong>itens lexicais</strong>, inclusive combinações formadas por várias palavras.</p>
+</div>
+<div class="card bubble-tip">
+<p><strong>Em resumo:</strong> em vez de imaginar primeiro uma estrutura gramatical vazia e depois colocar palavras dentro dela, olhamos para os itens lexicais e para os padrões em que eles aparecem.</p>
+</div>
+<p class="small muted">Base no livro, pp. 34, 89 e 91 a 104.</p>
+</div>
 </section>
-
 <!-- 6 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 6</span> • A ideia central</div>
-    <h2>O significado vem primeiro. A gramática continua lá.</h2>
-    <div class="card green">
-      <p class="quote">Em vez de começar sempre com “qual regra vamos estudar?”, começamos com “o que você precisa conseguir dizer?”.</p>
-    </div>
-    <p>Depois, quando perceber a estrutura ajuda você a compreender melhor o padrão e produzir novas mensagens, a gramática é <strong>explicitada, organizada e praticada</strong>.</p>
-    <p>Ou seja: o curso não esconde a gramática. Ele coloca a gramática <strong>a serviço da comunicação</strong>.</p>
-  </div>
-</section>
-
-<!-- 7 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 7</span> • O que isso NÃO significa</div>
-    <h2>Não é “decorar frases” e não é “curso sem gramática”</h2>
-    <div class="grid2">
-      <div class="card">
-        <h3>Não é</h3>
-        <p class="cross">✕ ignorar gramática</p>
-        <p class="cross">✕ decorar frases sem entender</p>
-        <p class="cross">✕ aprender só vocabulário</p>
-        <p class="cross">✕ prometer fluência sem prática</p>
-      </div>
-      <div class="card green">
-        <h3>É</h3>
-        <p class="check">✓ perceber padrões reais</p>
-        <p class="check">✓ aprender combinações úteis</p>
-        <p class="check">✓ modificar padrões conhecidos</p>
-        <p class="check">✓ recuperar a língua com cada vez menos esforço</p>
-      </div>
-    </div>
-    <p class="lead">Agora vamos observar uma coisa importante: <strong>você já faz isso em português.</strong></p>
-  </div>
-</section>
-
-<!-- 8 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 8</span> • Seu português em ação</div>
-    <h2>Complete como você falaria naturalmente</h2>
-    <div class="card">
-      <p class="quizline">
-        Toda vez <input class="inline-input" data-accepted="que" data-correct="que"> eu vou
-        <input class="inline-input" data-accepted="na|à|a|para a|pra" data-correct="na / à"> casa
-        <input class="inline-input" data-accepted="da|de" data-correct="da"> minha namorada, preciso falar
-        <input class="inline-input" data-accepted="com" data-correct="com"> o pai dela antes
-        <input class="inline-input" data-accepted="de" data-correct="de"> poder levá-la
-        <input class="inline-input" data-accepted="para|pra" data-correct="para / pra"> sair.
+<section class="slide fill-activity">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 6</span> • Seu português em ação</div>
+<h2>Complete como você falaria naturalmente</h2>
+<div class="card bubble-tip">
+<p><strong>Preencha as lacunas sem procurar uma regra.</strong> Use a forma que vier naturalmente à sua cabeça. Quando houver mais de uma possibilidade natural, a atividade aceitará as variações previstas.</p>
+</div>
+<div class="card bubble-info">
+<p class="quizline">
+        Às sete da manhã, Pedro saiu
+        <input class="inline-input" data-accepted="de|da" data-correct="de"/> casa
+        <input class="inline-input" data-accepted="com|junto com" data-correct="com"/> o irmão e foi
+        <input class="inline-input" data-accepted="para|até" data-correct="para"/> o trabalho.
       </p>
-      <p class="quizline">
-        Depois, eu a deixo <input class="inline-input" data-accepted="em" data-correct="em"> casa e volto
-        <input class="inline-input" data-accepted="para|pra|à|a" data-correct="para / pra"> minha casa
-        <input class="inline-input" data-accepted="no|em" data-correct="no / em"> meu carro, que eu divido
-        <input class="inline-input" data-accepted="com" data-correct="com"> minha mãe.
+<p class="quizline">
+        Ele foi
+        <input class="inline-input" data-accepted="de|no" data-correct="de"/> ônibus e passou
+        <input class="inline-input" data-accepted="por" data-correct="por"/> uma avenida movimentada antes de chegar.
       </p>
-      <button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-      <div class="feedback result-summary"></div>
-      <p class="small muted">A correção aceita variações naturais, como <strong>para/pra</strong>, <strong>na/à</strong> e <strong>no meu carro/em meu carro</strong>. O objetivo não é policiar estilo: é perceber os padrões que sua mente recupera.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 9 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 9</span> • O que acabou de acontecer?</div>
-    <h2>Você consultou uma regra para cada espaço?</h2>
-    <p class="lead">Provavelmente não.</p>
-    <div class="examples">
-      <div class="example">falar <strong>com</strong> alguém</div>
-      <div class="example">antes <strong>de</strong> fazer alguma coisa</div>
-      <div class="example">levar alguém <strong>para</strong> sair</div>
-      <div class="example">deixar alguém <strong>em</strong> casa</div>
-      <div class="example">voltar <strong>para</strong> casa</div>
-      <div class="example">dividir algo <strong>com</strong> alguém</div>
-    </div>
-    <p>Algumas dessas escolhas podem ser explicadas por regras gramaticais. Mas, quando você fala português, normalmente não precisa reconstruir conscientemente a regra antes de usar cada uma delas.</p>
-  </div>
-</section>
-
-<!-- 10 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 10</span> • Seu cérebro prevê linguagem</div>
-    <h2>Complete sem pensar demais</h2>
-    <div class="card">
-      <div class="examples">
-        <div class="answer-row">Eu estava atrasado e cheguei em cima da <input class="answer-input" data-accepted="hora" data-correct="hora">.<span class="answer-note"></span></div>
-        <div class="answer-row">Antes de enviar o documento, vou dar uma <input class="answer-input" data-accepted="olhada" data-correct="olhada"> nele.<span class="answer-note"></span></div>
-        <div class="answer-row">Ela estava distraída e não prestou <input class="answer-input" data-accepted="atenção|atencao" data-correct="atenção"> no que eu disse.<span class="answer-note"></span></div>
-        <div class="answer-row">Depois de várias reuniões, finalmente chegamos a um <input class="answer-input" data-accepted="acordo" data-correct="acordo">.<span class="answer-note"></span></div>
-      </div>
-      <button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-      <div class="feedback result-summary"></div>
-      <p class="small muted">Você pode responder sem acentos. Se a resposta estiver correta, a Belong mostrará também a grafia padrão.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 11 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 11</span> • Mais previsões</div>
-    <h2>O contexto estreita as possibilidades</h2>
-    <div class="card">
-      <div class="examples">
-        <div class="answer-row">Nosso relacionamento já passou por muitos altos e <input class="answer-input" data-accepted="baixos" data-correct="baixos">.<span class="answer-note"></span></div>
-        <div class="answer-row">De vez em <input class="answer-input" data-accepted="quando" data-correct="quando"> eu gosto de ficar em casa.<span class="answer-note"></span></div>
-        <div class="answer-row">Se você precisar, eu posso te dar uma <input class="answer-input" data-accepted="mão|mao" data-correct="mão">.<span class="answer-note"></span></div>
-        <div class="answer-row">Ele interpretou o comentário ao pé da <input class="answer-input" data-accepted="letra" data-correct="letra">.<span class="answer-note"></span></div>
-        <div class="answer-row">Foi amor à primeira <input class="answer-input" data-accepted="vista" data-correct="vista">.<span class="answer-note"></span></div>
-        <div class="answer-row">Não adianta chorar pelo leite <input class="answer-input" data-accepted="derramado" data-correct="derramado">.<span class="answer-note"></span></div>
-      </div>
-      <button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-      <div class="feedback result-summary"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 12 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 12</span> • Léxico mental</div>
-    <h2>Sua cabeça não é um dicionário em ordem alfabética</h2>
-    <p class="lead">As respostas anteriores mostram que o português na sua memória forma uma rede.</p>
-    <div class="card green">
-      <div class="examples">
-        <div class="example">prestar <strong>atenção</strong></div>
-        <div class="example">chegar a um <strong>acordo</strong></div>
-        <div class="example">dar uma <strong>mão</strong></div>
-        <div class="example">ao pé da <strong>letra</strong></div>
-        <div class="example">de vez em <strong>quando</strong></div>
-      </div>
-    </div>
-    <p>Uma palavra, uma situação ou parte de uma expressão pode ativar outras possibilidades relacionadas. Essa rede faz parte do seu <strong>léxico mental</strong>.</p>
-  </div>
-</section>
-
-<!-- 13 -->
-<section class="slide">
-  <div class="wrap center">
-    <div class="eyebrow"><span class="screen-num">Tela 13</span> • Blocos além das palavras</div>
-    <h2>Até a forma como falamos números mostra agrupamento mental</h2>
-    <div class="card">
-      <p class="small muted">Durante anos, era muito comum ouvir números de celular de oito dígitos em pares:</p>
-      <p class="phone phone-old">99 · 88 · 77 · 66</p>
-    </div>
-    <div class="card green">
-      <p class="small muted">Depois da inclusão do nono dígito, muita gente preservou os blocos antigos e encaixou o novo 9 na frente:</p>
-      <p class="phone phone-new"><span class="dramatic">9...</span> 99 · 88 · 77 · 66</p>
-    </div>
-    <p>A ideia aqui não é dizer que todo brasileiro fala números exatamente igual. É mostrar uma tendência familiar: <strong>quando um bloco já está consolidado, nossa mente pode preservá-lo em vez de reorganizar tudo do zero.</strong></p>
-  </div>
-</section>
-
-<!-- 14 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 14</span> • Agora vamos para o inglês</div>
-    <h2>Qual é a tradução de “carregar”?</h2>
-    <p class="lead">Escolha a opção que você acredita ser a tradução correta.</p>
-
-    <div class="card center" id="carry-game">
-      <p class="big" style="margin-bottom:24px">carregar = ?</p>
-
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <button class="action choice-btn" onclick="chooseCarregar(this,'carry')">carry</button>
-        <button class="action choice-btn" onclick="chooseCarregar(this,'charge')">charge</button>
-        <button class="action choice-btn" onclick="chooseCarregar(this,'load')">load</button>
-      </div>
-
-      <div id="carregar-feedback" class="reveal" style="margin-top:24px"></div>
-      <div id="carregar-picked" class="small muted" style="margin-top:14px"></div>
-    </div>
-
-    <div class="card pink">
-      <p style="margin-bottom:8px"><strong>Experimente as três opções.</strong></p>
-      <p class="muted" style="margin-bottom:0">Não tente decorar uma resposta ainda. Apenas observe o que acontece quando você escolhe cada palavra.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 15 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 15</span> • A palavra muda com o ambiente</div>
-    <h2>“Carregar” não é uma peça que sempre vira a mesma palavra</h2>
-    <div class="examples">
-      <div class="example"><strong>carry a chair</strong> → carregar/levar uma cadeira</div>
-      <div class="example"><strong>charge a phone</strong> → carregar a bateria de um celular</div>
-      <div class="example"><strong>load a truck</strong> → carregar um caminhão com carga</div>
-    </div>
-    <div class="card pink">
-      <p><strong>I carry my phone with me.</strong><br/>Eu levo/carrego meu celular comigo.</p>
-      <p><strong>I need to charge my phone.</strong><br/>Preciso carregar meu celular.</p>
-    </div>
-    <p>Até com a mesma <strong>palavra isolada</strong> — <em>phone</em> — a combinação muda conforme o significado que você quer construir.</p>
-  </div>
-</section>
-
-<!-- 16 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 16</span> • Mais uma prova</div>
-    <h2>“Perder” também muda com a combinação</h2>
-    <div class="card">
-      <p class="big">perdi minhas chaves</p>
-      <p class="check">I lost my keys.</p>
-    </div>
-    <div class="card">
-      <p class="big">perdi o ônibus</p>
-      <p class="cross">✕ I lost the bus.</p>
-      <p class="check">✓ I missed the bus.</p>
-    </div>
-    <p>Conhecer <em>lose</em> e <em>bus</em> separadamente não garante que você escolha a combinação natural para “perder o ônibus”.</p>
-  </div>
-</section>
-
-<!-- 17 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 17</span> • The Lexical Approach</div>
-    <h2>O que exatamente entra no seu léxico?</h2>
-    <p class="lead">Na Belong, você não aprende inglês como uma coleção de palavras soltas. Você aprende <strong>unidades lexicais</strong>: desde uma única palavra até padrões inteiros que podem ser reutilizados.</p>
-
-    <div class="card lexical-intro">
-      <span class="lexical-pill">a ideia principal</span>
-      <h3>Quanto maior a unidade que você reconhece, menos precisa construir palavra por palavra.</h3>
-      <p>É por isso que vamos trabalhar conscientemente com palavras isoladas, combinações recorrentes e blocos lexicais completos.</p>
-    </div>
-
-    <div class="grid4">
-      <div class="type-card">
-        <div class="type">Isolated Words</div>
-        <div class="pt">palavras isoladas</div>
-        <div class="sample">phone</div>
-        <p class="small">Uma palavra individual. É parte do léxico, mas aprender apenas seu significado não mostra ainda como ela costuma ser usada.</p>
-      </div>
-      <div class="type-card">
-        <div class="type">Collocations</div>
-        <div class="pt">colocações / combinações recorrentes</div>
-        <div class="sample">pay attention</div>
-        <p class="small">Palavras que aparecem juntas com frequência e soam naturais para quem usa a língua.</p>
-      </div>
-      <div class="type-card">
-        <div class="type">Fixed Chunks</div>
-        <div class="pt">blocos lexicais fixos</div>
-        <div class="sample">Nice to meet you.</div>
-        <p class="small">Sequências muito estáveis, recuperadas praticamente como uma unidade pronta.</p>
-      </div>
-      <div class="type-card">
-        <div class="type">Semi-fixed Chunks</div>
-        <div class="pt">blocos lexicais semifixos</div>
-        <div class="sample">What's your ___?</div>
-        <p class="small">Um bloco parcialmente pronto: uma parte permanece estável e outra pode ser substituída.</p>
-      </div>
-    </div>
-
-    <p class="small muted">Essas categorias ajudam a enxergar o léxico, mas não são caixas rígidas. Uma <span class="tech">collocation</span> <span class="tech-pt">(colocação)</span> pode fazer parte de um <span class="tech">chunk</span> <span class="tech-pt">(bloco lexical)</span> maior.</p>
-  </div>
-</section>
-
-<!-- 18 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 18</span> • Collocations (colocações)</div>
-    <h2>Você pode conhecer as palavras e ainda não conhecer o inglês</h2>
-    <p class="lead">Veja a diferença entre reconhecer palavras isoladas e saber <strong>como elas naturalmente aparecem juntas</strong>.</p>
-
-    <div class="lexical-equation">
-      <div class="unit">
-        <span class="small muted">palavra isolada</span><br/>
-        <span class="big">decision</span><br/>
-        decisão
-      </div>
-      <div class="arrow">→</div>
-      <div class="unit">
-        <span class="small muted">collocation • colocação</span><br/>
-        <span class="big">make a decision</span><br/>
-        tomar uma decisão
-      </div>
-    </div>
-
-    <div class="lexical-equation">
-      <div class="unit">
-        <span class="small muted">palavra isolada</span><br/>
-        <span class="big">attention</span><br/>
-        atenção
-      </div>
-      <div class="arrow">→</div>
-      <div class="unit">
-        <span class="small muted">collocation • colocação</span><br/>
-        <span class="big">pay attention</span><br/>
-        prestar atenção
-      </div>
-    </div>
-
-    <div class="lexical-equation">
-      <div class="unit">
-        <span class="small muted">palavra isolada</span><br/>
-        <span class="big">bus</span><br/>
-        ônibus
-      </div>
-      <div class="arrow">→</div>
-      <div class="unit">
-        <span class="small muted">collocation • colocação</span><br/>
-        <span class="big">miss the bus</span><br/>
-        perder o ônibus
-      </div>
-    </div>
-
-    <div class="method-line"><strong>Na Belong, “aprender uma palavra” inclui aprender as relações mais úteis que ela cria com outras palavras.</strong></div>
-  </div>
-</section>
-
-<!-- 19 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 19</span> • Chunks (blocos lexicais)</div>
-    <h2>Alguns blocos vêm quase prontos. Outros vêm com um espaço para você completar.</h2>
-
-    <div class="compare">
-      <div class="col lexical">
-        <div class="title">Fixed Chunk • bloco lexical fixo</div>
-        <p class="big">Nice to meet you.</p>
-        <p>Em vez de montar <em>nice + to + meet + you</em> toda vez, você aprende a reconhecer e recuperar a sequência como uma unidade funcional.</p>
-        <div class="method-line"><strong>O bloco inteiro comunica:</strong><br/>“Prazer em conhecer você.”</div>
-      </div>
-
-      <div class="col lexical">
-        <div class="title">Semi-fixed Chunk • bloco lexical semifixo</div>
-        <p class="big">What's your <span class="dramatic">_____</span>?</p>
-        <div class="examples">
-          <div class="example">What's your <strong>name</strong>?</div>
-          <div class="example">What's your <strong>last name</strong>?</div>
-          <div class="example">What's your <strong>phone number</strong>?</div>
-        </div>
-        <p>Uma parte permanece estável; outra muda. Você reutiliza o padrão sem precisar reconstruir toda a pergunta.</p>
-      </div>
-    </div>
-
-    <div class="card green">
-      <p class="quote">Aprender inglês não é apenas acumular palavras. É aumentar o número de blocos e combinações que sua mente consegue recuperar com facilidade.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 20 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 20</span> • The Lexical Approach e a gramática</div>
-    <h2>A gramática não desaparece. Ela deixa de ser o ponto de partida.</h2>
-    <div class="compare">
-      <div class="col traditional">
-        <div class="title">Curso organizado principalmente pela gramática</div>
-        <p class="big">PREPOSITIONS OF PLACE</p>
-        <div class="grammar-box">
-          IN = dentro de / áreas<br/>
-          ON = sobre uma superfície<br/>
-          AT = ponto/local específico<br/>
-          UNDER = abaixo de<br/>
-          NEXT TO = ao lado de<br/>
-          BEHIND = atrás de
-        </div>
-        <p><strong>Exercício:</strong> complete 20 frases escolhendo a preposição correta.</p>
-      </div>
-      <div class="col lexical">
-        <div class="title">Na Belong: função + chunks (blocos lexicais)</div>
-        <p class="big">Dizer onde pessoas e coisas estão</p>
-        <div class="chunk-box">
-          <div class="chunk">Where's my _____?</div>
-          <div>Onde está meu/minha _____?</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">It's on the _____.</div>
-          <div>Está em cima/no/na _____.</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">It's under the _____.</div>
-          <div>Está embaixo do/da _____.</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">It's next to the _____.</div>
-          <div>Está ao lado do/da _____.</div>
-        </div>
-      </div>
-    </div>
-    <p class="card green"><strong>Você aprende as preposições.</strong> Mas aprende dentro de padrões que já servem para perguntar e responder onde alguma coisa está.</p>
-  </div>
-</section>
-
-<!-- 21 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 21</span> • O mesmo conteúdo, outro caminho</div>
-    <h2>Present Perfect</h2>
-    <div class="compare">
-      <div class="col traditional">
-        <div class="title">Curso organizado principalmente pela gramática</div>
-        <div class="grammar-box">
-          Subject + HAVE/HAS + past participle<br/><br/>
-          Affirmative: I have worked...<br/>
-          Negative: I haven't worked...<br/>
-          Question: Have you worked...?<br/><br/>
-          FOR = período de tempo<br/>
-          SINCE = ponto inicial
-        </div>
-        <p>Depois da regra, o aluno tenta construir frases.</p>
-      </div>
-      <div class="col lexical">
-        <div class="title">The Lexical Approach: começar pelo que você precisa dizer</div>
-        <p class="big">“Eu trabalho aqui há dez anos.”</p>
-        <div class="chunk-box">
-          <div class="chunk">I've worked here for _____.</div>
-          <div>Eu trabalho aqui há _____.</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">I've lived here since _____.</div>
-          <div>Eu moro aqui desde _____.</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">How long have you _____?</div>
-          <div>Há quanto tempo você _____?</div>
-        </div>
-      </div>
-    </div>
-    <p>Depois de usar e reencontrar esses <span class="tech">chunks</span> <span class="tech-pt">(blocos lexicais)</span>, a gramática ajuda a explicar o padrão e ampliar o que você consegue produzir.</p>
-  </div>
-</section>
-
-<!-- 22 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 22</span> • Estruturas mais avançadas</div>
-    <h2>If Clauses</h2>
-    <div class="compare">
-      <div class="col traditional">
-        <div class="title">Curso organizado principalmente pela gramática</div>
-        <div class="grammar-box">
-          ZERO CONDITIONAL:<br/>if + present, present<br/><br/>
-          FIRST CONDITIONAL:<br/>if + present, will + verb<br/><br/>
-          SECOND CONDITIONAL:<br/>if + past, would + verb
-        </div>
-        <p>O aluno primeiro aprende categorias e fórmulas.</p>
-      </div>
-      <div class="col lexical">
-        <div class="title">The Lexical Approach: comunicar condições e consequências</div>
-        <div class="chunk-box">
-          <div class="chunk">If I see _____, I'll _____.</div>
-          <div>Se eu vir _____, eu vou _____.</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">If _____ happens, I'll _____.</div>
-          <div>Se _____ acontecer, eu vou _____.</div>
-        </div>
-        <div class="chunk-box">
-          <div class="chunk">If I had _____, I'd _____.</div>
-          <div>Se eu tivesse _____, eu _____.</div>
-        </div>
-        <p><strong>Exemplo:</strong> If I talk to her, I'll pass on the message.<br/>Se eu falar com ela, eu passo/transmito o recado.</p>
-      </div>
-    </div>
-    <p class="card green">Você continua aprendendo a estrutura. Mas parte de <strong>padrões que expressam uma intenção</strong>, e não apenas do nome da categoria gramatical.</p>
-  </div>
-</section>
-
-<!-- 23 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 23</span> • The Lexical Approach na prática</div>
-    <h2>Você constrói a rede aos poucos</h2>
-    <div class="flow">
-      <span>1. encontrar a língua</span><b>→</b>
-      <span>2. tentar entender</span><b>→</b>
-      <span>3. perceber padrões</span><b>→</b>
-      <span>4. aprender chunks (blocos lexicais)</span><b>→</b>
-      <span>5. modificar</span><b>→</b>
-      <span>6. recuperar</span><b>→</b>
-      <span>7. falar</span><b>→</b>
-      <span>8. reencontrar</span>
-    </div>
-    <div class="card pink">
-      <p class="big">I'm from <span class="dramatic">_____</span>.</p>
-      <div class="examples">
-        <div class="example">I'm from <strong>Brazil</strong>.</div>
-        <div class="example">I'm from <strong>Curitiba</strong>.</div>
-        <div class="example">I'm from <strong>Argentina</strong>.</div>
-      </div>
-    </div>
-    <p>O apoio diminui aos poucos. O objetivo é que padrões úteis fiquem cada vez mais disponíveis para uso espontâneo.</p>
-  </div>
-</section>
-
-<!-- 24 -->
-<section class="slide">
-  <div class="wrap center">
-    <div class="eyebrow"><span class="screen-num">Tela 24</span> • Nosso objetivo</div>
-    <h1>Construir um léxico mental em inglês</h1>
-    <p class="lead" style="margin-left:auto;margin-right:auto">Não apenas conhecer palavras. Não apenas conhecer regras.</p>
-    <div class="card green">
-      <p class="big">reconhecer → entender → recuperar → modificar → usar</p>
-    </div>
-    <p>Queremos que <strong>pay attention</strong>, <strong>make a decision</strong> e <strong>What's your name?</strong> comecem, pouco a pouco, a ficar disponíveis na sua cabeça como muitas combinações do português já estão hoje.</p>
-  </div>
-</section>
-
-<!-- 25 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="eyebrow"><span class="screen-num">Tela 25</span> • Base da metodologia</div>
-    <h2>De onde vêm essas ideias?</h2>
-    <p class="lead">A proposta pedagógica da Belong tem <strong>The Lexical Approach</strong> como eixo, especialmente a tradição associada a Michael Lewis.</p>
-    <div class="card">
-      <p><strong>Michael Lewis (1993)</strong><br/><em>The Lexical Approach: The State of ELT and a Way Forward</em></p>
-      <p><strong>Michael Lewis (1997)</strong><br/><em>Implementing the Lexical Approach: Putting Theory into Practice</em></p>
-      <p><strong>Nattinger & DeCarrico (1992)</strong><br/><em>Lexical Phrases and Language Teaching</em></p>
-      <p><strong>Pawley & Syder (1983)</strong><br/>trabalho clássico sobre linguagem formulaica e fluência.</p>
-    </div>
-    <p class="small muted">Você não precisa estudar essa teoria para fazer o curso. Ela está aqui para deixar claro que as escolhas pedagógicas da Belong têm fundamento e uma razão clara.</p>
-  </div>
-</section>
-
-<!-- 26 -->
-<section class="slide">
-  <div class="wrap center">
-    <div class="eyebrow"><span class="screen-num">Tela 26</span> • Agora podemos começar</div>
-    <div class="brand" style="display:inline-block;background:var(--belong-magenta);padding:13px 20px;border-radius:16px;font-size:44px;margin-bottom:24px">bel<span class="on">on</span>g</div>
-    <h1>Agora você sabe como vai aprender.</h1>
-    <p class="lead" style="margin-left:auto;margin-right:auto">A gramática está aqui. O vocabulário está aqui. Mas nosso ponto de partida é a língua sendo usada para comunicar alguma coisa.</p>
-    <div class="card">
-      <p class="big">Curso completo de inglês, do básico ao avançado.</p>
-      
-    </div>
-    <a class="action greenbtn" href="https://wa.me/5541998389437" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none">Começar meu curso</a>
-  </div>
-</section>
-
-</main>
-
-<div class="ownership">© 2026 Belong</div>
-
-<nav class="footer-nav">
-  <button class="action secondary" id="prev" onclick="move(-1)">Anterior</button>
-  <button class="action" id="next" onclick="move(1)">Próximo</button>
-</nav>
+<p class="quizline">
+        No almoço, sentou-se
+        <input class="inline-input" data-accepted="ao|do" data-correct="ao"/> lado de Ana e conversou
+        <input class="inline-input" data-accepted="com" data-correct="com"/> ela
+        <input class="inline-input" data-accepted="sobre" data-correct="sobre"/> a viagem.
+      </p>
+<p class="quizline">
+        Depois do trabalho, caminhou
+        <input class="inline-input" data-accepted="até|para" data-correct="até"/> a praça e parou
+        <input class="inline-input" data-accepted="em" data-correct="em"/> frente ao banco.
+      </p>
+<p class="quizline">
+        Antes
+        <input class="inline-input" data-accepted="de" data-correct="de"/> voltar
+        <input class="inline-input" data-accepted="para|pra|a|à" data-correct="para"/> casa, comprou pão
+        <input class="inline-input" data-accepted="para" data-correct="para"/> o jantar.
+      </p>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
 
 </div>
+</div>
+</section>
+<!-- 7 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 7</span> • O que aconteceu nas lacunas?</div>
+<h2>As palavras ao redor ajudaram você a escolher</h2>
+<p class="lead">Você provavelmente não precisou recitar uma regra gramatical para completar cada espaço. O restante da frase já tornava algumas combinações muito mais prováveis.</p>
+<div class="card bubble-info">
+<div class="examples">
+<div class="example">sair <strong>de casa</strong></div>
+<div class="example">ir <strong>para o trabalho</strong></div>
+<div class="example">ir <strong>de ônibus</strong></div>
+<div class="example">passar <strong>por uma avenida</strong></div>
+<div class="example">sentar-se <strong>ao lado de alguém</strong></div>
+<div class="example">conversar <strong>com alguém sobre algo</strong></div>
+<div class="example">parar <strong>em frente a algum lugar</strong></div>
+<div class="example">antes <strong>de voltar para casa</strong></div>
+</div>
+</div>
+<div class="card bubble-tip">
+<p>Lewis chama atenção para a importância do <strong>co-texto</strong>, isto é, das palavras e expressões que aparecem ao redor de uma palavra. Esse ambiente ajuda a limitar as escolhas e mostra como os itens da língua costumam se combinar.</p>
+</div>
+<p class="small muted">A atividade foi criada pela Belong para demonstrar esse princípio. Base conceitual em Lewis, 1993, especialmente pp. 103 a 104.</p>
+</div>
+</section>
+<!-- 8 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 8</span> • O que a abordagem lexical não significa</div>
+<h2>Ela não elimina a gramática</h2>
+<div class="card bubble-info">
+<p class="cross">✕ não é um curso sem gramática</p>
+<p class="cross">✕ não é trocar gramática por listas de vocabulário</p>
+<p class="cross">✕ não é decorar frases sem compreender</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">O que ela passa a valorizar mais</h3>
+<div class="card bubble-info">
+<p class="check">✓ o léxico ocupa um papel maior</p>
+<p class="check">✓ collocation e chunking ganham destaque</p>
+<p class="check">✓ o aluno observa padrões na língua em uso</p>
+<p class="check">✓ a gramática continua importante</p>
+</div>
+<div class="card bubble-tip">
+<p>Lewis não elimina a capacidade de gramaticalizar. Ele muda a prioridade dada à gramática dentro do ensino.</p>
+</div>
+</div>
+</section>
+<!-- 9 -->
+<section class="slide fill-activity">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 9</span> • Co-texto na prática</div>
+<h2>Complete como você falaria naturalmente</h2>
+<div class="card bubble-tip">
+<p>Não procure uma regra. Preencha com a forma que vier naturalmente à sua cabeça.</p>
+</div>
+<div class="card bubble-info">
+<p class="quizline">
+    Toda vez <input class="inline-input" data-accepted="que" data-correct="que"/> eu vou
+    <input class="inline-input" data-accepted="na|à|a|para a|pra" data-correct="na"/> casa
+    <input class="inline-input" data-accepted="da|de" data-correct="da"/> minha namorada, preciso falar
+    <input class="inline-input" data-accepted="com" data-correct="com"/> o pai dela.
+  </p>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
 
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Mais algumas lacunas</h3>
+<div class="card bubble-info">
+<p class="quizline">
+    Antes <input class="inline-input" data-accepted="de" data-correct="de"/> poder levá-la
+    <input class="inline-input" data-accepted="para|pra" data-correct="para"/> sair.
+    Depois, eu a deixo <input class="inline-input" data-accepted="em|na" data-correct="em"/> casa e volto
+    <input class="inline-input" data-accepted="para|pra|a|à" data-correct="para"/> minha casa
+    <input class="inline-input" data-accepted="no|em" data-correct="no"/> meu carro, que eu divido
+    <input class="inline-input" data-accepted="com" data-correct="com"/> minha mãe.
+  </p>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
+
+</div>
+<div class="card bubble-tip">
+<p>Lewis usa o termo <strong>co-texto</strong> para chamar atenção para a linguagem que aparece ao redor de outra linguagem e ajuda a limitar as escolhas.</p>
+</div>
+</div>
+</section>
+<!-- 10 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 10</span> • Co-texto</div>
+<h2>O restante da frase ajuda a definir o que pode vir a seguir</h2>
+<div class="examples">
+<div class="example">falar <strong>com</strong> alguém</div>
+<div class="example">antes <strong>de</strong> fazer alguma coisa</div>
+<div class="example">levar alguém <strong>para</strong> sair</div>
+<div class="example">deixar alguém <strong>em</strong> casa</div>
+<div class="example">voltar <strong>para</strong> casa</div>
+<div class="example">dividir algo <strong>com</strong> alguém</div>
+</div>
+<div class="card bubble-tip">
+<p>Lewis afirma que as palavras normalmente não aparecem isoladas. O co-texto pode <strong>apoiar ou limitar as escolhas</strong>. Por isso, retirar uma palavra de seu ambiente linguístico pode apagar parte importante da informação necessária para aprendê-la e usá-la.</p>
+</div>
+<p class="small muted">Base no livro, pp. 86 a 87 e 103 a 104.</p>
+</div>
+</section>
+<!-- 11 -->
+<section class="slide fill-activity">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 11</span> • Percebendo combinações</div>
+<h2>Complete sem pensar demais</h2>
+<div class="card bubble-tip">
+<p>Digite a primeira palavra ou expressão que parecer natural.</p>
+</div>
+<div class="card bubble-info">
+<div class="examples">
+<div class="answer-row">Eu estava atrasado e cheguei em cima da <input class="answer-input" data-accepted="hora" data-correct="hora"/>.</div>
+<div class="answer-row">Antes de enviar o documento, vou dar uma <input class="answer-input" data-accepted="olhada|olhadinha|conferida|checada" data-correct="olhada"/> nele.</div>
+</div>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">O contexto sugere certas continuações</h3>
+<div class="card bubble-info">
+<div class="examples">
+<div class="answer-row">Ela estava distraída e não prestou <input class="answer-input" data-accepted="atenção|atencao" data-correct="atenção"/> no que eu disse.</div>
+<div class="answer-row">Depois de várias reuniões, finalmente chegamos a um <input class="answer-input" data-accepted="acordo|consenso|entendimento" data-correct="acordo"/>.</div>
+</div>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
+</div>
+<p class="small muted">Algumas frases admitem mais de uma resposta natural.</p>
+</div>
+</section>
+<!-- 12 -->
+<section class="slide fill-activity">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 12</span> • Blocos mais previsíveis</div>
+<h2>Algumas sequências parecem quase prontas</h2>
+<div class="card bubble-info">
+<div class="examples">
+<div class="answer-row">Nosso relacionamento já passou por muitos altos e <input class="answer-input" data-accepted="baixos" data-correct="baixos"/>.</div>
+<div class="answer-row">De vez em <input class="answer-input" data-accepted="quando" data-correct="quando"/> eu gosto de ficar em casa.</div>
+<div class="answer-row">Se você precisar, eu posso te dar uma <input class="answer-input" data-accepted="mão|mao|ajuda|força|forca" data-correct="mão"/>.</div>
+</div>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Você provavelmente reconhece o restante</h3>
+<div class="card bubble-info">
+<div class="examples">
+<div class="answer-row">Ele interpretou o comentário ao pé da <input class="answer-input" data-accepted="letra" data-correct="letra"/>.</div>
+<div class="answer-row">Foi amor à primeira <input class="answer-input" data-accepted="vista" data-correct="vista"/>.</div>
+<div class="answer-row">Não adianta chorar pelo leite <input class="answer-input" data-accepted="derramado" data-correct="derramado"/>.</div>
+</div>
+<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
+</div>
+<div class="card bubble-tip">
+<p>Lewis reúne evidências de que muita linguagem pode ser armazenada e recuperada em unidades maiores do que uma única palavra.</p>
+</div>
+</div>
+</section>
+<!-- 13 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 13</span> • Do vocabulário ao léxico</div>
+<h2>Uma palavra é apenas um dos tipos de item lexical</h2>
+<div class="card bubble-info">
+<div class="examples">
+<div class="example">prestar <strong>atenção</strong></div>
+<div class="example">chegar a um <strong>acordo</strong> / chegar a um <strong>consenso</strong></div>
+<div class="example">dar uma <strong>mão</strong></div>
+<div class="example">ao pé da <strong>letra</strong></div>
+<div class="example">de vez em <strong>quando</strong></div>
+</div>
+</div>
+<div class="card bubble-tip">
+<p>Lewis distingue <strong>vocabulary</strong> de <strong>lexis</strong>. Ter um vocabulário grande pode significar conhecer muitas palavras. Ter acesso a um léxico envolve um estoque muito mais amplo de <strong>itens lexicais de diferentes tipos</strong>, inclusive unidades de várias palavras.</p>
+</div>
+<p class="small muted">Base no livro, pp. 89 a 95.</p>
+</div>
+</section>
+<!-- 14 -->
+<section class="slide">
+<div class="wrap center">
+<div class="eyebrow"><span class="screen-num">Tela 14</span> • Chunking</div>
+<h2>Uma analogia simples para entender blocos na memória</h2>
+<div class="card bubble-info">
+<p class="small muted">Imagine um número fictício de celular brasileiro, da época em que os celulares tinham oito dígitos. Ao falar o número, era comum agrupá-lo em pares:</p>
+<p class="phone phone-old">99 · 88 · 77 · 66</p>
+<p class="small muted">Quando o nono dígito foi acrescentado aos celulares, os oito dígitos antigos permaneceram. Por isso, muita gente continuou dizendo os pares já conhecidos e apenas colocou o novo 9 na frente:</p>
+<p class="phone phone-new"><span class="dramatic">9...</span> 99 · 88 · 77 · 66</p>
+</div>
+<p class="small muted">Os números abaixo são apenas um exemplo para mostrar como nossa memória tende a preservar agrupamentos já familiares.</p><div class="card bubble-tip">
+<p><strong>Esta é apenas uma analogia criada pela Belong.</strong> No livro, <em>chunking</em> é usado para falar de itens linguísticos que podem ser armazenados e recuperados em blocos pré-montados. Lewis considera o desenvolvimento da capacidade de identificar esses blocos uma atividade pedagógica importante.</p>
+</div>
+<p class="small muted">Base no livro, pp. 121 a 122 e p. 194.</p>
+</div>
+</section>
+<!-- 15 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 15</span> • Correspondência entre línguas</div>
+<h2>Qual é a tradução de “carregar”?</h2>
+<p class="lead">Escolha a opção que você acredita ser a tradução correta.</p>
+<div class="card center bubble-info" id="carry-game">
+<p class="big" style="margin-bottom:24px">carregar = ?</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+<button class="action choice-btn" onclick="chooseCarregar(this,'carry')">carry</button>
+<button class="action choice-btn" onclick="chooseCarregar(this,'charge')">charge</button>
+<button class="action choice-btn" onclick="chooseCarregar(this,'load')">load</button>
+</div>
+<div class="reveal" id="carregar-feedback" style="margin-top:24px"></div>
+<div class="small muted" id="carregar-picked" style="margin-top:14px"></div>
+</div>
+<div class="card bubble-tip">
+<p>Lewis chama atenção para um problema importante. Palavras e colocações nem sempre têm correspondência de um para um entre duas línguas. Experimente as três opções antes de avançar.</p>
+</div>
+<p class="small muted">Jogo criado pela Belong. Princípio discutido por Lewis na p. 94.</p>
+</div>
+</section>
+<!-- 16 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 16</span> • O co-texto muda a escolha</div>
+<h2>As três respostas podem estar certas, mas não no mesmo ambiente</h2>
+<div class="examples">
+<div class="example"><strong>carry a chair</strong><br/>carregar/levar uma cadeira</div>
+<div class="example"><strong>charge a phone</strong><br/>carregar a bateria de um celular</div>
+<div class="example"><strong>load a truck</strong><br/>carregar um caminhão com carga</div>
+</div>
+<div class="card bubble-info">
+<p><strong>I carry my phone with me.</strong><br/>Eu levo meu celular comigo.</p>
+<p><strong>I need to charge my phone.</strong><br/>Preciso carregar meu celular.</p>
+</div>
+<div class="card bubble-tip">
+<p>O ponto não é encontrar “a tradução” de <em>carregar</em>. É observar que a escolha em inglês depende do significado pretendido e das palavras com as quais o verbo ocorre.</p>
+</div>
+<p class="small muted">Exemplos da Belong. A relação com o livro está na discussão sobre co-texto, pp. 103 a 104, e sobre correspondência entre línguas e collocations, p. 94.</p>
+</div>
+</section>
+<!-- 17 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 17</span> • Collocation e tradução</div>
+<h2>Conhecer duas palavras separadas ainda pode não ser suficiente</h2>
+<div class="card bubble-info">
+<p class="big">perdi minhas chaves</p>
+<p class="check">I lost my keys.</p>
+</div>
+<div class="card bubble-info">
+<p class="big">perdi o ônibus</p>
+<p class="cross">✕ I lost the bus.</p>
+<p class="check">✓ I missed the bus.</p>
+</div>
+<div class="card bubble-tip">
+<p>Lewis observa que justamente as colocações que não correspondem diretamente entre a língua materna e a língua aprendida tendem a exigir atenção especial. O problema não é apenas saber o significado das palavras isoladas, mas conhecer suas combinações.</p>
+</div>
+<p class="small muted">Exemplos da Belong. Princípio discutido por Lewis na p. 94.</p>
+</div>
+</section>
+<!-- 18 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 18</span> • Tipos de item lexical</div>
+<h2>O léxico contém unidades de tamanhos diferentes</h2>
+<div class="grid2">
+<div class="type-card">
+<div class="type">Words</div>
+<div class="pt">palavras</div>
+<div class="sample">book</div>
+<p class="small">Uma palavra individual.</p>
+</div>
+<div class="type-card">
+<div class="type">Polywords</div>
+<div class="pt">unidades curtas de várias palavras</div>
+<div class="sample">by the way</div>
+<p class="small">Várias palavras que funcionam como uma unidade lexical.</p>
+</div>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Collocations e expressões institucionalizadas</h3>
+<div class="grid2">
+<div class="type-card">
+<div class="type">Collocations</div>
+<div class="pt">colocações</div>
+<div class="sample">prices fell</div>
+<p class="small">Palavras que coocorrem de maneira característica.</p>
+</div>
+<div class="type-card">
+<div class="type">Institutionalised expressions</div>
+<div class="pt">expressões institucionalizadas</div>
+<div class="sample">Would you like to...?</div>
+<p class="small">Expressões muito ligadas ao uso social e à interação.</p>
+</div>
+</div>
+<div class="card bubble-tip">
+<p>Lewis ressalta que essas categorias se sobrepõem. Elas não são caixas rígidas.</p>
+</div>
+</div>
+</section>
+<!-- 19 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 19</span> • Collocations (colocações)</div>
+<h2>Collocation é a maneira como as palavras coocorrem</h2>
+<p class="lead">Lewis não trata collocation como um detalhe do vocabulário. Ele atribui a ela papel central na criação de significado e na organização do ensino.</p>
+<div class="lexical-equation">
+<div class="unit">
+<span class="small muted">palavra</span><br/>
+<span class="big">decision</span><br/>decisão
+      </div>
+<div class="arrow">→</div>
+<div class="unit">
+<span class="small muted">collocation</span><br/>
+<span class="big">make a decision</span><br/>tomar uma decisão
+      </div>
+</div>
+<div class="lexical-equation">
+<div class="unit">
+<span class="small muted">palavra</span><br/>
+<span class="big">attention</span><br/>atenção
+      </div>
+<div class="arrow">→</div>
+<div class="unit">
+<span class="small muted">collocation</span><br/>
+<span class="big">pay attention</span><br/>prestar atenção
+      </div>
+</div>
+<div class="card bubble-tip">
+<p>As colocações não se dividem simplesmente em “certas” e “livres”. Lewis descreve um <strong>espectro</strong> que vai de combinações mais livres até combinações muito mais fixas e previsíveis.</p>
+</div>
+<p class="small muted">Definição e espectro em Lewis, 1993, pp. 93 a 94. Exemplos didáticos da Belong.</p>
+</div>
+</section>
+<!-- 20 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 20</span> • Expressões institucionalizadas</div>
+<h2>Alguns blocos ajudam a administrar a interação</h2>
+<p class="lead">Lewis usa o termo <strong>institutionalised expressions</strong>, expressões institucionalizadas, para unidades de forte valor comunicativo e social.</p>
+<div class="card bubble-info">
+<p class="big">Just a moment, please.</p>
+<p>Uma unidade curta que pode ser compreendida e usada como um todo.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Uma parte pode permanecer fixa e outra variar</h3>
+<div class="card bubble-info">
+<p class="big">Would you like to _____?</p>
+<p>O início da frase é recorrente e pode receber diferentes complementos.</p>
+</div>
+<div class="card bubble-tip">
+<p>Para Lewis, expressões desse tipo aumentam o poder comunicativo do aluno e também oferecem material para perceber padrões mais gerais.</p>
+</div>
+</div>
+</section>
+<!-- 21 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 21</span> • E a gramática?</div>
+<h2>Ela continua importante</h2>
+<div class="card bubble-info">
+<div class="examples">
+<div class="example"><strong>1.</strong> Para Lewis, a base da língua é o léxico, não a gramática.</div>
+<div class="example"><strong>2.</strong> A capacidade de gramaticalizar continua importante.</div>
+</div>
+</div>
+<div class="card bubble-tip">
+<p>Portanto, abordagem lexical não significa “curso sem gramática”.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">A atenção se amplia</h3>
+<div class="compare">
+<div class="col traditional">
+<div class="title">Ênfase tradicional</div>
+<p>Muita atenção à <strong>gramática da frase</strong> e a paradigmas verbais.</p>
+</div>
+<div class="col lexical">
+<div class="title">Na abordagem lexical</div>
+<p>Mais atenção à <strong>gramática da palavra</strong>, aos padrões, às collocations e à percepção da língua em uso.</p>
+</div>
+</div>
+<p class="small muted">Base no livro, pp. 133 a 147.</p>
+</div>
+</section>
+<!-- 22 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 22</span> • Gramática como habilidade receptiva</div>
+<h2>Primeiro, perceber diferenças</h2>
+<p class="lead">Lewis dá prioridade à gramática como uma habilidade receptiva. O aluno observa dados da língua, compara formas e percebe diferenças de significado e uso.</p>
+<div class="card bubble-tip">
+<p>Em vez de começar sempre por uma regra pronta, o aluno pode primeiro observar exemplos e formular uma hipótese.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Observe a diferença</h3>
+<div class="card bubble-info">
+<div class="chunk-box">
+<div class="chunk">I live in Curitiba.</div>
+<div>Eu moro em Curitiba.</div>
+</div>
+<div class="chunk-box">
+<div class="chunk">I'm living in Curitiba.</div>
+<div>Estou morando em Curitiba.</div>
+</div>
+</div>
+<div class="card bubble-tip">
+<p>O aluno observa, compara e tenta explicar a diferença antes de transformar a explicação em uma regra rígida.</p>
+</div>
+</div>
+</section>
+<!-- 23 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 23</span> • Um exemplo forte do livro</div>
+<h2>Lewis critica ensinar “would” apenas como “o condicional”</h2>
+<p class="lead">Para ele, tratar <strong>would</strong> apenas dentro de categorias como first, second e third conditional pode esconder outros usos importantes da palavra.</p>
+<div class="card bubble-tip">
+<p>A proposta é olhar também para <strong>would como item lexical</strong> e para os padrões em que ele aparece.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Would you like to _____?</h3>
+<div class="card bubble-info">
+<p class="big">Would you like to _____?</p>
+<p>Você gostaria de _____?</p>
+</div>
+<div class="card bubble-tip">
+<p>Uma expressão assim pode ser aprendida cedo pelo seu valor comunicativo, sem esperar que o aluno domine toda uma análise estrutural de condicionais.</p>
+</div>
+<p class="small muted">Lewis chega a defender a retirada do tratamento tradicional de first, second e third conditionals do syllabus. Ver pp. 139 a 146.</p>
+</div>
+</section>
+<!-- 24 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 24</span> • A metodologia</div>
+<h2>Observe, formule hipóteses, experimente</h2>
+<p class="lead">Lewis rejeita o paradigma tradicional <strong>Present, Practise, Produce</strong> e propõe um ciclo chamado <strong>Observe, Hypothesise, Experiment</strong>.</p>
+<div class="flow">
+<span>1. Observe<br/><small>observe</small></span><b>→</b>
+<span>2. Formule uma hipótese<br/><small>hypothesise</small></span><b>→</b>
+<span>3. Experimente<br/><small>experiment</small></span>
+</div>
+<div class="card bubble-info">
+<p><strong>Observe:</strong> encontre a língua em textos, falas, exemplos e contrastes.</p>
+<p><strong>Hypothesise:</strong> tente perceber regularidades, diferenças e padrões.</p>
+<p><strong>Experiment:</strong> teste suas hipóteses ao compreender e usar novas ocorrências.</p>
+</div>
+<div class="card bubble-tip">
+<p>O erro não precisa significar fracasso nesse processo. Uma hipótese inadequada pode ser uma etapa intermediária até uma compreensão mais refinada do sistema.</p>
+</div>
+<p class="small muted">Base no livro, princípios iniciais e pp. 149 a 163.</p>
+</div>
+</section>
+<!-- 25 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 25</span> • O que vamos fazer nas aulas</div>
+<h2>Os textos serão fonte de língua</h2>
+<p class="lead">Lewis trata textos não apenas como conteúdo para compreensão, mas como uma fonte da qual o aluno pode retirar itens lexicais.</p>
+<div class="flow">
+<span>encontrar</span><b>→</b>
+<span>observar</span><b>→</b>
+<span>identificar</span><b>→</b>
+<span>registrar</span>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Preservando as relações entre as palavras</h3>
+<div class="card bubble-info">
+<p>Lewis defende registros que mostrem relações, como tabelas de collocation, padrões e outras organizações não lineares.</p>
+</div>
+<div class="card bubble-tip">
+<p>A Belong transforma esses princípios em atividades digitais de observação, comparação, recuperação e uso.</p>
+</div>
+<p class="small muted">Base no livro, pp. 115 a 132 e 193 a 195.</p>
+</div>
+</section>
+<!-- 26 -->
+<section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 26</span> • O objetivo</div>
+<h2>Mais poder comunicativo</h2>
+<p class="lead">Lewis afirma que linguagem bem-sucedida é um conceito mais amplo do que linguagem apenas correta.</p>
+<div class="card bubble-info">
+<p>Isso ajuda a explicar a importância dada a um léxico amplo, às collocations, à compreensão de padrões e à fluência.</p>
+</div>
+<div class="merged-divider"></div>
+<h3 class="merged-subtitle">Construir um repertório cada vez mais disponível</h3>
+<div class="card bubble-tip">
+<p>Queremos que você reconheça, compreenda e use um número cada vez maior de itens lexicais, enquanto sua percepção dos padrões gramaticais se torna progressivamente mais refinada.</p>
+</div>
+<p class="small muted">Base no livro, princípios iniciais; pp. 105 a 114 e 133 a 163.</p>
+</div>
+</section>
+<!-- 27 -->
+<section class="slide">
+<div class="wrap center">
+<div class="eyebrow"><span class="screen-num">Tela 27</span> • Agora podemos começar</div>
+<div class="brand" style="display:inline-block;background:var(--belong-magenta);padding:13px 20px;border-radius:16px;font-size:44px;margin-bottom:24px">bel<span class="on">on</span>g</div>
+<h1>Agora você sabe como vai aprender.</h1>
+<p class="lead" style="margin-left:auto;margin-right:auto">Na abordagem lexical, léxico e gramática não são duas gavetas independentes. Você vai aprender a observar a língua, reconhecer diferentes itens lexicais, perceber padrões e experimentar o uso.</p>
+<div class="card bubble-info">
+<div class="flow" style="justify-content:center">
+<span>léxico no centro</span>
+<span>collocation</span>
+<span>chunking</span>
+<span>gramática receptiva</span>
+<span>Observe, Hypothesise, Experiment</span>
+</div>
+</div>
+<p class="big">Curso completo de inglês, do básico ao avançado.</p>
+<a class="action greenbtn" href="https://wa.me/5541998389437" rel="noopener noreferrer" style="display:inline-block;text-decoration:none" target="_blank">Começar meu curso</a>
+</div>
+</section>
+</main>
+<div class="ownership">© 2026 Belong</div>
+<nav class="footer-nav">
+<button class="action secondary" id="prev" onclick="move(-1)">Anterior</button>
+<button class="action" id="next" onclick="move(1)">Próximo</button>
+</nav>
+</div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
 let current=0;
@@ -1123,8 +1328,94 @@ function show(i){
   slides[current].scrollTop=0;
 }
 
+function acceptedAnswers(inp){
+  return (inp.dataset.accepted||'').split('|').map(v=>v.trim()).filter(Boolean);
+}
+
+function preferredKnownAnswer(inp, userValue){
+  const raw=acceptedAnswers(inp);
+  const userNorm=norm(userValue);
+
+  if(userNorm){
+    const match=raw.find(v=>norm(v)===userNorm);
+    if(match) return match;
+  }
+
+  return (inp.dataset.correct||'').trim() || raw[0] || '';
+}
+
+function canonicalizeKnownSpelling(inp){
+  const typed=(inp.value||'').trim();
+  if(!typed) return false;
+
+  const raw=acceptedAnswers(inp);
+  const typedNorm=norm(typed);
+  const match=raw.find(v=>norm(v)===typedNorm);
+
+  if(match){
+    // data-correct é usado quando representa exatamente a mesma resposta
+    // apenas com a grafia padrão. Caso haja outra variação válida, ela é mantida.
+    const canonical=(inp.dataset.correct||'').trim();
+    if(canonical && norm(canonical)===typedNorm){
+      inp.value=canonical;
+    }else{
+      inp.value=match;
+    }
+    return true;
+  }
+
+  return false;
+}
+
+function fillBlankInputs(slide){
+  const inputs=[...slide.querySelectorAll('.inline-input,.answer-input')];
+  const blanks=inputs.filter(inp=>!inp.value.trim());
+
+  blanks.forEach(inp=>{
+    inp.value=preferredKnownAnswer(inp,'');
+    inp.classList.remove('ok','no');
+    inp.classList.add('auto-filled');
+  });
+
+  return blanks;
+}
+
+function showAutofillNotice(slide, blanks){
+  if(!blanks.length) return;
+
+  let notice=slide.querySelector('.fill-autofill-notice');
+  if(!notice){
+    notice=document.createElement('div');
+    notice.className='fill-autofill-notice';
+    notice.textContent='Você deixou uma ou mais lacunas em branco. Preenchemos com uma possibilidade natural. Observe os campos destacados antes de continuar.';
+    const wrap=slide.querySelector('.wrap');
+    if(wrap) wrap.appendChild(notice);
+  }
+
+  blanks[0].scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>blanks.forEach(inp=>inp.classList.remove('auto-filled')),2400);
+}
+
+function prepareFillSlideBeforeAdvance(){
+  const slide=slides[current];
+  if(!slide.classList.contains('fill-activity')) return true;
+
+  const blanks=fillBlankInputs(slide);
+  if(blanks.length){
+    showAutofillNotice(slide,blanks);
+    return false;
+  }
+
+  return true;
+}
+
 function move(d){
   if(current===slides.length-1 && d===1) return;
+
+  if(d===1 && !prepareFillSlideBeforeAdvance()){
+    return;
+  }
+
   show(current+d);
 }
 
@@ -1138,40 +1429,39 @@ function norm(s){
 }
 
 function checkInputs(btn){
-  const scope=btn.closest('.card') || btn.closest('.slide');
+  const slide=btn.closest('.slide');
+  const scope=btn.closest('.card') || slide;
   const inputs=[...scope.querySelectorAll('.inline-input,.answer-input')];
-  let correctCount=0;
+
+  // Se a pessoa clicar em Conferir com lacunas vazias, completamos também.
+  const blanks=inputs.filter(inp=>!inp.value.trim());
+  blanks.forEach(inp=>{
+    inp.value=preferredKnownAnswer(inp,'');
+    inp.classList.add('auto-filled');
+  });
+  if(blanks.length){
+    showAutofillNotice(slide,blanks);
+  }
+
+  const openEnded = slide && (
+    slide.querySelector('.answer-input') !== null
+  );
 
   inputs.forEach(inp=>{
-    const accepted=(inp.dataset.accepted||'').split('|').map(norm);
-    const user=norm(inp.value);
-    const ok=accepted.includes(user);
     inp.classList.remove('ok','no');
-    inp.classList.add(ok?'ok':'no');
-    if(ok) correctCount++;
 
-    const row=inp.closest('.answer-row');
-    if(row){
-      const note=row.querySelector('.answer-note');
-      const canonical=inp.dataset.correct || '';
-      note.className='answer-note '+(ok?'good':'bad');
-      if(ok){
-        const typed=(inp.value||'').trim();
-        if(norm(typed)===norm(canonical) && typed!==canonical){
-          note.textContent='✓ Correto. Grafia padrão: '+canonical+'.';
-        }else{
-          note.textContent='✓ '+canonical;
-        }
-      }else{
-        note.textContent='→ Resposta esperada: '+canonical+'.';
-      }
+    if(openEnded){
+      // Nos exercícios de expressão em português, qualquer resposta digitada
+      // é preservada. Se ela corresponder a uma forma prevista sem acento,
+      // a grafia é corrigida diretamente no campo.
+      canonicalizeKnownSpelling(inp);
+      inp.classList.add('ok');
+      return;
     }
-  });
 
-  const summary=scope.querySelector('.result-summary');
-  if(summary){
-    summary.textContent=correctCount+' de '+inputs.length+' respostas reconhecidas como naturais/corretas nesta atividade.';
-  }
+    const ok=canonicalizeKnownSpelling(inp);
+    inp.classList.add(ok?'ok':'no');
+  });
 }
 
 function revealBox(btn,text){
