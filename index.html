@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>Belong | Como você vai aprender inglês • V22</title>
+<title>Belong | Como você vai aprender inglês • V34</title>
 <style>:root{
   --belong-magenta:#87014E;
   --belong-magenta-dark:#68003C;
@@ -655,6 +655,159 @@ p{
   50%{transform:scale(1.025)}
 }
 
+
+/* V29: demonstração palavra por palavra e depois por chunks */
+.sentence-target{font-size:clamp(22px,4vw,34px)}
+.literal-bank,
+.chunk-build-bank{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:12px 0;
+}
+.literal-token,
+.chunk-token{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  border-radius:13px;
+  padding:9px 12px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(70,20,48,.04);
+}
+.literal-token small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.15;
+  margin-bottom:2px;
+}
+.literal-token strong,
+.chunk-token strong{
+  font-size:15px;
+}
+.literal-token.used,
+.chunk-token.used{
+  opacity:.34;
+  pointer-events:none;
+}
+.build-output{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  font-size:18px;
+  font-weight:800;
+}
+.build-output .placeholder{
+  color:var(--muted);
+  font-weight:600;
+}
+.built-piece{
+  display:inline-block;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:6px 8px;
+}
+.build-actions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+.build-feedback{
+  padding:12px 14px;
+  border-radius:15px;
+  margin-top:10px;
+  line-height:1.4;
+}
+.build-feedback.discovery{
+  background:var(--belong-green-soft);
+  color:var(--belong-magenta-dark);
+  border:1px solid #C9E8D3;
+}
+.build-feedback.success{
+  background:var(--belong-green-soft);
+  color:var(--belong-magenta-dark);
+  border:1px solid #C9E8D3;
+}
+.chunk-equivalence-list{
+  display:grid;
+  gap:7px;
+  margin:9px 0;
+}
+.chunk-equivalence-list div{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  align-items:center;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+}
+.chunk-equivalence-list span{
+  color:var(--belong-magenta);
+  font-weight:900;
+}
+@media (max-width:600px){
+  .literal-bank,.chunk-build-bank{gap:5px;margin:8px 0}
+  .literal-token,.chunk-token{padding:7px 9px;border-radius:10px}
+  .literal-token strong,.chunk-token strong{font-size:13px}
+  .build-output{min-height:48px;font-size:15px;padding:9px 10px}
+  .built-piece{padding:4px 6px}
+  .build-actions{margin-top:7px}
+  .chunk-equivalence-list div{padding:6px 8px;font-size:12.5px}
+}
+
+
+/* V30: exercício mais simples e peças embaralhadas */
+.literal-bank,
+.chunk-build-bank{
+  justify-content:flex-start;
+}
+.literal-token{
+  min-width:84px;
+}
+.chunk-token{
+  min-width:150px;
+}
+@media (max-width:600px){
+  .literal-token{min-width:70px}
+  .chunk-token{min-width:128px}
+}
+
+
+/* V31: equivalências separadas dos blocos de montagem */
+.word-equivalence-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+  margin:9px 0 11px;
+}
+.word-equivalence-grid span{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:8px 9px;
+  font-size:13px;
+  color:var(--ink);
+}
+.word-equivalence-grid strong{
+  color:var(--belong-magenta);
+}
+@media (max-width:600px){
+  .word-equivalence-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:5px;
+  }
+  .word-equivalence-grid span{
+    padding:6px 7px;
+    font-size:11.5px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -699,11 +852,127 @@ p{
 </div>
 <p>Quando falamos em <strong>léxico mental</strong>, estamos falando dessa rede que existe na sua memória, formada por palavras, sentidos, combinações e padrões ligados uns aos outros.</p>
 </div>
+</section><section class="slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 3</span> • Uma ideia importante</div>
+<h2>O que é um item lexical?</h2>
+<p class="lead">Um <strong>item lexical</strong> é uma unidade da língua que usamos para construir significado.</p>
+<div class="card bubble-info">
+<p>Essa unidade pode ser <strong>uma única palavra</strong> ou pode ser formada por <strong>várias palavras que funcionam juntas</strong>.</p>
+<div class="examples">
+<div class="example">
+<span class="small muted">uma palavra</span><br/>
+<strong>book</strong><br/>
+          livro
+        </div>
+<div class="example">
+<span class="small muted">uma combinação de palavras</span><br/>
+<strong>make a decision</strong><br/>
+          tomar uma decisão
+        </div>
+<div class="example">
+<span class="small muted">uma expressão</span><br/>
+<strong>by the way</strong><br/>
+          a propósito
+        </div>
+<div class="example">
+<span class="small muted">um padrão que pode ser completado</span><br/>
+<strong>Would you like to _____?</strong><br/>
+          Você gostaria de _____?
+        </div>
+</div>
+</div>
+<div class="card bubble-tip">
+<p><strong>Ideia para guardar:</strong> quando falamos em léxico, não estamos falando apenas de palavras. Uma palavra pode ser um item lexical, mas uma combinação de várias palavras também pode ser.</p>
+</div>
+<p class="small muted">Mais adiante, você verá os diferentes tipos de itens lexicais descritos por Michael Lewis.</p>
+</div>
+</section><section class="slide word-build-slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 4</span> • Vamos testar uma ideia</div>
+<h2>Monte a frase palavra por palavra</h2>
+<div class="card bubble-info">
+<p class="small muted">Frase em português</p>
+<p class="big sentence-target">Na loja, eu peço ajuda para experimentar uma camisa.</p>
+</div>
+<p>Para este desafio, você recebeu apenas o significado de <strong>palavras isoladas</strong>.</p>
+<div class="word-equivalence-grid">
+<span><strong>in</strong> = em</span>
+<span><strong>the</strong> = a</span>
+<span><strong>store</strong> = loja</span>
+<span><strong>I</strong> = eu</span>
+<span><strong>ask</strong> = pedir</span>
+<span><strong>help</strong> = ajuda</span>
+<span><strong>to</strong> = para</span>
+<span><strong>experiment</strong> = experimentar</span>
+<span><strong>a</strong> = uma</span>
+<span><strong>shirt</strong> = camisa</span>
+</div>
+<p class="small muted">Agora use somente os blocos em inglês. Eles aparecem embaralhados.</p>
+<div class="literal-bank" id="literal-bank">
+<button class="literal-token" data-en="in"><strong>in</strong></button>
+<button class="literal-token" data-en="the"><strong>the</strong></button>
+<button class="literal-token" data-en="store"><strong>store</strong></button>
+<button class="literal-token" data-en="I"><strong>I</strong></button>
+<button class="literal-token" data-en="ask"><strong>ask</strong></button>
+<button class="literal-token" data-en="help"><strong>help</strong></button>
+<button class="literal-token" data-en="to"><strong>to</strong></button>
+<button class="literal-token" data-en="experiment"><strong>experiment</strong></button>
+<button class="literal-token" data-en="a"><strong>a</strong></button>
+<button class="literal-token" data-en="shirt"><strong>shirt</strong></button>
+</div>
+<div class="build-output bubble-info" id="literal-output">
+<span class="placeholder">Sua frase aparecerá aqui.</span>
+</div>
+<div class="build-actions">
+<button class="action secondary" onclick="resetLiteralBuild()">Limpar</button>
+<button class="action greenbtn" onclick="finishLiteralBuild()">Finalizar</button>
+</div>
+<div class="reveal" id="literal-feedback"></div>
+</div>
+</section><section class="slide chunk-build-slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 5</span> • Agora mude a unidade</div>
+<h2>Monte a mesma ideia usando chunks</h2>
+<div class="card bubble-info">
+<p class="small muted">Agora observe as equivalências maiores</p>
+<div class="chunk-equivalence-list">
+<div>
+<strong>na loja</strong>
+<span>at the store</span>
+</div>
+<div>
+<strong>pedir ajuda</strong>
+<span>ask for help</span>
+</div>
+<div>
+<strong>experimentar uma camisa</strong>
+<span>try on a shirt</span>
+</div>
+</div>
+</div>
+<p>Agora monte a frase novamente. Os blocos estão <strong>somente em inglês</strong> e aparecem embaralhados.</p>
+<div class="chunk-build-bank" id="chunk-build-bank">
+<button class="chunk-token" data-en="At the store"><strong>At the store</strong></button>
+<button class="chunk-token" data-en="I"><strong>I</strong></button>
+<button class="chunk-token" data-en="ask for help"><strong>ask for help</strong></button>
+<button class="chunk-token" data-en="to"><strong>to</strong></button>
+<button class="chunk-token" data-en="try on a shirt"><strong>try on a shirt</strong></button>
+</div>
+<div class="build-output bubble-info" id="chunk-output">
+<span class="placeholder">Sua frase aparecerá aqui.</span>
+</div>
+<div class="build-actions">
+<button class="action secondary" onclick="resetChunkBuild()">Limpar</button>
+<button class="action greenbtn" onclick="finishChunkBuild()">Finalizar</button>
+</div>
+<div class="reveal" id="chunk-feedback"></div>
+</div>
 </section>
 <!-- 3 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 3</span> • O método</div>
+<div class="eyebrow"><span class="screen-num">Tela 6</span> • O método</div>
 <h2>O que é a abordagem lexical?</h2>
 <p class="lead">É uma forma de olhar para o ensino de línguas que coloca o léxico no centro da organização do curso, em vez de organizar a aprendizagem como uma sequência de tópicos gramaticais.</p>
 <div class="card bubble-info">
@@ -716,7 +985,7 @@ p{
 <!-- 4 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 4</span> • De onde veio?</div>
+<div class="eyebrow"><span class="screen-num">Tela 7</span> • De onde veio?</div>
 <h2>A abordagem lexical ganhou força a partir dos anos 1990</h2>
 <p class="lead">Ela ficou especialmente associada ao trabalho de <strong>Michael Lewis</strong>, professor de inglês, formador de professores e autor especializado em ensino de inglês como língua estrangeira.</p>
 <div class="card bubble-info">
@@ -734,7 +1003,7 @@ p{
 <!-- 5 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 5</span> • Um dos pilares da abordagem lexical</div>
+<div class="eyebrow"><span class="screen-num">Tela 8</span> • Um dos pilares da abordagem lexical</div>
 <h2>O léxico está no centro da língua</h2>
 <div class="card bubble-info">
 <p class="quote">“Language consists of grammaticalised lexis, not lexicalised grammar.”</p>
@@ -754,9 +1023,9 @@ p{
 </div>
 </section>
 <!-- 6 -->
-<section class="slide fill-activity">
+<section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 6</span> • Seu português em ação</div>
+<div class="eyebrow"><span class="screen-num">Tela 9</span> • Seu português em ação</div>
 <h2>Complete como você falaria naturalmente</h2>
 <div class="card bubble-tip">
 <p><strong>Preencha as lacunas sem procurar uma regra.</strong> Use a forma que vier naturalmente à sua cabeça. Quando houver mais de uma possibilidade natural, a atividade aceitará as variações previstas.</p>
@@ -791,14 +1060,13 @@ p{
         <input class="inline-input" data-accepted="para" data-correct="para"/> o jantar.
       </p>
 <button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-
 </div>
 </div>
 </section>
 <!-- 7 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 7</span> • O que aconteceu nas lacunas?</div>
+<div class="eyebrow"><span class="screen-num">Tela 10</span> • O que aconteceu nas lacunas?</div>
 <h2>As palavras ao redor ajudaram você a escolher</h2>
 <p class="lead">Você provavelmente não precisou recitar uma regra gramatical para completar cada espaço. O restante da frase já tornava algumas combinações muito mais prováveis.</p>
 <div class="card bubble-info">
@@ -822,7 +1090,7 @@ p{
 <!-- 8 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 8</span> • O que a abordagem lexical não significa</div>
+<div class="eyebrow"><span class="screen-num">Tela 11</span> • O que a abordagem lexical não significa</div>
 <h2>Ela não elimina a gramática</h2>
 <div class="card bubble-info">
 <p class="cross">✕ não é um curso sem gramática</p>
@@ -843,9 +1111,9 @@ p{
 </div>
 </section>
 <!-- 9 -->
-<section class="slide fill-activity">
+<section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 9</span> • Co-texto na prática</div>
+<div class="eyebrow"><span class="screen-num">Tela 12</span> • Co-texto na prática</div>
 <h2>Complete como você falaria naturalmente</h2>
 <div class="card bubble-tip">
 <p>Não procure uma regra. Preencha com a forma que vier naturalmente à sua cabeça.</p>
@@ -858,7 +1126,6 @@ p{
     <input class="inline-input" data-accepted="com" data-correct="com"/> o pai dela.
   </p>
 <button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-
 </div>
 <div class="merged-divider"></div>
 <h3 class="merged-subtitle">Mais algumas lacunas</h3>
@@ -872,7 +1139,6 @@ p{
     <input class="inline-input" data-accepted="com" data-correct="com"/> minha mãe.
   </p>
 <button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-
 </div>
 <div class="card bubble-tip">
 <p>Lewis usa o termo <strong>co-texto</strong> para chamar atenção para a linguagem que aparece ao redor de outra linguagem e ajuda a limitar as escolhas.</p>
@@ -882,7 +1148,7 @@ p{
 <!-- 10 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 10</span> • Co-texto</div>
+<div class="eyebrow"><span class="screen-num">Tela 13</span> • Co-texto</div>
 <h2>O restante da frase ajuda a definir o que pode vir a seguir</h2>
 <div class="examples">
 <div class="example">falar <strong>com</strong> alguém</div>
@@ -899,9 +1165,9 @@ p{
 </div>
 </section>
 <!-- 11 -->
-<section class="slide fill-activity">
+<section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 11</span> • Percebendo combinações</div>
+<div class="eyebrow"><span class="screen-num">Tela 14</span> • Percebendo combinações</div>
 <h2>Complete sem pensar demais</h2>
 <div class="card bubble-tip">
 <p>Digite a primeira palavra ou expressão que parecer natural.</p>
@@ -926,9 +1192,9 @@ p{
 </div>
 </section>
 <!-- 12 -->
-<section class="slide fill-activity">
+<section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 12</span> • Blocos mais previsíveis</div>
+<div class="eyebrow"><span class="screen-num">Tela 15</span> • Blocos mais previsíveis</div>
 <h2>Algumas sequências parecem quase prontas</h2>
 <div class="card bubble-info">
 <div class="examples">
@@ -956,7 +1222,7 @@ p{
 <!-- 13 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 13</span> • Do vocabulário ao léxico</div>
+<div class="eyebrow"><span class="screen-num">Tela 16</span> • Do vocabulário ao léxico</div>
 <h2>Uma palavra é apenas um dos tipos de item lexical</h2>
 <div class="card bubble-info">
 <div class="examples">
@@ -976,7 +1242,7 @@ p{
 <!-- 14 -->
 <section class="slide">
 <div class="wrap center">
-<div class="eyebrow"><span class="screen-num">Tela 14</span> • Chunking</div>
+<div class="eyebrow"><span class="screen-num">Tela 17</span> • Chunking</div>
 <h2>Uma analogia simples para entender blocos na memória</h2>
 <div class="card bubble-info">
 <p class="small muted">Imagine um número fictício de celular brasileiro, da época em que os celulares tinham oito dígitos. Ao falar o número, era comum agrupá-lo em pares:</p>
@@ -993,7 +1259,7 @@ p{
 <!-- 15 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 15</span> • Correspondência entre línguas</div>
+<div class="eyebrow"><span class="screen-num">Tela 18</span> • Correspondência entre línguas</div>
 <h2>Qual é a tradução de “carregar”?</h2>
 <p class="lead">Escolha a opção que você acredita ser a tradução correta.</p>
 <div class="card center bubble-info" id="carry-game">
@@ -1015,7 +1281,7 @@ p{
 <!-- 16 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 16</span> • O co-texto muda a escolha</div>
+<div class="eyebrow"><span class="screen-num">Tela 19</span> • O co-texto muda a escolha</div>
 <h2>As três respostas podem estar certas, mas não no mesmo ambiente</h2>
 <div class="examples">
 <div class="example"><strong>carry a chair</strong><br/>carregar/levar uma cadeira</div>
@@ -1035,7 +1301,7 @@ p{
 <!-- 17 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 17</span> • Collocation e tradução</div>
+<div class="eyebrow"><span class="screen-num">Tela 20</span> • Collocation e tradução</div>
 <h2>Conhecer duas palavras separadas ainda pode não ser suficiente</h2>
 <div class="card bubble-info">
 <p class="big">perdi minhas chaves</p>
@@ -1055,7 +1321,7 @@ p{
 <!-- 18 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 18</span> • Tipos de item lexical</div>
+<div class="eyebrow"><span class="screen-num">Tela 21</span> • Tipos de item lexical</div>
 <h2>O léxico contém unidades de tamanhos diferentes</h2>
 <div class="grid2">
 <div class="type-card">
@@ -1095,7 +1361,7 @@ p{
 <!-- 19 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 19</span> • Collocations (colocações)</div>
+<div class="eyebrow"><span class="screen-num">Tela 22</span> • Collocations (colocações)</div>
 <h2>Collocation é a maneira como as palavras coocorrem</h2>
 <p class="lead">Lewis não trata collocation como um detalhe do vocabulário. Ele atribui a ela papel central na criação de significado e na organização do ensino.</p>
 <div class="lexical-equation">
@@ -1129,7 +1395,7 @@ p{
 <!-- 20 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 20</span> • Expressões institucionalizadas</div>
+<div class="eyebrow"><span class="screen-num">Tela 23</span> • Expressões institucionalizadas</div>
 <h2>Alguns blocos ajudam a administrar a interação</h2>
 <p class="lead">Lewis usa o termo <strong>institutionalised expressions</strong>, expressões institucionalizadas, para unidades de forte valor comunicativo e social.</p>
 <div class="card bubble-info">
@@ -1150,7 +1416,7 @@ p{
 <!-- 21 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 21</span> • E a gramática?</div>
+<div class="eyebrow"><span class="screen-num">Tela 24</span> • E a gramática?</div>
 <h2>Ela continua importante</h2>
 <div class="card bubble-info">
 <div class="examples">
@@ -1179,7 +1445,7 @@ p{
 <!-- 22 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 22</span> • Gramática como habilidade receptiva</div>
+<div class="eyebrow"><span class="screen-num">Tela 25</span> • Gramática como habilidade receptiva</div>
 <h2>Primeiro, perceber diferenças</h2>
 <p class="lead">Lewis dá prioridade à gramática como uma habilidade receptiva. O aluno observa dados da língua, compara formas e percebe diferenças de significado e uso.</p>
 <div class="card bubble-tip">
@@ -1205,7 +1471,7 @@ p{
 <!-- 23 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 23</span> • Um exemplo forte do livro</div>
+<div class="eyebrow"><span class="screen-num">Tela 26</span> • Um exemplo forte do livro</div>
 <h2>Lewis critica ensinar “would” apenas como “o condicional”</h2>
 <p class="lead">Para ele, tratar <strong>would</strong> apenas dentro de categorias como first, second e third conditional pode esconder outros usos importantes da palavra.</p>
 <div class="card bubble-tip">
@@ -1226,7 +1492,7 @@ p{
 <!-- 24 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 24</span> • A metodologia</div>
+<div class="eyebrow"><span class="screen-num">Tela 27</span> • A metodologia</div>
 <h2>Observe, formule hipóteses, experimente</h2>
 <p class="lead">Lewis rejeita o paradigma tradicional <strong>Present, Practise, Produce</strong> e propõe um ciclo chamado <strong>Observe, Hypothesise, Experiment</strong>.</p>
 <div class="flow">
@@ -1248,7 +1514,7 @@ p{
 <!-- 25 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 25</span> • O que vamos fazer nas aulas</div>
+<div class="eyebrow"><span class="screen-num">Tela 28</span> • O que vamos fazer nas aulas</div>
 <h2>Os textos serão fonte de língua</h2>
 <p class="lead">Lewis trata textos não apenas como conteúdo para compreensão, mas como uma fonte da qual o aluno pode retirar itens lexicais.</p>
 <div class="flow">
@@ -1271,7 +1537,7 @@ p{
 <!-- 26 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 26</span> • O objetivo</div>
+<div class="eyebrow"><span class="screen-num">Tela 29</span> • O objetivo</div>
 <h2>Mais poder comunicativo</h2>
 <p class="lead">Lewis afirma que linguagem bem-sucedida é um conceito mais amplo do que linguagem apenas correta.</p>
 <div class="card bubble-info">
@@ -1288,7 +1554,7 @@ p{
 <!-- 27 -->
 <section class="slide">
 <div class="wrap center">
-<div class="eyebrow"><span class="screen-num">Tela 27</span> • Agora podemos começar</div>
+<div class="eyebrow"><span class="screen-num">Tela 30</span> • Agora podemos começar</div>
 <div class="brand" style="display:inline-block;background:var(--belong-magenta);padding:13px 20px;border-radius:16px;font-size:44px;margin-bottom:24px">bel<span class="on">on</span>g</div>
 <h1>Agora você sabe como vai aprender.</h1>
 <p class="lead" style="margin-left:auto;margin-right:auto">Na abordagem lexical, léxico e gramática não são duas gavetas independentes. Você vai aprender a observar a língua, reconhecer diferentes itens lexicais, perceber padrões e experimentar o uso.</p>
@@ -1508,6 +1774,116 @@ function chooseCarregar(btn, word){
   picked.textContent = 'Opções testadas: ' + [...carregarChoices].join(' • ');
 }
 
+
+
+
+const literalBuild=[];
+const chunkBuild=[];
+
+function shuffleChildren(containerId){
+  const container=document.getElementById(containerId);
+  if(!container) return;
+  const items=[...container.children];
+  for(let i=items.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [items[i],items[j]]=[items[j],items[i]];
+  }
+  items.forEach(item=>container.appendChild(item));
+}
+
+function renderBuild(outputId, items){
+  const out=document.getElementById(outputId);
+  if(!out) return;
+  if(!items.length){
+    out.innerHTML='<span class="placeholder">Sua frase aparecerá aqui.</span>';
+    return;
+  }
+  out.innerHTML=items.map(x=>'<span class="built-piece">'+x+'</span>').join('');
+}
+
+document.addEventListener('click',e=>{
+  const literal=e.target.closest('.literal-token');
+  if(literal){
+    literalBuild.push(literal.dataset.en);
+    literal.classList.add('used');
+    renderBuild('literal-output',literalBuild);
+    return;
+  }
+
+  const chunk=e.target.closest('.chunk-token');
+  if(chunk){
+    chunkBuild.push(chunk.dataset.en);
+    chunk.classList.add('used');
+    renderBuild('chunk-output',chunkBuild);
+  }
+});
+
+function resetLiteralBuild(){
+  literalBuild.length=0;
+  document.querySelectorAll('#literal-bank .literal-token').forEach(b=>b.classList.remove('used'));
+  renderBuild('literal-output',literalBuild);
+  const f=document.getElementById('literal-feedback');
+  if(f){f.classList.remove('show');f.innerHTML='';}
+  shuffleChildren('literal-bank');
+}
+
+function finishLiteralBuild(){
+  const feedback=document.getElementById('literal-feedback');
+  const expected=['in','the','store','I','ask','help','to','experiment','a','shirt'];
+
+  if(literalBuild.length!==expected.length){
+    feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todas as peças primeiro.</strong></div>';
+    feedback.classList.add('show');
+    return;
+  }
+
+  const phrase=literalBuild.join(' ');
+
+  if(phrase!==expected.join(' ')){
+    feedback.innerHTML='<div class="build-feedback discovery"><strong>Tente novamente.</strong> Use os significados que você recebeu e siga a ordem da ideia em português.</div>';
+    feedback.classList.add('show');
+    return;
+  }
+
+  feedback.innerHTML='<div class="build-feedback discovery"><strong>Você fez exatamente o que as palavras isoladas sugeriam.</strong><br><br><em>In the store I ask help to experiment a shirt.</em><br><br>Você conseguiu montar uma frase seguindo as equivalências isoladas. Mas elas não mostraram duas combinações essenciais: <em>ask help</em> não é a forma natural para “pedir ajuda”, e <em>experiment a shirt</em> não significa “experimentar uma camisa”. Além disso, para o contexto geral de “na loja”, vamos usar <em>at the store</em>. Observe como as escolhas ficam mais claras quando aprendemos unidades maiores.</div>';
+  feedback.classList.add('show');
+}
+
+function resetChunkBuild(){
+  chunkBuild.length=0;
+  document.querySelectorAll('#chunk-build-bank .chunk-token').forEach(b=>b.classList.remove('used'));
+  renderBuild('chunk-output',chunkBuild);
+  const f=document.getElementById('chunk-feedback');
+  if(f){f.classList.remove('show');f.innerHTML='';}
+  shuffleChildren('chunk-build-bank');
+}
+
+function finishChunkBuild(){
+  const feedback=document.getElementById('chunk-feedback');
+  const expected=['At the store','I','ask for help','to','try on a shirt'];
+
+  if(chunkBuild.length!==expected.length){
+    feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todos os blocos primeiro.</strong></div>';
+    feedback.classList.add('show');
+    return;
+  }
+
+  const phrase=chunkBuild.join(' ');
+
+  if(phrase!==expected.join(' ')){
+    feedback.innerHTML='<div class="build-feedback discovery"><strong>Tente trocar a ordem dos blocos.</strong></div>';
+    feedback.classList.add('show');
+    return;
+  }
+
+  feedback.innerHTML='<div class="build-feedback success"><strong>Agora funciona.</strong><br><br><em>At the store, I ask for help to try on a shirt.</em><br><br>Agora você não precisou adivinhar palavra por palavra. Você recebeu três unidades úteis para essa situação: <em>at the store</em>, <em>ask for help</em> e <em>try on a shirt</em>. É esse tipo de combinação que queremos que você aprenda a reconhecer e recuperar como uma unidade.</div>';
+  feedback.classList.add('show');
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  shuffleChildren('literal-bank');
+  shuffleChildren('chunk-build-bank');
+});
 document.addEventListener('keydown',e=>{
   if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
   if(e.key==='ArrowRight'||e.key==='PageDown') move(1);
