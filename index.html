@@ -128,6 +128,7 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 .action.greenbtn{background:var(--belong-green-dark)}
 .action.secondary{background:white;color:var(--belong-magenta);border:1px solid var(--line);box-shadow:none}
 .action:disabled{opacity:.38;cursor:not-allowed}
+.action,.literal-token,.chunk-token,.choice-btn{min-height:44px}
 .action:active{transform:translateY(1px)}
 .inline-input,.answer-input{
   display:inline-block;min-width:72px;max-width:150px;border:0;border-bottom:2px solid var(--belong-magenta);
@@ -180,6 +181,12 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
   background:linear-gradient(to top,rgba(248,244,246,1) 72%,rgba(248,244,246,0));z-index:10
 }
 .footer-nav button{min-width:116px}
+.scroll-hint{
+  position:sticky;bottom:78px;z-index:3;width:max-content;max-width:100%;margin:14px auto 0;
+  padding:8px 13px;border-radius:999px;background:var(--belong-magenta);color:#fff;
+  font-size:12px;font-weight:800;box-shadow:0 6px 18px rgba(77,20,51,.18)
+}
+.fill-autofill-notice{margin:14px 0;padding:12px 14px;border-radius:12px;background:#FFF7D6;border:1px solid #E8D68A;color:#5F4D00;font-size:14px}
 .ownership{
   position:fixed;right:14px;bottom:74px;font-size:10px;color:#8B7F87;z-index:4;
   background:rgba(255,255,255,.76);padding:4px 7px;border-radius:8px
@@ -497,6 +504,15 @@ p{
   .lexical-equation{grid-template-columns:1fr}
   .lexical-equation .arrow{transform:rotate(90deg)}
 }
+
+@media (min-width:761px) and (max-height:800px){
+  .slide{padding-top:24px;padding-bottom:108px}
+  h1{font-size:clamp(36px,5.4vw,58px)}
+  h2{font-size:clamp(29px,4.4vw,44px)}
+  p{font-size:clamp(16px,2vw,19px);line-height:1.42;margin-bottom:11px}
+  .lead{font-size:clamp(18px,2.5vw,24px)}
+  .card{padding:18px 22px;margin:12px 0}
+}
 @media (max-width:450px){
   .grid4{grid-template-columns:1fr}
   .counter{font-size:11px;min-width:55px}
@@ -635,10 +651,11 @@ p{
   border-color:var(--bad);
 }
 .fill-activity .auto-filled{
-  background:#FFF4C7!important;
-  border-color:var(--belong-magenta)!important;
-  box-shadow:0 0 0 4px rgba(139,10,87,.12);
-  animation:fillAttention 1.05s ease 2;
+  background:#EAF8EF!important;
+  border-color:var(--belong-green)!important;
+  color:var(--belong-magenta-dark)!important;
+  box-shadow:0 0 0 3px rgba(9,164,71,.12);
+  animation:fillAttention 1.35s ease 2;
 }
 .fill-autofill-notice{
   margin:10px 0 0;
@@ -650,9 +667,15 @@ p{
   font-weight:800;
   line-height:1.35;
 }
+.translation-chunks{display:grid;gap:10px;margin-top:12px}
+.translation-chunk{padding:13px 15px;border-radius:15px;border:1px solid var(--line);background:#fff}
+.translation-chunk .label{display:block;margin-bottom:5px;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.translation-chunk.wrong{background:#FFF8F8;border-color:#E8CDD2;color:#7D3A48}
+.translation-chunk.correct{background:var(--belong-green-soft);border-color:#BFE2CB;color:var(--belong-magenta-dark)}
+.translation-chunk strong{font-size:clamp(19px,2.8vw,25px)}
 @keyframes fillAttention{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.025)}
+  50%{transform:scale(1.015)}
 }
 
 
@@ -831,7 +854,7 @@ p{
 <p class="quote">Antes de começar o curso, queremos que você entenda como enxergamos uma língua e por que nossas aulas serão diferentes.</p>
 </div>
 <p>Você vai experimentar primeiro algumas ideias no português que já existe na sua cabeça. Depois vamos levar essa mesma lógica para o inglês.</p>
-<p class="small muted">Avance no seu ritmo. Cada tela apresenta uma ideia por vez.</p>
+<p class="small muted">Duração aproximada: 20–25 minutos, com atividades. Avance no seu ritmo; seu progresso fica nesta sessão.</p>
 </div>
 </section>
 <!-- 2 -->
@@ -893,33 +916,29 @@ p{
 <h2>Monte a frase palavra por palavra</h2>
 <div class="card bubble-info">
 <p class="small muted">Frase em português</p>
-<p class="big sentence-target">Na loja, eu peço ajuda para experimentar uma camisa.</p>
+<p class="big sentence-target">Eu como pão com manteiga no café da manhã.</p>
 </div>
-<p>Para este desafio, você recebeu apenas o significado de <strong>palavras isoladas</strong>.</p>
+<p>Para este desafio, você recebeu apenas o significado de <strong>palavras isoladas</strong>. O resultado vai mostrar por que combinações maiores ajudam.</p>
 <div class="word-equivalence-grid">
-<span><strong>in</strong> = em</span>
-<span><strong>the</strong> = a</span>
-<span><strong>store</strong> = loja</span>
 <span><strong>I</strong> = eu</span>
-<span><strong>ask</strong> = pedir</span>
-<span><strong>help</strong> = ajuda</span>
-<span><strong>to</strong> = para</span>
-<span><strong>experiment</strong> = experimentar</span>
-<span><strong>a</strong> = uma</span>
-<span><strong>shirt</strong> = camisa</span>
+<span><strong>eat</strong> = comer</span>
+<span><strong>bread</strong> = pão</span>
+<span><strong>with</strong> = com</span>
+<span><strong>butter</strong> = manteiga</span>
+<span><strong>in</strong> = em</span>
+<span><strong>the</strong> = o</span>
+<span><strong>breakfast</strong> = café da manhã</span>
 </div>
 <p class="small muted">Agora use somente os blocos em inglês. Eles aparecem embaralhados.</p>
 <div class="literal-bank" id="literal-bank">
+<button class="literal-token" data-en="I"><strong>I</strong></button>
+<button class="literal-token" data-en="eat"><strong>eat</strong></button>
+<button class="literal-token" data-en="bread"><strong>bread</strong></button>
+<button class="literal-token" data-en="with"><strong>with</strong></button>
+<button class="literal-token" data-en="butter"><strong>butter</strong></button>
 <button class="literal-token" data-en="in"><strong>in</strong></button>
 <button class="literal-token" data-en="the"><strong>the</strong></button>
-<button class="literal-token" data-en="store"><strong>store</strong></button>
-<button class="literal-token" data-en="I"><strong>I</strong></button>
-<button class="literal-token" data-en="ask"><strong>ask</strong></button>
-<button class="literal-token" data-en="help"><strong>help</strong></button>
-<button class="literal-token" data-en="to"><strong>to</strong></button>
-<button class="literal-token" data-en="experiment"><strong>experiment</strong></button>
-<button class="literal-token" data-en="a"><strong>a</strong></button>
-<button class="literal-token" data-en="shirt"><strong>shirt</strong></button>
+<button class="literal-token" data-en="breakfast"><strong>breakfast</strong></button>
 </div>
 <div class="build-output bubble-info" id="literal-output">
 <span class="placeholder">Sua frase aparecerá aqui.</span>
@@ -938,26 +957,24 @@ p{
 <p class="small muted">Agora observe as equivalências maiores</p>
 <div class="chunk-equivalence-list">
 <div>
-<strong>na loja</strong>
-<span>at the store</span>
+<strong>eu como</strong>
+<span>I eat</span>
 </div>
 <div>
-<strong>pedir ajuda</strong>
-<span>ask for help</span>
+<strong>pão com manteiga</strong>
+<span>bread and butter</span>
 </div>
 <div>
-<strong>experimentar uma camisa</strong>
-<span>try on a shirt</span>
+<strong>no café da manhã</strong>
+<span>for breakfast</span>
 </div>
 </div>
 </div>
 <p>Agora monte a frase novamente. Os blocos estão <strong>somente em inglês</strong> e aparecem embaralhados.</p>
 <div class="chunk-build-bank" id="chunk-build-bank">
-<button class="chunk-token" data-en="At the store"><strong>At the store</strong></button>
-<button class="chunk-token" data-en="I"><strong>I</strong></button>
-<button class="chunk-token" data-en="ask for help"><strong>ask for help</strong></button>
-<button class="chunk-token" data-en="to"><strong>to</strong></button>
-<button class="chunk-token" data-en="try on a shirt"><strong>try on a shirt</strong></button>
+<button class="chunk-token" data-en="I eat"><strong>I eat</strong></button>
+<button class="chunk-token" data-en="bread and butter"><strong>bread and butter</strong></button>
+<button class="chunk-token" data-en="for breakfast"><strong>for breakfast</strong></button>
 </div>
 <div class="build-output bubble-info" id="chunk-output">
 <span class="placeholder">Sua frase aparecerá aqui.</span>
@@ -1023,7 +1040,7 @@ p{
 </div>
 </section>
 <!-- 6 -->
-<section class="slide">
+<section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 9</span> • Seu português em ação</div>
 <h2>Complete como você falaria naturalmente</h2>
@@ -1111,7 +1128,7 @@ p{
 </div>
 </section>
 <!-- 9 -->
-<section class="slide">
+<section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 12</span> • Co-texto na prática</div>
 <h2>Complete como você falaria naturalmente</h2>
@@ -1165,7 +1182,7 @@ p{
 </div>
 </section>
 <!-- 11 -->
-<section class="slide">
+<section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 14</span> • Percebendo combinações</div>
 <h2>Complete sem pensar demais</h2>
@@ -1192,7 +1209,7 @@ p{
 </div>
 </section>
 <!-- 12 -->
-<section class="slide">
+<section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 15</span> • Blocos mais previsíveis</div>
 <h2>Algumas sequências parecem quase prontas</h2>
@@ -1309,8 +1326,10 @@ p{
 </div>
 <div class="card bubble-info">
 <p class="big">perdi o ônibus</p>
-<p class="cross">✕ I lost the bus.</p>
-<p class="check">✓ I missed the bus.</p>
+<div class="translation-chunks" aria-label="Comparação entre duas combinações em inglês">
+<div class="translation-chunk wrong"><span class="label">Chunk a evitar neste contexto</span><strong>I lost the bus.</strong></div>
+<div class="translation-chunk correct"><span class="label">Chunk natural</span><strong>I missed the bus.</strong></div>
+</div>
 </div>
 <div class="card bubble-tip">
 <p>Lewis observa que justamente as colocações que não correspondem diretamente entre a língua materna e a língua aprendida tendem a exigir atenção especial. O problema não é apenas saber o significado das palavras isoladas, mas conhecer suas combinações.</p>
@@ -1568,7 +1587,7 @@ p{
 </div>
 </div>
 <p class="big">Curso completo de inglês, do básico ao avançado.</p>
-<a class="action greenbtn" href="https://wa.me/5541998389437" rel="noopener noreferrer" style="display:inline-block;text-decoration:none" target="_blank">Começar meu curso</a>
+<a class="action greenbtn" href="https://wa.me/5541998389437" rel="noopener noreferrer" aria-label="Falar com a Belong pelo WhatsApp para começar o curso" style="display:inline-block;text-decoration:none" target="_blank">Falar com a Belong no WhatsApp</a>
 </div>
 </section>
 </main>
@@ -1592,6 +1611,20 @@ function show(i){
   nextBtn.textContent='Próximo';
   nextBtn.style.display=current===slides.length-1?'none':'inline-block';
   slides[current].scrollTop=0;
+  updateScrollHint(slides[current]);
+}
+
+function updateScrollHint(slide){
+  let hint=slide.querySelector('.scroll-hint');
+  const needsScroll=slide.scrollHeight > slide.clientHeight + 24;
+  if(needsScroll && !hint){
+    hint=document.createElement('div');
+    hint.className='scroll-hint';
+    hint.setAttribute('role','status');
+    hint.textContent='Role para continuar ↓';
+    slide.querySelector('.wrap')?.appendChild(hint);
+    slide.addEventListener('scroll',()=>{ if(slide.scrollTop>32) hint.hidden=true; },{once:true});
+  }
 }
 
 function acceptedAnswers(inp){
@@ -1653,17 +1686,47 @@ function showAutofillNotice(slide, blanks){
   if(!notice){
     notice=document.createElement('div');
     notice.className='fill-autofill-notice';
+    notice.setAttribute('role','alert');
+    notice.setAttribute('tabindex','-1');
     notice.textContent='Você deixou uma ou mais lacunas em branco. Preenchemos com uma possibilidade natural. Observe os campos destacados antes de continuar.';
     const wrap=slide.querySelector('.wrap');
     if(wrap) wrap.appendChild(notice);
   }
 
   blanks[0].scrollIntoView({behavior:'smooth',block:'center'});
+  notice.focus({preventScroll:true});
   setTimeout(()=>blanks.forEach(inp=>inp.classList.remove('auto-filled')),2400);
 }
 
 function prepareFillSlideBeforeAdvance(){
   const slide=slides[current];
+  if(slide.classList.contains('word-build-slide') || slide.classList.contains('chunk-build-slide')){
+    const isChunk=slide.classList.contains('chunk-build-slide');
+    const build=isChunk?chunkBuild:literalBuild;
+    if(!build.length){
+      const bank=slide.querySelector(isChunk?'#chunk-build-bank':'#literal-bank');
+      const expected=isChunk
+        ? ['I eat','bread and butter','for breakfast']
+        : ['I','eat','bread','with','butter','in','the','breakfast'];
+      expected.forEach(word=>{
+        const token=[...bank.children].find(item=>item.dataset.en===word && !item.classList.contains('used'));
+        if(token){ token.click(); }
+      });
+      showAutofillNotice(slide,[]);
+      let notice=slide.querySelector('.fill-autofill-notice');
+      if(!notice){
+        notice=document.createElement('div');
+        notice.className='fill-autofill-notice';
+        notice.setAttribute('role','alert');
+        notice.setAttribute('tabindex','-1');
+        notice.textContent='Preenchemos a frase automaticamente. Revise a ordem e observe a diferença entre palavras isoladas e chunks antes de avançar.';
+        slide.querySelector('.wrap')?.appendChild(notice);
+      }
+      notice.focus({preventScroll:true});
+      return false;
+    }
+    return true;
+  }
   if(!slide.classList.contains('fill-activity')) return true;
 
   const blanks=fillBlankInputs(slide);
@@ -1727,13 +1790,26 @@ function checkInputs(btn){
 
     const ok=canonicalizeKnownSpelling(inp);
     inp.classList.add(ok?'ok':'no');
+    inp.setAttribute('aria-invalid',String(!ok));
   });
+  const feedback=slide.querySelector('.feedback,.fill-autofill-notice');
+  if(feedback){
+    feedback.setAttribute('aria-live','polite');
+    feedback.setAttribute('tabindex','-1');
+    feedback.scrollIntoView({behavior:'smooth',block:'center'});
+    feedback.focus({preventScroll:true});
+  }else if(inputs.length){
+    inputs.find(inp=>inp.classList.contains('no'))?.focus();
+  }
 }
 
 function revealBox(btn,text){
   const box=btn.nextElementSibling;
   box.innerHTML='<div class="chunk-box"><div class="chunk">'+text+'</div></div>';
   box.classList.add('show');
+  box.setAttribute('aria-live','polite');
+  box.setAttribute('tabindex','-1');
+  box.focus({preventScroll:true});
   btn.disabled=true;
 }
 
@@ -1771,6 +1847,10 @@ function chooseCarregar(btn, word){
 
   feedback.innerHTML=message;
   feedback.classList.add('show');
+  feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('tabindex','-1');
+  feedback.scrollIntoView({behavior:'smooth',block:'center'});
+  feedback.focus({preventScroll:true});
   picked.textContent = 'Opções testadas: ' + [...carregarChoices].join(' • ');
 }
 
@@ -1829,7 +1909,7 @@ function resetLiteralBuild(){
 
 function finishLiteralBuild(){
   const feedback=document.getElementById('literal-feedback');
-  const expected=['in','the','store','I','ask','help','to','experiment','a','shirt'];
+  const expected=['I','eat','bread','with','butter','in','the','breakfast'];
 
   if(literalBuild.length!==expected.length){
     feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todas as peças primeiro.</strong></div>';
@@ -1845,8 +1925,12 @@ function finishLiteralBuild(){
     return;
   }
 
-  feedback.innerHTML='<div class="build-feedback discovery"><strong>Você fez exatamente o que as palavras isoladas sugeriam.</strong><br><br><em>In the store I ask help to experiment a shirt.</em><br><br>Você conseguiu montar uma frase seguindo as equivalências isoladas. Mas elas não mostraram duas combinações essenciais: <em>ask help</em> não é a forma natural para “pedir ajuda”, e <em>experiment a shirt</em> não significa “experimentar uma camisa”. Além disso, para o contexto geral de “na loja”, vamos usar <em>at the store</em>. Observe como as escolhas ficam mais claras quando aprendemos unidades maiores.</div>';
+  feedback.innerHTML='<div class="build-feedback discovery"><strong>Você montou a frase palavra por palavra.</strong><br><br><em>I eat bread with butter in the breakfast.</em><br><br>As equivalências isoladas ajudaram a traduzir cada palavra, mas não mostraram as combinações mais naturais. Agora observe como os chunks organizam a mesma ideia.</div>';
   feedback.classList.add('show');
+  feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('tabindex','-1');
+  feedback.scrollIntoView({behavior:'smooth',block:'center'});
+  feedback.focus({preventScroll:true});
 }
 
 function resetChunkBuild(){
@@ -1860,7 +1944,7 @@ function resetChunkBuild(){
 
 function finishChunkBuild(){
   const feedback=document.getElementById('chunk-feedback');
-  const expected=['At the store','I','ask for help','to','try on a shirt'];
+  const expected=['I eat','bread and butter','for breakfast'];
 
   if(chunkBuild.length!==expected.length){
     feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todos os blocos primeiro.</strong></div>';
@@ -1876,13 +1960,24 @@ function finishChunkBuild(){
     return;
   }
 
-  feedback.innerHTML='<div class="build-feedback success"><strong>Agora funciona.</strong><br><br><em>At the store, I ask for help to try on a shirt.</em><br><br>Agora você não precisou adivinhar palavra por palavra. Você recebeu três unidades úteis para essa situação: <em>at the store</em>, <em>ask for help</em> e <em>try on a shirt</em>. É esse tipo de combinação que queremos que você aprenda a reconhecer e recuperar como uma unidade.</div>';
+  feedback.innerHTML='<div class="build-feedback success"><strong>Agora a frase aparece em chunks.</strong><br><br><em>I eat bread and butter for breakfast.</em><br><br>Você recebeu três unidades úteis: <em>I eat</em>, <em>bread and butter</em> e <em>for breakfast</em>. É esse tipo de combinação que queremos que você aprenda a reconhecer e recuperar como uma unidade.</div>';
   feedback.classList.add('show');
+  feedback.setAttribute('aria-live','polite');
+  feedback.setAttribute('tabindex','-1');
+  feedback.scrollIntoView({behavior:'smooth',block:'center'});
+  feedback.focus({preventScroll:true});
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
   shuffleChildren('literal-bank');
   shuffleChildren('chunk-build-bank');
+  document.querySelectorAll('.inline-input,.answer-input').forEach((input,index)=>{
+    const context=input.closest('.quizline,.answer-row')?.innerText.replace(/\s+/g,' ').trim() || 'resposta';
+    input.id=input.id || `resposta-${index+1}`;
+    input.setAttribute('aria-label',`Lacuna ${index+1}: ${context.slice(0,90)}`);
+    input.setAttribute('autocomplete','off');
+  });
+  requestAnimationFrame(()=>slides.forEach(updateScrollHint));
 });
 document.addEventListener('keydown',e=>{
   if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
