@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>Belong | Como você vai aprender inglês • V34</title>
+<title>Belong | Como você vai aprender inglês • V35</title>
 <style>:root{
   --belong-magenta:#87014E;
   --belong-magenta-dark:#68003C;
@@ -128,7 +128,7 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 .action.greenbtn{background:var(--belong-green-dark)}
 .action.secondary{background:white;color:var(--belong-magenta);border:1px solid var(--line);box-shadow:none}
 .action:disabled{opacity:.38;cursor:not-allowed}
-.action,.literal-token,.chunk-token,.choice-btn{min-height:44px}
+.action,.meaning-token,.chunk-token,.choice-btn{min-height:44px}
 .action:active{transform:translateY(1px)}
 .inline-input,.answer-input{
   display:inline-block;min-width:72px;max-width:150px;border:0;border-bottom:2px solid var(--belong-magenta);
@@ -182,10 +182,13 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 }
 .footer-nav button{min-width:116px}
 .scroll-hint{
-  position:sticky;bottom:78px;z-index:3;width:max-content;max-width:100%;margin:14px auto 0;
+  position:fixed;left:50%;transform:translateX(-50%);bottom:78px;z-index:12;
+  width:max-content;max-width:calc(100% - 28px);margin:0;
   padding:8px 13px;border-radius:999px;background:var(--belong-magenta);color:#fff;
-  font-size:12px;font-weight:800;box-shadow:0 6px 18px rgba(77,20,51,.18)
+  font-size:12px;font-weight:800;box-shadow:0 6px 18px rgba(77,20,51,.18);
+  pointer-events:none;transition:opacity .18s ease
 }
+.scroll-hint[hidden]{display:none}
 .fill-autofill-notice{margin:14px 0;padding:12px 14px;border-radius:12px;background:#FFF7D6;border:1px solid #E8D68A;color:#5F4D00;font-size:14px}
 .ownership{
   position:fixed;right:14px;bottom:74px;font-size:10px;color:#8B7F87;z-index:4;
@@ -491,6 +494,22 @@ p{
   color:var(--ink)!important;
 }
 
+/* Contraste semântico: equívocos x princípios da abordagem */
+.contrast-card.negative{
+  background:#FFF1F3!important;
+  border-color:#E9C7CE!important;
+}
+.contrast-card.positive{
+  background:var(--belong-green-soft)!important;
+  border-color:#BFE3CC!important;
+}
+.bubble-info.contrast-card.negative .cross{
+  color:#8F3040!important;
+}
+.bubble-info.contrast-card.positive .check{
+  color:var(--belong-green-dark)!important;
+}
+
 @media (max-width:760px){
   .grid2,.compare{grid-template-columns:1fr}
   .grid4{grid-template-columns:1fr 1fr}
@@ -673,16 +692,14 @@ p{
 }
 
 
-/* V29: demonstração palavra por palavra e depois por chunks */
+/* Montagem em blocos */
 .sentence-target{font-size:clamp(22px,4vw,34px)}
-.literal-bank,
 .chunk-build-bank{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
   margin:12px 0;
 }
-.literal-token,
 .chunk-token{
   border:1px solid var(--line);
   background:#fff;
@@ -692,18 +709,9 @@ p{
   cursor:pointer;
   box-shadow:0 4px 12px rgba(70,20,48,.04);
 }
-.literal-token small{
-  display:block;
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.15;
-  margin-bottom:2px;
-}
-.literal-token strong,
 .chunk-token strong{
   font-size:15px;
 }
-.literal-token.used,
 .chunk-token.used{
   opacity:.34;
   pointer-events:none;
@@ -769,9 +777,9 @@ p{
   font-weight:900;
 }
 @media (max-width:600px){
-  .literal-bank,.chunk-build-bank{gap:5px;margin:8px 0}
-  .literal-token,.chunk-token{padding:7px 9px;border-radius:10px}
-  .literal-token strong,.chunk-token strong{font-size:13px}
+  .chunk-build-bank{gap:5px;margin:8px 0}
+  .chunk-token{padding:7px 9px;border-radius:10px}
+  .chunk-token strong{font-size:13px}
   .build-output{min-height:48px;font-size:15px;padding:9px 10px}
   .built-piece{padding:4px 6px}
   .build-actions{margin-top:7px}
@@ -779,50 +787,238 @@ p{
 }
 
 
-/* V30: exercício mais simples e peças embaralhadas */
-.literal-bank,
+/* Peças embaralhadas */
 .chunk-build-bank{
   justify-content:flex-start;
-}
-.literal-token{
-  min-width:84px;
 }
 .chunk-token{
   min-width:150px;
 }
 @media (max-width:600px){
-  .literal-token{min-width:70px}
   .chunk-token{min-width:128px}
 }
 
-
-/* V31: equivalências separadas dos blocos de montagem */
-.word-equivalence-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-  margin:9px 0 11px;
+/* V35: atividades e comparações revisadas */
+.meaning-bank{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:12px 0;
 }
-.word-equivalence-grid span{
+.meaning-token{
+  min-height:44px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  border-radius:13px;
+  padding:9px 12px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(70,20,48,.04);
+}
+.meaning-token strong{font-size:15px}
+.meaning-token.used{opacity:.34;pointer-events:none}
+
+.activity-part{
+  display:inline-block;
+  margin-bottom:10px;
+  color:var(--belong-green-dark);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.carry-map{text-align:center}
+.carry-source{
+  display:inline-flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:min(310px,100%);
+  padding:18px 28px;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(135deg,var(--belong-magenta),var(--belong-magenta-dark));
+  box-shadow:0 12px 30px rgba(100,16,63,.18);
+}
+.carry-source span{
+  color:rgba(255,255,255,.74);
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.carry-source strong{color:#fff!important;font-size:clamp(28px,5vw,46px)}
+.carry-connector{
+  margin:12px 0 10px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:850;
+}
+.carry-connector::before{content:"↓";display:block;color:var(--belong-green);font-size:24px;line-height:1}
+.carry-options{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.carry-progress{
+  margin-top:15px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:850;
+}
+
+.context-pairs{display:grid;gap:12px;margin:18px 0}
+.context-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 7px 22px rgba(77,20,51,.045);
+}
+.context-language{
+  display:block;
+  margin-bottom:6px;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.context-pair p{font-size:clamp(16px,2.4vw,20px);margin:0}
+.chunk-highlight{
+  padding:2px 5px;
+  border-radius:7px;
+  color:var(--belong-magenta-dark);
+  background:var(--belong-green-soft);
+  font-weight:900;
+}
+
+.expression-equivalence{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:12px;
+  align-items:center;
+}
+.expression-equivalence .language-block{
+  padding:14px;
+  border-radius:15px;
   background:#fff;
   border:1px solid var(--line);
-  border-radius:11px;
-  padding:8px 9px;
-  font-size:13px;
-  color:var(--ink);
 }
-.word-equivalence-grid strong{
-  color:var(--belong-magenta);
+.expression-equivalence .equivalence-arrow{color:var(--belong-green);font-size:26px;font-weight:950}
+.language-label{
+  display:block;
+  margin-bottom:5px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
 }
+.pattern-list{display:grid;gap:8px;margin-top:12px}
+.pattern-example{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:13px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.pattern-fixed{color:var(--belong-magenta);font-weight:900}
+.pattern-slot{color:var(--belong-green-dark);font-weight:900;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+
+.word-grammar-demo{
+  border-left:5px solid var(--belong-green);
+}
+.word-pattern{
+  display:inline-flex;
+  flex-wrap:wrap;
+  gap:7px;
+  align-items:center;
+  margin:4px 0 10px;
+  padding:10px 13px;
+  border-radius:13px;
+  background:#F5F2F4;
+  font-size:clamp(18px,2.8vw,24px);
+  font-weight:900;
+}
+.word-pattern strong{color:var(--belong-magenta)!important}
+.word-pattern span{color:var(--belong-green-dark)}
+
+.ohe-flow{justify-content:center;margin:20px 0}
+.ohe-flow span{
+  min-width:170px;
+  text-align:center;
+  border-radius:18px;
+  font-size:18px;
+}
+.ohe-flow small{display:block;margin-top:4px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+
+.final-slide{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(9,164,71,.26),transparent 28%),
+    radial-gradient(circle at 12% 90%,rgba(255,255,255,.09),transparent 30%),
+    linear-gradient(145deg,var(--belong-magenta),var(--belong-magenta-dark));
+  color:#fff;
+}
+.final-slide .wrap{max-width:940px}
+.final-slide .eyebrow{background:rgba(255,255,255,.12);color:#BDF3CF}
+.final-slide .screen-num{color:#fff}
+.final-slide h1{color:#fff;margin-left:auto;margin-right:auto}
+.final-slide .lead{color:rgba(255,255,255,.88);margin-left:auto;margin-right:auto}
+.final-brand{
+  display:inline-block;
+  margin-bottom:22px;
+  padding:12px 19px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:16px;
+  background:rgba(255,255,255,.09);
+  font-size:42px;
+  backdrop-filter:blur(4px);
+}
+.final-steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  max-width:720px;
+  margin:24px auto;
+}
+.final-step{
+  padding:16px 12px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  font-size:clamp(17px,2.5vw,22px);
+  font-weight:950;
+  letter-spacing:.05em;
+}
+.final-arrow{color:#70E397;font-size:24px;font-weight:950;align-self:center}
+.final-tagline{color:#fff!important;margin:10px auto 20px}
+.final-cta{display:inline-block;text-decoration:none;font-size:17px;padding:15px 26px}
+.app.final-view .footer-nav{
+  background:linear-gradient(to top,var(--belong-magenta-dark) 72%,rgba(100,16,63,0));
+}
+.app.final-view .footer-nav .secondary{
+  color:#fff;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.08);
+}
+.app.final-view .ownership{color:rgba(255,255,255,.65);background:rgba(255,255,255,.08)}
+
 @media (max-width:600px){
-  .word-equivalence-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:5px;
-  }
-  .word-equivalence-grid span{
-    padding:6px 7px;
-    font-size:11.5px;
-  }
+  .meaning-bank{gap:5px;margin:8px 0}
+  .meaning-token{padding:7px 9px;border-radius:10px}
+  .meaning-token strong{font-size:13px}
+  .context-pair{grid-template-columns:1fr;gap:8px;padding:11px}
+  .expression-equivalence{grid-template-columns:1fr}
+  .expression-equivalence .equivalence-arrow{transform:rotate(90deg);text-align:center}
+  .pattern-example{grid-template-columns:1fr;gap:4px;font-size:13px}
+  .ohe-flow span{min-width:0;font-size:13px}
+  .final-slide{padding-top:20px}
+  .final-brand{font-size:32px;margin-bottom:15px}
+  .final-steps{gap:6px;margin:16px auto}
+  .final-step{padding:12px 6px;font-size:13px;border-radius:13px}
+  .final-tagline{font-size:23px!important}
+  .final-cta{font-size:15px;padding:12px 20px}
 }
 
 </style>
@@ -835,7 +1031,7 @@ p{
 <div class="system-name">inglês completo • 100% online</div>
 </div>
 <div class="progress"><div id="bar"></div></div>
-<div class="counter" id="counter">Tela 1 / 30</div>
+<div class="counter" id="counter">Tela 1 / 29</div>
 </header>
 <main class="stage">
 <!-- 1 -->
@@ -904,51 +1100,35 @@ p{
 </div>
 <p class="small muted">Mais adiante, você verá os diferentes tipos de itens lexicais descritos por Michael Lewis.</p>
 </div>
-</section><section class="slide word-build-slide">
+</section><section class="slide meaning-build-slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 4</span> • Vamos testar uma ideia</div>
-<h2>Monte a frase palavra por palavra</h2>
+<div class="eyebrow"><span class="screen-num">Tela 4</span> • Seu léxico mental em português</div>
+<h2>Encontre os blocos de sentido</h2>
 <div class="card bubble-info">
 <p class="small muted">Frase em português</p>
 <p class="big sentence-target">Eu como pão com manteiga no café da manhã.</p>
 </div>
-<p>Para este desafio, você recebeu apenas o significado de <strong>palavras isoladas</strong>. O resultado vai mostrar por que combinações maiores ajudam.</p>
-<div class="word-equivalence-grid">
-<span><strong>I</strong> = eu</span>
-<span><strong>eat</strong> = comer</span>
-<span><strong>bread</strong> = pão</span>
-<span><strong>with</strong> = com</span>
-<span><strong>butter</strong> = manteiga</span>
-<span><strong>in</strong> = em</span>
-<span><strong>the</strong> = o</span>
-<span><strong>breakfast</strong> = café da manhã</span>
+<p>Sem traduzir, toque nos blocos em uma ordem que reconstrua a ideia. Eles representam unidades que você já reconhece naturalmente em português.</p>
+<div class="meaning-bank" id="meaning-bank">
+<button class="meaning-token" data-value="eu como"><strong>eu como</strong></button>
+<button class="meaning-token" data-value="pão com manteiga"><strong>pão com manteiga</strong></button>
+<button class="meaning-token" data-value="no café da manhã"><strong>no café da manhã</strong></button>
 </div>
-<p class="small muted">Agora use somente os blocos em inglês. Eles aparecem embaralhados.</p>
-<div class="literal-bank" id="literal-bank">
-<button class="literal-token" data-en="I"><strong>I</strong></button>
-<button class="literal-token" data-en="eat"><strong>eat</strong></button>
-<button class="literal-token" data-en="bread"><strong>bread</strong></button>
-<button class="literal-token" data-en="with"><strong>with</strong></button>
-<button class="literal-token" data-en="butter"><strong>butter</strong></button>
-<button class="literal-token" data-en="in"><strong>in</strong></button>
-<button class="literal-token" data-en="the"><strong>the</strong></button>
-<button class="literal-token" data-en="breakfast"><strong>breakfast</strong></button>
-</div>
-<div class="build-output bubble-info" id="literal-output">
-<span class="placeholder">Sua frase aparecerá aqui.</span>
+<div class="build-output bubble-info" id="meaning-output">
+<span class="placeholder">Sua sequência aparecerá aqui.</span>
 </div>
 <div class="build-actions">
-<button class="action secondary" onclick="resetLiteralBuild()">Limpar</button>
-<button class="action greenbtn" onclick="finishLiteralBuild()">Finalizar</button>
+<button class="action secondary" onclick="resetMeaningBuild()">Limpar</button>
+<button class="action greenbtn" onclick="finishMeaningBuild()">Conferir</button>
 </div>
-<div class="reveal" id="literal-feedback"></div>
+<div class="reveal" id="meaning-feedback"></div>
 </div>
 </section><section class="slide chunk-build-slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 5</span> • Agora mude a unidade</div>
-<h2>Monte a mesma ideia usando chunks</h2>
+<div class="eyebrow"><span class="screen-num">Tela 5</span> • Dos blocos em português aos chunks em inglês</div>
+<h2>Monte a mesma ideia em inglês</h2>
 <div class="card bubble-info">
-<p class="small muted">Agora observe as equivalências maiores</p>
+<p class="small muted">Observe a correspondência entre os blocos</p>
 <div class="chunk-equivalence-list">
 <div>
 <strong>eu como</strong>
@@ -964,11 +1144,11 @@ p{
 </div>
 </div>
 </div>
-<p>Agora monte a frase novamente. Os blocos estão <strong>somente em inglês</strong> e aparecem embaralhados.</p>
+<p>Agora toque nos chunks em inglês na ordem que forma a frase. As opções aparecem embaralhadas.</p>
 <div class="chunk-build-bank" id="chunk-build-bank">
-<button class="chunk-token" data-en="I eat"><strong>I eat</strong></button>
-<button class="chunk-token" data-en="bread and butter"><strong>bread and butter</strong></button>
-<button class="chunk-token" data-en="for breakfast"><strong>for breakfast</strong></button>
+<button class="chunk-token" data-value="I eat"><strong>I eat</strong></button>
+<button class="chunk-token" data-value="bread and butter"><strong>bread and butter</strong></button>
+<button class="chunk-token" data-value="for breakfast"><strong>for breakfast</strong></button>
 </div>
 <div class="build-output bubble-info" id="chunk-output">
 <span class="placeholder">Sua frase aparecerá aqui.</span>
@@ -1103,14 +1283,14 @@ p{
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 11</span> • O que a abordagem lexical não significa</div>
 <h2>Ela não elimina a gramática</h2>
-<div class="card bubble-info">
+<div class="card bubble-info contrast-card negative">
 <p class="cross">✕ não é um curso sem gramática</p>
 <p class="cross">✕ não é trocar gramática por listas de vocabulário</p>
 <p class="cross">✕ não é decorar frases sem compreender</p>
 </div>
 <div class="merged-divider"></div>
 <h3 class="merged-subtitle">O que ela passa a valorizar mais</h3>
-<div class="card bubble-info">
+<div class="card bubble-info contrast-card positive">
 <p class="check">✓ o léxico ocupa um papel maior</p>
 <p class="check">✓ collocation e chunking ganham destaque</p>
 <p class="check">✓ o aluno observa padrões na língua em uso</p>
@@ -1136,11 +1316,6 @@ p{
     <input class="inline-input" data-accepted="da|de" data-correct="da"/> minha namorada, preciso falar
     <input class="inline-input" data-accepted="com" data-correct="com"/> o pai dela.
   </p>
-<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-</div>
-<div class="merged-divider"></div>
-<h3 class="merged-subtitle">Mais algumas lacunas</h3>
-<div class="card bubble-info">
 <p class="quizline">
     Antes <input class="inline-input" data-accepted="de" data-correct="de"/> poder levá-la
     <input class="inline-input" data-accepted="para|pra" data-correct="para"/> sair.
@@ -1178,22 +1353,16 @@ p{
 <!-- 11 -->
 <section class="slide fill-activity">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 14</span> • Percebendo combinações</div>
-<h2>Complete sem pensar demais</h2>
+<div class="eyebrow"><span class="screen-num">Tela 14</span> • Percebendo combinações — parte 1</div>
+<h2>Complete com o que vier naturalmente</h2>
 <div class="card bubble-tip">
 <p>Digite a primeira palavra ou expressão que parecer natural.</p>
 </div>
 <div class="card bubble-info">
+<span class="activity-part">Parte 1 de 2</span>
 <div class="examples">
 <div class="answer-row">Eu estava atrasado e cheguei em cima da <input class="answer-input" data-accepted="hora" data-correct="hora"/>.</div>
 <div class="answer-row">Antes de enviar o documento, vou dar uma <input class="answer-input" data-accepted="olhada|olhadinha|conferida|checada" data-correct="olhada"/> nele.</div>
-</div>
-<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-</div>
-<div class="merged-divider"></div>
-<h3 class="merged-subtitle">O contexto sugere certas continuações</h3>
-<div class="card bubble-info">
-<div class="examples">
 <div class="answer-row">Ela estava distraída e não prestou <input class="answer-input" data-accepted="atenção|atencao" data-correct="atenção"/> no que eu disse.</div>
 <div class="answer-row">Depois de várias reuniões, finalmente chegamos a um <input class="answer-input" data-accepted="acordo|consenso|entendimento" data-correct="acordo"/>.</div>
 </div>
@@ -1205,20 +1374,14 @@ p{
 <!-- 12 -->
 <section class="slide fill-activity">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 15</span> • Blocos mais previsíveis</div>
-<h2>Algumas sequências parecem quase prontas</h2>
+<div class="eyebrow"><span class="screen-num">Tela 15</span> • Percebendo combinações — parte 2</div>
+<h2>Continue a mesma experiência</h2>
 <div class="card bubble-info">
+<span class="activity-part">Parte 2 de 2</span>
 <div class="examples">
 <div class="answer-row">Nosso relacionamento já passou por muitos altos e <input class="answer-input" data-accepted="baixos" data-correct="baixos"/>.</div>
 <div class="answer-row">De vez em <input class="answer-input" data-accepted="quando" data-correct="quando"/> eu gosto de ficar em casa.</div>
 <div class="answer-row">Se você precisar, eu posso te dar uma <input class="answer-input" data-accepted="mão|mao|ajuda|força|forca" data-correct="mão"/>.</div>
-</div>
-<button class="action greenbtn" onclick="checkInputs(this)">Conferir</button>
-</div>
-<div class="merged-divider"></div>
-<h3 class="merged-subtitle">Você provavelmente reconhece o restante</h3>
-<div class="card bubble-info">
-<div class="examples">
 <div class="answer-row">Ele interpretou o comentário ao pé da <input class="answer-input" data-accepted="letra" data-correct="letra"/>.</div>
 <div class="answer-row">Foi amor à primeira <input class="answer-input" data-accepted="vista" data-correct="vista"/>.</div>
 <div class="answer-row">Não adianta chorar pelo leite <input class="answer-input" data-accepted="derramado" data-correct="derramado"/>.</div>
@@ -1256,9 +1419,9 @@ p{
 <div class="eyebrow"><span class="screen-num">Tela 17</span> • Chunking</div>
 <h2>Uma analogia simples para entender blocos na memória</h2>
 <div class="card bubble-info">
-<p class="small muted">Imagine um número fictício de celular brasileiro, da época em que os celulares tinham oito dígitos. Ao falar o número, era comum agrupá-lo em pares:</p>
+<p class="small muted">Imagine um número fictício de celular brasileiro, da época em que os números de celular tinham oito dígitos. Ao falar o número, era comum agrupá-lo em pares:</p>
 <p class="phone phone-old">99 · 88 · 77 · 66</p>
-<p class="small muted">Quando o nono dígito foi acrescentado aos celulares, os oito dígitos antigos permaneceram. Por isso, muita gente continuou dizendo os pares já conhecidos e apenas colocou o novo 9 na frente:</p>
+<p class="small muted">Quando o nono dígito foi acrescentado aos números de celular, os oito dígitos antigos permaneceram. Por isso, muita gente continuou dizendo os pares já conhecidos e apenas colocou o novo 9 na frente:</p>
 <p class="phone phone-new"><span class="dramatic">9...</span> 99 · 88 · 77 · 66</p>
 </div>
 <p class="small muted">Os números abaixo são apenas um exemplo para mostrar como nossa memória tende a preservar agrupamentos já familiares.</p><div class="card bubble-tip">
@@ -1271,20 +1434,24 @@ p{
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 18</span> • Correspondência entre línguas</div>
-<h2>Qual é a tradução de “carregar”?</h2>
-<p class="lead">Escolha a opção que você acredita ser a tradução correta.</p>
-<div class="card center bubble-info" id="carry-game">
-<p class="big" style="margin-bottom:24px">carregar = ?</p>
-<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+<h2>Uma palavra pode ter mais de uma tradução?</h2>
+<p class="lead">Qual palavra você escolheria primeiro para traduzir <strong>carregar</strong>? Toque em uma opção e depois explore as demais.</p>
+<div class="card bubble-info carry-map" id="carry-game">
+<div class="carry-source">
+<span>palavra em português</span>
+<strong>carregar</strong>
+</div>
+<div class="carry-connector">pode aparecer em inglês como</div>
+<div class="carry-options">
 <button class="action choice-btn" onclick="chooseCarregar(this,'carry')">carry</button>
 <button class="action choice-btn" onclick="chooseCarregar(this,'charge')">charge</button>
 <button class="action choice-btn" onclick="chooseCarregar(this,'load')">load</button>
 </div>
-<div class="reveal" id="carregar-feedback" style="margin-top:24px"></div>
-<div class="small muted" id="carregar-picked" style="margin-top:14px"></div>
+<div class="carry-progress" id="carregar-progress">0 de 3 possibilidades exploradas</div>
+<div class="reveal" id="carregar-feedback"></div>
 </div>
 <div class="card bubble-tip">
-<p>Lewis chama atenção para um problema importante. Palavras e colocações nem sempre têm correspondência de um para um entre duas línguas. Experimente as três opções antes de avançar.</p>
+<p>Palavras e colocações nem sempre têm correspondência de um para um entre duas línguas. O contexto ajuda a decidir qual opção comunica a ideia desejada.</p>
 </div>
 <p class="small muted">Jogo criado pela Belong. Princípio discutido por Lewis na p. 94.</p>
 </div>
@@ -1294,14 +1461,19 @@ p{
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 19</span> • O co-texto muda a escolha</div>
 <h2>As três respostas podem estar certas, mas não no mesmo ambiente</h2>
-<div class="examples">
-<div class="example"><strong>carry a chair</strong><br/>carregar/levar uma cadeira</div>
-<div class="example"><strong>charge a phone</strong><br/>carregar a bateria de um celular</div>
-<div class="example"><strong>load a truck</strong><br/>carregar um caminhão com carga</div>
+<div class="context-pairs">
+<div class="context-pair">
+<p><span class="context-language">Inglês</span>I <span class="chunk-highlight">carry my phone with me</span>.</p>
+<p><span class="context-language">Português</span>Eu <span class="chunk-highlight">levo meu celular comigo</span>.</p>
 </div>
-<div class="card bubble-info">
-<p><strong>I carry my phone with me.</strong><br/>Eu levo meu celular comigo.</p>
-<p><strong>I need to charge my phone.</strong><br/>Preciso carregar meu celular.</p>
+<div class="context-pair">
+<p><span class="context-language">Inglês</span>I need to <span class="chunk-highlight">charge my phone</span>.</p>
+<p><span class="context-language">Português</span>Preciso <span class="chunk-highlight">carregar meu celular</span>.</p>
+</div>
+<div class="context-pair">
+<p><span class="context-language">Inglês</span>We need to <span class="chunk-highlight">load the truck</span> before noon.</p>
+<p><span class="context-language">Português</span>Precisamos <span class="chunk-highlight">carregar o caminhão</span> antes do meio-dia.</p>
+</div>
 </div>
 <div class="card bubble-tip">
 <p>O ponto não é encontrar “a tradução” de <em>carregar</em>. É observar que a escolha em inglês depende do significado pretendido e das palavras com as quais o verbo ocorre.</p>
@@ -1412,14 +1584,23 @@ p{
 <h2>Alguns blocos ajudam a administrar a interação</h2>
 <p class="lead">Lewis usa o termo <strong>institutionalised expressions</strong>, expressões institucionalizadas, para unidades de forte valor comunicativo e social.</p>
 <div class="card bubble-info">
-<p class="big">Just a moment, please.</p>
-<p>Uma unidade curta que pode ser compreendida e usada como um todo.</p>
+<span class="activity-part">Uma expressão usada como unidade completa</span>
+<div class="expression-equivalence">
+<div class="language-block"><span class="language-label">Inglês</span><strong>Nice to meet you.</strong></div>
+<div class="equivalence-arrow">↔</div>
+<div class="language-block"><span class="language-label">Português</span><strong>Prazer em conhecer você.</strong></div>
+</div>
 </div>
 <div class="merged-divider"></div>
 <h3 class="merged-subtitle">Uma parte pode permanecer fixa e outra variar</h3>
 <div class="card bubble-info">
-<p class="big">Would you like to _____?</p>
-<p>O início da frase é recorrente e pode receber diferentes complementos.</p>
+<p class="big"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">_____?</span></p>
+<p><strong>Você gostaria de _____?</strong> O início permanece e o complemento muda:</p>
+<div class="pattern-list">
+<div class="pattern-example"><span><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">have a coffee?</span></span><span>Você gostaria de tomar um café?</span></div>
+<div class="pattern-example"><span><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">sit down?</span></span><span>Você gostaria de se sentar?</span></div>
+<div class="pattern-example"><span><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">come with us?</span></span><span>Você gostaria de vir conosco?</span></div>
+</div>
 </div>
 <div class="card bubble-tip">
 <p>Para Lewis, expressões desse tipo aumentam o poder comunicativo do aluno e também oferecem material para perceber padrões mais gerais.</p>
@@ -1451,6 +1632,13 @@ p{
 <div class="title">Na abordagem lexical</div>
 <p>Mais atenção à <strong>gramática da palavra</strong>, aos padrões, às collocations e à percepção da língua em uso.</p>
 </div>
+</div>
+<div class="card bubble-info word-grammar-demo">
+<h3>O que é gramática da palavra?</h3>
+<p>É observar os padrões em que cada palavra costuma aparecer — as formas e estruturas que normalmente a acompanham.</p>
+<div class="word-pattern"><strong>depend</strong> <span>on</span> someone/something</div>
+<p><em>It depends on the weather.</em></p>
+<p class="small muted">Você pode aprender e usar um padrão útil antes de compreender toda a explicação gramatical por trás dele.</p>
 </div>
 <p class="small muted">Base no livro, pp. 133 a 147.</p>
 </div>
@@ -1484,50 +1672,29 @@ p{
 <!-- 23 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 26</span> • Um exemplo forte do livro</div>
-<h2>Lewis critica ensinar “would” apenas como “o condicional”</h2>
-<p class="lead">Para ele, tratar <strong>would</strong> apenas dentro de categorias como first, second e third conditional pode esconder outros usos importantes da palavra.</p>
-<div class="card bubble-tip">
-<p>A proposta é olhar também para <strong>would como item lexical</strong> e para os padrões em que ele aparece.</p>
+<div class="eyebrow"><span class="screen-num">Tela 26</span> • A metodologia</div>
+<h2>Observe, pense, experimente</h2>
+<p class="lead">Nas aulas, você vai aprender por meio de um ciclo simples: perceber a língua, pensar sobre o que encontrou e testar o que entendeu.</p>
+<div class="flow ohe-flow">
+<span>1. Observe<small>Observe</small></span><b>→</b>
+<span>2. Pense<small>Hypothesise</small></span><b>→</b>
+<span>3. Experimente<small>Experiment</small></span>
 </div>
-<div class="merged-divider"></div>
-<h3 class="merged-subtitle">Would you like to _____?</h3>
 <div class="card bubble-info">
-<p class="big">Would you like to _____?</p>
-<p>Você gostaria de _____?</p>
+<p><strong>Observe:</strong> veja como o inglês aparece em exemplos reais.</p>
+<p><strong>Pense:</strong> tente descobrir o padrão ou o significado.</p>
+<p><strong>Experimente:</strong> use o que percebeu e veja se funciona.</p>
 </div>
 <div class="card bubble-tip">
-<p>Uma expressão assim pode ser aprendida cedo pelo seu valor comunicativo, sem esperar que o aluno domine toda uma análise estrutural de condicionais.</p>
+<p><strong>Errar faz parte desse processo.</strong> Cada tentativa ajuda você a ajustar o que entendeu.</p>
 </div>
-<p class="small muted">Lewis chega a defender a retirada do tratamento tradicional de first, second e third conditionals do syllabus. Ver pp. 139 a 146.</p>
+<p class="small muted">Base no livro, princípios iniciais e pp. 149 a 163.</p>
 </div>
 </section>
 <!-- 24 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 27</span> • A metodologia</div>
-<h2>Observe, formule hipóteses, experimente</h2>
-<p class="lead">Lewis rejeita o paradigma tradicional <strong>Present, Practise, Produce</strong> e propõe um ciclo chamado <strong>Observe, Hypothesise, Experiment</strong>.</p>
-<div class="flow">
-<span>1. Observe<br/><small>observe</small></span><b>→</b>
-<span>2. Formule uma hipótese<br/><small>hypothesise</small></span><b>→</b>
-<span>3. Experimente<br/><small>experiment</small></span>
-</div>
-<div class="card bubble-info">
-<p><strong>Observe:</strong> encontre a língua em textos, falas, exemplos e contrastes.</p>
-<p><strong>Hypothesise:</strong> tente perceber regularidades, diferenças e padrões.</p>
-<p><strong>Experiment:</strong> teste suas hipóteses ao compreender e usar novas ocorrências.</p>
-</div>
-<div class="card bubble-tip">
-<p>O erro não precisa significar fracasso nesse processo. Uma hipótese inadequada pode ser uma etapa intermediária até uma compreensão mais refinada do sistema.</p>
-</div>
-<p class="small muted">Base no livro, princípios iniciais e pp. 149 a 163.</p>
-</div>
-</section>
-<!-- 25 -->
-<section class="slide">
-<div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 28</span> • O que vamos fazer nas aulas</div>
+<div class="eyebrow"><span class="screen-num">Tela 27</span> • O que vamos fazer nas aulas</div>
 <h2>Os textos serão fonte de língua</h2>
 <p class="lead">Lewis trata textos não apenas como conteúdo para compreensão, mas como uma fonte da qual o aluno pode retirar itens lexicais.</p>
 <div class="flow">
@@ -1547,10 +1714,10 @@ p{
 <p class="small muted">Base no livro, pp. 115 a 132 e 193 a 195.</p>
 </div>
 </section>
-<!-- 26 -->
+<!-- 25 -->
 <section class="slide">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 29</span> • O objetivo</div>
+<div class="eyebrow"><span class="screen-num">Tela 28</span> • O objetivo</div>
 <h2>Mais poder comunicativo</h2>
 <p class="lead">Lewis afirma que linguagem bem-sucedida é um conceito mais amplo do que linguagem apenas correta.</p>
 <div class="card bubble-info">
@@ -1564,24 +1731,20 @@ p{
 <p class="small muted">Base no livro, princípios iniciais; pp. 105 a 114 e 133 a 163.</p>
 </div>
 </section>
-<!-- 27 -->
-<section class="slide">
+<!-- 26 -->
+<section class="slide final-slide">
 <div class="wrap center">
-<div class="eyebrow"><span class="screen-num">Tela 30</span> • Agora podemos começar</div>
-<div class="brand" style="display:inline-block;background:var(--belong-magenta);padding:13px 20px;border-radius:16px;font-size:44px;margin-bottom:24px">bel<span class="on">on</span>g</div>
-<h1>Agora você sabe como vai aprender.</h1>
-<p class="lead" style="margin-left:auto;margin-right:auto">Na abordagem lexical, léxico e gramática não são duas gavetas independentes. Você vai aprender a observar a língua, reconhecer diferentes itens lexicais, perceber padrões e experimentar o uso.</p>
-<div class="card bubble-info">
-<div class="flow" style="justify-content:center">
-<span>léxico no centro</span>
-<span>collocation</span>
-<span>chunking</span>
-<span>gramática receptiva</span>
-<span>Observe, Hypothesise, Experiment</span>
+<div class="eyebrow"><span class="screen-num">Tela 29</span> • Agora começa a prática</div>
+<div class="brand final-brand">bel<span class="on">on</span>g</div>
+<h1>Você não vai aprender inglês palavra por palavra.</h1>
+<p class="lead">Vai aprender a reconhecer blocos, perceber padrões e usar a língua com confiança.</p>
+<div class="final-steps" aria-label="Como você vai aprender">
+<div class="final-step">OBSERVE</div>
+<div class="final-step">CONECTE</div>
+<div class="final-step">USE</div>
 </div>
-</div>
-<p class="big">Curso completo de inglês, do básico ao avançado.</p>
-<a class="action greenbtn" href="https://wa.me/5541998389437" rel="noopener noreferrer" aria-label="Falar com a Belong pelo WhatsApp para começar o curso" style="display:inline-block;text-decoration:none" target="_blank">Falar com a Belong no WhatsApp</a>
+<p class="big final-tagline">Do básico ao avançado, um inglês que faz sentido.</p>
+<a class="action greenbtn final-cta" href="https://wa.me/5541998389437" rel="noopener noreferrer" aria-label="Falar com a Belong pelo WhatsApp para começar o curso" target="_blank">Quero começar com a Belong</a>
 </div>
 </section>
 </main>
@@ -1596,7 +1759,9 @@ const slides=[...document.querySelectorAll('.slide')];
 let current=0;
 
 function show(i){
-  current=Math.max(0,Math.min(slides.length-1,i));
+  const nextIndex=Math.max(0,Math.min(slides.length-1,i));
+  const changed=nextIndex!==current;
+  current=nextIndex;
   slides.forEach((s,idx)=>s.classList.toggle('active',idx===current));
   document.getElementById('bar').style.width=((current+1)/slides.length*100)+'%';
   document.getElementById('counter').textContent='Tela '+(current+1)+' / '+slides.length;
@@ -1604,20 +1769,31 @@ function show(i){
   const nextBtn=document.getElementById('next');
   nextBtn.textContent='Próximo';
   nextBtn.style.display=current===slides.length-1?'none':'inline-block';
+  document.querySelector('.app')?.classList.toggle('final-view',current===slides.length-1);
   slides[current].scrollTop=0;
-  updateScrollHint(slides[current]);
+  if(changed && slides[current].classList.contains('chunk-build-slide') && chunkBuild.length===0){
+    shuffleChildren('chunk-build-bank',['I eat','bread and butter','for breakfast']);
+  }
+  requestAnimationFrame(()=>updateScrollHint(slides[current]));
 }
 
 function updateScrollHint(slide){
   let hint=slide.querySelector('.scroll-hint');
-  const needsScroll=slide.scrollHeight > slide.clientHeight + 24;
+  const needsScroll=slide.scrollHeight > slide.clientHeight + 8;
   if(needsScroll && !hint){
     hint=document.createElement('div');
     hint.className='scroll-hint';
     hint.setAttribute('role','status');
     hint.textContent='Role para continuar ↓';
-    slide.querySelector('.wrap')?.appendChild(hint);
-    slide.addEventListener('scroll',()=>{ if(slide.scrollTop>32) hint.hidden=true; },{once:true});
+    slide.appendChild(hint);
+  }
+  if(hint){
+    const atBottom=slide.scrollTop+slide.clientHeight>=slide.scrollHeight-10;
+    hint.hidden=!needsScroll||atBottom;
+  }
+  if(!slide.dataset.scrollHintBound){
+    slide.addEventListener('scroll',()=>updateScrollHint(slide),{passive:true});
+    slide.dataset.scrollHintBound='true';
   }
 }
 
@@ -1694,16 +1870,16 @@ function showAutofillNotice(slide, blanks){
 
 function prepareFillSlideBeforeAdvance(){
   const slide=slides[current];
-  if(slide.classList.contains('word-build-slide') || slide.classList.contains('chunk-build-slide')){
+  if(slide.classList.contains('meaning-build-slide') || slide.classList.contains('chunk-build-slide')){
     const isChunk=slide.classList.contains('chunk-build-slide');
-    const build=isChunk?chunkBuild:literalBuild;
+    const build=isChunk?chunkBuild:meaningBuild;
+    const expected=isChunk
+      ? ['I eat','bread and butter','for breakfast']
+      : ['eu como','pão com manteiga','no café da manhã'];
     if(!build.length){
-      const bank=slide.querySelector(isChunk?'#chunk-build-bank':'#literal-bank');
-      const expected=isChunk
-        ? ['I eat','bread and butter','for breakfast']
-        : ['I','eat','bread','with','butter','in','the','breakfast'];
+      const bank=slide.querySelector(isChunk?'#chunk-build-bank':'#meaning-bank');
       expected.forEach(word=>{
-        const token=[...bank.children].find(item=>item.dataset.en===word && !item.classList.contains('used'));
+        const token=[...bank.children].find(item=>item.dataset.value===word && !item.classList.contains('used'));
         if(token){ token.click(); }
       });
       showAutofillNotice(slide,[]);
@@ -1713,10 +1889,18 @@ function prepareFillSlideBeforeAdvance(){
         notice.className='fill-autofill-notice';
         notice.setAttribute('role','alert');
         notice.setAttribute('tabindex','-1');
-        notice.textContent='Preenchemos a frase automaticamente. Revise a ordem e observe a diferença entre palavras isoladas e chunks antes de avançar.';
+        notice.textContent=isChunk
+          ? 'Montamos a frase com os chunks disponíveis. Observe como os blocos em inglês correspondem às unidades de sentido em português.'
+          : 'Organizamos os blocos em português. Observe como sua memória reconhece unidades de sentido maiores do que palavras isoladas.';
         slide.querySelector('.wrap')?.appendChild(notice);
       }
       notice.focus({preventScroll:true});
+      requestAnimationFrame(()=>updateScrollHint(slide));
+      return false;
+    }
+    if(build.length!==expected.length || build.some((value,index)=>value!==expected[index])){
+      if(isChunk) finishChunkBuild();
+      else finishMeaningBuild();
       return false;
     }
     return true;
@@ -1795,6 +1979,7 @@ function checkInputs(btn){
   }else if(inputs.length){
     inputs.find(inp=>inp.classList.contains('no'))?.focus();
   }
+  requestAnimationFrame(()=>updateScrollHint(slide));
 }
 
 function revealBox(btn,text){
@@ -1815,52 +2000,48 @@ function chooseCarregar(btn, word){
   btn.classList.add('selected');
 
   const feedback=document.getElementById('carregar-feedback');
-  const picked=document.getElementById('carregar-picked');
+  const progress=document.getElementById('carregar-progress');
+  const contexts={
+    carry:'quando a ideia é levar algo: <em>carry a bag</em>.',
+    charge:'quando a ideia é recarregar uma bateria: <em>charge a phone</em>.',
+    load:'quando a ideia é colocar uma carga: <em>load a truck</em>.'
+  };
+  const complete=carregarChoices.size===3
+    ? '<p style="margin:12px 0 0"><strong>As três podem estar certas.</strong> Na próxima tela, você verá como o contexto determina a escolha.</p>'
+    : '<p style="margin:12px 0 0">Explore também as outras possibilidades.</p>';
 
-  let message='';
-  if(carregarChoices.size===1){
-    message = `
-      <div class="game-message">
-        <div class="yes">✓ Sim. “${word}” pode significar “carregar”.</div>
-        <div class="twist">Mas será que é a única resposta possível?</div>
-      </div>`;
-  }else if(carregarChoices.size===2){
-    message = `
-      <div class="game-message">
-        <div class="yes">✓ Essa também pode estar certa.</div>
-        <div class="twist">Agora temos duas traduções possíveis para a mesma palavra em português.</div>
-      </div>`;
-  }else{
-    message = `
-      <div class="game-message">
-        <div class="yes">✓ As três podem estar certas.</div>
-        <div class="twist">Então… se <em>carry</em>, <em>charge</em> e <em>load</em> podem significar “carregar”, o que decide qual delas usar?</div>
-        <p style="margin:12px 0 0">Não responda ainda. Vá para a próxima tela.</p>
-      </div>`;
-  }
-
-  feedback.innerHTML=message;
+  feedback.innerHTML=`
+    <div class="game-message">
+      <div class="yes">✓ “${word}” pode traduzir “carregar”</div>
+      <div class="twist">Essa opção funciona ${contexts[word]}</div>
+      ${complete}
+    </div>`;
   feedback.classList.add('show');
   feedback.setAttribute('aria-live','polite');
   feedback.setAttribute('tabindex','-1');
   feedback.scrollIntoView({behavior:'smooth',block:'center'});
   feedback.focus({preventScroll:true});
-  picked.textContent = 'Opções testadas: ' + [...carregarChoices].join(' • ');
+  progress.textContent=`${carregarChoices.size} de 3 possibilidades exploradas`;
+  requestAnimationFrame(()=>updateScrollHint(btn.closest('.slide')));
 }
 
 
 
 
-const literalBuild=[];
+const meaningBuild=[];
 const chunkBuild=[];
 
-function shuffleChildren(containerId){
+function shuffleChildren(containerId, expected=[]){
   const container=document.getElementById(containerId);
   if(!container) return;
   const items=[...container.children];
   for(let i=items.length-1;i>0;i--){
     const j=Math.floor(Math.random()*(i+1));
     [items[i],items[j]]=[items[j],items[i]];
+  }
+  const shuffledOrder=items.map(item=>item.dataset.value);
+  if(items.length>1 && expected.length===items.length && shuffledOrder.every((value,index)=>value===expected[index])){
+    [items[0],items[1]]=[items[1],items[0]];
   }
   items.forEach(item=>container.appendChild(item));
 }
@@ -1876,55 +2057,58 @@ function renderBuild(outputId, items){
 }
 
 document.addEventListener('click',e=>{
-  const literal=e.target.closest('.literal-token');
-  if(literal){
-    literalBuild.push(literal.dataset.en);
-    literal.classList.add('used');
-    renderBuild('literal-output',literalBuild);
+  const meaning=e.target.closest('.meaning-token');
+  if(meaning){
+    meaningBuild.push(meaning.dataset.value);
+    meaning.classList.add('used');
+    renderBuild('meaning-output',meaningBuild);
     return;
   }
 
   const chunk=e.target.closest('.chunk-token');
   if(chunk){
-    chunkBuild.push(chunk.dataset.en);
+    chunkBuild.push(chunk.dataset.value);
     chunk.classList.add('used');
     renderBuild('chunk-output',chunkBuild);
   }
 });
 
-function resetLiteralBuild(){
-  literalBuild.length=0;
-  document.querySelectorAll('#literal-bank .literal-token').forEach(b=>b.classList.remove('used'));
-  renderBuild('literal-output',literalBuild);
-  const f=document.getElementById('literal-feedback');
+function resetMeaningBuild(){
+  meaningBuild.length=0;
+  document.querySelectorAll('#meaning-bank .meaning-token').forEach(b=>b.classList.remove('used'));
+  renderBuild('meaning-output',meaningBuild);
+  const f=document.getElementById('meaning-feedback');
   if(f){f.classList.remove('show');f.innerHTML='';}
-  shuffleChildren('literal-bank');
+  shuffleChildren('meaning-bank',['eu como','pão com manteiga','no café da manhã']);
 }
 
-function finishLiteralBuild(){
-  const feedback=document.getElementById('literal-feedback');
-  const expected=['I','eat','bread','with','butter','in','the','breakfast'];
+function finishMeaningBuild(){
+  const feedback=document.getElementById('meaning-feedback');
+  const expected=['eu como','pão com manteiga','no café da manhã'];
 
-  if(literalBuild.length!==expected.length){
-    feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todas as peças primeiro.</strong></div>';
+  if(meaningBuild.length!==expected.length){
+    feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todos os blocos primeiro.</strong></div>';
     feedback.classList.add('show');
+    requestAnimationFrame(()=>updateScrollHint(feedback.closest('.slide')));
     return;
   }
 
-  const phrase=literalBuild.join(' ');
+  const phrase=meaningBuild.join(' ');
 
   if(phrase!==expected.join(' ')){
-    feedback.innerHTML='<div class="build-feedback discovery"><strong>Tente novamente.</strong> Use os significados que você recebeu e siga a ordem da ideia em português.</div>';
+    feedback.innerHTML='<div class="build-feedback discovery"><strong>Tente trocar a ordem dos blocos.</strong> Reconstrua a frase que aparece acima.</div>';
     feedback.classList.add('show');
+    requestAnimationFrame(()=>updateScrollHint(feedback.closest('.slide')));
     return;
   }
 
-  feedback.innerHTML='<div class="build-feedback discovery"><strong>Você montou a frase palavra por palavra.</strong><br><br><em>I eat bread with butter in the breakfast.</em><br><br>As equivalências isoladas ajudaram a traduzir cada palavra, mas não mostraram as combinações mais naturais. Agora observe como os chunks organizam a mesma ideia.</div>';
+  feedback.innerHTML='<div class="build-feedback success"><strong>Você organizou a ideia em três blocos de sentido.</strong><br><br><em>eu como</em> · <em>pão com manteiga</em> · <em>no café da manhã</em><br><br>Seu léxico mental não guarda apenas palavras isoladas. Na próxima tela, você verá como esses blocos podem corresponder a chunks em inglês.</div>';
   feedback.classList.add('show');
   feedback.setAttribute('aria-live','polite');
   feedback.setAttribute('tabindex','-1');
   feedback.scrollIntoView({behavior:'smooth',block:'center'});
   feedback.focus({preventScroll:true});
+  requestAnimationFrame(()=>updateScrollHint(feedback.closest('.slide')));
 }
 
 function resetChunkBuild(){
@@ -1933,7 +2117,7 @@ function resetChunkBuild(){
   renderBuild('chunk-output',chunkBuild);
   const f=document.getElementById('chunk-feedback');
   if(f){f.classList.remove('show');f.innerHTML='';}
-  shuffleChildren('chunk-build-bank');
+  shuffleChildren('chunk-build-bank',['I eat','bread and butter','for breakfast']);
 }
 
 function finishChunkBuild(){
@@ -1943,6 +2127,7 @@ function finishChunkBuild(){
   if(chunkBuild.length!==expected.length){
     feedback.innerHTML='<div class="build-feedback discovery"><strong>Use todos os blocos primeiro.</strong></div>';
     feedback.classList.add('show');
+    requestAnimationFrame(()=>updateScrollHint(feedback.closest('.slide')));
     return;
   }
 
@@ -1951,6 +2136,7 @@ function finishChunkBuild(){
   if(phrase!==expected.join(' ')){
     feedback.innerHTML='<div class="build-feedback discovery"><strong>Tente trocar a ordem dos blocos.</strong></div>';
     feedback.classList.add('show');
+    requestAnimationFrame(()=>updateScrollHint(feedback.closest('.slide')));
     return;
   }
 
@@ -1960,11 +2146,12 @@ function finishChunkBuild(){
   feedback.setAttribute('tabindex','-1');
   feedback.scrollIntoView({behavior:'smooth',block:'center'});
   feedback.focus({preventScroll:true});
+  requestAnimationFrame(()=>updateScrollHint(feedback.closest('.slide')));
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  shuffleChildren('literal-bank');
-  shuffleChildren('chunk-build-bank');
+  shuffleChildren('meaning-bank',['eu como','pão com manteiga','no café da manhã']);
+  shuffleChildren('chunk-build-bank',['I eat','bread and butter','for breakfast']);
   document.querySelectorAll('.inline-input,.answer-input').forEach((input,index)=>{
     const context=input.closest('.quizline,.answer-row')?.innerText.replace(/\s+/g,' ').trim() || 'resposta';
     input.id=input.id || `resposta-${index+1}`;
@@ -1972,6 +2159,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     input.setAttribute('autocomplete','off');
   });
   requestAnimationFrame(()=>slides.forEach(updateScrollHint));
+  window.addEventListener('resize',()=>slides.forEach(updateScrollHint),{passive:true});
 });
 document.addEventListener('keydown',e=>{
   if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
