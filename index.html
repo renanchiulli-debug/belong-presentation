@@ -275,9 +275,25 @@ hr{border:0;border-top:1px solid var(--line);margin:24px 0}
   width:100%;min-height:44px;padding:10px 12px;border:2px solid var(--line);border-radius:12px;
   background:#fff;color:var(--ink)
 }
+.personal-input.ok{border-color:var(--good);background:#EDF8F1}
+.personal-input.review{border-color:#8A6500;background:#FFF7D6}
+.pattern-equivalence{
+  padding:10px 12px;border-left:4px solid var(--belong-green);border-radius:0 12px 12px 0;
+  background:var(--belong-green-soft);font-weight:800
+}
+.breakfast-bank{margin:14px 0}
+.breakfast-bank>p:first-child{margin-bottom:8px}
+.food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.food-option{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;
+  border:1px solid var(--line);border-radius:11px;background:#fff;font-size:13px
+}
+.food-option b{color:var(--belong-magenta)}
+.food-option small{color:var(--muted);text-align:right}
 .dialogue{display:grid;gap:12px;margin:14px 0}
 .dialogue-turn{padding:13px 15px;border-radius:15px;background:#fff;border:1px solid var(--line)}
 .dialogue-speaker{display:block;margin-bottom:4px;color:var(--belong-green-dark);font-size:12px;font-weight:900;text-transform:uppercase}
+.dialogue-equivalence{display:block;margin-top:7px;padding-top:7px;border-top:1px solid var(--line)}
 .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
 .meta-row span{padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--muted);font-size:14px}
 
@@ -406,6 +422,11 @@ p{
   background:var(--belong-green-soft);
   color:var(--belong-magenta);
 }
+.sample-equivalence{
+  margin:-2px 0 10px;padding:9px 11px;border:1px solid #C8E5D2;border-radius:11px;
+  background:#F3FBF6;color:var(--ink);font-weight:850
+}
+.sample-equivalence .language-label{margin-bottom:3px}
 .compare{
   gap:22px;
 }
@@ -496,6 +517,11 @@ p{
   padding:18px;
   text-align:center;
   font-weight:850;
+}
+.lexical-equation .unit .big{display:block;margin:5px 0 10px}
+.unit-equivalence{
+  display:block;padding:9px 10px;border-radius:11px;background:var(--belong-green-soft);
+  color:var(--ink);font-size:clamp(16px,2.2vw,19px);font-weight:900
 }
 .lexical-equation .arrow{
   color:var(--belong-green);
@@ -747,6 +773,11 @@ p{
   color:var(--belong-magenta-dark);
   border:1px solid #C9E8D3;
 }
+.build-feedback.review{
+  background:#FFF7D6;
+  color:#604800;
+  border:1px solid #DFC86C;
+}
 @media (max-width:600px){
   .build-actions{margin-top:7px}
 }
@@ -877,6 +908,102 @@ p{
 }
 .word-pattern strong{color:var(--belong-magenta)!important}
 .word-pattern span{color:var(--belong-green-dark)}
+.word-pattern-pair{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:8px 0 12px
+}
+.word-pattern-pair .word-pattern{display:flex;margin:0;height:100%;justify-content:center}
+.word-pattern-pair .equivalence-arrow{color:var(--belong-green);font-size:24px;font-weight:950}
+.grammar-pattern-list .pattern-example{align-items:center}
+.text-equivalence{
+  font-size:clamp(19px,3vw,27px);line-height:1.5;font-weight:750;color:var(--ink);margin:5px 0 13px
+}
+
+.processing-demo{margin:18px 0}
+.processing-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.thought-path{
+  padding:17px;border:1px solid var(--line);border-radius:22px;background:#fff;
+  box-shadow:0 9px 26px rgba(70,20,48,.05)
+}
+.word-path{border-top:5px solid #9B6A22}
+.chunk-path{border-top:5px solid var(--belong-green)}
+.path-heading{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.path-heading h3{margin:0;font-size:clamp(20px,2.8vw,25px)}
+.path-number{
+  display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:50%;
+  background:var(--belong-magenta);color:#fff;font-weight:950
+}
+.path-kicker{display:block;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.thinking-scene{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:end}
+.thinker{position:relative;width:50px;height:86px}
+.thinker-head{
+  position:absolute;left:12px;top:4px;width:27px;height:27px;border:3px solid var(--belong-magenta);
+  border-radius:50%;background:var(--paper)
+}
+.thinker-body{
+  position:absolute;left:4px;bottom:0;width:43px;height:51px;border:3px solid var(--belong-magenta);
+  border-radius:24px 24px 10px 10px;background:var(--belong-pink-soft)
+}
+.thought-bubble{
+  position:relative;min-height:190px;padding:13px;border:2px solid var(--line);border-radius:24px;
+  background:#fff
+}
+.thought-bubble::before,.thought-bubble::after{
+  content:"";position:absolute;border:2px solid var(--line);border-radius:50%;background:#fff
+}
+.thought-bubble::before{left:-15px;bottom:22px;width:13px;height:13px}
+.thought-bubble::after{left:-25px;bottom:9px;width:8px;height:8px}
+.word-cloud{display:flex;flex-wrap:wrap;gap:5px}
+.literal-word-note{
+  margin:0 0 8px;color:#735019;font-size:10px;font-weight:900;letter-spacing:.04em;
+  text-transform:uppercase
+}
+.word-token{
+  padding:5px 7px;border:1px solid #D7C4CF;border-radius:8px;background:#FFF7FB;
+  color:#5A4652;font-size:11.5px;line-height:1.2
+}
+.word-token b{color:var(--belong-magenta)}
+.rule-cloud{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.rule-cloud span{
+  padding:4px 7px;border:1px dashed #9B6A22;border-radius:999px;color:#735019;
+  background:#FFF8E9;font-size:10px;font-weight:850
+}
+.chunk-cloud{display:grid;gap:8px}
+.chunk-unit{
+  display:grid;gap:3px;padding:9px 10px;border:1px solid #BFE2CB;border-radius:11px;
+  background:var(--belong-green-soft)
+}
+.chunk-unit b{color:var(--belong-magenta);font-size:14px}
+.chunk-unit small{color:var(--belong-green-dark);font-weight:850}
+.processing-output{margin-top:12px;padding:11px 12px;border-radius:13px}
+.processing-output>span{display:block;margin-bottom:4px;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.processing-output p{font-size:14px;line-height:1.4;margin:0}
+.processing-output p+p{margin-top:5px}
+.literal-output{border:1px solid #E7C7CE;background:#FFF2F4;color:#7A3340}
+.natural-output{border:1px solid #BFE2CB;background:var(--belong-green-soft);color:var(--belong-magenta-dark)}
+.fluency-flow{justify-content:center;margin:12px 0}
+.fluency-flow span{font-size:12px;padding:7px 9px}
+.slide.active .word-token{animation:word-search .38s ease both}
+.slide.active .word-token:nth-child(2){animation-delay:.07s}
+.slide.active .word-token:nth-child(3){animation-delay:.14s}
+.slide.active .word-token:nth-child(4){animation-delay:.21s}
+.slide.active .word-token:nth-child(5){animation-delay:.28s}
+.slide.active .word-token:nth-child(6){animation-delay:.35s}
+.slide.active .word-token:nth-child(7){animation-delay:.42s}
+.slide.active .word-token:nth-child(8){animation-delay:.49s}
+.slide.active .word-token:nth-child(9){animation-delay:.56s}
+.slide.active .word-token:nth-child(10){animation-delay:.63s}
+.slide.active .word-token:nth-child(11){animation-delay:.70s}
+.slide.active .word-token:nth-child(12){animation-delay:.77s}
+.slide.active .word-token:nth-child(13){animation-delay:.84s}
+.slide.active .rule-cloud{animation:thinking-rules .42s 1.08s ease both}
+.slide.active .chunk-unit{animation:chunk-assemble .5s ease both}
+.slide.active .chunk-unit:nth-child(2){animation-delay:.25s}
+.slide.active .chunk-unit:nth-child(3){animation-delay:.5s}
+.slide.active .processing-output{animation:result-reveal .45s 1.35s ease both}
+@keyframes word-search{from{opacity:0;transform:translateY(8px) rotate(-2deg)}to{opacity:1;transform:none}}
+@keyframes thinking-rules{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes chunk-assemble{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes result-reveal{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 
 .ohe-flow{justify-content:center;margin:20px 0}
 .ohe-flow span{
@@ -947,7 +1074,19 @@ p{
   .expression-equivalence{grid-template-columns:1fr}
   .expression-equivalence .equivalence-arrow{transform:rotate(90deg);text-align:center}
   .pattern-example{grid-template-columns:1fr;gap:4px;font-size:13px}
+  .word-pattern-pair{grid-template-columns:1fr;gap:5px}
+  .word-pattern-pair .equivalence-arrow{transform:rotate(90deg);text-align:center}
   .ohe-flow span{min-width:0;font-size:13px}
+  .food-grid{grid-template-columns:1fr 1fr}
+  .processing-compare{grid-template-columns:1fr;gap:12px}
+  .thought-path{padding:13px;border-radius:17px}
+  .thinking-scene{grid-template-columns:44px 1fr;gap:7px}
+  .thinker{width:42px;height:72px}
+  .thinker-head{left:10px;width:24px;height:24px}
+  .thinker-body{left:3px;width:38px;height:43px}
+  .thought-bubble{min-height:0;padding:10px;border-radius:18px}
+  .word-token{font-size:10.5px}
+  .processing-output p{font-size:13px}
   .final-slide{padding-top:20px}
   .final-brand{font-size:32px;margin-bottom:15px}
   .final-steps{gap:6px;margin:16px auto}
@@ -957,6 +1096,9 @@ p{
   .quizline .inline-input{width:44vw;max-width:170px}
   .answer-row .answer-input{width:54vw;max-width:210px}
 }
+@media (max-width:390px){
+  .food-grid{grid-template-columns:1fr}
+}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
@@ -964,6 +1106,14 @@ p{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
+  }
+  .slide.active .word-token,
+  .slide.active .rule-cloud,
+  .slide.active .chunk-unit,
+  .slide.active .processing-output{
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
   }
 }
 @media (forced-colors:active){
@@ -974,6 +1124,14 @@ p{
     outline:4px solid Highlight;
     outline-offset:4px;
   }
+  .thought-path,.thought-bubble,.word-token,.rule-cloud span,.chunk-unit,.processing-output,
+  .food-option,.sample-equivalence,.unit-equivalence{
+    background:Canvas;
+    color:CanvasText;
+    border-color:CanvasText;
+  }
+  .word-path{border-top-style:dashed}
+  .chunk-path{border-top-style:solid}
 }
 
 </style>
@@ -989,7 +1147,7 @@ p{
 <div class="counter" id="counter">Tela 1 / 27</div>
 </header>
 <main class="stage">
-<!-- 1 -->
+<!-- Tela 1 -->
 <section class="slide active">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 1</span> • Apresentação da Belong</div>
@@ -1009,7 +1167,7 @@ p{
 <p class="small muted">Avance no seu ritmo. A tela atual fica salva nesta aba.</p>
 </div>
 </section>
-<!-- 2 -->
+<!-- Tela 2 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 2</span> • Começando pelo básico</div>
@@ -1027,7 +1185,10 @@ p{
 </div>
 <p>Quando falamos em <strong>léxico mental</strong>, estamos falando dessa rede que existe na sua memória, formada por palavras, sentidos, combinações e padrões ligados uns aos outros.</p>
 </div>
-</section><section class="slide">
+</section>
+
+<!-- Tela 3 -->
+<section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 3</span> • Uma ideia importante</div>
 <h2>O que é um item lexical?</h2>
@@ -1063,7 +1224,7 @@ p{
 <p class="small muted">Mais adiante, você verá os diferentes tipos de itens lexicais descritos por Michael Lewis.</p>
 </div>
 </section>
-<!-- 3 -->
+<!-- Tela 4 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 4</span> • A abordagem</div>
@@ -1076,7 +1237,7 @@ p{
 <p>Isso não significa eliminar a gramática. Significa entender que <strong>vocabulário, padrões e gramática funcionam juntos na língua em uso</strong>.</p>
 </div>
 </section>
-<!-- 4 -->
+<!-- Tela 5 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 5</span> • De onde veio?</div>
@@ -1094,7 +1255,7 @@ p{
 <p class="small muted">Lewis reúne e desenvolve esse olhar ao longo do livro de 1993.</p>
 </div>
 </section>
-<!-- 5 -->
+<!-- Tela 6 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 6</span> • Um dos pilares da abordagem lexical</div>
@@ -1116,7 +1277,7 @@ p{
 <p class="small muted">Base no livro, pp. 34, 89 e 91 a 104.</p>
 </div>
 </section>
-<!-- 6 -->
+<!-- Tela 7 -->
 <section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 7</span> • Seu português em ação</div>
@@ -1148,7 +1309,7 @@ p{
 <p class="small muted">A comparação reconhece algumas formulações usuais de diferentes registros que cabem na frase. Elas podem mudar a nuance; uma forma não cadastrada é mantida para revisão, sem ser automaticamente tratada como erro.</p>
 </div>
 </section>
-<!-- 7 -->
+<!-- Tela 8 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 8</span> • O que aconteceu nas lacunas?</div>
@@ -1169,7 +1330,7 @@ p{
 <p class="small muted">A atividade foi criada pela Belong para demonstrar esse princípio. Base conceitual em Lewis, 1993, especialmente pp. 103 a 104.</p>
 </div>
 </section>
-<!-- 8 -->
+<!-- Tela 9 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 9</span> • O que a abordagem lexical não significa</div>
@@ -1192,7 +1353,7 @@ p{
 </div>
 </div>
 </section>
-<!-- 11 -->
+<!-- Tela 10 -->
 <section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 10</span> • Percebendo combinações — parte 1</div>
@@ -1213,7 +1374,7 @@ p{
 <p class="small muted">Algumas frases admitem mais de uma resposta natural. A lista reconhecida não é exaustiva: contexto, registro e região continuam importantes.</p>
 </div>
 </section>
-<!-- 12 -->
+<!-- Tela 11 -->
 <section class="slide fill-activity">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 11</span> • Percebendo combinações — parte 2</div>
@@ -1224,18 +1385,18 @@ p{
 <div class="answer-row">Nosso relacionamento já passou por muitos altos e <input class="answer-input" data-accepted="baixos" data-correct="baixos"/>.</div>
 <div class="answer-row">De vez em <input class="answer-input" data-accepted="quando|vez" data-correct="quando"/> eu gosto de ficar em casa.</div>
 <div class="answer-row">Se você precisar, eu posso te dar uma <input class="answer-input" data-accepted="mão|mãozinha|ajuda|ajudinha|força|forcinha|luz|dica|orientação|assistência|moral" data-suggestions="mão|mãozinha|ajuda|força" data-correct="mão"/>.</div>
-<div class="answer-row">Antes de publicar, você pode dar <input class="answer-input" data-accepted="uma olhada|uma olhadinha|uma conferida|uma lida|uma revisada|um talento" data-suggestions="uma olhada|uma olhadinha|uma revisada|um talento" data-correct="uma olhada"/> na apresentação?</div>
+<div class="answer-row">Antes de publicar, você pode dar uma <input class="answer-input" data-accepted="olhada|olhadinha|conferida|lida|revisada" data-suggestions="olhada|olhadinha|conferida|revisada" data-correct="olhada"/> na apresentação?</div>
 </div>
 <button class="action greenbtn" type="button" onclick="checkInputs(this)">Comparar respostas</button>
 <div class="feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
-<p class="small muted">Todas as opções da última frase cabem no contexto, mas não são sinônimas: <em>olhada</em>, <em>olhadinha</em>, <em>conferida</em> e <em>lida</em> focalizam examinar; <em>revisada</em> e o coloquial <em>um talento</em> focalizam revisar ou melhorar.</p>
+<p class="small muted">Todas as opções da última frase cabem no contexto, mas não são sinônimas: <em>olhada</em>, <em>olhadinha</em>, <em>conferida</em> e <em>lida</em> focalizam examinar; <em>revisada</em> focaliza revisar.</p>
 <div class="card bubble-tip">
 <p>Lewis sustenta que uma parte importante da linguagem pode ser armazenada e recuperada em unidades maiores do que uma única palavra.</p>
 </div>
 </div>
 </section>
-<!-- 13 -->
+<!-- Tela 12 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 12</span> • Do vocabulário ao léxico</div>
@@ -1246,7 +1407,8 @@ p{
 <div class="example">chegar a um <strong>acordo</strong> / chegar a um <strong>consenso</strong></div>
 <div class="example">dar uma <strong>mão</strong></div>
 <div class="example"><strong>Examinar ou checar:</strong> dar uma olhada / uma olhadinha / uma conferida / uma lida</div>
-<div class="example"><strong>Revisar ou melhorar:</strong> dar uma revisada / dar um talento <span class="small muted">(coloquial)</span></div>
+<div class="example"><strong>Revisar:</strong> dar uma revisada</div>
+<div class="example"><strong>Melhorar ou arrumar, em uso coloquial:</strong> dar um talento</div>
 <div class="example">de vez em <strong>quando</strong></div>
 <div class="example">altos e <strong>baixos</strong></div>
 </div>
@@ -1257,6 +1419,7 @@ p{
 <p class="small muted">Base no livro, pp. 89 a 95.</p>
 </div>
 </section>
+<!-- Tela 13 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 13</span> • Comparando possibilidades</div>
@@ -1266,16 +1429,17 @@ p{
 <p class="big sentence-target">Eu como pão com manteiga no café da manhã.</p>
 <p>Compare apenas a parte destacada. Qual opção você esperaria encontrar em inglês?</p>
 <div class="sentence-choices" role="group" aria-label="Escolha uma frase em inglês">
-<button class="sentence-choice" type="button" aria-pressed="false" onclick="chooseBreakfast(this,'natural')"><span lang="en">I eat bread with butter <strong>for breakfast</strong>.</span></button>
-<button class="sentence-choice" type="button" aria-pressed="false" onclick="chooseBreakfast(this,'literal')"><span lang="en">I eat bread with butter <strong>in the breakfast</strong>.</span></button>
+<button class="sentence-choice" type="button" aria-pressed="false" onclick="chooseBreakfast(this,'natural')"><span lang="en">I eat bread and butter <strong>for breakfast</strong>.</span></button>
+<button class="sentence-choice" type="button" aria-pressed="false" onclick="chooseBreakfast(this,'literal')"><span lang="en">I eat bread and butter <strong>in the breakfast</strong>.</span></button>
 </div>
 <div class="reveal" id="breakfast-feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
 <div class="card bubble-tip">
-<p>O objetivo não é concluir que toda tradução literal está errada. <span lang="en"><strong>bread with butter</strong></span>, por exemplo, pode ser natural. Aqui, o ponto de observação é a combinação <span lang="en"><strong>for breakfast</strong></span>.</p>
+<p>Neste contexto de alimentação, <span lang="en"><strong>bread and butter</strong></span> corresponde a <strong>pão com manteiga</strong>. Aqui, o ponto de observação é a combinação <span lang="en"><strong>for breakfast</strong></span>, usada para dizer o que alguém come ou bebe no café da manhã.</p>
 </div>
 </div>
 </section>
+<!-- Tela 14 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 14</span> • Um padrão reutilizável</div>
@@ -1283,25 +1447,46 @@ p{
 <p class="lead">Depois de observar um padrão, você pode manter a parte útil e variar o conteúdo.</p>
 <div class="card bubble-info">
 <p class="big" lang="en">I usually have _____ for breakfast.</p>
-<div class="examples" aria-label="Exemplos de como completar o padrão">
-<div class="example" lang="en">I usually have <strong>coffee</strong> for breakfast.</div>
-<div class="example" lang="en">I usually have <strong>eggs</strong> for breakfast.</div>
-<div class="example" lang="en">I usually have <strong>fruit</strong> for breakfast.</div>
+<p class="pattern-equivalence"><span class="language-label">Equivalência em português</span>No café da manhã, eu geralmente como ou bebo _____.</p>
+<div class="breakfast-bank" id="breakfast-instructions">
+<p><strong>Algumas respostas que o sistema reconhece</strong></p>
+<div class="food-grid" aria-label="Alimentos e bebidas reconhecidos, com equivalências em português">
+<span class="food-option"><b lang="en">coffee</b><small>café</small></span>
+<span class="food-option"><b lang="en">tea</b><small>chá</small></span>
+<span class="food-option"><b lang="en">milk</b><small>leite</small></span>
+<span class="food-option"><b lang="en">juice</b><small>suco</small></span>
+<span class="food-option"><b lang="en">bread and butter</b><small>pão com manteiga</small></span>
+<span class="food-option"><b lang="en">toast</b><small>torrada</small></span>
+<span class="food-option"><b lang="en">eggs</b><small>ovos</small></span>
+<span class="food-option"><b lang="en">fruit</b><small>fruta</small></span>
+<span class="food-option"><b lang="en">yogurt</b><small>iogurte</small></span>
+<span class="food-option"><b lang="en">cereal</b><small>cereal</small></span>
+<span class="food-option"><b lang="en">oatmeal</b><small>mingau de aveia</small></span>
+<span class="food-option"><b lang="en">pancakes</b><small>panquecas</small></span>
+</div>
+<p class="small muted">Você pode combinar opções com vírgulas e <span lang="en"><strong>and</strong></span> (“e”): <span lang="en">coffee, eggs and fruit</span>.</p>
 </div>
 <div class="personal-example">
-<label for="personal-breakfast">Digite apenas o nome de um alimento ou bebida em inglês, sem verbo
-<input class="personal-input" id="personal-breakfast" maxlength="80" autocomplete="off" placeholder="coffee, eggs, fruit..." aria-describedby="personal-feedback" lang="en"/>
+<label for="personal-breakfast">Complete a frase com sua resposta
+<input class="personal-input" id="personal-breakfast" maxlength="100" autocomplete="off" list="breakfast-suggestions" placeholder="coffee, eggs and fruit" aria-describedby="breakfast-input-help personal-feedback" lang="en"/>
 </label>
-<button class="action greenbtn" type="button" onclick="savePersonalExample(this)">Registrar meu exemplo</button>
+<span class="sr-only" id="breakfast-input-help">Digite um ou mais alimentos ou bebidas em inglês, sem verbo. Você pode combinar opções com vírgulas e com a palavra inglesa and.</span>
+<datalist id="breakfast-suggestions">
+<option value="coffee"></option><option value="tea"></option><option value="milk"></option>
+<option value="juice"></option><option value="bread and butter"></option><option value="toast"></option>
+<option value="eggs"></option><option value="fruit"></option><option value="yogurt"></option>
+<option value="cereal"></option><option value="oatmeal"></option><option value="pancakes"></option>
+</datalist>
+<button class="action greenbtn" id="save-breakfast" type="button" onclick="savePersonalExample(this)">Validar meu exemplo</button>
 </div>
 <div class="reveal" id="personal-feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
 <div class="card bubble-tip">
-<p>Esta interação não avalia se o alimento digitado está “certo”. Ela preserva uma combinação observada e convida você a experimentar um uso pessoal.</p>
+<p>O sistema reconhece uma lista demonstrativa, não todos os alimentos do mundo. Uma resposta fora da lista será preservada para revisão — não será automaticamente tratada como errada.</p>
 </div>
 </div>
 </section>
-<!-- 14 -->
+<!-- Tela 15 -->
 <section class="slide">
 <div class="wrap center">
 <div class="eyebrow"><span class="screen-num">Tela 15</span> • Chunking</div>
@@ -1318,7 +1503,7 @@ p{
 <p class="small muted">Base no livro, pp. 121 a 122 e p. 194.</p>
 </div>
 </section>
-<!-- 15 -->
+<!-- Tela 16 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 16</span> • Correspondência entre línguas</div>
@@ -1344,7 +1529,7 @@ p{
 <p class="small muted">Jogo criado pela Belong. Princípio discutido por Lewis na p. 94.</p>
 </div>
 </section>
-<!-- 16 -->
+<!-- Tela 17 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 17</span> • O co-texto muda a escolha</div>
@@ -1369,7 +1554,7 @@ p{
 <p class="small muted">Exemplos da Belong. A relação com o livro está na discussão sobre co-texto, pp. 103 a 104, e sobre correspondência entre línguas e collocations, p. 94.</p>
 </div>
 </section>
-<!-- 17 -->
+<!-- Tela 18 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 18</span> • Collocation e tradução</div>
@@ -1391,7 +1576,7 @@ p{
 <p class="small muted">Exemplos da Belong. Princípio discutido por Lewis na p. 94.</p>
 </div>
 </section>
-<!-- 18 -->
+<!-- Tela 19 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 19</span> • Tipos de item lexical</div>
@@ -1400,13 +1585,15 @@ p{
 <div class="type-card">
 <div class="type">Words</div>
 <div class="pt">palavras</div>
-<div class="sample">book</div>
+<div class="sample" lang="en">book</div>
+<div class="sample-equivalence"><span class="language-label">Equivalência frequente</span>livro</div>
 <p class="small">Uma palavra individual.</p>
 </div>
 <div class="type-card">
 <div class="type">Polywords</div>
 <div class="pt">unidades curtas de várias palavras</div>
-<div class="sample">by the way</div>
+<div class="sample" lang="en">by the way</div>
+<div class="sample-equivalence"><span class="language-label">Equivalência frequente</span>a propósito</div>
 <p class="small">Várias palavras que funcionam como uma unidade lexical.</p>
 </div>
 </div>
@@ -1416,22 +1603,25 @@ p{
 <div class="type-card">
 <div class="type">Collocations</div>
 <div class="pt">colocações</div>
-<div class="sample">prices fell</div>
+<div class="sample" lang="en">prices fell</div>
+<div class="sample-equivalence"><span class="language-label">Equivalência frequente</span>os preços caíram</div>
 <p class="small">Palavras que coocorrem de maneira característica.</p>
 </div>
 <div class="type-card">
 <div class="type">Institutionalised expressions</div>
 <div class="pt">expressões institucionalizadas</div>
-<div class="sample">Would you like to...?</div>
+<div class="sample" lang="en">Would you like to...?</div>
+<div class="sample-equivalence"><span class="language-label">Equivalência frequente</span>Você gostaria de...?</div>
 <p class="small">Expressões muito ligadas ao uso social e à interação.</p>
 </div>
 </div>
+<p class="small muted">Essas são equivalências frequentes, não traduções fixas para todos os contextos.</p>
 <div class="card bubble-tip">
 <p>Lewis ressalta que essas categorias se sobrepõem. Elas não são caixas rígidas.</p>
 </div>
 </div>
 </section>
-<!-- 19 -->
+<!-- Tela 20 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 20</span> • Collocations (colocações)</div>
@@ -1439,25 +1629,32 @@ p{
 <p class="lead">Lewis não trata collocation como um detalhe do vocabulário. Ele atribui a ela papel central na criação de significado e na organização do ensino.</p>
 <div class="lexical-equation">
 <div class="unit">
-<span class="small muted">palavra</span><br/>
-<span class="big" lang="en">decision</span><br/>decisão
+<span class="language-label">Inglês • palavra</span>
+<span class="big" lang="en">decision</span>
+<span class="unit-equivalence"><span class="language-label">Em português</span>decisão</span>
       </div>
 <div class="arrow">→</div>
 <div class="unit">
-<span class="small muted">collocation</span><br/>
-<span class="big" lang="en">make a decision</span><br/>tomar uma decisão
+<span class="language-label">Inglês • collocation</span>
+<span class="big" lang="en">make a decision</span>
+<span class="unit-equivalence"><span class="language-label">Equivalência natural</span>tomar uma decisão</span>
       </div>
 </div>
 <div class="lexical-equation">
 <div class="unit">
-<span class="small muted">palavra</span><br/>
-<span class="big" lang="en">attention</span><br/>atenção
+<span class="language-label">Inglês • palavra</span>
+<span class="big" lang="en">attention</span>
+<span class="unit-equivalence"><span class="language-label">Em português</span>atenção</span>
       </div>
 <div class="arrow">→</div>
 <div class="unit">
-<span class="small muted">collocation</span><br/>
-<span class="big" lang="en">pay attention</span><br/>prestar atenção
+<span class="language-label">Inglês • collocation</span>
+<span class="big" lang="en">pay attention</span>
+<span class="unit-equivalence"><span class="language-label">Equivalência natural</span>prestar atenção</span>
       </div>
+</div>
+<div class="card bubble-info">
+<p><span lang="en"><strong>Make a decision</strong></span> equivale a <strong>tomar uma decisão</strong>, não a “fazer uma decisão”. <span lang="en"><strong>Pay attention</strong></span> equivale a <strong>prestar atenção</strong>, não a “pagar atenção”. A combinação inteira orienta o sentido.</p>
 </div>
 <div class="card bubble-tip">
 <p>As colocações não se dividem simplesmente em “certas” e “livres”. Lewis descreve um <strong>espectro</strong> que vai de combinações mais livres até combinações muito mais fixas e previsíveis.</p>
@@ -1465,7 +1662,7 @@ p{
 <p class="small muted">Definição e espectro em Lewis, 1993, pp. 93 a 94. Exemplos didáticos da Belong.</p>
 </div>
 </section>
-<!-- 20 -->
+<!-- Tela 21 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 21</span> • Expressões institucionalizadas</div>
@@ -1483,11 +1680,11 @@ p{
 <h3 class="merged-subtitle">Uma parte pode permanecer fixa e outra variar</h3>
 <div class="card bubble-info">
 <p class="big" lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">_____?</span></p>
-<p><strong>Você gostaria de _____?</strong> O início permanece e o complemento muda:</p>
+<p><span class="pattern-fixed"><strong>Você gostaria de</strong></span> <span class="pattern-slot"><strong>_____?</strong></span> O início permanece e o complemento muda:</p>
 <div class="pattern-list">
-<div class="pattern-example"><span><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">have a coffee?</span></span><span>Você gostaria de tomar um café?</span></div>
-<div class="pattern-example"><span><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">sit down?</span></span><span>Você gostaria de se sentar?</span></div>
-<div class="pattern-example"><span><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">come with us?</span></span><span>Você gostaria de vir conosco?</span></div>
+<div class="pattern-example"><span lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">have a coffee?</span></span><span><span class="pattern-fixed">Você gostaria de</span> <span class="pattern-slot">tomar um café?</span></span></div>
+<div class="pattern-example"><span lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">sit down?</span></span><span><span class="pattern-fixed">Você gostaria de</span> <span class="pattern-slot">se sentar?</span></span></div>
+<div class="pattern-example"><span lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">come with us?</span></span><span><span class="pattern-fixed">Você gostaria de</span> <span class="pattern-slot">vir com a gente?</span></span></div>
 </div>
 </div>
 <div class="card bubble-tip">
@@ -1495,7 +1692,7 @@ p{
 </div>
 </div>
 </section>
-<!-- 21 -->
+<!-- Tela 22 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 22</span> • E a gramática?</div>
@@ -1522,16 +1719,25 @@ p{
 </div>
 </div>
 <div class="card bubble-info word-grammar-demo">
-<h3>O que é gramática da palavra?</h3>
-<p>É observar os padrões em que cada palavra costuma aparecer — as formas e estruturas que normalmente a acompanham.</p>
-<div class="word-pattern"><strong>depend</strong> <span>on</span> someone/something</div>
-<p lang="en"><em>It depends on the weather.</em></p>
-<p class="small muted">Você pode aprender e usar um padrão útil antes de compreender toda a explicação gramatical por trás dele.</p>
+<h3>A gramática que acompanha a palavra</h3>
+<p>O verbo <span lang="en"><strong>depend</strong></span> costuma vir com <span lang="en"><strong>on</strong></span> antes da pessoa ou coisa da qual algo depende. Por isso, é mais útil observar o padrão inteiro do que memorizar <span lang="en"><em>depend</em></span> sozinho.</p>
+<div class="word-pattern-pair">
+<div class="word-pattern" lang="en"><strong>depend on</strong> <span>+ someone/something</span></div>
+<div class="equivalence-arrow" aria-hidden="true">↔</div>
+<div class="word-pattern"><strong>depender de</strong> <span>+ alguém/algo</span></div>
+</div>
+<p class="small muted">No presente simples afirmativo, <span lang="en"><strong>depend</strong></span> muda para <span lang="en"><strong>depends</strong></span> com <span lang="en">he</span> (“ele”), <span lang="en">she</span> (“ela”), <span lang="en">it</span> (“isso” ou “ele/ela” para coisas) ou outro sujeito singular. Depois de <span lang="en"><strong>can</strong></span> (“pode”), usamos <span lang="en"><strong>depend</strong></span> sem <span lang="en"><strong>s</strong></span>. A ligação com <span lang="en"><strong>on</strong></span> permanece.</p>
+<div class="pattern-list grammar-pattern-list" aria-label="Exemplos do padrão depend on com equivalências em português">
+<div class="pattern-example"><span lang="en">It <span class="pattern-fixed">depends on</span> <span class="pattern-slot">the weather</span>.</span><span>Isso <span class="pattern-fixed">depende do</span> <span class="pattern-slot">tempo</span>.</span></div>
+<div class="pattern-example"><span lang="en">Children <span class="pattern-fixed">depend on</span> <span class="pattern-slot">adults</span>.</span><span>As crianças <span class="pattern-fixed">dependem dos</span> <span class="pattern-slot">adultos</span>.</span></div>
+<div class="pattern-example"><span lang="en">Success can <span class="pattern-fixed">depend on</span> <span class="pattern-slot">practice</span>.</span><span>O sucesso pode <span class="pattern-fixed">depender da</span> <span class="pattern-slot">prática</span>.</span></div>
+</div>
+<p class="small muted">Em português, <em>de</em> pode aparecer combinado com outras palavras, como em <em>do</em> e <em>dos</em>. As equivalências acima mostram o sentido em cada frase.</p>
 </div>
 <p class="small muted">Base no livro, pp. 133 a 147.</p>
 </div>
 </section>
-<!-- 22 -->
+<!-- Tela 23 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 23</span> • Gramática como habilidade receptiva</div>
@@ -1539,27 +1745,27 @@ p{
 <p class="lead">Lewis dá prioridade à gramática como habilidade receptiva: primeiro, o aluno compara a língua em uso e percebe diferenças de significado.</p>
 <div class="dialogue" aria-label="Dois diálogos para comparação">
 <div class="card bubble-info">
-<span class="dialogue-speaker">Contexto 1 • conversa sobre onde mora</span>
-<div class="dialogue-turn" lang="en"><strong>A:</strong> Where do you live?</div>
-<div class="dialogue-turn" lang="en"><strong>B:</strong> I live in Curitiba.</div>
+<span class="dialogue-speaker">Contexto 1 • residência habitual</span>
+<div class="dialogue-turn"><span lang="en"><strong>A:</strong> Where do you live?</span><span class="dialogue-equivalence"><strong>Português:</strong> Onde você mora?</span></div>
+<div class="dialogue-turn"><span lang="en"><strong>B:</strong> <span class="chunk-highlight">I live in Curitiba.</span></span><span class="dialogue-equivalence"><strong>Português:</strong> <span class="chunk-highlight">Eu moro em Curitiba.</span></span></div>
 </div>
 <div class="card bubble-info">
-<span class="dialogue-speaker">Contexto 2 • atualização sobre um projeto</span>
-<div class="dialogue-turn" lang="en"><strong>A:</strong> How is the project going?</div>
-<div class="dialogue-turn" lang="en"><strong>B:</strong> It's going well. I'm living in Curitiba until December.</div>
+<span class="dialogue-speaker">Contexto 2 • situação temporária</span>
+<div class="dialogue-turn"><span lang="en"><strong>A:</strong> Are you in Curitiba now?</span><span class="dialogue-equivalence"><strong>Português:</strong> Você está em Curitiba agora?</span></div>
+<div class="dialogue-turn"><span lang="en"><strong>B:</strong> Yes. <span class="chunk-highlight">I'm living here until December.</span></span><span class="dialogue-equivalence"><strong>Português:</strong> Sim. <span class="chunk-highlight">Estou morando aqui até dezembro.</span></span></div>
 </div>
 </div>
 <div class="card bubble-tip">
-<p><strong>Antes de revelar:</strong> qual forma apresenta Curitiba como residência habitual? Qual destaca uma situação atual e temporária?</p>
+<p><strong>Antes de revelar:</strong> compare <span lang="en"><strong>I live</strong></span> (“eu moro”) e <span lang="en"><strong>I'm living</strong></span> (“estou morando”). Qual apresenta Curitiba como residência habitual? Qual destaca uma situação atual e temporária?</p>
 <button class="action greenbtn" type="button" aria-expanded="false" aria-controls="grammar-hypothesis" onclick="revealExisting(this)">Ver uma hipótese provisória</button>
 <div class="reveal" id="grammar-hypothesis" aria-live="polite" aria-atomic="true">
-<p><span lang="en"><strong>I live in Curitiba</strong></span> apresenta a residência como habitual nesse diálogo. <span lang="en"><strong>I'm living in Curitiba until December</strong></span> destaca uma situação temporária.</p>
+<p><span lang="en"><strong>I live in Curitiba</strong></span> — “Eu moro em Curitiba” — apresenta a residência como habitual nesse diálogo. <span lang="en"><strong>I'm living here until December</strong></span> — “Estou morando aqui até dezembro” — destaca uma situação temporária.</p>
 <p class="small muted">Essa interpretação é sustentada pelos contextos apresentados; não deve ser transformada em regra absoluta para toda ocorrência dessas formas.</p>
 </div>
 </div>
 </div>
 </section>
-<!-- 23 -->
+<!-- Tela 24 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 24</span> • Como isso aparece nas aulas</div>
@@ -1581,7 +1787,7 @@ p{
 <p class="small muted">Base no livro, princípios iniciais e pp. 149 a 163.</p>
 </div>
 </section>
-<!-- 24 -->
+<!-- Tela 25 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 25</span> • O que vamos fazer nas aulas</div>
@@ -1589,7 +1795,11 @@ p{
 <p class="lead">Lewis trata textos não apenas como conteúdo para compreensão, mas como uma fonte da qual o aluno pode retirar itens lexicais.</p>
 <div class="card bubble-info">
 <p class="small muted">Minitexto criado para esta apresentação</p>
+<span class="language-label">Inglês</span>
 <p class="quote" lang="en">I was <span class="chunk-highlight">running late</span>, so I <span class="chunk-highlight">grabbed a coffee</span> <span class="chunk-highlight">on the way</span> and <span class="chunk-highlight">caught the next bus</span>.</p>
+<span class="language-label">Equivalência natural em português</span>
+<p class="text-equivalence">Eu estava <span class="chunk-highlight">atrasado</span>, então <span class="chunk-highlight">comprei um café</span> <span class="chunk-highlight">no caminho</span> e <span class="chunk-highlight">peguei o próximo ônibus</span>.</p>
+<p class="small muted">Os destaques ligam equivalências de sentido neste contexto, não traduções isoladas de cada palavra.</p>
 <p>Além de compreender a situação, o aluno pode observar e registrar combinações úteis sem separar as palavras que funcionam juntas.</p>
 </div>
 <div class="flow">
@@ -1609,24 +1819,79 @@ p{
 <p class="small muted">Base no livro, pp. 115 a 132 e 193 a 195.</p>
 </div>
 </section>
-<!-- 25 -->
+<!-- Tela 26 -->
 <section class="slide">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 26</span> • O objetivo</div>
-<h2>Mais poder comunicativo</h2>
-<p class="lead">Lewis afirma que linguagem bem-sucedida é um conceito mais amplo do que linguagem apenas correta.</p>
-<div class="card bubble-info">
-<p>Isso ajuda a explicar a importância dada a um léxico amplo, às collocations, à compreensão de padrões e à fluência.</p>
+<h2>Chunks podem reduzir o trabalho de montar a frase na hora</h2>
+<p class="lead">Com palavras isoladas, o aluno precisa escolher sentidos, organizar a ordem e pensar em regras enquanto fala. Com chunks já observados e praticados, pode recuperar unidades maiores que carregam significado e parte da estrutura.</p>
+<figure class="processing-demo" aria-labelledby="processing-caption" aria-describedby="processing-explanation">
+<figcaption class="sr-only" id="processing-caption">Comparação entre montar uma frase palavra por palavra e recuperá-la por chunks.</figcaption>
+<div class="processing-compare">
+<article class="thought-path word-path">
+<div class="path-heading"><span class="path-number">1</span><div><span class="path-kicker">Mais montagem durante a fala</span><h3>Palavra por palavra</h3></div></div>
+<div class="thinking-scene">
+<div class="thinker" aria-hidden="true"><span class="thinker-head"></span><span class="thinker-body"></span></div>
+<div class="thought-bubble">
+<p class="sr-only">A pessoa tenta combinar escolhas literais isoladas: <span lang="en">by</span>, por; <span lang="en">the</span>, o; <span lang="en">way</span>, caminho; <span lang="en">I'll</span>, eu vou; <span lang="en">get</span>, pegar; <span lang="en">in</span>, em; <span lang="en">touch</span>, toque; <span lang="en">with</span>, com; <span lang="en">you</span>, você; <span lang="en">as</span>, como; <span lang="en">soon</span>, logo; <span lang="en">as</span>, como; <span lang="en">possible</span>, possível. Também pensa em ordem, preposição e tempo verbal.</p>
+<p class="literal-word-note">Uma escolha literal possível, sem contexto</p>
+<div class="word-cloud" aria-hidden="true">
+<span class="word-token"><b lang="en">By</b> → por</span>
+<span class="word-token"><b lang="en">the</b> → o</span>
+<span class="word-token"><b lang="en">way</b> → caminho</span>
+<span class="word-token"><b lang="en">I'll</b> → eu vou</span>
+<span class="word-token"><b lang="en">get</b> → pegar</span>
+<span class="word-token"><b lang="en">in</b> → em</span>
+<span class="word-token"><b lang="en">touch</b> → toque</span>
+<span class="word-token"><b lang="en">with</b> → com</span>
+<span class="word-token"><b lang="en">you</b> → você</span>
+<span class="word-token"><b lang="en">as</b> → como</span>
+<span class="word-token"><b lang="en">soon</b> → logo</span>
+<span class="word-token"><b lang="en">as</b> → como</span>
+<span class="word-token"><b lang="en">possible</b> → possível</span>
 </div>
-<div class="merged-divider"></div>
-<h3 class="merged-subtitle">Construir um repertório cada vez mais disponível</h3>
-<div class="card bubble-tip">
-<p>A proposta busca ampliar o repertório de itens lexicais que o aluno reconhece, compreende e recupera, enquanto refina sua percepção de padrões gramaticais.</p>
+<div class="rule-cloud" aria-hidden="true"><span>ordem?</span><span>preposição?</span><span>tempo verbal?</span></div>
 </div>
-<p class="small muted">Base no livro, princípios iniciais; pp. 105 a 114 e 133 a 163.</p>
+</div>
+<div class="processing-output literal-output">
+<span>Resultado literal inadequado</span>
+<p>“Por o caminho, eu vou pegar em toque com você como logo como possível.”</p>
+</div>
+<p class="small muted">As equivalências isoladas são aproximadas e aparecem apenas para evidenciar o problema da tradução palavra por palavra.</p>
+</article>
+<article class="thought-path chunk-path">
+<div class="path-heading"><span class="path-number">2</span><div><span class="path-kicker">Menos unidades para combinar</span><h3>Com chunks</h3></div></div>
+<div class="thinking-scene">
+<div class="thinker" aria-hidden="true"><span class="thinker-head"></span><span class="thinker-body"></span></div>
+<div class="thought-bubble">
+<p class="sr-only">A pessoa recupera três unidades maiores: <span lang="en">By the way</span>, a propósito; <span lang="en">I'll get in touch with you</span>, entrarei em contato com você; <span lang="en">as soon as possible</span>, o quanto antes.</p>
+<div class="chunk-cloud" aria-hidden="true">
+<span class="chunk-unit"><b lang="en">By the way</b><small>A propósito</small></span>
+<span class="chunk-unit"><b lang="en">I'll get in touch with you</b><small>Entrarei em contato com você</small></span>
+<span class="chunk-unit"><b lang="en">as soon as possible</b><small>o quanto antes</small></span>
+</div>
+</div>
+</div>
+<div class="processing-output natural-output">
+<span>Frase formada com sentido</span>
+<p lang="en">By the way, I'll get in touch with you as soon as possible.</p>
+<p>“A propósito, entrarei em contato com você o quanto antes.”</p>
+</div>
+<p class="small muted">Os blocos são uma simplificação visual: padrões podem se flexionar e se sobrepor quando entram em uma frase.</p>
+</article>
+</div>
+</figure>
+<div class="card bubble-tip" id="processing-explanation">
+<p><strong>Como isso pode ajudar a falar com mais fluidez?</strong> Quando essas combinações são revisitadas, recuperadas e usadas em novos contextos, elas podem exigir menos decisões no momento da fala. Isso pode reduzir pausas e liberar mais atenção para a mensagem.</p>
+<div class="flow fluency-flow" aria-label="Etapas para tornar chunks disponíveis na fala">
+<span>observar</span><b>→</b><span>praticar</span><b>→</b><span>recuperar</span><b>→</b><span>combinar</span><b>→</b><span>falar com menos esforço</span>
+</div>
+<p class="small"><strong>Chunks não eliminam a gramática:</strong> eles já incorporam parte de seus padrões. O ganho de fluência depende de exposição, repetição, recuperação e uso — não acontece automaticamente.</p>
+</div>
+<p class="small muted">Animação e síntese causal da Belong, inspiradas na discussão de Lewis sobre chunks, léxico e fluência; ver princípios iniciais e pp. 105 a 114 e 133 a 163.</p>
 </div>
 </section>
-<!-- 26 -->
+<!-- Tela 27 -->
 <section class="slide final-slide">
 <div class="wrap center">
 <div class="eyebrow"><span class="screen-num">Tela 27</span> • Resumo e próximo passo</div>
@@ -1957,9 +2222,140 @@ function chooseBreakfast(btn,choice){
   requestAnimationFrame(()=>{
     feedback.innerHTML=natural
       ? '<div class="build-feedback success"><strong>Esta é a opção esperada neste contexto.</strong> Em inglês, <span lang="en"><strong>for breakfast</strong></span> é a combinação usual para indicar o que se come ou bebe no café da manhã.</div>'
-      : '<div class="build-feedback discovery"><strong>Compare com uma combinação mais usual:</strong> <span lang="en">I eat bread with butter <strong>for breakfast</strong>.</span> O foco aqui está em <span lang="en"><strong>for breakfast</strong></span>, não em condenar toda correspondência literal.</div>';
+      : '<div class="build-feedback discovery"><strong>Compare com uma combinação mais usual:</strong> <span lang="en">I eat bread and butter <strong>for breakfast</strong>.</span> Em português: “Eu como pão com manteiga no café da manhã”. O foco está em <span lang="en"><strong>for breakfast</strong></span>.</div>';
     updateScrollHint(slide);
   });
+}
+
+const breakfastVocabulary=new Map([
+  ['coffee',{canonical:'coffee',pt:'café'}],
+  ['tea',{canonical:'tea',pt:'chá'}],
+  ['milk',{canonical:'milk',pt:'leite'}],
+  ['juice',{canonical:'juice',pt:'suco'}],
+  ['orange juice',{canonical:'orange juice',pt:'suco de laranja'}],
+  ['apple juice',{canonical:'apple juice',pt:'suco de maçã'}],
+  ['water',{canonical:'water',pt:'água'}],
+  ['hot chocolate',{canonical:'hot chocolate',pt:'chocolate quente'}],
+  ['mate',{canonical:'mate',pt:'mate'}],
+  ['bread',{canonical:'bread',pt:'pão'}],
+  ['butter',{canonical:'butter',pt:'manteiga'}],
+  ['bread and butter',{canonical:'bread and butter',pt:'pão com manteiga'}],
+  ['bread & butter',{canonical:'bread and butter',pt:'pão com manteiga'}],
+  ['bread with butter',{canonical:'bread and butter',pt:'pão com manteiga'}],
+  ['toast',{canonical:'toast',pt:'torrada'}],
+  ['toast with butter',{canonical:'toast with butter',pt:'torrada com manteiga'}],
+  ['buttered toast',{canonical:'buttered toast',pt:'torrada com manteiga'}],
+  ['toast with cheese',{canonical:'toast with cheese',pt:'torrada com queijo'}],
+  ['egg',{canonical:'an egg',pt:'um ovo'}],
+  ['eggs',{canonical:'eggs',pt:'ovos'}],
+  ['scrambled eggs',{canonical:'scrambled eggs',pt:'ovos mexidos'}],
+  ['fried eggs',{canonical:'fried eggs',pt:'ovos fritos'}],
+  ['boiled eggs',{canonical:'boiled eggs',pt:'ovos cozidos'}],
+  ['fruit',{canonical:'fruit',pt:'fruta'}],
+  ['fruits',{canonical:'fruit',pt:'frutas'}],
+  ['banana',{canonical:'a banana',pt:'uma banana'}],
+  ['bananas',{canonical:'bananas',pt:'bananas'}],
+  ['apple',{canonical:'an apple',pt:'uma maçã'}],
+  ['apples',{canonical:'apples',pt:'maçãs'}],
+  ['papaya',{canonical:'papaya',pt:'mamão'}],
+  ['berries',{canonical:'berries',pt:'frutas vermelhas'}],
+  ['yogurt',{canonical:'yogurt',pt:'iogurte'}],
+  ['yoghurt',{canonical:'yogurt',pt:'iogurte'}],
+  ['cereal',{canonical:'cereal',pt:'cereal'}],
+  ['cereal with milk',{canonical:'cereal with milk',pt:'cereal com leite'}],
+  ['oatmeal',{canonical:'oatmeal',pt:'mingau de aveia'}],
+  ['oats',{canonical:'oats',pt:'aveia'}],
+  ['porridge',{canonical:'porridge',pt:'mingau'}],
+  ['cheese',{canonical:'cheese',pt:'queijo'}],
+  ['ham',{canonical:'ham',pt:'presunto'}],
+  ['ham and cheese',{canonical:'ham and cheese',pt:'presunto e queijo'}],
+  ['bacon',{canonical:'bacon',pt:'bacon'}],
+  ['sausage',{canonical:'sausage',pt:'linguiça'}],
+  ['sausages',{canonical:'sausages',pt:'linguiças'}],
+  ['pancake',{canonical:'a pancake',pt:'uma panqueca'}],
+  ['pancakes',{canonical:'pancakes',pt:'panquecas'}],
+  ['waffle',{canonical:'a waffle',pt:'um waffle'}],
+  ['waffles',{canonical:'waffles',pt:'waffles'}],
+  ['sandwich',{canonical:'a sandwich',pt:'um sanduíche'}],
+  ['sandwiches',{canonical:'sandwiches',pt:'sanduíches'}],
+  ['croissant',{canonical:'a croissant',pt:'um croissant'}],
+  ['croissants',{canonical:'croissants',pt:'croissants'}],
+  ['muffin',{canonical:'a muffin',pt:'um muffin'}],
+  ['muffins',{canonical:'muffins',pt:'muffins'}],
+  ['granola',{canonical:'granola',pt:'granola'}],
+  ['omelet',{canonical:'an omelet',pt:'uma omelete'}],
+  ['omelette',{canonical:'an omelet',pt:'uma omelete'}],
+  ['omelets',{canonical:'omelets',pt:'omeletes'}],
+  ['omelettes',{canonical:'omelets',pt:'omeletes'}],
+  ['smoothie',{canonical:'a smoothie',pt:'uma vitamina de frutas'}],
+  ['smoothies',{canonical:'smoothies',pt:'vitaminas de frutas'}],
+  ['biscuit',{canonical:'a biscuit',pt:'um biscoito'}],
+  ['biscuits',{canonical:'biscuits',pt:'biscoitos'}],
+  ['hash browns',{canonical:'hash browns',pt:'batatas raladas douradas'}],
+  ['coffee with milk',{canonical:'coffee with milk',pt:'café com leite'}],
+  ['avocado toast',{canonical:'avocado toast',pt:'torrada com abacate'}],
+  ['bagel',{canonical:'a bagel',pt:'um bagel'}],
+  ['bagels',{canonical:'bagels',pt:'bagels'}],
+  ['tapioca',{canonical:'tapioca',pt:'tapioca'}],
+  ['acai',{canonical:'açaí',pt:'açaí'}]
+]);
+
+function normalizeBreakfast(value){
+  return (value||'')
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .replace(/[.!?;:]+$/g,'')
+    .replace(/\s+/g,' ');
+}
+
+function withoutBreakfastArticle(value){
+  return value.replace(/^(?:a|an|some)\s+/,'').trim();
+}
+
+function joinNaturally(values){
+  const unique=[...new Set(values)];
+  if(unique.length<2) return unique[0]||'';
+  if(unique.length===2) return `${unique[0]} and ${unique[1]}`;
+  return `${unique.slice(0,-1).join(', ')} and ${unique[unique.length-1]}`;
+}
+
+function joinPortuguese(values){
+  const unique=[...new Set(values)];
+  if(unique.length<2) return unique[0]||'';
+  if(unique.length===2) return `${unique[0]} e ${unique[1]}`;
+  return `${unique.slice(0,-1).join(', ')} e ${unique[unique.length-1]}`;
+}
+
+function classifyBreakfastPart(value,recognized,unknown){
+  const part=withoutBreakfastArticle(value.trim());
+  if(!part) return;
+  const exact=breakfastVocabulary.get(part);
+  if(exact){
+    recognized.push(exact);
+    return;
+  }
+  const pieces=part.split(/\s*(?:&|\band\b)\s*/).filter(Boolean);
+  if(pieces.length>1){
+    pieces.forEach(piece=>classifyBreakfastPart(piece,recognized,unknown));
+    return;
+  }
+  unknown.push(part);
+}
+
+function validateBreakfast(value){
+  const normalized=withoutBreakfastArticle(normalizeBreakfast(value))
+    .replace(/,\s*(?:and|&)\s+/g,', ');
+  if(!normalized) return {recognized:[],unknown:[]};
+
+  const exact=breakfastVocabulary.get(normalized);
+  if(exact) return {recognized:[exact],unknown:[]};
+
+  const recognized=[];
+  const unknown=[];
+  normalized.split(/\s*[,;]\s*/).forEach(part=>classifyBreakfastPart(part,recognized,unknown));
+  return {recognized,unknown};
 }
 
 function savePersonalExample(btn){
@@ -1968,28 +2364,45 @@ function savePersonalExample(btn){
   const panel=document.createElement('div');
   panel.className='build-feedback';
   feedback.replaceChildren();
+  input.classList.remove('ok','review');
 
   if(!input.value.trim()){
     input.setAttribute('aria-invalid','true');
-    panel.classList.add('discovery');
-    panel.textContent='Digite um exemplo em inglês para experimentar o padrão.';
+    input.classList.add('review');
+    panel.classList.add('review');
+    panel.textContent='Digite ao menos um alimento ou bebida em inglês. Você pode escolher uma opção da lista acima.';
   }else{
+    const result=validateBreakfast(input.value);
     input.setAttribute('aria-invalid','false');
-    panel.classList.add('discovery');
     const label=document.createElement('strong');
-    label.textContent='Seu exemplo com o padrão da atividade:';
     const sentence=document.createElement('p');
     sentence.lang='en';
-    sentence.textContent=`I usually have ${input.value.trim()} for breakfast.`;
     const note=document.createElement('p');
     note.className='small muted';
-    note.textContent='O sistema inseriu seu texto no padrão, mas não avaliou a correção. Compare com os exemplos acima.';
+
+    if(!result.unknown.length && result.recognized.length){
+      const canonical=joinNaturally(result.recognized.map(entry=>entry.canonical));
+      const meanings=joinPortuguese(result.recognized.map(entry=>entry.pt));
+      input.classList.add('ok');
+      panel.classList.add('success');
+      label.textContent='Resposta reconhecida na lista demonstrativa.';
+      sentence.textContent=`I usually have ${canonical} for breakfast.`;
+      note.textContent=`Equivalência dos itens reconhecidos: ${meanings}. Outras respostas também podem ser naturais.`;
+    }else{
+      input.classList.add('review');
+      panel.classList.add('review');
+      label.textContent='Resposta preservada para revisão.';
+      sentence.textContent=`I usually have ${input.value.trim()} for breakfast.`;
+      const unknown=result.unknown.length?`“${result.unknown.join('”, “')}”`:'essa formulação';
+      note.textContent=`O sistema ainda não reconhece ${unknown} na lista automática. Isso não significa que a resposta esteja errada; compare com o banco de palavras ou confirme com o professor.`;
+    }
     panel.append(label,sentence,note);
   }
 
   feedback.classList.add('show');
   requestAnimationFrame(()=>{
     feedback.appendChild(panel);
+    if(!input.value.trim()) input.focus({preventScroll:true});
     updateScrollHint(btn.closest('.slide'));
   });
 }
@@ -2010,9 +2423,9 @@ const carregarChoices = new Set();
 
 function chooseCarregar(btn, word){
   const contexts={
-    carry:'quando a ideia é levar algo: <span lang="en"><em>carry a bag</em></span>.',
-    charge:'quando a ideia é recarregar uma bateria: <span lang="en"><em>charge a phone</em></span>.',
-    load:'quando a ideia é colocar uma carga: <span lang="en"><em>load a truck</em></span>.'
+    carry:'quando a ideia é levar algo: <span lang="en"><em>carry a bag</em></span> — “levar uma bolsa”.',
+    charge:'quando a ideia é recarregar uma bateria: <span lang="en"><em>charge a phone</em></span> — “carregar um celular”.',
+    load:'quando a ideia é colocar uma carga: <span lang="en"><em>load a truck</em></span> — “carregar um caminhão”.'
   };
   if(!contexts[word]) return;
 
@@ -2108,7 +2521,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     '.type-card .type',
     '.type-card .sample',
     '.translation-chunk strong',
-    '.word-pattern',
     '.expression-equivalence .language-block:first-child strong',
     '.pattern-example > span:first-child'
   ].join(',')).forEach(element=>element.setAttribute('lang','en'));
@@ -2122,9 +2534,15 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   document.getElementById('personal-breakfast')?.addEventListener('input',event=>{
     event.currentTarget.removeAttribute('aria-invalid');
+    event.currentTarget.classList.remove('ok','review');
     const feedback=document.getElementById('personal-feedback');
     feedback.classList.remove('show');
     feedback.replaceChildren();
+  });
+  document.getElementById('personal-breakfast')?.addEventListener('keydown',event=>{
+    if(event.key!=='Enter') return;
+    event.preventDefault();
+    document.getElementById('save-breakfast')?.click();
   });
 
   show(current,{focusHeading:false});
