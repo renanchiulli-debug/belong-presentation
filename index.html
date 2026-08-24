@@ -962,6 +962,7 @@ p{
   color:#5A4652;font-size:11.5px;line-height:1.2
 }
 .word-token b{color:var(--belong-magenta)}
+.word-token.grammar-token{border-style:dashed;border-color:#9B6A22;background:#FFF8E9;color:#735019}
 .rule-cloud{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .rule-cloud span{
   padding:4px 7px;border:1px dashed #9B6A22;border-radius:999px;color:#735019;
@@ -995,11 +996,12 @@ p{
 .slide.active .word-token:nth-child(11){animation-delay:.70s}
 .slide.active .word-token:nth-child(12){animation-delay:.77s}
 .slide.active .word-token:nth-child(13){animation-delay:.84s}
-.slide.active .rule-cloud{animation:thinking-rules .42s 1.08s ease both}
+.slide.active .word-token:nth-child(14){animation-delay:.91s}
+.slide.active .rule-cloud{animation:thinking-rules .42s 1.15s ease both}
 .slide.active .chunk-unit{animation:chunk-assemble .5s ease both}
 .slide.active .chunk-unit:nth-child(2){animation-delay:.25s}
 .slide.active .chunk-unit:nth-child(3){animation-delay:.5s}
-.slide.active .processing-output{animation:result-reveal .45s 1.35s ease both}
+.slide.active .processing-output{animation:result-reveal .45s 1.42s ease both}
 @keyframes word-search{from{opacity:0;transform:translateY(8px) rotate(-2deg)}to{opacity:1;transform:none}}
 @keyframes thinking-rules{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 @keyframes chunk-assemble{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
@@ -1833,31 +1835,32 @@ p{
 <div class="thinking-scene">
 <div class="thinker" aria-hidden="true"><span class="thinker-head"></span><span class="thinker-body"></span></div>
 <div class="thought-bubble">
-<p class="sr-only">A pessoa tenta combinar escolhas literais isoladas: <span lang="en">by</span>, por; <span lang="en">the</span>, o; <span lang="en">way</span>, caminho; <span lang="en">I'll</span>, eu vou; <span lang="en">get</span>, pegar; <span lang="en">in</span>, em; <span lang="en">touch</span>, toque; <span lang="en">with</span>, com; <span lang="en">you</span>, você; <span lang="en">as</span>, como; <span lang="en">soon</span>, logo; <span lang="en">as</span>, como; <span lang="en">possible</span>, possível. Também pensa em ordem, preposição e tempo verbal.</p>
-<p class="literal-word-note">Uma escolha literal possível, sem contexto</p>
+<p class="sr-only">A pessoa recupera palavras isoladas que aparecem de propósito fora da ordem da frase: <span lang="en">touch</span>, toque; <span lang="en">will</span>, identificado como auxiliar de futuro nas aulas tradicionais; <span lang="en">way</span>, caminho; <span lang="en">you</span>, você; <span lang="en">as</span>, como; <span lang="en">I</span>, eu; <span lang="en">in</span>, em; <span lang="en">possible</span>, possível; <span lang="en">by</span>, por; <span lang="en">get</span>, pegar; <span lang="en">the</span>, o; <span lang="en">soon</span>, logo; <span lang="en">with</span>, com; <span lang="en">as</span>, como. Depois, tenta descobrir a ordem usando regras de gramática.</p>
+<p class="literal-word-note">Palavras isoladas, ainda sem ordem</p>
 <div class="word-cloud" aria-hidden="true">
-<span class="word-token"><b lang="en">By</b> → por</span>
-<span class="word-token"><b lang="en">the</b> → o</span>
-<span class="word-token"><b lang="en">way</b> → caminho</span>
-<span class="word-token"><b lang="en">I'll</b> → eu vou</span>
-<span class="word-token"><b lang="en">get</b> → pegar</span>
-<span class="word-token"><b lang="en">in</b> → em</span>
 <span class="word-token"><b lang="en">touch</b> → toque</span>
-<span class="word-token"><b lang="en">with</b> → com</span>
+<span class="word-token grammar-token"><b lang="en">will</b> → “auxiliar de futuro”</span>
+<span class="word-token"><b lang="en">way</b> → caminho</span>
 <span class="word-token"><b lang="en">you</b> → você</span>
 <span class="word-token"><b lang="en">as</b> → como</span>
-<span class="word-token"><b lang="en">soon</b> → logo</span>
-<span class="word-token"><b lang="en">as</b> → como</span>
+<span class="word-token"><b lang="en">I</b> → eu</span>
+<span class="word-token"><b lang="en">in</b> → em</span>
 <span class="word-token"><b lang="en">possible</b> → possível</span>
+<span class="word-token"><b lang="en">By</b> → por</span>
+<span class="word-token"><b lang="en">get</b> → pegar</span>
+<span class="word-token"><b lang="en">the</b> → o</span>
+<span class="word-token"><b lang="en">soon</b> → logo</span>
+<span class="word-token"><b lang="en">with</b> → com</span>
+<span class="word-token"><b lang="en">as</b> → como</span>
 </div>
-<div class="rule-cloud" aria-hidden="true"><span>ordem?</span><span>preposição?</span><span>tempo verbal?</span></div>
+<div class="rule-cloud" aria-hidden="true"><span>qual vem primeiro?</span><span>onde entra o auxiliar?</span><span>qual preposição?</span><span>qual tempo verbal?</span></div>
 </div>
 </div>
 <div class="processing-output literal-output">
 <span>Resultado literal inadequado</span>
 <p>“Por o caminho, eu vou pegar em toque com você como logo como possível.”</p>
 </div>
-<p class="small muted">As equivalências isoladas são aproximadas e aparecem apenas para evidenciar o problema da tradução palavra por palavra.</p>
+<p class="small muted">As equivalências isoladas são aproximadas e aparecem apenas para evidenciar o problema da tradução palavra por palavra. “Auxiliar de futuro” reproduz um rótulo didático tradicional: aqui ele representa a regra que o aluno tenta acionar, não uma definição completa de <span lang="en">will</span>.</p>
 </article>
 <article class="thought-path chunk-path">
 <div class="path-heading"><span class="path-number">2</span><div><span class="path-kicker">Menos unidades para combinar</span><h3>Com chunks</h3></div></div>
@@ -1877,7 +1880,7 @@ p{
 <p lang="en">By the way, I'll get in touch with you as soon as possible.</p>
 <p>“A propósito, entrarei em contato com você o quanto antes.”</p>
 </div>
-<p class="small muted">Os blocos são uma simplificação visual: padrões podem se flexionar e se sobrepor quando entram em uma frase.</p>
+<p class="small muted"><span lang="en"><strong>I'll</strong></span> é a forma contraída de <span lang="en"><strong>I will</strong></span>. Os blocos são uma simplificação visual: padrões podem se flexionar e se sobrepor quando entram em uma frase.</p>
 </article>
 </div>
 </figure>
