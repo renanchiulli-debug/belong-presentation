@@ -148,9 +148,25 @@ input:focus-visible{
   display:inline-block;min-width:72px;max-width:150px;border:0;border-bottom:2px solid var(--belong-magenta);
   background:transparent;color:var(--belong-magenta);font-weight:850;text-align:center;padding:2px 5px
 }
+.quizline .inline-input{width:clamp(110px,20vw,190px);max-width:190px}
+.answer-row .answer-input{width:clamp(130px,30vw,240px);max-width:240px}
 .inline-input.ok,.answer-input.ok{border-color:var(--good);background:#EDF8F1}
 .inline-input.no,.answer-input.no{border-color:var(--bad);background:#FFF0F2}
 .inline-input.review,.answer-input.review{border-color:#8A6500;background:#FFF7D6}
+.inline-input.autofill-attention,.answer-input.autofill-attention{
+  outline:3px solid #8A6500;
+  outline-offset:3px;
+  box-shadow:0 0 0 6px rgba(255,204,74,.38);
+  animation:autofill-pulse .7s ease 2;
+}
+.inline-input.autofill-attention:focus-visible,.answer-input.autofill-attention:focus-visible{
+  outline:4px solid #087B37;
+  outline-offset:4px;
+}
+@keyframes autofill-pulse{
+  0%,100%{box-shadow:0 0 0 3px rgba(255,204,74,.25)}
+  50%{box-shadow:0 0 0 8px rgba(255,204,74,.55)}
+}
 .quizline{font-size:clamp(19px,3vw,27px);line-height:1.72}
 .answer-row{
   background:white;border:1px solid var(--line);border-radius:16px;padding:15px 17px;
@@ -938,6 +954,8 @@ p{
   .final-step{padding:12px 5px;font-size:clamp(11px,3vw,13px);border-radius:13px}
   .final-tagline{font-size:23px!important}
   .final-cta{font-size:15px;padding:12px 20px}
+  .quizline .inline-input{width:44vw;max-width:170px}
+  .answer-row .answer-input{width:54vw;max-width:210px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -946,6 +964,15 @@ p{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
+  }
+}
+@media (forced-colors:active){
+  .inline-input.autofill-attention,.answer-input.autofill-attention{
+    outline:2px dashed Highlight;
+  }
+  .inline-input.autofill-attention:focus-visible,.answer-input.autofill-attention:focus-visible{
+    outline:4px solid Highlight;
+    outline-offset:4px;
   }
 }
 
@@ -1095,29 +1122,30 @@ p{
 <div class="eyebrow"><span class="screen-num">Tela 7</span> • Seu português em ação</div>
 <h2>Complete como você falaria naturalmente</h2>
 <div class="card bubble-tip">
-<p><strong>Preencha as lacunas sem procurar uma regra.</strong> Depois, compare suas escolhas com algumas possibilidades previstas. A atividade é demonstrativa e não bloqueia a apresentação.</p>
+<p><strong>Preencha as lacunas sem procurar uma regra.</strong> Depois, compare suas escolhas com algumas possibilidades previstas. Se você avançar deixando algum campo vazio, inseriremos uma resposta-modelo para comparação antes de seguir.</p>
 </div>
 <div class="card bubble-info">
 <p class="quizline">
         Às sete da manhã, Pedro saiu
         <input class="inline-input" data-accepted="de|da" data-correct="de"/> casa
         com o irmão e foi
-        <input class="inline-input" data-accepted="para|até" data-correct="para"/> o trabalho.
+        <input class="inline-input" data-accepted="para o|pro|pra o|ao|até o" data-correct="para o"/> trabalho.
       </p>
 <p class="quizline">
         Ele foi
-        <input class="inline-input" data-accepted="de|no" data-correct="de"/> ônibus e passou
-        <input class="inline-input" data-accepted="por" data-correct="por"/> uma avenida movimentada antes de chegar.
+        <input class="inline-input" data-accepted="de|no|num" data-correct="de"/> ônibus e passou
+        <input class="inline-input" data-accepted="por uma|pela|numa" data-correct="por uma"/> avenida movimentada antes de chegar.
       </p>
 <p class="quizline">
         No almoço, sentou-se
         com Ana e conversou
-        <input class="inline-input" data-accepted="com" data-correct="com"/> ela
-        <input class="inline-input" data-accepted="sobre" data-correct="sobre"/> a viagem.
+        <input class="inline-input" data-accepted="com|junto com" data-correct="com"/> ela
+        <input class="inline-input" data-accepted="sobre a|a respeito da|acerca da" data-correct="sobre a"/> viagem.
       </p>
 <button class="action greenbtn" type="button" onclick="checkInputs(this)">Comparar respostas</button>
 <div class="feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
+<p class="small muted">A comparação reconhece algumas formulações usuais de diferentes registros que cabem na frase. Elas podem mudar a nuance; uma forma não cadastrada é mantida para revisão, sem ser automaticamente tratada como erro.</p>
 </div>
 </section>
 <!-- 7 -->
@@ -1176,13 +1204,13 @@ p{
 <span class="activity-part">Parte 1 de 2</span>
 <div class="examples">
 <div class="answer-row">Eu estava atrasado e cheguei em cima da <input class="answer-input" data-accepted="hora" data-correct="hora"/>.</div>
-<div class="answer-row">Ela estava distraída e não prestou <input class="answer-input" data-accepted="atenção|atencao" data-correct="atenção"/> no que eu disse.</div>
-<div class="answer-row">Depois de várias reuniões, finalmente chegamos a um <input class="answer-input" data-accepted="acordo|consenso|entendimento" data-correct="acordo"/>.</div>
+<div class="answer-row">Ela estava distraída e não prestou <input class="answer-input" data-accepted="atenção|muita atenção|nenhuma atenção|a mínima atenção|a menor atenção|atenção alguma" data-suggestions="atenção|nenhuma atenção|a mínima atenção" data-correct="atenção"/> no que eu disse.</div>
+<div class="answer-row">Depois de várias reuniões, finalmente chegamos a um <input class="answer-input" data-accepted="acordo|consenso|entendimento|denominador comum|meio-termo|meio termo|acerto|combinado" data-suggestions="acordo|consenso|meio-termo|combinado" data-correct="acordo"/>.</div>
 </div>
 <button class="action greenbtn" type="button" onclick="checkInputs(this)">Comparar respostas</button>
 <div class="feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
-<p class="small muted">Algumas frases admitem mais de uma resposta natural.</p>
+<p class="small muted">Algumas frases admitem mais de uma resposta natural. A lista reconhecida não é exaustiva: contexto, registro e região continuam importantes.</p>
 </div>
 </section>
 <!-- 12 -->
@@ -1194,12 +1222,14 @@ p{
 <span class="activity-part">Parte 2 de 2</span>
 <div class="examples">
 <div class="answer-row">Nosso relacionamento já passou por muitos altos e <input class="answer-input" data-accepted="baixos" data-correct="baixos"/>.</div>
-<div class="answer-row">De vez em <input class="answer-input" data-accepted="quando" data-correct="quando"/> eu gosto de ficar em casa.</div>
-<div class="answer-row">Se você precisar, eu posso te dar uma <input class="answer-input" data-accepted="mão|mao|ajuda|força|forca" data-correct="mão"/>.</div>
+<div class="answer-row">De vez em <input class="answer-input" data-accepted="quando|vez" data-correct="quando"/> eu gosto de ficar em casa.</div>
+<div class="answer-row">Se você precisar, eu posso te dar uma <input class="answer-input" data-accepted="mão|mãozinha|ajuda|ajudinha|força|forcinha|luz|dica|orientação|assistência|moral" data-suggestions="mão|mãozinha|ajuda|força" data-correct="mão"/>.</div>
+<div class="answer-row">Antes de publicar, você pode dar <input class="answer-input" data-accepted="uma olhada|uma olhadinha|uma conferida|uma lida|uma revisada|um talento" data-suggestions="uma olhada|uma olhadinha|uma revisada|um talento" data-correct="uma olhada"/> na apresentação?</div>
 </div>
 <button class="action greenbtn" type="button" onclick="checkInputs(this)">Comparar respostas</button>
 <div class="feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
+<p class="small muted">Todas as opções da última frase cabem no contexto, mas não são sinônimas: <em>olhada</em>, <em>olhadinha</em>, <em>conferida</em> e <em>lida</em> focalizam examinar; <em>revisada</em> e o coloquial <em>um talento</em> focalizam revisar ou melhorar.</p>
 <div class="card bubble-tip">
 <p>Lewis sustenta que uma parte importante da linguagem pode ser armazenada e recuperada em unidades maiores do que uma única palavra.</p>
 </div>
@@ -1215,6 +1245,8 @@ p{
 <div class="example">prestar <strong>atenção</strong></div>
 <div class="example">chegar a um <strong>acordo</strong> / chegar a um <strong>consenso</strong></div>
 <div class="example">dar uma <strong>mão</strong></div>
+<div class="example"><strong>Examinar ou checar:</strong> dar uma olhada / uma olhadinha / uma conferida / uma lida</div>
+<div class="example"><strong>Revisar ou melhorar:</strong> dar uma revisada / dar um talento <span class="small muted">(coloquial)</span></div>
 <div class="example">de vez em <strong>quando</strong></div>
 <div class="example">altos e <strong>baixos</strong></div>
 </div>
@@ -1624,6 +1656,8 @@ p{
 <script>
 const slides=[...document.querySelectorAll('.slide')];
 const slideStorageKey='belong.presentation.current-slide';
+const autofillAttentionTimers=new WeakMap();
+const autofillReviewTimers=new WeakMap();
 let current=readStoredSlide();
 
 function readStoredSlide(){
@@ -1710,6 +1744,11 @@ function suggestedAnswers(inp){
   });
 }
 
+function displayedSuggestions(inp){
+  const curated=(inp.dataset.suggestions||'').split('|').map(value=>value.trim()).filter(Boolean);
+  return curated.length?curated:suggestedAnswers(inp).slice(0,4);
+}
+
 function canonicalizeKnownSpelling(inp){
   const typed=(inp.value||'').trim();
   if(!typed) return false;
@@ -1733,8 +1772,76 @@ function canonicalizeKnownSpelling(inp){
   return false;
 }
 
+function fillBlanksBeforeAdvance(slide){
+  if(!slide?.classList.contains('fill-activity')) return false;
+  if(slide.dataset.autofillReviewPending==='true') return true;
+
+  const blanks=[...slide.querySelectorAll('.inline-input,.answer-input')]
+    .filter(input=>!input.value.trim());
+  const filled=[];
+
+  blanks.forEach(input=>{
+    const model=(input.dataset.correct||suggestedAnswers(input)[0]||'').trim();
+    if(!model) return;
+
+    input.value=model;
+    input.dataset.autofilled='true';
+    const previousTimer=autofillAttentionTimers.get(input);
+    if(previousTimer) window.clearTimeout(previousTimer);
+    input.classList.remove('ok','no');
+    input.classList.add('review','autofill-attention');
+    input.setAttribute('aria-invalid','false');
+    setInputNote(
+      input,
+      `Resposta-modelo inserida automaticamente: “${model}”. É uma possibilidade para este contexto; você pode editar.`,
+      'review'
+    );
+    filled.push(input);
+  });
+
+  if(!filled.length) return false;
+
+  const feedback=slide.querySelector('.feedback');
+  if(feedback){
+    const total=filled.length;
+    feedback.textContent=`Preenchemos automaticamente ${total} ${total===1?'lacuna vazia':'lacunas vazias'} com ${total===1?'uma resposta-modelo':'respostas-modelo'}. Revise os campos destacados; outras formas podem funcionar conforme o contexto, o registro e a região. Se quiser seguir, selecione Continuar.`;
+    feedback.classList.remove('good','bad');
+    feedback.classList.add('review');
+  }
+
+  const nextButton=document.getElementById('next');
+  nextButton.textContent='Continuar';
+
+  slide.dataset.autofillReviewPending='true';
+  const previousReviewTimer=autofillReviewTimers.get(slide);
+  if(previousReviewTimer) window.clearTimeout(previousReviewTimer);
+  const reviewTimer=window.setTimeout(()=>{
+    delete slide.dataset.autofillReviewPending;
+    autofillReviewTimers.delete(slide);
+  },500);
+  autofillReviewTimers.set(slide,reviewTimer);
+
+  const first=filled[0];
+  requestAnimationFrame(()=>{
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    first.scrollIntoView({block:'center',behavior:reduceMotion?'auto':'smooth'});
+    updateScrollHint(slide);
+  });
+
+  filled.forEach(input=>{
+    const timer=window.setTimeout(()=>{
+      input.classList.remove('autofill-attention');
+      autofillAttentionTimers.delete(input);
+    },2200);
+    autofillAttentionTimers.set(input,timer);
+  });
+
+  return true;
+}
+
 function move(d){
   if(current===slides.length-1 && d===1) return;
+  if(d>0 && fillBlanksBeforeAdvance(slides[current])) return;
   show(current+d);
 }
 
@@ -1744,6 +1851,7 @@ function norm(s){
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g,'')
+    .replace(/[.,!?;:]+$/g,'')
     .replace(/\s+/g,' ');
 }
 
@@ -1752,15 +1860,15 @@ function checkInputs(btn){
   const scope=btn.closest('.card') || slide;
   const inputs=[...scope.querySelectorAll('.inline-input,.answer-input')];
   const feedback=scope.querySelector('.feedback') || slide.querySelector('.feedback');
-  const closedIssues=[];
   const blankSuggestions=[];
   let matched=0;
   let review=0;
   let blank=0;
+  let autofilled=0;
 
   inputs.forEach((inp,index)=>{
     const isOpen=inp.classList.contains('answer-input');
-    const answerList=suggestedAnswers(inp);
+    const answerList=displayedSuggestions(inp);
     const suggestions=answerList.join(', ');
     inp.classList.remove('ok','no','review');
 
@@ -1773,6 +1881,14 @@ function checkInputs(btn){
       return;
     }
 
+    if(inp.dataset.autofilled==='true'){
+      autofilled+=1;
+      inp.classList.add('review');
+      inp.setAttribute('aria-invalid','false');
+      setInputNote(inp,`Resposta-modelo inserida pelo sistema: “${inp.value.trim()}”. Você pode editar antes de continuar.`,'review');
+      return;
+    }
+
     const isExpected=canonicalizeKnownSpelling(inp);
     if(isExpected){
       matched+=1;
@@ -1782,33 +1898,30 @@ function checkInputs(btn){
       return;
     }
 
-    if(isOpen){
-      review+=1;
-      inp.classList.add('review');
-      inp.setAttribute('aria-invalid','false');
-      setInputNote(inp,`Resposta preservada. Compare também com: ${suggestions}.`,'review');
-    }else{
-      closedIssues.push(`lacuna ${index+1}: “${answerList.join('” ou “')}”`);
-      inp.classList.add('no');
-      inp.setAttribute('aria-invalid','true');
-      setInputNote(inp,`Compare com: ${suggestions}.`,'bad');
-    }
+    review+=1;
+    inp.classList.add('review');
+    inp.setAttribute('aria-invalid','false');
+    setInputNote(
+      inp,
+      isOpen
+        ? `Resposta preservada. Ela pode ser natural; compare também com: ${suggestions}.`
+        : `Forma não reconhecida automaticamente. Verifique a frase completa e compare com: ${suggestions}.`,
+      'review'
+    );
   });
 
   feedback.classList.remove('good','bad','review');
-  if(closedIssues.length){
-    feedback.textContent=`Compare estas possibilidades: ${closedIssues.join('; ')}.`;
-    feedback.classList.add('bad');
-  }else if(blank || review){
+  if(blank || review || autofilled){
     const parts=[];
     if(matched) parts.push(`${matched} ${matched===1?'resposta coincide':'respostas coincidem'} com as possibilidades previstas`);
     if(review) parts.push(`${review} ${review===1?'resposta foi preservada para comparação':'respostas foram preservadas para comparação'}`);
+    if(autofilled) parts.push(`${autofilled} ${autofilled===1?'resposta-modelo foi inserida pelo sistema':'respostas-modelo foram inseridas pelo sistema'}`);
     if(blank) parts.push(`${blank} ${blank===1?'lacuna ficou em branco':'lacunas ficaram em branco'}`);
     const comparison=blankSuggestions.length?` Para comparar: ${blankSuggestions.join('; ')}.`:'';
-    feedback.textContent=`Amostra comparada: ${parts.join('; ')}.${comparison} Outras respostas podem ser naturais em outros contextos.`;
+    feedback.textContent=`Amostra comparada: ${parts.join('; ')}.${comparison} Outras respostas podem ser naturais conforme o contexto, o registro e a região.`;
     feedback.classList.add('review');
   }else{
-    feedback.textContent='As respostas coincidem com possibilidades previstas para estas frases. Outras formulações podem ser naturais em outros contextos.';
+    feedback.textContent='As respostas coincidem com possibilidades previstas para estas frases. Outras formulações podem ser naturais conforme o contexto, o registro e a região.';
     feedback.classList.add('good');
   }
   requestAnimationFrame(()=>updateScrollHint(slide));
@@ -1957,14 +2070,29 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     input.setAttribute('aria-describedby',note.id);
     input.addEventListener('input',()=>{
-      input.classList.remove('ok','no','review');
+      const attentionTimer=autofillAttentionTimers.get(input);
+      if(attentionTimer){
+        window.clearTimeout(attentionTimer);
+        autofillAttentionTimers.delete(input);
+      }
+      input.classList.remove('ok','no','review','autofill-attention');
+      delete input.dataset.autofilled;
       input.removeAttribute('aria-invalid');
       note.textContent='';
       note.classList.remove('good','bad','review');
       const feedback=input.closest('.card')?.querySelector('.feedback');
       if(feedback){
-        feedback.textContent='';
+        const scope=input.closest('.card') || input.closest('.slide');
+        const remainingModels=scope
+          ? [...scope.querySelectorAll('.inline-input[data-autofilled="true"],.answer-input[data-autofilled="true"]')].length
+          : 0;
         feedback.classList.remove('good','bad','review');
+        if(remainingModels){
+          feedback.textContent=`Ainda há ${remainingModels} ${remainingModels===1?'resposta-modelo inserida pelo sistema':'respostas-modelo inseridas pelo sistema'} nesta atividade. Você pode editá-las ou selecionar Continuar.`;
+          feedback.classList.add('review');
+        }else{
+          feedback.textContent='';
+        }
       }
     });
   });
@@ -2004,7 +2132,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.addEventListener('resize',()=>updateScrollHint(slides[current]),{passive:true});
 });
 document.addEventListener('keydown',e=>{
-  if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey) return;
+  if(e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey) return;
   if(e.target.closest('button,a,input,textarea,select,[contenteditable="true"]')) return;
   if(e.key==='ArrowRight'){
     e.preventDefault();
