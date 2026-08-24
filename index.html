@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta content="Conheça, em uma apresentação interativa, como princípios da Abordagem Lexical orientam a proposta pedagógica da Belong." name="description"/>
+<meta content="Conheça as aulas de inglês online e ao vivo da Belong: contexto, combinações úteis, prática e feedback desde o começo." name="description"/>
 <meta content="#8B0A57" name="theme-color"/>
-<title>Belong | Como funciona nossa abordagem de ensino</title>
+<title>Belong | Inglês online ao vivo em contexto</title>
 <style>:root{
   --belong-magenta:#87014E;
   --belong-magenta-dark:#68003C;
@@ -24,6 +24,7 @@
   --good:#087C36;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 .sr-only{
   position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
   overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important
@@ -49,13 +50,19 @@ button,input{font:inherit}
 .progress{height:7px;flex:1;background:rgba(255,255,255,.2);border-radius:999px;overflow:hidden}
 .progress>div{height:100%;background:#70E397;width:0%;transition:width .35s ease}
 .counter{font-size:12px;color:white;min-width:70px;text-align:right;font-weight:750}
+.deck-switch{
+  min-height:44px;padding:9px 14px;border:1px solid rgba(255,255,255,.42);border-radius:999px;
+  background:rgba(255,255,255,.1);color:#fff;font-size:12px;font-weight:850;cursor:pointer;white-space:nowrap
+}
+.deck-switch:hover{background:rgba(255,255,255,.18)}
+.deck-switch:focus-visible{outline:3px solid #70E397;outline-offset:3px}
 
 .stage{position:relative;flex:1;overflow:hidden}
-.slide{
+.slide,.pitch-panel{
   position:absolute;inset:0;display:none;overflow:auto;
   padding:clamp(22px,4vw,54px) 18px 116px
 }
-.slide.active{display:block;animation:fade .25s ease}
+.slide.active,.pitch-panel.active{display:block;animation:fade .25s ease}
 @keyframes fade{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:none}}
 .wrap{max-width:930px;margin:0 auto}
 .eyebrow{
@@ -229,6 +236,30 @@ input:focus-visible{
   position:fixed;right:14px;bottom:74px;font-size:10px;color:var(--muted);z-index:4;
   background:rgba(255,255,255,.76);padding:4px 7px;border-radius:8px
 }
+.pitch-panel .wrap{max-width:960px}
+.pitch-statement{max-width:820px}
+.pitch-example-grid .card{margin:12px 0}
+.pitch-example-grid .big{font-size:clamp(25px,4vw,42px);margin:8px 0;color:var(--belong-magenta)}
+.pitch-chunk-map{display:grid;gap:10px;margin:16px 0}
+.pitch-chunk-map>div{
+  display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);align-items:center;gap:12px;
+  padding:15px 18px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:clamp(16px,2.4vw,21px)
+}
+.pitch-chunk-map b{text-align:center;color:var(--belong-green-dark)}
+.pitch-chunk-map strong{color:var(--belong-magenta)}
+.pitch-cycle{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0}
+.pitch-cycle>div{
+  min-height:145px;padding:16px 14px;border:1px solid var(--line);border-top:5px solid var(--belong-green);
+  border-radius:18px;background:#fff;box-shadow:0 8px 22px rgba(70,20,48,.045)
+}
+.pitch-cycle span:first-child{
+  display:grid;place-items:center;width:30px;height:30px;margin-bottom:13px;border-radius:50%;
+  background:var(--belong-green-soft);color:var(--belong-green-dark);font-weight:950
+}
+.pitch-cycle strong{font-size:15px;line-height:1.35;color:var(--belong-magenta)}
+.pitch-beginner-grid .card{height:auto;margin:12px 0}
+.pitch-final-actions{margin:26px auto 16px}
+.pitch-final-actions .action{min-height:50px;display:inline-flex;align-items:center;justify-content:center}
 kbd{font-family:inherit;font-size:12px;color:var(--muted);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 5px;background:white}
 hr{border:0;border-top:1px solid var(--line);margin:24px 0}
 
@@ -334,7 +365,7 @@ html,body{
   font-weight:800;
   letter-spacing:.08em;
 }
-.slide{
+.slide,.pitch-panel{
   padding-top:clamp(34px,5vw,68px);
 }
 .wrap{
@@ -598,8 +629,10 @@ p{
   .topbar{padding:0 12px;gap:10px}
   .system-name{display:none}
   .brand{font-size:22px}
-  .slide{padding-left:16px;padding-right:16px}
+  .slide,.pitch-panel{padding-left:16px;padding-right:16px}
   .ownership{display:none}
+  .pitch-cycle{grid-template-columns:1fr 1fr}
+  .pitch-cycle>div{min-height:118px}
 }
 @media (max-width:600px){
   .lexical-equation{grid-template-columns:1fr}
@@ -607,7 +640,7 @@ p{
 }
 
 @media (min-width:761px) and (max-height:800px){
-  .slide{padding-top:24px;padding-bottom:108px}
+  .slide,.pitch-panel{padding-top:24px;padding-bottom:108px}
   h1{font-size:clamp(36px,5.4vw,58px)}
   h2{font-size:clamp(29px,4.4vw,44px)}
   p{font-size:clamp(16px,2vw,19px);line-height:1.42;margin-bottom:11px}
@@ -619,6 +652,16 @@ p{
   .counter{font-size:11px;min-width:55px}
   .footer-nav button{flex:1;min-width:0}
   .inline-input,.answer-input{max-width:118px}
+  .deck-switch{padding:8px 11px;font-size:11px}
+  .pitch-chunk-map>div{grid-template-columns:1fr;gap:6px;text-align:center;padding:12px}
+  .pitch-chunk-map b{transform:rotate(90deg)}
+  .pitch-cycle{gap:7px}
+  .pitch-cycle>div{min-height:108px;padding:12px 10px}
+  .pitch-cycle strong{font-size:13px}
+}
+@media (max-width:360px){
+  #presentation-app .counter{display:none}
+  #presentation-app .topbar{gap:6px}
 }
 
 /* V19: mobile first, one idea per screen */
@@ -627,7 +670,7 @@ p{
   .brand{font-size:21px}
   .progress{height:5px}
   .counter{font-size:10px;min-width:58px}
-  .slide{padding:18px 14px 92px}
+  .slide,.pitch-panel{padding:18px 14px 92px}
   .wrap{max-width:100%}
   .eyebrow{font-size:10px;padding:5px 8px;margin-bottom:12px}
   h1{font-size:34px;line-height:1.02;margin-bottom:13px}
@@ -669,7 +712,7 @@ p{
   color:var(--belong-magenta);
 }
 @media (max-width:600px){
-  .slide{padding:14px 12px 86px}
+  .slide,.pitch-panel{padding:14px 12px 86px}
   .eyebrow{font-size:11px;padding:5px 8px;margin-bottom:10px}
   h1{font-size:31px;line-height:1.01;margin-bottom:10px}
   h2{font-size:25px;line-height:1.04;margin-bottom:10px}
@@ -1172,7 +1215,147 @@ p{
 </style>
 </head>
 <body>
-<div class="app">
+<div class="app pitch-app" id="pitch-app">
+<header class="topbar">
+<div class="brand-lockup">
+<div class="brand">bel<span class="on">on</span>g</div>
+<div class="system-name">inglês online ao vivo</div>
+</div>
+<div class="progress" id="pitch-progress" role="progressbar" aria-label="Progresso da apresentação breve" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><div id="pitch-bar" aria-hidden="true"></div></div>
+<div class="counter" id="pitch-counter">Tela 1 / 7</div>
+</header>
+<main class="stage pitch-stage">
+<section class="pitch-panel active">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Em poucos minutos</span> • Belong</div>
+<h1>Inglês em contexto, desde o começo.</h1>
+<p class="lead">Aulas online ao vivo baseadas na Abordagem Lexical, com contexto, combinações úteis, prática e feedback — inclusive para quem está começando do zero.</p>
+<div class="card green pitch-statement">
+<p class="quote">Você participa ao vivo e aprende a observar como as palavras se combinam para comunicar ideias.</p>
+</div>
+<p class="small muted">Este resumo apresenta a proposta. Ao final, você pode falar com a Belong ou conhecer a metodologia em detalhes.</p>
+</div>
+</section>
+
+<section class="pitch-panel">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Por que combinações importam</span></div>
+<h2>Palavra por palavra nem sempre funciona.</h2>
+<p class="lead">Conhecer palavras isoladas é útil, mas nem sempre mostra como elas costumam aparecer juntas.</p>
+<div class="grid2 pitch-example-grid">
+<div class="card">
+<span class="language-label">Em inglês</span>
+<p class="big" lang="en">make a decision</p>
+<p><strong>Equivalência:</strong> tomar uma decisão</p>
+</div>
+<div class="card">
+<span class="language-label">Em inglês</span>
+<p class="big" lang="en">pay attention</p>
+<p><strong>Equivalência:</strong> prestar atenção</p>
+</div>
+</div>
+<p class="small muted">Não dizemos naturalmente “fazer uma decisão” ou “pagar atenção”. Você não precisa memorizar esses exemplos agora; eles mostram por que o contexto e as combinações importam.</p>
+</div>
+</section>
+
+<section class="pitch-panel">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">A proposta pedagógica</span></div>
+<h2>Aprender unidades de sentido, não apenas palavras soltas.</h2>
+<div class="compare">
+<div class="col lexical">
+<div class="title"><span lang="en">Chunk</span></div>
+<p>Um bloco de palavras que pode ser recuperado como uma unidade de sentido.</p>
+<div class="chunk-box"><span class="chunk" lang="en">Nice to meet you.</span><br/>Prazer em conhecer você.</div>
+</div>
+<div class="col lexical">
+<div class="title"><span lang="en">Collocation</span></div>
+<p>Palavras que aparecem juntas de maneira frequente e característica.</p>
+<div class="chunk-box"><span class="chunk" lang="en">make a decision</span><br/>tomar uma decisão</div>
+</div>
+</div>
+<div class="card green"><p><strong>A gramática continua importante.</strong> A proposta é estudá-la em relação ao léxico, aos padrões e aos usos que aparecem em contexto.</p></div>
+</div>
+</section>
+
+<section class="pitch-panel">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Veja a diferença</span></div>
+<h2>Uma mensagem pode ficar mais clara quando observamos os blocos.</h2>
+<div class="card pitch-source">
+<span class="language-label">Mensagem de partida</span>
+<p class="quote">Eu vou entrar em contato com você assim que possível.</p>
+</div>
+<div class="pitch-chunk-map" aria-label="Equivalências entre os blocos em português e inglês">
+<div><span>Eu vou</span><b aria-hidden="true">↔</b><strong lang="en">I’ll</strong></div>
+<div><span>entrar em contato com você</span><b aria-hidden="true">↔</b><strong lang="en">get in touch with you</strong></div>
+<div><span>assim que possível</span><b aria-hidden="true">↔</b><strong lang="en">as soon as possible</strong></div>
+</div>
+<div class="card green center">
+<span class="language-label">Frase natural em inglês</span>
+<p class="big" lang="en">I’ll get in touch with you as soon as possible.</p>
+<p>Eu vou entrar em contato com você assim que possível.</p>
+</div>
+</div>
+</section>
+
+<section class="pitch-panel">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Como acontece nas aulas</span></div>
+<h2>Observe, pratique e receba feedback.</h2>
+<p class="lead">Nas aulas online e ao vivo, o professor conduz atividades que usam exemplos em contexto para ajudar a construir um repertório utilizável.</p>
+<div class="pitch-cycle" aria-label="Sequência de aprendizagem nas aulas">
+<div><span>1</span><strong>Compreender o contexto</strong></div>
+<div><span>2</span><strong>Notar <span lang="en">chunks</span> e <span lang="en">collocations</span></strong></div>
+<div><span>3</span><strong>Praticar com apoio</strong></div>
+<div><span>4</span><strong>Experimentar novos usos</strong></div>
+<div><span>5</span><strong>Receber feedback</strong></div>
+</div>
+<p class="small muted">A aula combina compreensão, consciência lexical e uso. A sequência pode variar conforme a turma e o objetivo.</p>
+</div>
+</section>
+
+<section class="pitch-panel">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Para quem está começando</span></div>
+<h2>Você pode começar sem saber inglês.</h2>
+<p class="lead">O repertório é construído progressivamente com contexto, combinações, prática e feedback.</p>
+<div class="grid2 pitch-beginner-grid">
+<div class="card green">
+<h3>O que você desenvolve</h3>
+<p>Reconhecer unidades de sentido, compreender exemplos e experimentar novas combinações com apoio.</p>
+</div>
+<div class="card">
+<h3>O que não prometemos</h3>
+<p>Fluência instantânea ou resultado automático. Aprender depende de exposição, repetição, prática e participação.</p>
+</div>
+</div>
+<p class="small muted">As equivalências em português apoiam os primeiros contatos com o inglês sem substituir a observação do uso em contexto.</p>
+</div>
+</section>
+
+<section class="pitch-panel final-slide">
+<div class="wrap center">
+<div class="eyebrow"><span class="screen-num">Seu próximo passo</span></div>
+<div class="brand final-brand">bel<span class="on">on</span>g</div>
+<h1>Quer conhecer as aulas ao vivo da Belong?</h1>
+<p class="lead">Fale com a equipe para receber informações sobre aulas, formatos e investimento.</p>
+<div class="final-actions pitch-final-actions">
+<a class="action greenbtn final-cta" href="https://wa.me/5541998389437?text=Ol%C3%A1%21%20Quero%20conhecer%20as%20aulas%20online%20ao%20vivo%20da%20Belong.%20Pode%20me%20enviar%20informa%C3%A7%C3%B5es%20sobre%20turmas%2C%20formatos%20e%20investimento%3F" rel="noopener noreferrer" target="_blank">Quero conhecer as aulas ao vivo</a>
+<button class="action secondary" id="open-presentation" type="button" onclick="openPresentation()">Ver a apresentação metodológica completa</button>
+</div>
+<p class="small final-next-step">A apresentação metodológica completa é opcional e inclui exemplos e atividades interativas.</p>
+</div>
+</section>
+</main>
+<div class="ownership">© 2026 Belong</div>
+<nav class="footer-nav" aria-label="Navegação da apresentação breve">
+<button class="action secondary" id="pitch-prev" type="button" onclick="movePitch(-1)">Anterior</button>
+<button class="action" id="pitch-next" type="button" onclick="movePitch(1)">Próximo</button>
+</nav>
+</div>
+
+<div class="app" id="presentation-app" hidden>
 <header class="topbar">
 <div class="brand-lockup">
 <div class="brand">bel<span class="on">on</span>g</div>
@@ -1180,6 +1363,7 @@ p{
 </div>
 <div class="progress" id="progress" role="progressbar" aria-label="Progresso da apresentação" aria-valuemin="1" aria-valuemax="27" aria-valuenow="1"><div id="bar" aria-hidden="true"></div></div>
 <div class="counter" id="counter">Tela 1 / 27</div>
+<button class="deck-switch" type="button" onclick="returnToPitch()" aria-label="Voltar à apresentação breve">Resumo</button>
 </header>
 <main class="stage">
 <!-- Tela 1 -->
@@ -1197,7 +1381,7 @@ p{
 <span><strong>Duração:</strong> cerca de 20–25 minutos</span>
 </div>
 <div class="build-actions">
-<button class="action secondary" type="button" onclick="goToSummary()">Ir ao resumo</button>
+<button class="action secondary" type="button" onclick="goToSummary()">Ir à conclusão desta apresentação</button>
 </div>
 <p class="small muted">Avance no seu ritmo. A tela atual fica salva nesta aba.</p>
 </div>
@@ -1982,13 +2166,21 @@ p{
 </nav>
 </div>
 <script>
-const slides=[...document.querySelectorAll('.slide')];
+const presentationApp=document.getElementById('presentation-app');
+const pitchApp=document.getElementById('pitch-app');
+const slides=[...(presentationApp?.querySelectorAll('.slide')||document.querySelectorAll('.slide'))];
+const pitchPanels=[...(pitchApp?.querySelectorAll('.pitch-panel')||document.querySelectorAll('.pitch-panel'))];
 const slideStorageKey='belong.presentation.current-slide';
+const pitchStorageKey='belong.presentation.pitch-slide';
+const viewStorageKey='belong.presentation.view';
 const autofillAttentionTimers=new WeakMap();
 const autofillReviewTimers=new WeakMap();
 const processingPieceOrder=[];
 const processingDirectOrder=['ill','enter','in','contact','with','you','like-this','that','possible'];
 let current=readStoredSlide();
+let pitchCurrent=readStoredPitch();
+let viewMode=readStoredView();
+let applyingHistoryState=false;
 
 function readStoredSlide(){
   try{
@@ -2007,10 +2199,136 @@ function storeCurrentSlide(){
   }
 }
 
-function show(i,{focusHeading=true}={}){
+function readStoredPitch(){
+  try{
+    const stored=Number.parseInt(sessionStorage.getItem(pitchStorageKey)||'0',10);
+    return Number.isInteger(stored) && stored>=0 && stored<pitchPanels.length ? stored : 0;
+  }catch(error){
+    return 0;
+  }
+}
+
+function readStoredView(){
+  try{
+    return sessionStorage.getItem(viewStorageKey)==='full'?'full':'pitch';
+  }catch(error){
+    return 'pitch';
+  }
+}
+
+function storePitchSlide(){
+  try{
+    sessionStorage.setItem(pitchStorageKey,String(pitchCurrent));
+  }catch(error){
+    // O resumo continua funcionando quando o armazenamento está indisponível.
+  }
+}
+
+function storeViewMode(){
+  try{
+    sessionStorage.setItem(viewStorageKey,viewMode);
+  }catch(error){
+    // A alternância continua funcionando quando o armazenamento está indisponível.
+  }
+}
+
+function setDeckVisibility(mode){
+  const pitchVisible=mode==='pitch';
+  if(pitchApp){
+    if(pitchVisible){
+      pitchApp.hidden=false;
+      pitchApp.removeAttribute('inert');
+    }else{
+      pitchApp.setAttribute('inert','');
+      pitchApp.hidden=true;
+    }
+  }
+  if(presentationApp){
+    if(pitchVisible){
+      presentationApp.setAttribute('inert','');
+      presentationApp.hidden=true;
+    }else{
+      presentationApp.hidden=false;
+      presentationApp.removeAttribute('inert');
+    }
+  }
+}
+
+function navigationState(){
+  return {
+    belongPresentation:true,
+    version:1,
+    mode:viewMode,
+    pitchIndex:pitchCurrent,
+    fullIndex:current
+  };
+}
+
+function syncHistory(action='replace'){
+  if(applyingHistoryState || action==='none' || typeof history==='undefined' || typeof location==='undefined') return;
+  try{
+    const method=action==='push'?'pushState':'replaceState';
+    history[method](navigationState(),'',location.href);
+  }catch(error){
+    // A navegação interna continua funcionando quando a History API está indisponível.
+  }
+}
+
+function showPitch(i,{focusHeading=true,historyAction='replace'}={}){
+  if(!pitchPanels.length) return;
+  const nextIndex=Math.max(0,Math.min(pitchPanels.length-1,i));
+  const modeChanged=viewMode!=='pitch';
+  const changed=nextIndex!==pitchCurrent;
+  pitchCurrent=nextIndex;
+  viewMode='pitch';
+  setDeckVisibility(viewMode);
+
+  pitchPanels.forEach((panel,index)=>{
+    const isActive=index===pitchCurrent;
+    panel.classList.toggle('active',isActive);
+    panel.setAttribute('aria-hidden',String(!isActive));
+  });
+
+  const panel=pitchPanels[pitchCurrent];
+  const title=panel.querySelector('h1,h2');
+  document.getElementById('pitch-bar').style.width=((pitchCurrent+1)/pitchPanels.length*100)+'%';
+  document.getElementById('pitch-counter').textContent='Tela '+(pitchCurrent+1)+' / '+pitchPanels.length;
+  const progress=document.getElementById('pitch-progress');
+  progress.setAttribute('aria-valuemax',String(pitchPanels.length));
+  progress.setAttribute('aria-valuenow',String(pitchCurrent+1));
+  progress.setAttribute('aria-valuetext',`Tela ${pitchCurrent+1} de ${pitchPanels.length}: ${title?.textContent.trim()||''}`);
+  document.getElementById('pitch-prev').disabled=pitchCurrent===0;
+  document.getElementById('pitch-next').style.display=pitchCurrent===pitchPanels.length-1?'none':'inline-block';
+  const openButton=document.getElementById('open-presentation');
+  if(openButton){
+    openButton.textContent=current===slides.length-1
+      ? 'Rever a apresentação metodológica completa'
+      : current>0
+        ? `Continuar a apresentação completa da tela ${current+1}`
+        : 'Ver a apresentação metodológica completa';
+  }
+  pitchApp?.classList.toggle('final-view',pitchCurrent===pitchPanels.length-1);
+  panel.scrollTop=0;
+  document.title=`Belong | ${title?.textContent.trim()||'Inglês em contexto'}`;
+  storePitchSlide();
+  storeViewMode();
+  syncHistory(historyAction);
+
+  if((changed||modeChanged) && focusHeading && title){
+    title.setAttribute('tabindex','-1');
+    requestAnimationFrame(()=>title.focus({preventScroll:true}));
+  }
+  requestAnimationFrame(()=>updateScrollHint(panel));
+}
+
+function show(i,{focusHeading=true,historyAction='replace'}={}){
+  if(!slides.length) return;
   const nextIndex=Math.max(0,Math.min(slides.length-1,i));
+  const modeChanged=viewMode!=='full';
   const changed=nextIndex!==current;
   current=nextIndex;
+  viewMode='full';
+  setDeckVisibility(viewMode);
   slides.forEach((slide,idx)=>{
     const isActive=idx===current;
     slide.classList.toggle('active',isActive);
@@ -2028,12 +2346,14 @@ function show(i,{focusHeading=true}={}){
   const nextBtn=document.getElementById('next');
   nextBtn.textContent=slides[current].dataset.missionCompared==='true'?'Continuar':'Próximo';
   nextBtn.style.display=current===slides.length-1?'none':'inline-block';
-  document.querySelector('.app')?.classList.toggle('final-view',current===slides.length-1);
+  presentationApp?.classList.toggle('final-view',current===slides.length-1);
   slides[current].scrollTop=0;
   document.title=`Belong | Tela ${current+1} de ${slides.length}`;
   storeCurrentSlide();
+  storeViewMode();
+  syncHistory(historyAction);
 
-  if(changed && focusHeading && title){
+  if((changed||modeChanged) && focusHeading && title){
     title.setAttribute('tabindex','-1');
     requestAnimationFrame(()=>title.focus({preventScroll:true}));
   }
@@ -2169,7 +2489,17 @@ function fillBlanksBeforeAdvance(slide){
   return true;
 }
 
+function movePitch(d){
+  if(!pitchPanels.length) return;
+  if(pitchCurrent===pitchPanels.length-1 && d===1) return;
+  showPitch(pitchCurrent+d);
+}
+
 function move(d){
+  if(viewMode==='pitch'){
+    movePitch(d);
+    return;
+  }
   if(current===slides.length-1 && d===1) return;
   if(d>0 && fillBlanksBeforeAdvance(slides[current])) return;
   if(d>0 && prepareProcessingMissionBeforeAdvance(slides[current])) return;
@@ -2268,6 +2598,18 @@ function setInputNote(inp,text,state){
 
 function goToSummary(){
   show(slides.length-1);
+}
+
+function openPresentation(startAt){
+  const hasExplicitStart=Number.isInteger(startAt);
+  const resumeAt=hasExplicitStart
+    ? startAt
+    : current===slides.length-1?0:current;
+  show(resumeAt,{historyAction:'push'});
+}
+
+function returnToPitch(){
+  showPitch(pitchCurrent,{historyAction:'push'});
 }
 
 function restartPresentation(){
@@ -2705,6 +3047,16 @@ function chooseCarregar(btn, word){
 
 
 document.addEventListener('DOMContentLoaded',()=>{
+  pitchPanels.forEach((panel,index)=>{
+    panel.id=panel.id||`resumo-${index+1}`;
+    const heading=panel.querySelector('h1,h2');
+    if(heading){
+      heading.id=heading.id||`titulo-resumo-${index+1}`;
+      panel.setAttribute('role','region');
+      panel.setAttribute('aria-labelledby',heading.id);
+    }
+  });
+
   slides.forEach((slide,index)=>{
     slide.id=slide.id||`tela-${index+1}`;
     const heading=slide.querySelector('h1,h2');
@@ -2715,7 +3067,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   });
 
-  document.querySelectorAll('.inline-input,.answer-input').forEach((input,index)=>{
+  const fullScope=presentationApp||document;
+  fullScope.querySelectorAll('.inline-input,.answer-input').forEach((input,index)=>{
     const context=input.closest('.quizline,.answer-row')?.innerText.replace(/\s+/g,' ').trim() || 'resposta';
     const slideInputs=[...input.closest('.slide').querySelectorAll('.inline-input,.answer-input')];
     const localIndex=slideInputs.indexOf(input)+1;
@@ -2759,14 +3112,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 
-  document.querySelectorAll('button').forEach(button=>{
+  fullScope.querySelectorAll('button').forEach(button=>{
     button.type='button';
   });
-  document.querySelectorAll('.choice-btn').forEach(button=>{
+  fullScope.querySelectorAll('.choice-btn').forEach(button=>{
     button.setAttribute('aria-pressed','false');
     button.setAttribute('lang','en');
   });
-  document.querySelectorAll([
+  fullScope.querySelectorAll([
     '.type-card .type',
     '.type-card .sample',
     '.translation-chunk strong',
@@ -2796,9 +3149,42 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   renderProcessingBuild();
 
-  show(current,{focusHeading:false});
-  requestAnimationFrame(()=>updateScrollHint(slides[current]));
-  window.addEventListener('resize',()=>updateScrollHint(slides[current]),{passive:true});
+  if(viewMode==='full'){
+    show(current,{focusHeading:false});
+  }else{
+    showPitch(pitchCurrent,{focusHeading:false});
+  }
+  requestAnimationFrame(()=>{
+    const activePanel=viewMode==='pitch'?pitchPanels[pitchCurrent]:slides[current];
+    if(activePanel) updateScrollHint(activePanel);
+  });
+  window.addEventListener('resize',()=>{
+    const activePanel=viewMode==='pitch'?pitchPanels[pitchCurrent]:slides[current];
+    if(activePanel) updateScrollHint(activePanel);
+  },{passive:true});
+});
+window.addEventListener?.('popstate',event=>{
+  const state=event.state;
+  if(!state || state.belongPresentation!==true || state.version!==1) return;
+
+  const restoredPitch=Number.isInteger(state.pitchIndex) && state.pitchIndex>=0 && state.pitchIndex<pitchPanels.length
+    ? state.pitchIndex
+    : pitchCurrent;
+  const restoredFull=Number.isInteger(state.fullIndex) && state.fullIndex>=0 && state.fullIndex<slides.length
+    ? state.fullIndex
+    : current;
+
+  applyingHistoryState=true;
+  try{
+    if(state.mode==='full'){
+      pitchCurrent=restoredPitch;
+      show(restoredFull,{historyAction:'none'});
+    }else{
+      showPitch(restoredPitch,{historyAction:'none'});
+    }
+  }finally{
+    applyingHistoryState=false;
+  }
 });
 document.addEventListener('keydown',e=>{
   if(e.repeat||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey) return;
