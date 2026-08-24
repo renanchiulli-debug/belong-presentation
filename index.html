@@ -139,6 +139,7 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 .action:focus-visible,
 .choice-btn:focus-visible,
 .sentence-choice:focus-visible,
+.word-token:focus-visible,
 a:focus-visible,
 input:focus-visible{
   outline:3px solid #087B37;
@@ -919,6 +920,32 @@ p{
 }
 
 .processing-demo{margin:18px 0}
+.processing-mission{margin-top:16px}
+.mission-source{
+  margin:8px 0 13px;padding:12px 14px;border-left:4px solid var(--belong-green);
+  border-radius:0 14px 14px 0;background:var(--belong-green-soft);
+  color:var(--belong-magenta-dark);font-size:clamp(19px,3vw,27px);font-weight:900
+}
+.processing-builder{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:stretch;margin-top:12px}
+.processing-bank,.processing-assembly{
+  padding:12px;border:1px solid var(--line);border-radius:15px;background:#fff
+}
+.processing-builder-label{
+  display:block;margin-bottom:8px;color:var(--muted);font-size:10px;font-weight:900;
+  letter-spacing:.08em;text-transform:uppercase
+}
+.processing-build{
+  display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;min-height:104px;padding:10px;
+  border:2px dashed #BDA9B5;border-radius:12px;background:#FFFDFE
+}
+.assembled-piece{
+  align-self:flex-start;padding:6px 8px;border:1px solid #BFE2CB;border-radius:9px;
+  background:var(--belong-green-soft);color:var(--belong-magenta-dark);font-size:13px;font-weight:900
+}
+.build-placeholder{align-self:center;margin:auto;color:var(--muted);font-size:12px;text-align:center}
+.processing-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:11px}
+.processing-status{margin:8px 0 0;color:var(--muted);font-size:12px;font-weight:750}
+.processing-routes>h3{margin:18px 0 4px;font-size:clamp(21px,3vw,28px)}
 .processing-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
 .thought-path{
   padding:17px;border:1px solid var(--line);border-radius:22px;background:#fff;
@@ -958,11 +985,17 @@ p{
   text-transform:uppercase
 }
 .word-token{
-  padding:5px 7px;border:1px solid #D7C4CF;border-radius:8px;background:#FFF7FB;
-  color:#5A4652;font-size:11.5px;line-height:1.2
+  padding:6px 8px;border:1px solid #D7C4CF;border-radius:8px;background:#FFF7FB;
+  min-height:40px;color:#5A4652;font:inherit;font-size:11.5px;line-height:1.2;text-align:left;cursor:pointer
 }
 .word-token b{color:var(--belong-magenta)}
-.word-token.grammar-token{border-style:dashed;border-color:#9B6A22;background:#FFF8E9;color:#735019}
+.word-token[aria-pressed="true"]{border-color:var(--belong-green-dark);background:var(--belong-green-soft);box-shadow:inset 0 0 0 1px var(--belong-green-dark)}
+.word-token[aria-pressed="true"]::after{content:" ✓";color:var(--belong-green-dark);font-weight:950}
+.direct-sequence{display:flex;flex-wrap:wrap;gap:5px}
+.direct-unit{
+  padding:5px 7px;border:1px solid #D7C4CF;border-radius:8px;background:#FFF7FB;
+  color:var(--belong-magenta);font-size:11.5px;font-weight:900;line-height:1.2
+}
 .rule-cloud{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .rule-cloud span{
   padding:4px 7px;border:1px dashed #9B6A22;border-radius:999px;color:#735019;
@@ -983,25 +1016,20 @@ p{
 .natural-output{border:1px solid #BFE2CB;background:var(--belong-green-soft);color:var(--belong-magenta-dark)}
 .fluency-flow{justify-content:center;margin:12px 0}
 .fluency-flow span{font-size:12px;padding:7px 9px}
-.slide.active .word-token{animation:word-search .38s ease both}
-.slide.active .word-token:nth-child(2){animation-delay:.07s}
-.slide.active .word-token:nth-child(3){animation-delay:.14s}
-.slide.active .word-token:nth-child(4){animation-delay:.21s}
-.slide.active .word-token:nth-child(5){animation-delay:.28s}
-.slide.active .word-token:nth-child(6){animation-delay:.35s}
-.slide.active .word-token:nth-child(7){animation-delay:.42s}
-.slide.active .word-token:nth-child(8){animation-delay:.49s}
-.slide.active .word-token:nth-child(9){animation-delay:.56s}
-.slide.active .word-token:nth-child(10){animation-delay:.63s}
-.slide.active .word-token:nth-child(11){animation-delay:.70s}
-.slide.active .word-token:nth-child(12){animation-delay:.77s}
-.slide.active .word-token:nth-child(13){animation-delay:.84s}
-.slide.active .word-token:nth-child(14){animation-delay:.91s}
-.slide.active .rule-cloud{animation:thinking-rules .42s 1.15s ease both}
-.slide.active .chunk-unit{animation:chunk-assemble .5s ease both}
-.slide.active .chunk-unit:nth-child(2){animation-delay:.25s}
-.slide.active .chunk-unit:nth-child(3){animation-delay:.5s}
-.slide.active .processing-output{animation:result-reveal .45s 1.42s ease both}
+.processing-routes.is-revealed .direct-unit{animation:word-search .38s ease both}
+.processing-routes.is-revealed .direct-unit:nth-child(2){animation-delay:.07s}
+.processing-routes.is-revealed .direct-unit:nth-child(3){animation-delay:.14s}
+.processing-routes.is-revealed .direct-unit:nth-child(4){animation-delay:.21s}
+.processing-routes.is-revealed .direct-unit:nth-child(5){animation-delay:.28s}
+.processing-routes.is-revealed .direct-unit:nth-child(6){animation-delay:.35s}
+.processing-routes.is-revealed .direct-unit:nth-child(7){animation-delay:.42s}
+.processing-routes.is-revealed .direct-unit:nth-child(8){animation-delay:.49s}
+.processing-routes.is-revealed .direct-unit:nth-child(9){animation-delay:.56s}
+.processing-routes.is-revealed .rule-cloud{animation:thinking-rules .42s .78s ease both}
+.processing-routes.is-revealed .chunk-unit{animation:chunk-assemble .5s ease both}
+.processing-routes.is-revealed .chunk-unit:nth-child(2){animation-delay:.25s}
+.processing-routes.is-revealed .chunk-unit:nth-child(3){animation-delay:.5s}
+.processing-routes.is-revealed .processing-output{animation:result-reveal .45s 1.05s ease both}
 @keyframes word-search{from{opacity:0;transform:translateY(8px) rotate(-2deg)}to{opacity:1;transform:none}}
 @keyframes thinking-rules{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 @keyframes chunk-assemble{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
@@ -1080,6 +1108,8 @@ p{
   .word-pattern-pair .equivalence-arrow{transform:rotate(90deg);text-align:center}
   .ohe-flow span{min-width:0;font-size:13px}
   .food-grid{grid-template-columns:1fr 1fr}
+  .processing-builder{grid-template-columns:1fr}
+  .processing-build{min-height:76px}
   .processing-compare{grid-template-columns:1fr;gap:12px}
   .thought-path{padding:13px;border-radius:17px}
   .thinking-scene{grid-template-columns:44px 1fr;gap:7px}
@@ -1087,7 +1117,7 @@ p{
   .thinker-head{left:10px;width:24px;height:24px}
   .thinker-body{left:3px;width:38px;height:43px}
   .thought-bubble{min-height:0;padding:10px;border-radius:18px}
-  .word-token{font-size:10.5px}
+  .word-token{min-height:44px;font-size:10.5px}
   .processing-output p{font-size:13px}
   .final-slide{padding-top:20px}
   .final-brand{font-size:32px;margin-bottom:15px}
@@ -1109,10 +1139,10 @@ p{
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
   }
-  .slide.active .word-token,
-  .slide.active .rule-cloud,
-  .slide.active .chunk-unit,
-  .slide.active .processing-output{
+  .processing-routes.is-revealed .direct-unit,
+  .processing-routes.is-revealed .rule-cloud,
+  .processing-routes.is-revealed .chunk-unit,
+  .processing-routes.is-revealed .processing-output{
     animation:none!important;
     opacity:1!important;
     transform:none!important;
@@ -1126,12 +1156,15 @@ p{
     outline:4px solid Highlight;
     outline-offset:4px;
   }
-  .thought-path,.thought-bubble,.word-token,.rule-cloud span,.chunk-unit,.processing-output,
+  .thought-path,.thought-bubble,.word-token,.direct-unit,.rule-cloud span,.chunk-unit,.processing-output,
+  .processing-bank,.processing-assembly,.processing-build,.assembled-piece,
   .food-option,.sample-equivalence,.unit-equivalence{
     background:Canvas;
     color:CanvasText;
     border-color:CanvasText;
   }
+  .word-token[aria-pressed="true"]{outline:3px solid Highlight;box-shadow:none}
+  .word-token[aria-pressed="true"]:focus-visible{outline:5px double Highlight;outline-offset:4px}
   .word-path{border-top-style:dashed}
   .chunk-path{border-top-style:solid}
 }
@@ -1822,76 +1855,103 @@ p{
 </div>
 </section>
 <!-- Tela 26 -->
-<section class="slide">
+<section class="slide processing-activity">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 26</span> • O objetivo</div>
-<h2>Chunks podem reduzir o trabalho de montar a frase na hora</h2>
-<p class="lead">Com palavras isoladas, o aluno precisa escolher sentidos, organizar a ordem e pensar em regras enquanto fala. Com chunks já observados e praticados, pode recuperar unidades maiores que carregam significado e parte da estrutura.</p>
-<figure class="processing-demo" aria-labelledby="processing-caption" aria-describedby="processing-explanation">
-<figcaption class="sr-only" id="processing-caption">Comparação entre montar uma frase palavra por palavra e recuperá-la por chunks.</figcaption>
+<div class="eyebrow"><span class="screen-num">Tela 26</span> • Missão: do português ao inglês</div>
+<h2>As palavras parecem conhecidas. Mas elas se combinam do mesmo jeito?</h2>
+<p class="lead">Faça um experimento de montagem com sentidos isolados e depois compare com unidades que já carregam significado e parte da estrutura.</p>
+<div class="card bubble-info processing-mission">
+<span class="activity-part">Sua missão • simular uma tradução por partes</span>
+<p class="small muted">Você quer fazer esta promessa a alguém:</p>
+<p class="mission-source">Eu vou entrar em contato com você assim que possível.</p>
+<p id="processing-piece-help"><strong>Selecione as nove peças na ordem em que você tentaria formar a frase em inglês.</strong> As setas mostram apenas um sentido possível de cada parte isolada. Para corrigir a sequência, selecione novamente uma peça ou use “Desfazer última”. Se preferir, compare a qualquer momento. Não é uma prova e sua montagem não será marcada como certa ou errada.</p>
+<div class="processing-builder">
+<div class="processing-bank">
+<span class="processing-builder-label" id="processing-bank-label">Peças embaralhadas • português → inglês</span>
+<div class="word-cloud" id="processing-piece-bank" role="group" aria-labelledby="processing-bank-label" aria-describedby="processing-piece-help">
+<button class="word-token" type="button" data-processing-id="possible" data-en="possible" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>possível</span> → <b lang="en">possible</b></button>
+<button class="word-token" type="button" data-processing-id="with" data-en="with" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>com</span> → <b lang="en">with</b></button>
+<button class="word-token" type="button" data-processing-id="enter" data-en="enter" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>entrar</span> → <b lang="en">enter</b></button>
+<button class="word-token" type="button" data-processing-id="you" data-en="you" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>você</span> → <b lang="en">you</b></button>
+<button class="word-token" type="button" data-processing-id="ill" data-en="I'll" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>eu vou</span> → <b lang="en">I'll</b></button>
+<button class="word-token" type="button" data-processing-id="contact" data-en="contact" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>contato</span> → <b lang="en">contact</b></button>
+<button class="word-token" type="button" data-processing-id="that" data-en="that" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>que</span> → <b lang="en">that</b></button>
+<button class="word-token" type="button" data-processing-id="in" data-en="in" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>em</span> → <b lang="en">in</b></button>
+<button class="word-token" type="button" data-processing-id="like-this" data-en="like this" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>assim</span> → <b lang="en">like this</b></button>
+</div>
+</div>
+<div class="processing-assembly">
+<span class="processing-builder-label" id="processing-build-label">Sua montagem</span>
+<div class="processing-build" id="processing-build" role="group" aria-labelledby="processing-build-label">
+<span class="build-placeholder">Selecione as peças para começar.</span>
+</div>
+</div>
+</div>
+<div class="processing-actions">
+<button class="action secondary" id="undo-processing-piece" type="button" onclick="undoProcessingPiece()" disabled>Desfazer última</button>
+<button class="action greenbtn" id="compare-processing" type="button" aria-expanded="false" aria-controls="processing-routes processing-attempt-feedback" onclick="revealProcessingComparison(this)">Comparar os caminhos</button>
+</div>
+<p class="processing-status" id="processing-piece-status" role="status" aria-live="polite" aria-atomic="true">0 de 9 peças selecionadas.</p>
+<div class="reveal" id="processing-attempt-feedback" aria-live="polite" aria-atomic="true"></div>
+</div>
+
+<div class="reveal processing-routes" id="processing-routes" hidden>
+<h3 id="processing-routes-heading" tabindex="-1">Compare duas maneiras de organizar a mesma mensagem</h3>
+<figure class="processing-demo" aria-labelledby="processing-routes-heading" aria-describedby="processing-caption processing-explanation">
+<figcaption class="sr-only" id="processing-caption">Comparação entre montar uma frase por sentidos isolados e recuperá-la por unidades maiores.</figcaption>
 <div class="processing-compare">
 <article class="thought-path word-path">
-<div class="path-heading"><span class="path-number">1</span><div><span class="path-kicker">Mais montagem durante a fala</span><h3>Palavra por palavra</h3></div></div>
+<div class="path-heading"><span class="path-number">1</span><div><span class="path-kicker">Mais decisões durante a fala</span><h3>Parte por parte</h3></div></div>
 <div class="thinking-scene">
 <div class="thinker" aria-hidden="true"><span class="thinker-head"></span><span class="thinker-body"></span></div>
 <div class="thought-bubble">
-<p class="sr-only">A pessoa recupera palavras isoladas que aparecem de propósito fora da ordem da frase: <span lang="en">touch</span>, toque; <span lang="en">will</span>, identificado como auxiliar de futuro nas aulas tradicionais; <span lang="en">way</span>, caminho; <span lang="en">you</span>, você; <span lang="en">as</span>, como; <span lang="en">I</span>, eu; <span lang="en">in</span>, em; <span lang="en">possible</span>, possível; <span lang="en">by</span>, por; <span lang="en">get</span>, pegar; <span lang="en">the</span>, o; <span lang="en">soon</span>, logo; <span lang="en">with</span>, com; <span lang="en">as</span>, como. Depois, tenta descobrir a ordem usando regras de gramática.</p>
-<p class="literal-word-note">Palavras isoladas, ainda sem ordem</p>
-<div class="word-cloud" aria-hidden="true">
-<span class="word-token"><b lang="en">touch</b> → toque</span>
-<span class="word-token grammar-token"><b lang="en">will</b> → “auxiliar de futuro”</span>
-<span class="word-token"><b lang="en">way</b> → caminho</span>
-<span class="word-token"><b lang="en">you</b> → você</span>
-<span class="word-token"><b lang="en">as</b> → como</span>
-<span class="word-token"><b lang="en">I</b> → eu</span>
-<span class="word-token"><b lang="en">in</b> → em</span>
-<span class="word-token"><b lang="en">possible</b> → possível</span>
-<span class="word-token"><b lang="en">By</b> → por</span>
-<span class="word-token"><b lang="en">get</b> → pegar</span>
-<span class="word-token"><b lang="en">the</b> → o</span>
-<span class="word-token"><b lang="en">soon</b> → logo</span>
-<span class="word-token"><b lang="en">with</b> → com</span>
-<span class="word-token"><b lang="en">as</b> → como</span>
+<p class="sr-only">A pessoa organiza os sentidos isolados na ordem do português: <span lang="en">I'll, enter, in, contact, with, you, like this, that, possible</span>. Também tenta decidir ordem, preposição e forma verbal.</p>
+<p class="literal-word-note">Exemplo seguindo a ordem do português</p>
+<div class="direct-sequence" aria-hidden="true">
+<span class="direct-unit" lang="en">I'll</span><span class="direct-unit" lang="en">enter</span><span class="direct-unit" lang="en">in</span><span class="direct-unit" lang="en">contact</span><span class="direct-unit" lang="en">with</span><span class="direct-unit" lang="en">you</span><span class="direct-unit" lang="en">like this</span><span class="direct-unit" lang="en">that</span><span class="direct-unit" lang="en">possible</span>
 </div>
-<div class="rule-cloud" aria-hidden="true"><span>qual vem primeiro?</span><span>onde entra o auxiliar?</span><span>qual preposição?</span><span>qual tempo verbal?</span></div>
+<div class="rule-cloud" aria-hidden="true"><span>ordem?</span><span>preposição?</span><span>forma verbal?</span><span>como ligar?</span></div>
 </div>
 </div>
 <div class="processing-output literal-output">
-<span>Resultado literal inadequado</span>
-<p>“Por o caminho, eu vou pegar em toque com você como logo como possível.”</p>
+<span>Resultado demonstrativo seguindo a ordem do português</span>
+<p lang="en">I'll enter in contact with you like this that possible.</p>
+<p>As peças têm sentidos possíveis, mas essa montagem não é uma forma natural de comunicar a promessa em inglês.</p>
 </div>
-<p class="small muted">As equivalências isoladas são aproximadas e aparecem apenas para evidenciar o problema da tradução palavra por palavra. “Auxiliar de futuro” reproduz um rótulo didático tradicional: aqui ele representa a regra que o aluno tenta acionar, não uma definição completa de <span lang="en">will</span>.</p>
+<p class="small muted">Uma palavra pode ter outros sentidos conforme o contexto. Por isso, as setas não representam traduções fixas para todas as frases.</p>
 </article>
 <article class="thought-path chunk-path">
 <div class="path-heading"><span class="path-number">2</span><div><span class="path-kicker">Menos unidades para combinar</span><h3>Com chunks</h3></div></div>
 <div class="thinking-scene">
 <div class="thinker" aria-hidden="true"><span class="thinker-head"></span><span class="thinker-body"></span></div>
 <div class="thought-bubble">
-<p class="sr-only">A pessoa recupera três unidades maiores: <span lang="en">By the way</span>, a propósito; <span lang="en">I'll get in touch with you</span>, entrarei em contato com você; <span lang="en">as soon as possible</span>, o quanto antes.</p>
+<p class="sr-only">A pessoa observa três correspondências maiores: eu vou, <span lang="en">I'll</span>; entrar em contato com você, <span lang="en">get in touch with you</span>; assim que possível, <span lang="en">as soon as possible</span>.</p>
 <div class="chunk-cloud" aria-hidden="true">
-<span class="chunk-unit"><b lang="en">By the way</b><small>A propósito</small></span>
-<span class="chunk-unit"><b lang="en">I'll get in touch with you</b><small>Entrarei em contato com você</small></span>
-<span class="chunk-unit"><b lang="en">as soon as possible</b><small>o quanto antes</small></span>
+<span class="chunk-unit"><small>eu vou</small><b lang="en">I'll</b></span>
+<span class="chunk-unit"><small>entrar em contato com você</small><b lang="en">get in touch with you</b></span>
+<span class="chunk-unit"><small>assim que possível</small><b lang="en">as soon as possible</b></span>
 </div>
 </div>
 </div>
 <div class="processing-output natural-output">
-<span>Frase formada com sentido</span>
-<p lang="en">By the way, I'll get in touch with you as soon as possible.</p>
-<p>“A propósito, entrarei em contato com você o quanto antes.”</p>
+<span>Uma forma natural e frequente neste contexto</span>
+<p lang="en">I'll get in touch with you as soon as possible.</p>
+<p>“Eu vou entrar em contato com você assim que possível.”</p>
 </div>
-<p class="small muted"><span lang="en"><strong>I'll</strong></span> é a forma contraída de <span lang="en"><strong>I will</strong></span>. Os blocos são uma simplificação visual: padrões podem se flexionar e se sobrepor quando entram em uma frase.</p>
+<p class="small muted"><span lang="en"><strong>I'll</strong></span> é a forma contraída de <span lang="en"><strong>I will</strong></span>; nesta promessa, corresponde a “eu vou/eu irei”. Sozinho, <span lang="en"><strong>touch</strong></span> pode ter sentidos como “toque” ou “tocar”; aqui, ele integra o bloco <span lang="en"><strong>get in touch with</strong></span>, que equivale a “entrar em contato com”.</p>
+<p class="small muted">Outra opção natural: <span lang="en"><strong>I'll contact you as soon as possible.</strong></span></p>
 </article>
 </div>
 </figure>
 <div class="card bubble-tip" id="processing-explanation">
-<p><strong>Como isso pode ajudar a falar com mais fluidez?</strong> Quando essas combinações são revisitadas, recuperadas e usadas em novos contextos, elas podem exigir menos decisões no momento da fala. Isso pode reduzir pausas e liberar mais atenção para a mensagem.</p>
+<p><strong>Como isso pode ajudar a falar com mais fluidez?</strong> Na primeira montagem, é preciso escolher uma peça de cada vez e esperar que as combinações funcionem em inglês. Na segunda, unidades familiares já trazem sentido e parte da organização. Quando são revisitadas e recuperadas em novos contextos, podem exigir menos decisões durante a fala.</p>
 <div class="flow fluency-flow" aria-label="Etapas para tornar chunks disponíveis na fala">
-<span>observar</span><b>→</b><span>praticar</span><b>→</b><span>recuperar</span><b>→</b><span>combinar</span><b>→</b><span>falar com menos esforço</span>
+<span>observar o contexto</span><b>→</b><span>notar os blocos</span><b>→</b><span>praticar</span><b>→</b><span>recuperar</span><b>→</b><span>combinar</span>
 </div>
-<p class="small"><strong>Chunks não eliminam a gramática:</strong> eles já incorporam parte de seus padrões. O ganho de fluência depende de exposição, repetição, recuperação e uso — não acontece automaticamente.</p>
+<p class="small"><strong>Chunks não eliminam a gramática:</strong> eles ajudam o aluno a recuperar significado, ordem e padrões encontrados juntos. O ganho de fluência depende de exposição, repetição e uso — não acontece automaticamente.</p>
 </div>
-<p class="small muted">Animação e síntese causal da Belong, inspiradas na discussão de Lewis sobre chunks, léxico e fluência; ver princípios iniciais e pp. 105 a 114 e 133 a 163.</p>
+<p class="small muted">Atividade, animação e síntese causal da Belong, inspiradas na discussão de Lewis sobre chunks, léxico e fluência; ver princípios iniciais e pp. 105 a 114 e 133 a 163.</p>
+</div>
 </div>
 </section>
 <!-- Tela 27 -->
@@ -1926,6 +1986,8 @@ const slides=[...document.querySelectorAll('.slide')];
 const slideStorageKey='belong.presentation.current-slide';
 const autofillAttentionTimers=new WeakMap();
 const autofillReviewTimers=new WeakMap();
+const processingPieceOrder=[];
+const processingDirectOrder=['ill','enter','in','contact','with','you','like-this','that','possible'];
 let current=readStoredSlide();
 
 function readStoredSlide(){
@@ -1964,7 +2026,7 @@ function show(i,{focusHeading=true}={}){
   progress.setAttribute('aria-valuetext',`Tela ${current+1} de ${slides.length}: ${title?.textContent.trim()||''}`);
   document.getElementById('prev').disabled=current===0;
   const nextBtn=document.getElementById('next');
-  nextBtn.textContent='Próximo';
+  nextBtn.textContent=slides[current].dataset.missionCompared==='true'?'Continuar':'Próximo';
   nextBtn.style.display=current===slides.length-1?'none':'inline-block';
   document.querySelector('.app')?.classList.toggle('final-view',current===slides.length-1);
   slides[current].scrollTop=0;
@@ -2110,6 +2172,7 @@ function fillBlanksBeforeAdvance(slide){
 function move(d){
   if(current===slides.length-1 && d===1) return;
   if(d>0 && fillBlanksBeforeAdvance(slides[current])) return;
+  if(d>0 && prepareProcessingMissionBeforeAdvance(slides[current])) return;
   show(current+d);
 }
 
@@ -2208,6 +2271,10 @@ function goToSummary(){
 }
 
 function restartPresentation(){
+  processingPieceOrder.length=0;
+  processingPieceButtons().forEach(piece=>piece.setAttribute('aria-pressed','false'));
+  resetProcessingComparison();
+  renderProcessingBuild();
   show(0);
 }
 
@@ -2410,6 +2477,185 @@ function savePersonalExample(btn){
   });
 }
 
+function processingPieceButtons(){
+  return [...document.querySelectorAll('#processing-piece-bank [data-processing-id]')];
+}
+
+function resetProcessingComparison(){
+  const routes=document.getElementById('processing-routes');
+  const feedback=document.getElementById('processing-attempt-feedback');
+  const compareButton=document.getElementById('compare-processing');
+  const slide=compareButton?.closest('.slide');
+
+  if(routes){
+    routes.classList.remove('show','is-revealed');
+    routes.hidden=true;
+  }
+  if(feedback){
+    feedback.classList.remove('show');
+    feedback.replaceChildren();
+  }
+  if(compareButton){
+    compareButton.setAttribute('aria-expanded','false');
+    compareButton.textContent='Comparar os caminhos';
+  }
+  if(slide) delete slide.dataset.missionCompared;
+  if(slide && slides[current]===slide){
+    document.getElementById('next').textContent='Próximo';
+  }
+}
+
+function renderProcessingBuild(announcement=''){
+  const buttons=processingPieceButtons();
+  const buttonById=new Map(buttons.map(button=>[button.dataset.processingId,button]));
+  const build=document.getElementById('processing-build');
+  const status=document.getElementById('processing-piece-status');
+  const undo=document.getElementById('undo-processing-piece');
+  if(!build || !status) return;
+
+  build.replaceChildren();
+  if(!processingPieceOrder.length){
+    const placeholder=document.createElement('span');
+    placeholder.className='build-placeholder';
+    placeholder.textContent='Selecione as peças para começar.';
+    build.appendChild(placeholder);
+  }else{
+    processingPieceOrder.forEach(id=>{
+      const source=buttonById.get(id);
+      if(!source) return;
+      const piece=document.createElement('span');
+      piece.className='assembled-piece';
+      piece.lang='en';
+      piece.textContent=source.dataset.en;
+      build.appendChild(piece);
+    });
+  }
+
+  const total=buttons.length;
+  const selected=processingPieceOrder.length;
+  status.textContent=`${selected} de ${total} peças selecionadas.${announcement?` ${announcement}`:''}`;
+  if(undo) undo.disabled=selected===0;
+  const slide=document.getElementById('compare-processing')?.closest('.slide');
+  if(slide?.classList.contains('active')) requestAnimationFrame(()=>updateScrollHint(slide));
+}
+
+function selectProcessingPiece(button){
+  const id=button.dataset.processingId;
+  if(!id) return;
+  const existingIndex=processingPieceOrder.indexOf(id);
+  resetProcessingComparison();
+
+  if(existingIndex>=0){
+    processingPieceOrder.splice(existingIndex,1);
+    button.setAttribute('aria-pressed','false');
+    renderProcessingBuild('A peça foi removida.');
+    return;
+  }
+
+  processingPieceOrder.push(id);
+  button.setAttribute('aria-pressed','true');
+  renderProcessingBuild('A peça foi adicionada ao final.');
+}
+
+function undoProcessingPiece(){
+  const id=processingPieceOrder.pop();
+  if(!id) return;
+  const button=processingPieceButtons().find(piece=>piece.dataset.processingId===id);
+  button?.setAttribute('aria-pressed','false');
+  resetProcessingComparison();
+  renderProcessingBuild('A última peça foi removida.');
+  button?.focus({preventScroll:true});
+}
+
+function processingAttemptText(){
+  const buttonById=new Map(processingPieceButtons().map(button=>[button.dataset.processingId,button]));
+  return processingPieceOrder
+    .map(id=>buttonById.get(id)?.dataset.en)
+    .filter(Boolean)
+    .join(' ');
+}
+
+function revealProcessingComparison(button,{focusHeading=false,modelInserted=false}={}){
+  const routes=document.getElementById('processing-routes');
+  const heading=document.getElementById('processing-routes-heading');
+  const feedback=document.getElementById('processing-attempt-feedback');
+  const slide=button?.closest('.slide');
+  if(!routes || !heading || !feedback || !slide) return false;
+  if(!routes.hidden && routes.classList.contains('show')) focusHeading=true;
+
+  const panel=document.createElement('div');
+  panel.className='build-feedback discovery';
+  const title=document.createElement('strong');
+  const note=document.createElement('p');
+  note.className='small muted';
+  const attempt=processingAttemptText();
+
+  if(attempt){
+    title.textContent=modelInserted
+      ? 'Montagem demonstrativa inserida pelo sistema.'
+      : processingPieceOrder.length===processingPieceButtons().length
+        ? 'Sua montagem foi preservada.'
+        : 'Sua montagem parcial foi preservada.';
+    const sentence=document.createElement('p');
+    sentence.lang='en';
+    sentence.textContent=`${attempt}.`;
+    note.textContent=modelInserted
+      ? 'Como nenhuma peça havia sido selecionada, mostramos a ordem do português para você comparar com uma possibilidade natural.'
+      : 'Agora compare com uma possibilidade natural. Não vamos classificar sua tentativa como certa ou errada.';
+    panel.append(title,sentence,note);
+  }else{
+    title.textContent='Você optou por observar a comparação primeiro.';
+    note.textContent='A rota palavra por palavra mostra uma montagem demonstrativa; depois, a rota por chunks apresenta uma possibilidade natural.';
+    panel.append(title,note);
+  }
+
+  feedback.classList.add('show');
+  feedback.replaceChildren(panel);
+  routes.hidden=false;
+  routes.classList.add('show','is-revealed');
+  button.setAttribute('aria-expanded','true');
+  button.textContent='Rever comparação';
+  slide.dataset.missionCompared='true';
+  if(slides[current]===slide) document.getElementById('next').textContent='Continuar';
+
+  const status=document.getElementById('processing-piece-status');
+  if(status){
+    status.textContent=modelInserted
+      ? 'Montagem demonstrativa inserida pelo sistema. Comparação aberta abaixo.'
+      : attempt
+        ? 'Comparação aberta abaixo. Sua montagem foi preservada.'
+        : 'Comparação aberta abaixo. Nenhuma montagem foi registrada.';
+  }
+
+  requestAnimationFrame(()=>{
+    if(focusHeading){
+      heading.focus({preventScroll:true});
+      const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      heading.scrollIntoView({block:'start',behavior:reduceMotion?'auto':'smooth'});
+    }
+    updateScrollHint(slide);
+  });
+  return true;
+}
+
+function prepareProcessingMissionBeforeAdvance(slide){
+  if(!slide?.classList.contains('processing-activity')) return false;
+  if(slide.dataset.missionCompared==='true') return false;
+  const button=slide.querySelector('#compare-processing');
+  if(!button) return false;
+  let modelInserted=false;
+  if(!processingPieceOrder.length){
+    processingPieceOrder.push(...processingDirectOrder);
+    const selectedIds=new Set(processingPieceOrder);
+    processingPieceButtons().forEach(piece=>{
+      piece.setAttribute('aria-pressed',String(selectedIds.has(piece.dataset.processingId)));
+    });
+    renderProcessingBuild('Montagem demonstrativa inserida pelo sistema.');
+    modelInserted=true;
+  }
+  return revealProcessingComparison(button,{focusHeading:true,modelInserted});
+}
+
 function revealExisting(btn){
   const box=btn.nextElementSibling;
   if(!box) return;
@@ -2547,6 +2793,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     event.preventDefault();
     document.getElementById('save-breakfast')?.click();
   });
+
+  renderProcessingBuild();
 
   show(current,{focusHeading:false});
   requestAnimationFrame(()=>updateScrollHint(slides[current]));
