@@ -161,6 +161,8 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 .action:focus-visible,
 .choice-btn:focus-visible,
 .sentence-choice:focus-visible,
+.food-option:focus-visible,
+.meal-option:focus-visible,
 .word-token:focus-visible,
 a:focus-visible,
 input:focus-visible{
@@ -333,10 +335,51 @@ hr{border:0;border-top:1px solid var(--line);margin:24px 0}
 .food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .food-option{
   display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;
-  border:1px solid var(--line);border-radius:11px;background:#fff;font-size:13px
+  border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);font:inherit;
+  font-size:13px;text-align:left;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .15s ease
 }
 .food-option b{color:var(--belong-magenta)}
 .food-option small{color:var(--muted);text-align:right}
+.food-option:hover{border-color:#C9A5BA;transform:translateY(-1px)}
+.food-option[aria-pressed="true"]{border-color:var(--belong-green-dark);background:var(--belong-green-soft)}
+.pattern-sentence{
+  display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;
+  font-size:clamp(24px,4.2vw,42px);line-height:1.35;font-weight:900;color:var(--belong-magenta)
+}
+.pattern-field{display:inline-flex;align-items:center}
+.pattern-input{
+  width:clamp(155px,24vw,250px);min-height:48px;padding:7px 10px;border:0;border-bottom:3px solid var(--belong-magenta);
+  background:var(--belong-pink-soft);color:var(--belong-magenta);font-weight:900;text-align:center
+}
+.pattern-input.meal-input{width:clamp(130px,19vw,190px)}
+.meal-bank{margin:13px 0 4px}
+.meal-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.meal-option{
+  min-height:48px;padding:9px 12px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--belong-magenta);
+  font:inherit;font-weight:900;cursor:pointer;transition:border-color .15s ease,background .15s ease,transform .15s ease
+}
+.meal-option:hover{border-color:#C9A5BA;transform:translateY(-1px)}
+.meal-option[aria-pressed="true"]{border-color:var(--belong-green-dark);background:var(--belong-green-soft);color:var(--belong-green-dark)}
+.pattern-input.ok{border-color:var(--good);background:#EDF8F1}
+.pattern-input.review{border-color:#8A6500;background:#FFF7D6}
+.collocation-map{display:grid;gap:16px;margin:20px 0}
+.collocation-row{
+  display:grid;grid-template-columns:minmax(160px,.7fr) 72px minmax(0,1.65fr);align-items:center;
+  padding:16px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 8px 24px rgba(80,15,54,.045)
+}
+.collocation-source,.collocation-target{
+  padding:15px;border:1px solid var(--line);border-radius:16px;text-align:center;background:#fff
+}
+.collocation-source{background:var(--belong-pink-soft);border-color:#E5C9D8}
+.collocation-source strong,.collocation-target strong{display:block;color:var(--belong-magenta);font-size:clamp(21px,3vw,30px)}
+.collocation-connector{position:relative;height:3px;background:var(--belong-green);margin:0 10px}
+.collocation-connector::after{
+  content:"";position:absolute;right:-1px;top:50%;width:11px;height:11px;border-top:3px solid var(--belong-green);
+  border-right:3px solid var(--belong-green);transform:translateY(-50%) rotate(45deg)
+}
+.collocation-targets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.collocation-target{background:var(--belong-green-soft);border-color:#C9E8D3}
+.collocation-target small{display:block;margin-top:5px;color:var(--ink);font-size:13px;font-weight:750}
 .dialogue{display:grid;gap:12px;margin:14px 0}
 .dialogue-turn{padding:13px 15px;border-radius:15px;background:#fff;border:1px solid var(--line)}
 .dialogue-speaker{display:block;margin-bottom:4px;color:var(--belong-green-dark);font-size:12px;font-weight:900;text-transform:uppercase}
@@ -1088,6 +1131,19 @@ p{
 .processing-routes.is-revealed .chunk-unit:nth-child(2){animation-delay:.25s}
 .processing-routes.is-revealed .chunk-unit:nth-child(3){animation-delay:.5s}
 .processing-routes.is-revealed .processing-output{animation:result-reveal .45s 1.05s ease both}
+.chunk-focus{max-width:760px;margin:20px auto}
+.chunk-focus .thought-path{padding:clamp(18px,3vw,28px)}
+.chunk-focus .thought-bubble{min-height:0;padding:18px}
+.chunk-focus .chunk-cloud{grid-template-columns:repeat(3,1fr);gap:12px}
+.chunk-focus .chunk-unit{min-height:94px;align-content:center;text-align:center;padding:13px}
+.chunk-focus .chunk-unit b{font-size:clamp(17px,2.5vw,23px)}
+.chunk-focus .chunk-unit small{font-size:12px}
+.chunk-focus .processing-output{margin-top:18px;padding:16px}
+.chunk-focus .processing-output p:first-of-type{font-size:clamp(19px,3vw,27px);font-weight:900}
+.chunk-focus-slide.active .chunk-unit{animation:chunk-assemble .5s ease both}
+.chunk-focus-slide.active .chunk-unit:nth-child(2){animation-delay:.25s}
+.chunk-focus-slide.active .chunk-unit:nth-child(3){animation-delay:.5s}
+.chunk-focus-slide.active .processing-output{animation:result-reveal .45s .9s ease both}
 @keyframes word-search{from{opacity:0;transform:translateY(8px) rotate(-2deg)}to{opacity:1;transform:none}}
 @keyframes thinking-rules{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 @keyframes chunk-assemble{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
@@ -1166,9 +1222,21 @@ p{
   .word-pattern-pair .equivalence-arrow{transform:rotate(90deg);text-align:center}
   .ohe-flow span{min-width:0;font-size:13px}
   .food-grid{grid-template-columns:1fr 1fr}
+  .pattern-sentence{gap:6px;font-size:22px}
+  .pattern-input{width:150px;min-height:42px;font-size:18px}
+  .pattern-input.meal-input{width:125px}
+  .meal-options{grid-template-columns:1fr}
+  .collocation-row{grid-template-columns:1fr;padding:12px;gap:8px}
+  .collocation-connector{width:3px;height:28px;margin:0 auto}
+  .collocation-connector::after{right:50%;top:auto;bottom:-1px;transform:translateX(50%) rotate(135deg)}
+  .collocation-targets{grid-template-columns:1fr 1fr;width:100%}
+  .collocation-source,.collocation-target{padding:11px}
+  .collocation-source strong,.collocation-target strong{font-size:19px}
   .processing-builder{grid-template-columns:1fr}
   .processing-build{min-height:76px}
   .processing-compare{grid-template-columns:1fr;gap:12px}
+  .chunk-focus .chunk-cloud{grid-template-columns:1fr}
+  .chunk-focus .chunk-unit{min-height:0}
   .thought-path{padding:13px;border-radius:17px}
   .thinking-scene{grid-template-columns:44px 1fr;gap:7px}
   .thinker{width:42px;height:72px}
@@ -1188,6 +1256,7 @@ p{
 }
 @media (max-width:390px){
   .food-grid{grid-template-columns:1fr}
+  .collocation-targets{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -1200,6 +1269,8 @@ p{
   .processing-routes.is-revealed .direct-unit,
   .processing-routes.is-revealed .rule-cloud,
   .processing-routes.is-revealed .chunk-unit,
+  .chunk-focus-slide.active .chunk-unit,
+  .chunk-focus-slide.active .processing-output,
   .processing-routes.is-revealed .processing-output{
     animation:none!important;
     opacity:1!important;
@@ -1376,8 +1447,8 @@ p{
 <div class="brand">bel<span class="on">on</span>g</div>
 <div class="system-name">abordagem lexical • inglês online</div>
 </div>
-<div class="progress" id="progress" role="progressbar" aria-label="Progresso da apresentação" aria-valuemin="1" aria-valuemax="27" aria-valuenow="1"><div id="bar" aria-hidden="true"></div></div>
-<div class="counter" id="counter">Tela 1 / 27</div>
+<div class="progress" id="progress" role="progressbar" aria-label="Progresso da apresentação" aria-valuemin="1" aria-valuemax="28" aria-valuenow="1"><div id="bar" aria-hidden="true"></div></div>
+<div class="counter" id="counter">Tela 1 / 28</div>
 <button class="deck-switch" type="button" onclick="returnToPitch()" aria-label="Voltar à apresentação breve">Resumo</button>
 </header>
 <main class="stage">
@@ -1517,30 +1588,30 @@ p{
 <div class="eyebrow"><span class="screen-num">Tela 7</span> • Seu português em ação</div>
 <h2>Complete como você falaria naturalmente</h2>
 <div class="card bubble-tip">
-<p><strong>Preencha as lacunas sem procurar uma regra.</strong> Depois, compare suas escolhas com algumas possibilidades previstas. Se você avançar deixando algum campo vazio, inseriremos uma resposta-modelo para comparação antes de seguir.</p>
+<p><strong>Complete cada lacuna com apenas uma palavra, sem procurar uma regra.</strong> Depois, compare suas escolhas com algumas possibilidades previstas. Se você avançar deixando algum campo vazio, inseriremos uma resposta-modelo para comparação antes de seguir.</p>
 </div>
 <div class="card bubble-info">
 <p class="quizline">
         Às sete da manhã, Pedro saiu
-        <input class="inline-input" data-accepted="de|da" data-correct="de"/> casa
+        <input class="inline-input" data-accepted="de|da" data-aliases="de casa=>de|da casa=>da|saiu de casa=>de|saiu da casa=>da" data-correct="de"/> casa
         com o irmão e foi
-        <input class="inline-input" data-accepted="para o|pro|pra o|ao|até o" data-correct="para o"/> trabalho.
+        <input class="inline-input" data-accepted="para|até" data-aliases="para o=>para|pra o=>para|pro=>para|ao=>para|até o=>até|foi para o trabalho=>para|foi até o trabalho=>até" data-correct="para"/> o trabalho.
       </p>
 <p class="quizline">
         Ele foi
-        <input class="inline-input" data-accepted="de|no|num" data-correct="de"/> ônibus e passou
-        <input class="inline-input" data-accepted="por uma|pela|numa" data-correct="por uma"/> avenida movimentada antes de chegar.
+        <input class="inline-input" data-accepted="de|no|num" data-aliases="de ônibus=>de|no ônibus=>no|num ônibus=>num|foi de ônibus=>de|foi no ônibus=>no" data-correct="de"/> ônibus e passou
+        <input class="inline-input" data-accepted="por" data-aliases="por uma=>por|pela=>por|numa=>por|através de uma=>por|por uma avenida=>por|por uma avenida movimentada=>por|passou por uma avenida movimentada=>por" data-correct="por"/> uma avenida movimentada antes de chegar.
       </p>
 <p class="quizline">
         No almoço, sentou-se
         com Ana e conversou
-        <input class="inline-input" data-accepted="com|junto com" data-correct="com"/> ela
-        <input class="inline-input" data-accepted="sobre a|a respeito da|acerca da" data-correct="sobre a"/> viagem.
+        <input class="inline-input" data-accepted="com" data-aliases="com ela=>com|junto com=>com|conversou com ela=>com" data-correct="com"/> ela
+        <input class="inline-input" data-accepted="sobre|durante|após" data-aliases="sobre a=>sobre|a respeito da=>sobre|acerca da=>sobre|durante a=>durante|após a=>após|sobre a viagem=>sobre|durante a viagem=>durante|após a viagem=>após" data-suggestions="sobre|durante|após" data-correct="sobre"/> a viagem.
       </p>
 <button class="action greenbtn" type="button" onclick="checkInputs(this)">Comparar respostas</button>
 <div class="feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
-<p class="small muted">A comparação reconhece algumas formulações usuais de diferentes registros que cabem na frase. Elas podem mudar a nuance; uma forma não cadastrada é mantida para revisão, sem ser automaticamente tratada como erro.</p>
+<p class="small muted">A comparação reconhece formulações usuais e também fragmentos completos, como “por uma”; nesse caso, mantém no campo apenas a palavra necessária. Formas não cadastradas são preservadas para revisão, sem serem automaticamente tratadas como erro.</p>
 </div>
 </section>
 <!-- Tela 8 -->
@@ -1678,45 +1749,59 @@ p{
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 14</span> • Um padrão reutilizável</div>
 <h2>Leve a combinação para uma frase sua</h2>
-<p class="lead">Depois de observar um padrão, você pode manter a parte útil e variar o conteúdo.</p>
+<p class="lead">Escolha uma comida e o momento da refeição. Você pode digitar ou tocar nos balões.</p>
 <div class="card bubble-info">
-<p class="big" lang="en">I usually have _____ for breakfast.</p>
-<p class="pattern-equivalence"><span class="language-label">Equivalência em português</span>No café da manhã, eu geralmente como ou bebo _____.</p>
+<p class="pattern-sentence" lang="en">
+  <span>I usually eat</span>
+  <label class="pattern-field" for="personal-food"><span class="sr-only">comida</span><input class="pattern-input" id="personal-food" maxlength="100" autocomplete="off" list="food-suggestions" placeholder="food" aria-describedby="personal-pattern-help personal-feedback"/></label>
+  <span>for</span>
+  <label class="pattern-field" for="personal-meal"><span class="sr-only">refeição</span><input class="pattern-input meal-input" id="personal-meal" maxlength="20" autocomplete="off" list="meal-suggestions" placeholder="meal" aria-describedby="personal-pattern-help personal-feedback"/></label><span>.</span>
+</p>
+<p class="pattern-equivalence"><span class="language-label">Equivalência em português</span>Eu geralmente como _____ no café da manhã, no almoço ou no jantar.</p>
 <div class="breakfast-bank" id="breakfast-instructions">
-<p><strong>Algumas respostas que o sistema reconhece</strong></p>
-<div class="food-grid" aria-label="Alimentos e bebidas reconhecidos, com equivalências em português">
-<span class="food-option"><b lang="en">coffee</b><small>café</small></span>
-<span class="food-option"><b lang="en">tea</b><small>chá</small></span>
-<span class="food-option"><b lang="en">milk</b><small>leite</small></span>
-<span class="food-option"><b lang="en">juice</b><small>suco</small></span>
-<span class="food-option"><b lang="en">bread and butter</b><small>pão com manteiga</small></span>
-<span class="food-option"><b lang="en">toast</b><small>torrada</small></span>
-<span class="food-option"><b lang="en">eggs</b><small>ovos</small></span>
-<span class="food-option"><b lang="en">fruit</b><small>fruta</small></span>
-<span class="food-option"><b lang="en">yogurt</b><small>iogurte</small></span>
-<span class="food-option"><b lang="en">cereal</b><small>cereal</small></span>
-<span class="food-option"><b lang="en">oatmeal</b><small>mingau de aveia</small></span>
-<span class="food-option"><b lang="en">pancakes</b><small>panquecas</small></span>
+<p><strong>1. Digite uma comida ou escolha um balão</strong></p>
+<div class="food-grid" role="group" aria-label="Sugestões de comidas em inglês">
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','bread and butter')"><b lang="en">bread and butter</b><small>pão com manteiga</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','eggs')"><b lang="en">eggs</b><small>ovos</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','fruit')"><b lang="en">fruit</b><small>fruta</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','yogurt')"><b lang="en">yogurt</b><small>iogurte</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','cereal')"><b lang="en">cereal</b><small>cereal</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','pancakes')"><b lang="en">pancakes</b><small>panquecas</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','rice and beans')"><b lang="en">rice and beans</b><small>arroz e feijão</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','chicken')"><b lang="en">chicken</b><small>frango</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','pasta')"><b lang="en">pasta</b><small>massa</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','salad')"><b lang="en">salad</b><small>salada</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','soup')"><b lang="en">soup</b><small>sopa</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','fish')"><b lang="en">fish</b><small>peixe</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','a sandwich')"><b lang="en">a sandwich</b><small>um sanduíche</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','pizza')"><b lang="en">pizza</b><small>pizza</small></button>
+<button class="food-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'food','vegetables')"><b lang="en">vegetables</b><small>legumes</small></button>
 </div>
-<p class="small muted">Você pode combinar opções com vírgulas e <span lang="en"><strong>and</strong></span> (“e”): <span lang="en">coffee, eggs and fruit</span>.</p>
 </div>
-<div class="personal-example">
-<label for="personal-breakfast">Complete a frase com sua resposta
-<input class="personal-input" id="personal-breakfast" maxlength="100" autocomplete="off" list="breakfast-suggestions" placeholder="coffee, eggs and fruit" aria-describedby="breakfast-input-help personal-feedback" lang="en"/>
-</label>
-<span class="sr-only" id="breakfast-input-help">Digite um ou mais alimentos ou bebidas em inglês, sem verbo. Você pode combinar opções com vírgulas e com a palavra inglesa and.</span>
-<datalist id="breakfast-suggestions">
-<option value="coffee"></option><option value="tea"></option><option value="milk"></option>
-<option value="juice"></option><option value="bread and butter"></option><option value="toast"></option>
-<option value="eggs"></option><option value="fruit"></option><option value="yogurt"></option>
-<option value="cereal"></option><option value="oatmeal"></option><option value="pancakes"></option>
+<div class="meal-bank">
+<p><strong>2. Escolha ou digite a refeição</strong></p>
+<div class="meal-options" role="group" aria-label="Escolha entre café da manhã, almoço e jantar">
+<button class="meal-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'meal','breakfast')"><span lang="en">breakfast</span> <small>• café da manhã</small></button>
+<button class="meal-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'meal','lunch')"><span lang="en">lunch</span> <small>• almoço</small></button>
+<button class="meal-option personal-option" type="button" aria-pressed="false" onclick="choosePersonalOption(this,'meal','dinner')"><span lang="en">dinner</span> <small>• jantar</small></button>
+</div>
+</div>
+<span class="sr-only" id="personal-pattern-help">Preencha a primeira lacuna com uma comida em inglês e a segunda com breakfast, lunch ou dinner. Você também pode usar os botões de sugestão.</span>
+<datalist id="food-suggestions">
+<option value="bread and butter"></option><option value="eggs"></option><option value="fruit"></option>
+<option value="yogurt"></option><option value="cereal"></option><option value="pancakes"></option>
+<option value="rice and beans"></option><option value="chicken"></option><option value="pasta"></option>
+<option value="salad"></option><option value="soup"></option><option value="fish"></option>
+<option value="a sandwich"></option><option value="pizza"></option><option value="vegetables"></option>
 </datalist>
+<datalist id="meal-suggestions"><option value="breakfast"></option><option value="lunch"></option><option value="dinner"></option></datalist>
+<div class="personal-example">
 <button class="action greenbtn" id="save-breakfast" type="button" onclick="savePersonalExample(this)">Validar meu exemplo</button>
 </div>
 <div class="reveal" id="personal-feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
 <div class="card bubble-tip">
-<p>O sistema reconhece uma lista demonstrativa, não todos os alimentos do mundo. Uma resposta fora da lista será preservada para revisão — não será automaticamente tratada como errada.</p>
+<p>Os balões são atalhos, não limites. Se você digitar outra comida, sua resposta será preservada para comparação — não será automaticamente tratada como errada.</p>
 </div>
 </div>
 </section>
@@ -1861,34 +1946,26 @@ p{
 <div class="eyebrow"><span class="screen-num">Tela 20</span> • Collocations (colocações)</div>
 <h2>Collocation é a maneira como as palavras coocorrem</h2>
 <p class="lead">Lewis não trata collocation como um detalhe do vocabulário. Ele atribui a ela papel central na criação de significado e na organização do ensino.</p>
-<div class="lexical-equation">
-<div class="unit">
-<span class="language-label">Inglês • palavra</span>
-<span class="big" lang="en">decision</span>
-<span class="unit-equivalence"><span class="language-label">Em português</span>decisão</span>
-      </div>
-<div class="arrow">→</div>
-<div class="unit">
-<span class="language-label">Inglês • collocation</span>
-<span class="big" lang="en">make a decision</span>
-<span class="unit-equivalence"><span class="language-label">Equivalência natural</span>tomar uma decisão</span>
-      </div>
+<div class="collocation-map" aria-label="Palavras conectadas às suas collocations">
+<div class="collocation-row">
+<div class="collocation-source"><span class="language-label">Palavra</span><strong lang="en">decision</strong><small>decisão</small></div>
+<div class="collocation-connector" aria-hidden="true"></div>
+<div class="collocation-targets">
+<div class="collocation-target"><span class="language-label">Collocation 1</span><strong lang="en">make a decision</strong><small>tomar uma decisão</small></div>
+<div class="collocation-target"><span class="language-label">Collocation 2</span><strong lang="en">reach a decision</strong><small>chegar a uma decisão</small></div>
 </div>
-<div class="lexical-equation">
-<div class="unit">
-<span class="language-label">Inglês • palavra</span>
-<span class="big" lang="en">attention</span>
-<span class="unit-equivalence"><span class="language-label">Em português</span>atenção</span>
-      </div>
-<div class="arrow">→</div>
-<div class="unit">
-<span class="language-label">Inglês • collocation</span>
-<span class="big" lang="en">pay attention</span>
-<span class="unit-equivalence"><span class="language-label">Equivalência natural</span>prestar atenção</span>
-      </div>
+</div>
+<div class="collocation-row">
+<div class="collocation-source"><span class="language-label">Palavra</span><strong lang="en">attention</strong><small>atenção</small></div>
+<div class="collocation-connector" aria-hidden="true"></div>
+<div class="collocation-targets">
+<div class="collocation-target"><span class="language-label">Collocation 1</span><strong lang="en">pay attention</strong><small>prestar atenção</small></div>
+<div class="collocation-target"><span class="language-label">Collocation 2</span><strong lang="en">draw attention to</strong><small>chamar a atenção para</small></div>
+</div>
+</div>
 </div>
 <div class="card bubble-info">
-<p><span lang="en"><strong>Make a decision</strong></span> equivale a <strong>tomar uma decisão</strong>, não a “fazer uma decisão”. <span lang="en"><strong>Pay attention</strong></span> equivale a <strong>prestar atenção</strong>, não a “pagar atenção”. A combinação inteira orienta o sentido.</p>
+<p><span lang="en"><strong>Decision</strong></span> aparece, por exemplo, em <span lang="en"><strong>make a decision</strong></span> e <span lang="en"><strong>reach a decision</strong></span>. <span lang="en"><strong>Attention</strong></span> aparece em <span lang="en"><strong>pay attention</strong></span> e <span lang="en"><strong>draw attention to</strong></span>. A combinação inteira orienta o sentido.</p>
 </div>
 <div class="card bubble-tip">
 <p>As colocações não se dividem simplesmente em “certas” e “livres”. Lewis descreve um <strong>espectro</strong> que vai de combinações mais livres até combinações muito mais fixas e previsíveis.</p>
@@ -2088,17 +2165,16 @@ p{
 </div>
 <div class="processing-actions">
 <button class="action secondary" id="undo-processing-piece" type="button" onclick="undoProcessingPiece()" disabled>Desfazer última</button>
-<button class="action greenbtn" id="compare-processing" type="button" aria-expanded="false" aria-controls="processing-routes processing-attempt-feedback" onclick="revealProcessingComparison(this)">Comparar os caminhos</button>
+<button class="action greenbtn" id="compare-processing" type="button" aria-expanded="false" aria-controls="processing-routes processing-attempt-feedback" onclick="revealProcessingComparison(this)">Concluir montagem</button>
 </div>
 <p class="processing-status" id="processing-piece-status" role="status" aria-live="polite" aria-atomic="true">0 de 9 peças selecionadas.</p>
 <div class="reveal" id="processing-attempt-feedback" aria-live="polite" aria-atomic="true"></div>
 </div>
 
 <div class="reveal processing-routes" id="processing-routes" hidden>
-<h3 id="processing-routes-heading" tabindex="-1">Compare duas maneiras de organizar a mesma mensagem</h3>
-<figure class="processing-demo" aria-labelledby="processing-routes-heading" aria-describedby="processing-caption processing-explanation">
-<figcaption class="sr-only" id="processing-caption">Comparação entre montar uma frase por sentidos isolados e recuperá-la por unidades maiores.</figcaption>
-<div class="processing-compare">
+<h3 id="processing-routes-heading" tabindex="-1">O que acontece na montagem parte por parte?</h3>
+<figure class="processing-demo" aria-labelledby="processing-routes-heading" aria-describedby="processing-caption">
+<figcaption class="sr-only" id="processing-caption">Demonstração das decisões necessárias ao montar uma frase seguindo partes isoladas do português.</figcaption>
 <article class="thought-path word-path">
 <div class="path-heading"><span class="path-number">1</span><div><span class="path-kicker">Mais decisões durante a fala</span><h3>Parte por parte</h3></div></div>
 <div class="thinking-scene">
@@ -2119,6 +2195,20 @@ p{
 </div>
 <p class="small muted">Uma palavra pode ter outros sentidos conforme o contexto. Por isso, as setas não representam traduções fixas para todas as frases.</p>
 </article>
+</figure>
+<div class="card bubble-tip">
+<p><strong>Na próxima tela, a mesma mensagem será montada com apenas três chunks.</strong> Assim, a diferença entre combinar nove peças e recuperar três blocos fica em destaque.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Tela 27 -->
+<section class="slide chunk-focus-slide">
+<div class="wrap">
+<div class="eyebrow"><span class="screen-num">Tela 27</span> • Montagem em chunks</div>
+<h2>Três blocos, uma mensagem completa</h2>
+<p class="lead">Em vez de escolher nove peças isoladas, observe três unidades que já carregam significado e parte da organização.</p>
+<div class="chunk-focus">
 <article class="thought-path chunk-path">
 <div class="path-heading"><span class="path-number">2</span><div><span class="path-kicker">Menos unidades para combinar</span><h3>Com chunks</h3></div></div>
 <div class="thinking-scene">
@@ -2137,26 +2227,23 @@ p{
 <p lang="en">I'll get in touch with you as soon as possible.</p>
 <p>“Eu vou entrar em contato com você assim que possível.”</p>
 </div>
-<p class="small muted"><span lang="en"><strong>I'll</strong></span> é a forma contraída de <span lang="en"><strong>I will</strong></span>; nesta promessa, corresponde a “eu vou/eu irei”. Sozinho, <span lang="en"><strong>touch</strong></span> pode ter sentidos como “toque” ou “tocar”; aqui, ele integra o bloco <span lang="en"><strong>get in touch with</strong></span>, que equivale a “entrar em contato com”.</p>
-<p class="small muted">Outra opção natural: <span lang="en"><strong>I'll contact you as soon as possible.</strong></span></p>
 </article>
 </div>
-</figure>
 <div class="card bubble-tip" id="processing-explanation">
-<p><strong>Como isso pode ajudar a falar com mais fluidez?</strong> Na primeira montagem, é preciso escolher uma peça de cada vez e esperar que as combinações funcionem em inglês. Na segunda, unidades familiares já trazem sentido e parte da organização. Quando são revisitadas e recuperadas em novos contextos, podem exigir menos decisões durante a fala.</p>
+<p><strong>Por que a montagem fica mais simples?</strong> Unidades familiares já trazem sentido e parte da ordem. Quando são revisitadas e recuperadas em novos contextos, podem exigir menos decisões durante a fala.</p>
 <div class="flow fluency-flow" aria-label="Etapas para tornar chunks disponíveis na fala">
-<span>observar o contexto</span><b>→</b><span>notar os blocos</span><b>→</b><span>praticar</span><b>→</b><span>recuperar</span><b>→</b><span>combinar</span>
+<span>observar</span><b>→</b><span>notar os blocos</span><b>→</b><span>praticar</span><b>→</b><span>recuperar</span><b>→</b><span>combinar</span>
 </div>
-<p class="small"><strong>Chunks não eliminam a gramática:</strong> eles ajudam o aluno a recuperar significado, ordem e padrões encontrados juntos. O ganho de fluência depende de exposição, repetição e uso — não acontece automaticamente.</p>
+<p class="small"><strong>Chunks não eliminam a gramática:</strong> eles ajudam a recuperar significado, ordem e padrões encontrados juntos. O ganho de fluência depende de exposição, repetição e uso.</p>
 </div>
-<p class="small muted">Atividade, animação e síntese causal da Belong, inspiradas na discussão de Lewis sobre chunks, léxico e fluência; ver princípios iniciais e pp. 105 a 114 e 133 a 163.</p>
-</div>
+<p class="small muted"><span lang="en"><strong>I'll</strong></span> corresponde aqui a “eu vou”; <span lang="en"><strong>get in touch with</strong></span> equivale a “entrar em contato com”. Outra opção natural é <span lang="en"><strong>I'll contact you as soon as possible.</strong></span></p>
+<p class="small muted">Atividade e síntese causal da Belong, inspiradas na discussão de Lewis sobre chunks, léxico e fluência; ver princípios iniciais e pp. 105 a 114 e 133 a 163.</p>
 </div>
 </section>
-<!-- Tela 27 -->
+<!-- Tela 28 -->
 <section class="slide final-slide">
 <div class="wrap center">
-<div class="eyebrow"><span class="screen-num">Tela 27</span> • Resumo e próximo passo</div>
+<div class="eyebrow"><span class="screen-num">Tela 28</span> • Resumo e próximo passo</div>
 <div class="brand final-brand">bel<span class="on">on</span>g</div>
 <h1>Aprender inglês é também aprender combinações e padrões.</h1>
 <p class="lead">Na proposta da Belong, o aluno observa o inglês em contexto, formula hipóteses e experimenta novos usos.</p>
@@ -2650,6 +2737,15 @@ function canonicalizeKnownSpelling(inp){
     return true;
   }
 
+  const alias=(inp.dataset.aliases||'')
+    .split('|')
+    .map(value=>value.split('=>').map(part=>part.trim()))
+    .find(([variant,canonical])=>variant && canonical && norm(variant)===typedNorm);
+  if(alias){
+    inp.value=alias[1];
+    return true;
+  }
+
   return false;
 }
 
@@ -2926,6 +3022,10 @@ function trackAnalyticsButtonInteraction(button){
     activity='carregar';
     action='choose';
     option=button.textContent.trim().slice(0,50);
+  }else if(button.classList.contains('personal-option')){
+    activity='personal-example';
+    action=button.classList.contains('meal-option')?'choose_meal':'choose_food';
+    option=(button.getAttribute('onclick')||'').match(/,'([^']+)'\)/)?.[1]||button.textContent.trim().slice(0,50);
   }else if(button.classList.contains('word-token')){
     activity='processing';
     action='select_piece';
@@ -2941,7 +3041,7 @@ function trackAnalyticsButtonInteraction(button){
     action='undo_piece';
   }else if(button.id==='compare-processing'){
     activity='processing';
-    action='compare_paths';
+    action='finish_assembly';
   }else if(handler.startsWith('revealExisting')){
     activity='grammar-hypothesis';
     action='reveal';
@@ -2969,16 +3069,7 @@ function chooseBreakfast(btn,choice){
   });
 }
 
-const breakfastVocabulary=new Map([
-  ['coffee',{canonical:'coffee',pt:'café'}],
-  ['tea',{canonical:'tea',pt:'chá'}],
-  ['milk',{canonical:'milk',pt:'leite'}],
-  ['juice',{canonical:'juice',pt:'suco'}],
-  ['orange juice',{canonical:'orange juice',pt:'suco de laranja'}],
-  ['apple juice',{canonical:'apple juice',pt:'suco de maçã'}],
-  ['water',{canonical:'water',pt:'água'}],
-  ['hot chocolate',{canonical:'hot chocolate',pt:'chocolate quente'}],
-  ['mate',{canonical:'mate',pt:'mate'}],
+const personalFoodVocabulary=new Map([
   ['bread',{canonical:'bread',pt:'pão'}],
   ['butter',{canonical:'butter',pt:'manteiga'}],
   ['bread and butter',{canonical:'bread and butter',pt:'pão com manteiga'}],
@@ -3029,20 +3120,34 @@ const breakfastVocabulary=new Map([
   ['omelette',{canonical:'an omelet',pt:'uma omelete'}],
   ['omelets',{canonical:'omelets',pt:'omeletes'}],
   ['omelettes',{canonical:'omelets',pt:'omeletes'}],
-  ['smoothie',{canonical:'a smoothie',pt:'uma vitamina de frutas'}],
-  ['smoothies',{canonical:'smoothies',pt:'vitaminas de frutas'}],
   ['biscuit',{canonical:'a biscuit',pt:'um biscoito'}],
   ['biscuits',{canonical:'biscuits',pt:'biscoitos'}],
   ['hash browns',{canonical:'hash browns',pt:'batatas raladas douradas'}],
-  ['coffee with milk',{canonical:'coffee with milk',pt:'café com leite'}],
   ['avocado toast',{canonical:'avocado toast',pt:'torrada com abacate'}],
   ['bagel',{canonical:'a bagel',pt:'um bagel'}],
   ['bagels',{canonical:'bagels',pt:'bagels'}],
   ['tapioca',{canonical:'tapioca',pt:'tapioca'}],
-  ['acai',{canonical:'açaí',pt:'açaí'}]
+  ['acai',{canonical:'açaí',pt:'açaí'}],
+  ['rice',{canonical:'rice',pt:'arroz'}],
+  ['beans',{canonical:'beans',pt:'feijão'}],
+  ['rice and beans',{canonical:'rice and beans',pt:'arroz e feijão'}],
+  ['chicken',{canonical:'chicken',pt:'frango'}],
+  ['pasta',{canonical:'pasta',pt:'massa'}],
+  ['salad',{canonical:'salad',pt:'salada'}],
+  ['soup',{canonical:'soup',pt:'sopa'}],
+  ['fish',{canonical:'fish',pt:'peixe'}],
+  ['pizza',{canonical:'pizza',pt:'pizza'}],
+  ['vegetable',{canonical:'a vegetable',pt:'um legume'}],
+  ['vegetables',{canonical:'vegetables',pt:'legumes'}]
 ]);
 
-function normalizeBreakfast(value){
+const personalMeals=new Map([
+  ['breakfast','café da manhã'],
+  ['lunch','almoço'],
+  ['dinner','jantar']
+]);
+
+function normalizePersonalAnswer(value){
   return (value||'')
     .trim()
     .toLowerCase()
@@ -3052,7 +3157,7 @@ function normalizeBreakfast(value){
     .replace(/\s+/g,' ');
 }
 
-function withoutBreakfastArticle(value){
+function withoutFoodArticle(value){
   return value.replace(/^(?:a|an|some)\s+/,'').trim();
 }
 
@@ -3070,73 +3175,113 @@ function joinPortuguese(values){
   return `${unique.slice(0,-1).join(', ')} e ${unique[unique.length-1]}`;
 }
 
-function classifyBreakfastPart(value,recognized,unknown){
-  const part=withoutBreakfastArticle(value.trim());
+function classifyFoodPart(value,recognized,unknown){
+  const part=withoutFoodArticle(value.trim());
   if(!part) return;
-  const exact=breakfastVocabulary.get(part);
+  const exact=personalFoodVocabulary.get(part);
   if(exact){
     recognized.push(exact);
     return;
   }
   const pieces=part.split(/\s*(?:&|\band\b)\s*/).filter(Boolean);
   if(pieces.length>1){
-    pieces.forEach(piece=>classifyBreakfastPart(piece,recognized,unknown));
+    pieces.forEach(piece=>classifyFoodPart(piece,recognized,unknown));
     return;
   }
   unknown.push(part);
 }
 
-function validateBreakfast(value){
-  const normalized=withoutBreakfastArticle(normalizeBreakfast(value))
+function validatePersonalFood(value){
+  const normalized=withoutFoodArticle(normalizePersonalAnswer(value))
     .replace(/,\s*(?:and|&)\s+/g,', ');
   if(!normalized) return {recognized:[],unknown:[]};
 
-  const exact=breakfastVocabulary.get(normalized);
+  const exact=personalFoodVocabulary.get(normalized);
   if(exact) return {recognized:[exact],unknown:[]};
 
   const recognized=[];
   const unknown=[];
-  normalized.split(/\s*[,;]\s*/).forEach(part=>classifyBreakfastPart(part,recognized,unknown));
+  normalized.split(/\s*[,;]\s*/).forEach(part=>classifyFoodPart(part,recognized,unknown));
   return {recognized,unknown};
 }
 
+function clearPersonalExampleFeedback(){
+  const inputs=[document.getElementById('personal-food'),document.getElementById('personal-meal')].filter(Boolean);
+  inputs.forEach(input=>{
+    input.removeAttribute('aria-invalid');
+    input.classList.remove('ok','review');
+  });
+  const feedback=document.getElementById('personal-feedback');
+  feedback?.classList.remove('show');
+  feedback?.replaceChildren();
+}
+
+function choosePersonalOption(button,field,value){
+  const input=document.getElementById(field==='meal'?'personal-meal':'personal-food');
+  if(!input) return;
+  const group=button.closest('[role="group"]');
+  group?.querySelectorAll('.personal-option').forEach(option=>{
+    option.setAttribute('aria-pressed',String(option===button));
+  });
+  input.value=value;
+  clearPersonalExampleFeedback();
+}
+
 function savePersonalExample(btn){
-  const input=document.getElementById('personal-breakfast');
+  const foodInput=document.getElementById('personal-food');
+  const mealInput=document.getElementById('personal-meal');
   const feedback=document.getElementById('personal-feedback');
   const panel=document.createElement('div');
   panel.className='build-feedback';
   feedback.replaceChildren();
-  input.classList.remove('ok','review');
+  foodInput.classList.remove('ok','review');
+  mealInput.classList.remove('ok','review');
 
-  if(!input.value.trim()){
-    input.setAttribute('aria-invalid','true');
-    input.classList.add('review');
+  const foodValue=foodInput.value.trim();
+  const normalizedMeal=normalizePersonalAnswer(mealInput.value);
+  const mealMeaning=personalMeals.get(normalizedMeal);
+  const missing=[];
+  if(!foodValue) missing.push('uma comida');
+  if(!normalizedMeal) missing.push('uma refeição');
+
+  if(missing.length){
+    foodInput.setAttribute('aria-invalid',String(!foodValue));
+    mealInput.setAttribute('aria-invalid',String(!normalizedMeal));
+    if(!foodValue) foodInput.classList.add('review');
+    if(!normalizedMeal) mealInput.classList.add('review');
     panel.classList.add('review');
-    panel.textContent='Digite ao menos um alimento ou bebida em inglês. Você pode escolher uma opção da lista acima.';
+    panel.textContent=`Complete ${joinPortuguese(missing)}. Você pode digitar ou escolher os balões acima.`;
   }else{
-    const result=validateBreakfast(input.value);
-    input.setAttribute('aria-invalid','false');
+    const result=validatePersonalFood(foodValue);
+    foodInput.setAttribute('aria-invalid','false');
+    mealInput.setAttribute('aria-invalid',String(!mealMeaning));
     const label=document.createElement('strong');
     const sentence=document.createElement('p');
     sentence.lang='en';
     const note=document.createElement('p');
     note.className='small muted';
 
-    if(!result.unknown.length && result.recognized.length){
+    if(!result.unknown.length && result.recognized.length && mealMeaning){
       const canonical=joinNaturally(result.recognized.map(entry=>entry.canonical));
       const meanings=joinPortuguese(result.recognized.map(entry=>entry.pt));
-      input.classList.add('ok');
+      foodInput.classList.add('ok');
+      mealInput.classList.add('ok');
       panel.classList.add('success');
-      label.textContent='Resposta reconhecida na lista demonstrativa.';
-      sentence.textContent=`I usually have ${canonical} for breakfast.`;
-      note.textContent=`Equivalência dos itens reconhecidos: ${meanings}. Outras respostas também podem ser naturais.`;
+      label.textContent='Frase completa reconhecida.';
+      sentence.textContent=`I usually eat ${canonical} for ${normalizedMeal}.`;
+      note.textContent=`Uma equivalência possível: “Eu geralmente como ${meanings} no ${mealMeaning}.”`;
     }else{
-      input.classList.add('review');
+      foodInput.classList.add(result.unknown.length?'review':'ok');
+      mealInput.classList.add(mealMeaning?'ok':'review');
       panel.classList.add('review');
-      label.textContent='Resposta preservada para revisão.';
-      sentence.textContent=`I usually have ${input.value.trim()} for breakfast.`;
-      const unknown=result.unknown.length?`“${result.unknown.join('”, “')}”`:'essa formulação';
-      note.textContent=`O sistema ainda não reconhece ${unknown} na lista automática. Isso não significa que a resposta esteja errada; compare com o banco de palavras ou confirme com o professor.`;
+      label.textContent='Resposta preservada para comparação.';
+      sentence.textContent=`I usually eat ${foodValue} for ${mealInput.value.trim()}.`;
+      if(!mealMeaning){
+        note.textContent='Para a segunda lacuna, escolha breakfast, lunch ou dinner. A comida digitada foi mantida.';
+      }else{
+        const unknown=result.unknown.length?`“${result.unknown.join('”, “')}”`:'essa comida';
+        note.textContent=`O sistema ainda não reconhece ${unknown} na lista automática. Isso não significa que a comida esteja errada; a frase foi mantida para revisão.`;
+      }
     }
     panel.append(label,sentence,note);
   }
@@ -3144,7 +3289,8 @@ function savePersonalExample(btn){
   feedback.classList.add('show');
   requestAnimationFrame(()=>{
     feedback.appendChild(panel);
-    if(!input.value.trim()) input.focus({preventScroll:true});
+    if(!foodValue) foodInput.focus({preventScroll:true});
+    else if(!normalizedMeal) mealInput.focus({preventScroll:true});
     updateScrollHint(btn.closest('.slide'));
   });
 }
@@ -3169,7 +3315,7 @@ function resetProcessingComparison(){
   }
   if(compareButton){
     compareButton.setAttribute('aria-expanded','false');
-    compareButton.textContent='Comparar os caminhos';
+    compareButton.textContent='Concluir montagem';
   }
   if(slide) delete slide.dataset.missionCompared;
   if(slide && slides[current]===slide){
@@ -3272,12 +3418,12 @@ function revealProcessingComparison(button,{focusHeading=false,modelInserted=fal
     sentence.lang='en';
     sentence.textContent=`${attempt}.`;
     note.textContent=modelInserted
-      ? 'Como nenhuma peça havia sido selecionada, mostramos a ordem do português para você comparar com uma possibilidade natural.'
-      : 'Agora compare com uma possibilidade natural. Não vamos classificar sua tentativa como certa ou errada.';
+      ? 'Como nenhuma peça havia sido selecionada, mostramos uma montagem seguindo a ordem do português. Na próxima tela, você verá a alternativa por chunks.'
+      : 'Não vamos classificar sua tentativa como certa ou errada. Na próxima tela, compare-a com uma montagem por chunks.';
     panel.append(title,sentence,note);
   }else{
-    title.textContent='Você optou por observar a comparação primeiro.';
-    note.textContent='A rota palavra por palavra mostra uma montagem demonstrativa; depois, a rota por chunks apresenta uma possibilidade natural.';
+    title.textContent='Você optou por observar o resultado primeiro.';
+    note.textContent='A montagem demonstrativa segue as partes do português. Na próxima tela, os chunks apresentam uma possibilidade natural.';
     panel.append(title,note);
   }
 
@@ -3286,17 +3432,17 @@ function revealProcessingComparison(button,{focusHeading=false,modelInserted=fal
   routes.hidden=false;
   routes.classList.add('show','is-revealed');
   button.setAttribute('aria-expanded','true');
-  button.textContent='Rever comparação';
+  button.textContent='Rever resultado';
   slide.dataset.missionCompared='true';
   if(slides[current]===slide) document.getElementById('next').textContent='Continuar';
 
   const status=document.getElementById('processing-piece-status');
   if(status){
     status.textContent=modelInserted
-      ? 'Montagem demonstrativa inserida pelo sistema. Comparação aberta abaixo.'
+      ? 'Montagem demonstrativa inserida pelo sistema. Resultado aberto abaixo.'
       : attempt
-        ? 'Comparação aberta abaixo. Sua montagem foi preservada.'
-        : 'Comparação aberta abaixo. Nenhuma montagem foi registrada.';
+        ? 'Resultado aberto abaixo. Sua montagem foi preservada.'
+        : 'Resultado aberto abaixo. Nenhuma montagem foi registrada.';
   }
 
   requestAnimationFrame(()=>{
@@ -3487,17 +3633,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   carryFeedback?.setAttribute('aria-live','polite');
   carryFeedback?.setAttribute('aria-atomic','true');
 
-  document.getElementById('personal-breakfast')?.addEventListener('input',event=>{
-    event.currentTarget.removeAttribute('aria-invalid');
-    event.currentTarget.classList.remove('ok','review');
-    const feedback=document.getElementById('personal-feedback');
-    feedback.classList.remove('show');
-    feedback.replaceChildren();
-  });
-  document.getElementById('personal-breakfast')?.addEventListener('keydown',event=>{
-    if(event.key!=='Enter') return;
-    event.preventDefault();
-    document.getElementById('save-breakfast')?.click();
+  ['personal-food','personal-meal'].forEach(id=>{
+    const input=document.getElementById(id);
+    input?.addEventListener('input',()=>{
+      clearPersonalExampleFeedback();
+      const selector=id==='personal-meal'?'.meal-option':'.food-option';
+      document.querySelectorAll(selector).forEach(option=>option.setAttribute('aria-pressed','false'));
+    });
+    input?.addEventListener('keydown',event=>{
+      if(event.key!=='Enter') return;
+      event.preventDefault();
+      document.getElementById('save-breakfast')?.click();
+    });
   });
 
   renderProcessingBuild();
