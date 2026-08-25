@@ -2205,9 +2205,39 @@ let pitchCurrent=readStoredPitch();
 let viewMode=readStoredView();
 let applyingHistoryState=false;
 
+function readStoredValue(key){
+  try{
+    const stored=localStorage.getItem(key);
+    if(stored!==null) return stored;
+
+    // Migra o progresso criado por versões anteriores que usavam sessionStorage.
+    const legacy=sessionStorage.getItem(key);
+    if(legacy!==null) localStorage.setItem(key,legacy);
+    return legacy;
+  }catch(error){
+    try{
+      return sessionStorage.getItem(key);
+    }catch(storageError){
+      return null;
+    }
+  }
+}
+
+function storeValue(key,value){
+  try{
+    localStorage.setItem(key,value);
+  }catch(error){
+    try{
+      sessionStorage.setItem(key,value);
+    }catch(storageError){
+      // A apresentação continua funcionando quando o armazenamento está indisponível.
+    }
+  }
+}
+
 function readStoredSlide(){
   try{
-    const stored=Number.parseInt(sessionStorage.getItem(slideStorageKey)||'0',10);
+    const stored=Number.parseInt(readStoredValue(slideStorageKey)||'0',10);
     return Number.isInteger(stored) && stored>=0 && stored<slides.length ? stored : 0;
   }catch(error){
     return 0;
@@ -2215,16 +2245,12 @@ function readStoredSlide(){
 }
 
 function storeCurrentSlide(){
-  try{
-    sessionStorage.setItem(slideStorageKey,String(current));
-  }catch(error){
-    // A apresentação continua funcionando quando o armazenamento está indisponível.
-  }
+  storeValue(slideStorageKey,String(current));
 }
 
 function readStoredPitch(){
   try{
-    const stored=Number.parseInt(sessionStorage.getItem(pitchStorageKey)||'0',10);
+    const stored=Number.parseInt(readStoredValue(pitchStorageKey)||'0',10);
     return Number.isInteger(stored) && stored>=0 && stored<pitchPanels.length ? stored : 0;
   }catch(error){
     return 0;
@@ -2233,26 +2259,18 @@ function readStoredPitch(){
 
 function readStoredView(){
   try{
-    return sessionStorage.getItem(viewStorageKey)==='full'?'full':'pitch';
+    return readStoredValue(viewStorageKey)==='full'?'full':'pitch';
   }catch(error){
     return 'pitch';
   }
 }
 
 function storePitchSlide(){
-  try{
-    sessionStorage.setItem(pitchStorageKey,String(pitchCurrent));
-  }catch(error){
-    // O resumo continua funcionando quando o armazenamento está indisponível.
-  }
+  storeValue(pitchStorageKey,String(pitchCurrent));
 }
 
 function storeViewMode(){
-  try{
-    sessionStorage.setItem(viewStorageKey,viewMode);
-  }catch(error){
-    // A alternância continua funcionando quando o armazenamento está indisponível.
-  }
+  storeValue(viewStorageKey,viewMode);
 }
 
 function setDeckVisibility(mode){
@@ -2645,11 +2663,18 @@ function restartPresentation(){
 
 function clearStoredProgress(){
   try{
+    localStorage.removeItem(slideStorageKey);
+    localStorage.removeItem(pitchStorageKey);
+    localStorage.removeItem(viewStorageKey);
+  }catch(error){
+    // Tenta limpar também o armazenamento legado.
+  }
+  try{
     sessionStorage.removeItem(slideStorageKey);
     sessionStorage.removeItem(pitchStorageKey);
     sessionStorage.removeItem(viewStorageKey);
   }catch(error){
-    // O reinício continua funcionando mesmo quando o armazenamento está indisponível.
+    // O reinício continua funcionando quando o armazenamento está indisponível.
   }
 }
 
