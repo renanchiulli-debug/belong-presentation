@@ -143,6 +143,19 @@ p{font-size:clamp(17px,2.5vw,21px);line-height:1.55;margin:0 0 16px}
 .action:disabled{opacity:.38;cursor:not-allowed}
 .action,.choice-btn{min-height:44px}
 .action:active{transform:translateY(1px)}
+.resume-choice{
+  position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:20px;
+  background:rgba(40,33,41,.58)
+}
+.resume-choice[hidden]{display:none}
+.resume-choice-card{
+  width:min(100%,520px);padding:clamp(24px,5vw,38px);border-radius:24px;
+  background:var(--paper);box-shadow:0 22px 70px rgba(40,33,41,.28);text-align:center
+}
+.resume-choice-card h2{font-size:clamp(28px,5vw,42px);margin-bottom:12px}
+.resume-choice-card p{font-size:17px;color:var(--muted)}
+.resume-choice-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.resume-choice-actions .action{min-width:190px}
 .action:focus-visible,
 .choice-btn:focus-visible,
 .sentence-choice:focus-visible,
@@ -2165,6 +2178,16 @@ p{
 <button class="action" id="next" onclick="move(1)">Próximo</button>
 </nav>
 </div>
+<div class="resume-choice" id="resume-choice" hidden role="dialog" aria-modal="true" aria-labelledby="resume-choice-title" aria-describedby="resume-choice-description">
+<div class="resume-choice-card">
+<h2 id="resume-choice-title">Você já começou esta apresentação</h2>
+<p id="resume-choice-description">Quer continuar de onde parou ou rever tudo desde o início?</p>
+<div class="resume-choice-actions">
+<button class="action secondary" id="restart-on-entry" type="button">Reiniciar apresentação</button>
+<button class="action" id="continue-on-entry" type="button">Continuar de onde parei</button>
+</div>
+</div>
+</div>
 <script>
 const presentationApp=document.getElementById('presentation-app');
 const pitchApp=document.getElementById('pitch-app');
@@ -2620,6 +2643,49 @@ function restartPresentation(){
   show(0);
 }
 
+function clearStoredProgress(){
+  try{
+    sessionStorage.removeItem(slideStorageKey);
+    sessionStorage.removeItem(pitchStorageKey);
+    sessionStorage.removeItem(viewStorageKey);
+  }catch(error){
+    // O reinício continua funcionando mesmo quando o armazenamento está indisponível.
+  }
+}
+
+function hasStoredProgress(){
+  return viewMode==='full' || (viewMode==='pitch' && pitchCurrent>0);
+}
+
+function closeResumeChoice(){
+  const choice=document.getElementById('resume-choice');
+  if(!choice) return;
+  choice.hidden=true;
+  document.body.removeAttribute('data-resume-choice-open');
+}
+
+function restartFromEntry(){
+  const restartMode=viewMode;
+  clearStoredProgress();
+  current=0;
+  pitchCurrent=0;
+  closeResumeChoice();
+  if(restartMode==='full'){
+    show(0,{focusHeading:false});
+  }else{
+    showPitch(0,{focusHeading:false});
+  }
+}
+
+function offerResumeChoice(){
+  if(!hasStoredProgress()) return;
+  const choice=document.getElementById('resume-choice');
+  if(!choice) return;
+  choice.hidden=false;
+  document.body.setAttribute('data-resume-choice-open','true');
+  document.getElementById('continue-on-entry')?.focus();
+}
+
 function chooseBreakfast(btn,choice){
   const slide=btn.closest('.slide');
   slide.querySelectorAll('.sentence-choice').forEach(option=>{
@@ -3047,6 +3113,9 @@ function chooseCarregar(btn, word){
 
 
 document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('continue-on-entry')?.addEventListener('click',closeResumeChoice);
+  document.getElementById('restart-on-entry')?.addEventListener('click',restartFromEntry);
+
   pitchPanels.forEach((panel,index)=>{
     panel.id=panel.id||`resumo-${index+1}`;
     const heading=panel.querySelector('h1,h2');
@@ -3154,6 +3223,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }else{
     showPitch(pitchCurrent,{focusHeading:false});
   }
+  offerResumeChoice();
   requestAnimationFrame(()=>{
     const activePanel=viewMode==='pitch'?pitchPanels[pitchCurrent]:slides[current];
     if(activePanel) updateScrollHint(activePanel);
