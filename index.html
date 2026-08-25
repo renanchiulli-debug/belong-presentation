@@ -6,6 +6,8 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="Conheça as aulas de inglês online e ao vivo da Belong: contexto, combinações úteis, prática e feedback desde o começo." name="description"/>
 <meta content="#8B0A57" name="theme-color"/>
+<!-- Cole em content a URL /exec gerada pelo Google Apps Script. Vazio = analytics desativado. -->
+<meta content="https://script.google.com/macros/s/AKfycbyle2fUW2pCL1kSAFXZzMsmUm-nJ3R-b4bCBitoY4-mTjeeNPcuy7aiGPglDPHIK5U/exec" name="belong-analytics-endpoint"/>
 <title>Belong | Inglês online ao vivo em contexto</title>
 <style>:root{
   --belong-magenta:#87014E;
@@ -2196,6 +2198,9 @@ const pitchPanels=[...(pitchApp?.querySelectorAll('.pitch-panel')||document.quer
 const slideStorageKey='belong.presentation.current-slide';
 const pitchStorageKey='belong.presentation.pitch-slide';
 const viewStorageKey='belong.presentation.view';
+const analyticsVisitorKey='belong.analytics.visitor-id';
+const analyticsEndpoint=document.querySelector('meta[name="belong-analytics-endpoint"]')?.content.trim()||'';
+const analyticsEnabled=/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(analyticsEndpoint);
 const autofillAttentionTimers=new WeakMap();
 const autofillReviewTimers=new WeakMap();
 const processingPieceOrder=[];
@@ -2203,7 +2208,186 @@ const processingDirectOrder=['ill','enter','in','contact','with','you','like-thi
 let current=readStoredSlide();
 let pitchCurrent=readStoredPitch();
 let viewMode=readStoredView();
+const hadStoredProgressAtEntry=viewMode==='full' || pitchCurrent>0;
+const analyticsVisitorId=readOrCreateAnalyticsId('localStorage',analyticsVisitorKey,'visitor');
+const analyticsSessionId=createAnalyticsId('session');
+const analyticsStartedAt=Date.now();
+const analyticsCompletedDecks=new Set();
+const analyticsQueue=[];
+let analyticsFlushTimer=0;
+let analyticsLastScreen=null;
+let analyticsHasTrackedScreen=false;
+let analyticsSessionEnded=false;
 let applyingHistoryState=false;
+
+function createAnalyticsId(prefix){
+  const value=globalThis.crypto?.randomUUID?.()
+    || `${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`;
+  return `${prefix}-${value}`;
+}
+
+function readOrCreateAnalyticsId(storageName,key,prefix){
+  try{
+    const storage=globalThis[storageName];
+    const stored=storage.getItem(key);
+    if(stored) return stored;
+    const created=createAnalyticsId(prefix);
+    storage.setItem(key,created);
+    return created;
+  }catch(error){
+    return createAnalyticsId(prefix);
+  }
+}
+
+function analyticsDeviceType(){
+  const width=Math.max(window.innerWidth||0,globalThis.screen?.width||0);
+  if(width<768) return 'mobile';
+  if(width<1100) return 'tablet';
+  return 'desktop';
+}
+
+function analyticsReferrerHost(){
+  try{
+    return document.referrer?new URL(document.referrer).hostname:'';
+  }catch(error){
+    return '';
+  }
+}
+
+function analyticsCampaign(){
+  try{
+    const params=new URLSearchParams(location.search);
+    return {
+      source:(params.get('utm_source')||'').slice(0,100),
+      medium:(params.get('utm_medium')||'').slice(0,100),
+      campaign:(params.get('utm_campaign')||'').slice(0,150)
+    };
+  }catch(error){
+    return {source:'',medium:'',campaign:''};
+  }
+}
+
+function currentAnalyticsContext(){
+  const isPitch=viewMode==='pitch';
+  const index=isPitch?pitchCurrent:current;
+  const collection=isPitch?pitchPanels:slides;
+  const title=collection[index]?.querySelector('h1,h2')?.textContent.trim()||'';
+  return {
+    deck:isPitch?'pitch':'full',
+    slide_number:index+1,
+    slide_total:collection.length,
+    screen_title:title.slice(0,180)
+  };
+}
+
+function trackAnalyticsEvent(eventName,metadata={},context={}){
+  if(!analyticsEnabled) return;
+  const screen={...currentAnalyticsContext(),...context};
+  analyticsQueue.push({
+    event_id:createAnalyticsId('event'),
+    event_time:new Date().toISOString(),
+    anonymous_id:analyticsVisitorId,
+    session_id:analyticsSessionId,
+    event_name:eventName,
+    deck:screen.deck,
+    slide_number:screen.slide_number,
+    slide_total:screen.slide_total,
+    screen_title:screen.screen_title||'',
+    progress_percent:screen.slide_total
+      ? Math.round((screen.slide_number/screen.slide_total)*100)
+      : 0,
+    duration_ms:Math.max(0,Math.round(Number(metadata.duration_ms)||0)),
+    metadata
+  });
+
+  if(analyticsQueue.length>=8){
+    flushAnalytics();
+  }else if(!analyticsFlushTimer){
+    analyticsFlushTimer=window.setTimeout(flushAnalytics,5000);
+  }
+}
+
+function flushAnalytics(preferBeacon=false){
+  if(!analyticsEnabled || !analyticsQueue.length) return;
+  if(analyticsFlushTimer){
+    window.clearTimeout(analyticsFlushTimer);
+    analyticsFlushTimer=0;
+  }
+
+  const events=analyticsQueue.splice(0,25);
+  const campaign=analyticsCampaign();
+  const body=JSON.stringify({
+    site_id:'belong-presentation',
+    page_path:location.pathname.slice(0,300),
+    referrer_host:analyticsReferrerHost(),
+    device_type:analyticsDeviceType(),
+    campaign_source:campaign.source,
+    campaign_medium:campaign.medium,
+    campaign_name:campaign.campaign,
+    events
+  });
+
+  if(preferBeacon && navigator.sendBeacon){
+    const sent=navigator.sendBeacon(
+      analyticsEndpoint,
+      new Blob([body],{type:'text/plain;charset=UTF-8'})
+    );
+    if(!sent) analyticsQueue.unshift(...events);
+  }else{
+    fetch(analyticsEndpoint,{
+      method:'POST',
+      mode:'no-cors',
+      cache:'no-store',
+      keepalive:true,
+      headers:{'Content-Type':'text/plain;charset=UTF-8'},
+      body
+    }).catch(()=>{
+      analyticsQueue.unshift(...events);
+      if(!analyticsFlushTimer) analyticsFlushTimer=window.setTimeout(flushAnalytics,10000);
+    });
+  }
+
+  if(analyticsQueue.length && !analyticsFlushTimer){
+    analyticsFlushTimer=window.setTimeout(flushAnalytics,1000);
+  }
+}
+
+function trackAnalyticsScreen(deck,index,total,title){
+  const now=Date.now();
+  if(analyticsLastScreen){
+    trackAnalyticsEvent('screen_leave',{
+      duration_ms:now-analyticsLastScreen.enteredAt
+    },analyticsLastScreen);
+  }
+
+  const context={
+    deck,
+    slide_number:index+1,
+    slide_total:total,
+    screen_title:(title||'').slice(0,180)
+  };
+  trackAnalyticsEvent('screen_view',{},context);
+  analyticsLastScreen={...context,enteredAt:now};
+  analyticsHasTrackedScreen=true;
+
+  if(index===total-1 && !analyticsCompletedDecks.has(deck)){
+    analyticsCompletedDecks.add(deck);
+    trackAnalyticsEvent('deck_complete',{},context);
+  }
+}
+
+function finishAnalyticsSession(){
+  if(analyticsSessionEnded) return;
+  analyticsSessionEnded=true;
+  const now=Date.now();
+  if(analyticsLastScreen){
+    trackAnalyticsEvent('screen_leave',{
+      duration_ms:now-analyticsLastScreen.enteredAt
+    },analyticsLastScreen);
+  }
+  trackAnalyticsEvent('session_end',{duration_ms:now-analyticsStartedAt});
+  flushAnalytics(true);
+}
 
 function readStoredValue(key){
   try{
@@ -2354,6 +2538,9 @@ function showPitch(i,{focusHeading=true,historyAction='replace'}={}){
   storePitchSlide();
   storeViewMode();
   syncHistory(historyAction);
+  if(changed||modeChanged||!analyticsHasTrackedScreen){
+    trackAnalyticsScreen('pitch',pitchCurrent,pitchPanels.length,title?.textContent.trim()||'');
+  }
 
   if((changed||modeChanged) && focusHeading && title){
     title.setAttribute('tabindex','-1');
@@ -2393,6 +2580,9 @@ function show(i,{focusHeading=true,historyAction='replace'}={}){
   storeCurrentSlide();
   storeViewMode();
   syncHistory(historyAction);
+  if(changed||modeChanged||!analyticsHasTrackedScreen){
+    trackAnalyticsScreen('full',current,slides.length,title?.textContent.trim()||'');
+  }
 
   if((changed||modeChanged) && focusHeading && title){
     title.setAttribute('tabindex','-1');
@@ -2638,6 +2828,7 @@ function setInputNote(inp,text,state){
 }
 
 function goToSummary(){
+  trackAnalyticsEvent('deck_switch',{action:'skip_to_summary'});
   show(slides.length-1);
 }
 
@@ -2646,14 +2837,17 @@ function openPresentation(startAt){
   const resumeAt=hasExplicitStart
     ? startAt
     : current===slides.length-1?0:current;
+  trackAnalyticsEvent('deck_switch',{action:'open_full',destination_slide:resumeAt+1});
   show(resumeAt,{historyAction:'push'});
 }
 
 function returnToPitch(){
+  trackAnalyticsEvent('deck_switch',{action:'return_to_pitch',destination_slide:pitchCurrent+1});
   showPitch(pitchCurrent,{historyAction:'push'});
 }
 
 function restartPresentation(){
+  trackAnalyticsEvent('presentation_restart',{action:'restart_from_end'});
   processingPieceOrder.length=0;
   processingPieceButtons().forEach(piece=>piece.setAttribute('aria-pressed','false'));
   resetProcessingComparison();
@@ -2691,6 +2885,11 @@ function closeResumeChoice(){
 
 function restartFromEntry(){
   const restartMode=viewMode;
+  trackAnalyticsEvent('resume_choice',{
+    choice:'restart',
+    previous_deck:viewMode,
+    previous_slide_number:viewMode==='full'?current+1:pitchCurrent+1
+  });
   clearStoredProgress();
   current=0;
   pitchCurrent=0;
@@ -2709,6 +2908,46 @@ function offerResumeChoice(){
   choice.hidden=false;
   document.body.setAttribute('data-resume-choice-open','true');
   document.getElementById('continue-on-entry')?.focus();
+}
+
+function trackAnalyticsButtonInteraction(button){
+  if(!button || button.matches('#pitch-prev,#pitch-next,#prev,#next,#continue-on-entry,#restart-on-entry')) return;
+
+  const handler=button.getAttribute('onclick')||'';
+  let activity='';
+  let action='';
+  let option='';
+
+  if(button.classList.contains('sentence-choice')){
+    activity='breakfast-choice';
+    action='choose';
+    option=handler.includes("'natural'")?'natural':'literal';
+  }else if(button.classList.contains('choice-btn')){
+    activity='carregar';
+    action='choose';
+    option=button.textContent.trim().slice(0,50);
+  }else if(button.classList.contains('word-token')){
+    activity='processing';
+    action='select_piece';
+    option=button.dataset.processingId||'';
+  }else if(handler.startsWith('checkInputs')){
+    activity='fill_blanks';
+    action='compare_answers';
+  }else if(button.id==='save-breakfast'){
+    activity='personal-example';
+    action='validate';
+  }else if(button.id==='undo-processing-piece'){
+    activity='processing';
+    action='undo_piece';
+  }else if(button.id==='compare-processing'){
+    activity='processing';
+    action='compare_paths';
+  }else if(handler.startsWith('revealExisting')){
+    activity='grammar-hypothesis';
+    action='reveal';
+  }
+
+  if(activity) trackAnalyticsEvent('activity_interaction',{activity,action,option});
 }
 
 function chooseBreakfast(btn,choice){
@@ -3138,8 +3377,28 @@ function chooseCarregar(btn, word){
 
 
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('continue-on-entry')?.addEventListener('click',closeResumeChoice);
+  document.getElementById('continue-on-entry')?.addEventListener('click',()=>{
+    trackAnalyticsEvent('resume_choice',{
+      choice:'continue',
+      previous_deck:viewMode,
+      previous_slide_number:viewMode==='full'?current+1:pitchCurrent+1
+    });
+    closeResumeChoice();
+  });
   document.getElementById('restart-on-entry')?.addEventListener('click',restartFromEntry);
+  document.addEventListener('click',event=>{
+    const target=event.target instanceof Element?event.target.closest('button'):null;
+    trackAnalyticsButtonInteraction(target);
+  });
+  document.querySelectorAll('.final-cta').forEach(link=>{
+    link.addEventListener('click',()=>{
+      trackAnalyticsEvent('cta_click',{
+        action:'open_whatsapp',
+        placement:link.closest('#pitch-app')?'pitch_final':'full_final'
+      });
+      flushAnalytics(true);
+    });
+  });
 
   pitchPanels.forEach((panel,index)=>{
     panel.id=panel.id||`resumo-${index+1}`;
@@ -3243,6 +3502,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   renderProcessingBuild();
 
+  trackAnalyticsEvent('session_start',{
+    entry_mode:hadStoredProgressAtEntry?'returning':'new',
+    resume_prompt_shown:hadStoredProgressAtEntry
+  });
+
   if(viewMode==='full'){
     show(current,{focusHeading:false});
   }else{
@@ -3257,6 +3521,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const activePanel=viewMode==='pitch'?pitchPanels[pitchCurrent]:slides[current];
     if(activePanel) updateScrollHint(activePanel);
   },{passive:true});
+});
+window.addEventListener('pagehide',event=>{
+  if(!event.persisted) finishAnalyticsSession();
 });
 window.addEventListener?.('popstate',event=>{
   const state=event.state;
