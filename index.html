@@ -1453,18 +1453,45 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 .meal-option:hover{border-color:#C9A5BA;transform:translateY(-1px)}
 .meal-option[aria-pressed="true"]{border-color:var(--belong-green-dark);background:var(--belong-green-soft);color:var(--ink)}
 .pattern-input{width:clamp(220px,29vw,310px);max-width:100%;}
-.pattern-input.meal-input{width:clamp(150px,18vw,190px)}
+.pattern-sentence{font-size:clamp(20px,3.4vw,34px);gap:7px}
+.pattern-input{font-size:clamp(18px,2.7vw,28px);width:clamp(240px,30vw,320px)}
+.pattern-input.meal-input{width:clamp(165px,18vw,195px)}
+.food-option b{white-space:nowrap}
 .pattern-slot.no-underline{text-decoration:none}
 .processing-chunk-preview{margin:0 0 18px;border-left:5px solid var(--belong-green)}
 .processing-preview-chunks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 .processing-preview-chunks span{display:flex;flex-direction:column;gap:5px;padding:11px 10px;border:1px solid #B9D7BB;border-radius:6px;background:#fff;text-align:center}
 .processing-preview-chunks small{color:var(--muted);font-size:11px}
 .processing-preview-chunks strong{color:var(--belong-magenta);font-size:clamp(15px,2.2vw,20px)}
+.word-by-word-static .processing-mission,
+.word-by-word-static .processing-routes{display:none!important}
+.word-by-word-equivalence{margin-top:18px}
+.word-equivalence-grid{
+  display:grid;
+  grid-template-columns:minmax(120px,1fr) 34px minmax(150px,1fr);
+  gap:7px 10px;
+  align-items:center;
+  margin:16px 0 20px;
+}
+.word-equivalence-grid>span,
+.word-equivalence-grid>strong{
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:#fff;
+}
+.word-equivalence-grid>strong{color:var(--belong-magenta)}
+.word-equivalence-grid>b{text-align:center;color:var(--belong-green);font-size:18px}
 @media (max-width:600px){
+  .food-grid{grid-template-columns:1fr}
+  .food-option{font-size:14px}
   .meal-options{grid-template-columns:1fr}
-  .pattern-input{width:min(100%,300px)}
+  .pattern-sentence{font-size:clamp(19px,6vw,28px)}
+  .pattern-input{width:min(100%,320px)}
   .pattern-input.meal-input{width:min(100%,190px)}
   .processing-preview-chunks{grid-template-columns:1fr}
+  .word-equivalence-grid{grid-template-columns:minmax(90px,1fr) 24px minmax(120px,1fr);gap:5px 6px;font-size:14px}
+  .word-equivalence-grid>span,.word-equivalence-grid>strong{padding:7px 8px}
 }
 @media (forced-colors:active){
   .inline-input.autofill-attention,.answer-input.autofill-attention{
@@ -2320,16 +2347,37 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 </div>
 </section>
 <!-- Tela 26 -->
-<section class="slide processing-activity">
+<section class="slide processing-activity word-by-word-static" data-nav-order="26">
 <div class="wrap">
-<div class="eyebrow"><span class="screen-num">Tela 26</span> • Missão: do português ao inglês</div>
+<div class="eyebrow"><span class="screen-num">Tela 26</span> • Montagem palavra por palavra</div>
 <h2>As palavras parecem conhecidas. Mas elas se combinam do mesmo jeito?</h2>
-<p class="lead">Faça um experimento de montagem com sentidos isolados e depois compare com unidades que já carregam significado e parte da estrutura.</p>
+<p class="lead">Observe como uma frase pode ser montada palavra por palavra. Depois, compare com unidades que já carregam significado e parte da estrutura.</p>
+<div class="card bubble-info word-by-word-equivalence">
+<span class="activity-part">A mesma frase, palavra por palavra</span>
+<p class="mission-source">Eu vou entrar em contato com você depois da reunião.</p>
+<div class="word-equivalence-grid" aria-label="Equivalência palavra por palavra entre português e inglês">
+<span>Eu</span><b aria-hidden="true">↔</b><strong lang="en">I</strong>
+<span>vou</span><b aria-hidden="true">↔</b><strong lang="en">’ll</strong>
+<span>entrar</span><b aria-hidden="true">↔</b><strong lang="en">enter</strong>
+<span>em</span><b aria-hidden="true">↔</b><strong lang="en">in</strong>
+<span>contato</span><b aria-hidden="true">↔</b><strong lang="en">contact</strong>
+<span>com</span><b aria-hidden="true">↔</b><strong lang="en">with</strong>
+<span>você</span><b aria-hidden="true">↔</b><strong lang="en">you</strong>
+<span>depois</span><b aria-hidden="true">↔</b><strong lang="en">after</strong>
+<span>da</span><b aria-hidden="true">↔</b><strong lang="en">of the</strong>
+<span>reunião</span><b aria-hidden="true">↔</b><strong lang="en">meeting</strong>
+</div>
+<div class="processing-output literal-output">
+<span>Resultado possível seguindo a montagem palavra por palavra</span>
+<p lang="en">I’ll enter in contact with you after the meeting.</p>
+<p>É uma frase compreensível e possível, mas não é a forma mais natural ou provável de dizer isso em inglês.</p>
+</div>
+</div>
 <div class="card bubble-info processing-mission">
 <span class="activity-part">Sua missão • simular uma tradução por partes</span>
 <p class="small muted">Você quer fazer esta promessa a alguém:</p>
 <p class="mission-source">Eu vou entrar em contato com você assim que possível.</p>
-<p id="processing-piece-help"><strong>Selecione as nove peças na ordem em que você tentaria formar a frase em inglês.</strong> As setas mostram apenas um sentido possível de cada parte isolada. Para corrigir a sequência, selecione novamente uma peça ou use “Desfazer última”. Se preferir, compare a qualquer momento. Não é uma prova e sua montagem não será marcada como certa ou errada.</p>
+<p id="processing-piece-help"><strong>Selecione as dez peças na ordem em que você tentaria formar a frase em inglês.</strong> As setas mostram apenas um sentido possível de cada parte isolada. Para corrigir a sequência, selecione novamente uma peça ou use “Desfazer última”. Se preferir, compare a qualquer momento. Não é uma prova e sua montagem não será marcada como certa ou errada.</p>
 <div class="processing-builder">
 <div class="processing-bank">
 <span class="processing-builder-label" id="processing-bank-label">Peças embaralhadas • português → inglês</span>
@@ -2340,9 +2388,10 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 <button class="word-token" type="button" data-processing-id="you" data-en="you" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>você</span> → <b lang="en">you</b></button>
 <button class="word-token" type="button" data-processing-id="ill" data-en="I'll" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>eu vou</span> → <b lang="en">I'll</b></button>
 <button class="word-token" type="button" data-processing-id="contact" data-en="contact" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>contato</span> → <b lang="en">contact</b></button>
-<button class="word-token" type="button" data-processing-id="that" data-en="that" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>que</span> → <b lang="en">that</b></button>
+<button class="word-token" type="button" data-processing-id="soon" data-en="soon" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>que possível</span> → <b lang="en">soon</b></button>
 <button class="word-token" type="button" data-processing-id="in" data-en="in" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>em</span> → <b lang="en">in</b></button>
-<button class="word-token" type="button" data-processing-id="like-this" data-en="like this" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>assim</span> → <b lang="en">like this</b></button>
+<button class="word-token" type="button" data-processing-id="as-one" data-en="as" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>assim que</span> → <b lang="en">as</b></button>
+<button class="word-token" type="button" data-processing-id="as-two" data-en="as" aria-pressed="false" onclick="selectProcessingPiece(this)"><span>assim que</span> → <b lang="en">as</b></button>
 </div>
 </div>
 <div class="processing-assembly">
@@ -2361,16 +2410,6 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 </div>
 
 <div class="reveal processing-routes" id="processing-routes" hidden>
-<div class="processing-chunk-preview card bubble-tip">
-<span class="activity-part">Primeiro, observe uma montagem por chunks</span>
-<p class="small muted">A mesma mensagem pode ser organizada com três unidades maiores:</p>
-<div class="processing-preview-chunks" aria-label="Montagem por chunks da mensagem">
-<span><small>eu vou</small><strong lang="en">I’ll</strong></span>
-<span><small>entrar em contato com você</small><strong lang="en">get in touch with you</strong></span>
-<span><small>assim que possível</small><strong lang="en">as soon as possible</strong></span>
-</div>
-<p class="small"><strong lang="en">I’ll get in touch with you as soon as possible.</strong></p>
-</div>
 <h3 id="processing-routes-heading" tabindex="-1">O que acontece na montagem parte por parte?</h3>
 <figure class="processing-demo" aria-labelledby="processing-routes-heading" aria-describedby="processing-caption">
 <figcaption class="sr-only" id="processing-caption">Demonstração das decisões necessárias ao montar uma frase seguindo partes isoladas do português.</figcaption>
@@ -2382,49 +2421,52 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 <p class="sr-only">A pessoa organiza os sentidos isolados na ordem do português: <span lang="en">I'll, enter, in, contact, with, you, like this, that, possible</span>. Também tenta decidir ordem, preposição e forma verbal.</p>
 <p class="literal-word-note">Exemplo seguindo a ordem do português</p>
 <div class="direct-sequence" aria-hidden="true">
-<span class="direct-unit" lang="en">I'll</span><span class="direct-unit" lang="en">enter</span><span class="direct-unit" lang="en">in</span><span class="direct-unit" lang="en">contact</span><span class="direct-unit" lang="en">with</span><span class="direct-unit" lang="en">you</span><span class="direct-unit" lang="en">like this</span><span class="direct-unit" lang="en">that</span><span class="direct-unit" lang="en">possible</span>
+<span class="direct-unit" lang="en">I'll</span><span class="direct-unit" lang="en">enter</span><span class="direct-unit" lang="en">in</span><span class="direct-unit" lang="en">contact</span><span class="direct-unit" lang="en">with</span><span class="direct-unit" lang="en">you</span><span class="direct-unit" lang="en">as</span><span class="direct-unit" lang="en">soon</span><span class="direct-unit" lang="en">as</span><span class="direct-unit" lang="en">possible</span>
 </div>
 <div class="rule-cloud" aria-hidden="true"><span>ordem?</span><span>preposição?</span><span>forma verbal?</span><span>como ligar?</span></div>
 </div>
 </div>
 <div class="processing-output literal-output">
 <span>Resultado demonstrativo seguindo a ordem do português</span>
-<p lang="en">I'll enter in contact with you like this that possible.</p>
+<p lang="en">I'll enter in contact with you as soon as possible.</p>
 <p>As peças têm sentidos possíveis, mas essa montagem não é uma forma natural de comunicar a promessa em inglês.</p>
 </div>
 <p class="small muted">Uma palavra pode ter outros sentidos conforme o contexto. Por isso, as setas não representam traduções fixas para todas as frases.</p>
 </article>
 </figure>
 <div class="card bubble-tip">
-<p><strong>Na próxima tela, a mesma mensagem será montada com apenas três chunks.</strong> Assim, a diferença entre combinar nove peças e recuperar três blocos fica em destaque.</p>
+<p><strong>Na próxima tela, a mesma mensagem será montada com apenas três chunks.</strong> Assim, a diferença entre combinar dez peças e recuperar três blocos fica em destaque.</p>
 </div>
+</div>
+<div class="card bubble-tip">
+<p><strong>Agora observe a mesma mensagem com chunks.</strong> A próxima tela mostra como blocos maiores podem carregar sentido e organização juntos.</p>
 </div>
 </div>
 </section>
 <!-- Tela 27 -->
-<section class="slide chunk-focus-slide">
+<section class="slide chunk-focus-slide" data-nav-order="27">
 <div class="wrap">
 <div class="eyebrow"><span class="screen-num">Tela 27</span> • Montagem em chunks</div>
 <h2>Três blocos, uma mensagem completa</h2>
-<p class="lead">Em vez de escolher nove peças isoladas, observe três unidades que já carregam significado e parte da organização.</p>
+<p class="lead">Em vez de escolher dez peças isoladas, observe três unidades que já carregam significado e parte da organização.</p>
 <div class="chunk-focus">
 <article class="thought-path chunk-path">
 <div class="path-heading"><span class="path-number">2</span><div><span class="path-kicker">Menos unidades para combinar</span><h3>Com chunks</h3></div></div>
 <div class="thinking-scene">
 <div class="thinker" aria-hidden="true"><span class="thinker-head"></span><span class="thinker-body"></span></div>
 <div class="thought-bubble">
-<p class="sr-only">A pessoa observa três correspondências maiores: eu vou, <span lang="en">I'll</span>; entrar em contato com você, <span lang="en">get in touch with you</span>; assim que possível, <span lang="en">as soon as possible</span>.</p>
+<p class="sr-only">A pessoa observa três correspondências maiores: eu vou, <span lang="en">I'll</span>; entrar em contato com você, <span lang="en">get in touch with you</span>; depois da reunião, <span lang="en">after the meeting</span>.</p>
 <div class="chunk-cloud" aria-hidden="true">
 <span class="chunk-unit"><small>eu vou</small><b lang="en">I'll</b></span>
 <span class="chunk-unit"><small>entrar em contato com você</small><b lang="en">get in touch with you</b></span>
-<span class="chunk-unit"><small>assim que possível</small><b lang="en">as soon as possible</b></span>
+<span class="chunk-unit"><small>depois da reunião</small><b lang="en">after the meeting</b></span>
 </div>
 </div>
 </div>
 <div class="processing-output natural-output">
 <span>Uma forma natural e frequente neste contexto</span>
-<p lang="en">I'll get in touch with you as soon as possible.</p>
-<p>“Eu vou entrar em contato com você assim que possível.”</p>
+<p lang="en">I'll get in touch with you after the meeting.</p>
+<p>“Eu vou entrar em contato com você depois da reunião.”</p>
 </div>
 </article>
 </div>
@@ -2440,7 +2482,7 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 </div>
 </section>
 <!-- Tela 28 -->
-<section class="slide final-slide">
+<section class="slide final-slide" data-nav-order="28">
 <div class="wrap center">
 <div class="eyebrow"><span class="screen-num">Tela 28</span> • Resumo e próximo passo</div>
 <div class="brand final-brand brand-logo brand-logo-negative"><img src="assets/belong-logo-negative.png" alt="Belong"/></div>
@@ -2479,7 +2521,14 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 <script>
 const presentationApp=document.getElementById('presentation-app');
 const pitchApp=document.getElementById('pitch-app');
-const slides=[...(presentationApp?.querySelectorAll('.slide')||document.querySelectorAll('.slide'))];
+const slides=[...(presentationApp?.querySelectorAll('.slide')||document.querySelectorAll('.slide'))].sort((a,b)=>{
+  const aOrder=Number(a.dataset.navOrder||0);
+  const bOrder=Number(b.dataset.navOrder||0);
+  if(!aOrder&&!bOrder) return 0;
+  if(!aOrder) return -1;
+  if(!bOrder) return 1;
+  return aOrder-bOrder;
+});
 const pitchPanels=[...(pitchApp?.querySelectorAll('.pitch-panel')||document.querySelectorAll('.pitch-panel'))];
 const slideStorageKey='belong.presentation.current-slide';
 const pitchStorageKey='belong.presentation.pitch-slide';
@@ -2490,7 +2539,7 @@ const analyticsEnabled=/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/
 const autofillAttentionTimers=new WeakMap();
 const autofillReviewTimers=new WeakMap();
 const processingPieceOrder=[];
-const processingDirectOrder=['ill','enter','in','contact','with','you','like-this','that','possible'];
+const processingDirectOrder=['ill','enter','in','contact','with','you','as-one','soon','as-two','possible'];
 let current=readStoredSlide();
 let pitchCurrent=readStoredPitch();
 let viewMode=readStoredView();
