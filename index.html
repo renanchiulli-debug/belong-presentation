@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="Conheça as aulas de inglês online e ao vivo da Belong: contexto, combinações úteis, prática e feedback desde o começo." name="description"/>
-<meta content="#8B0A57" name="theme-color"/>
+<meta content="#73054E" name="theme-color"/>
 <!-- Cole em content a URL /exec gerada pelo Google Apps Script. Vazio = analytics desativado. -->
 <meta content="https://script.google.com/macros/s/AKfycbyle2fUW2pCL1kSAFXZzMsmUm-nJ3R-b4bCBitoY4-mTjeeNPcuy7aiGPglDPHIK5U/exec" name="belong-analytics-endpoint"/>
 <title>Belong | Inglês online ao vivo em contexto</title>
@@ -1277,6 +1277,142 @@ p{
     transform:none!important;
   }
 }
+
+/* V21: identidade visual Belong segundo o Manual de Marca (11/2020)
+   Conteúdo e comportamento permanecem inalterados. */
+:root{
+  --belong-magenta:#73054E;
+  --belong-magenta-dark:#5C043E;
+  --belong-green:#3C9942;
+  --belong-green-dark:#2E7734;
+  --belong-green-soft:#F0F7F0;
+  --belong-pink-soft:#F8EEF5;
+  --paper:#FFFFFF;
+  --bg:#FFFFFF;
+  --ink:#222222;
+  --muted:#666666;
+  --line:#E3D6DE;
+  --white:#FFFFFF;
+  --bad:#BA302D;
+  --good:#3C9942;
+}
+html,body{
+  font-family:Roboto,Arial,sans-serif;
+  background:#fff;
+  color:var(--ink);
+}
+.topbar{
+  min-height:68px;
+  background:var(--belong-magenta);
+  border-bottom:0;
+  box-shadow:none;
+}
+.brand{
+  font-family:"SF New Republic",Roboto,Arial,sans-serif;
+  font-size:28px;
+  font-weight:400;
+  letter-spacing:-.075em;
+}
+.brand .on{color:var(--belong-green)}
+.system-name{color:rgba(255,255,255,.88)}
+.progress{background:rgba(255,255,255,.25);border-radius:0}
+.progress>div{background:var(--belong-green)}
+.deck-switch{border-radius:4px;background:transparent;border-color:rgba(255,255,255,.72)}
+.deck-switch:hover{background:rgba(255,255,255,.12)}
+.deck-switch:focus-visible{outline-color:var(--belong-green)}
+.slide,.pitch-panel{background:#fff}
+.eyebrow{
+  padding:0 0 9px;
+  border-radius:0;
+  background:transparent;
+  border-bottom:2px solid var(--belong-green);
+  color:var(--belong-magenta);
+  letter-spacing:.1em;
+}
+.screen-num{color:var(--belong-magenta)}
+h1,h2,h3,.quote,.big,.tech,.merged-subtitle{
+  font-family:"SF New Republic",Roboto,Arial,sans-serif;
+}
+h1,h2,h3{color:var(--belong-magenta)}
+h1,h2{font-weight:400;letter-spacing:-.035em}
+h3{font-weight:700}
+p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
+.lead{color:#444}
+.card{
+  border:1px solid var(--line);
+  border-radius:8px;
+  box-shadow:none;
+  background:#fff;
+}
+.card.green,.bubble-tip,.contrast-card.positive{
+  background:var(--belong-green-soft)!important;
+  border-color:#B9D7BB!important;
+  color:var(--belong-magenta-dark)!important;
+}
+.card.pink{background:var(--belong-pink-soft);border-color:#E7CADC}
+.card.green p,.card.green li,.card.green h3,.card.green .big,.card.green .quote,
+.bubble-tip p,.bubble-tip h3,.bubble-tip .quote,.bubble-tip .big,.bubble-tip strong,
+.bubble-tip .muted{color:var(--belong-magenta-dark)!important}
+.quote{font-weight:700;color:var(--belong-magenta)}
+.big{color:var(--belong-magenta)}
+.tag{border-radius:3px;background:var(--belong-green-soft);color:var(--belong-green-dark)}
+.example,.answer-row,.type-card,.compare .col,.dialogue-turn,.meta-row span{
+  border-radius:6px;
+  box-shadow:none;
+}
+.example strong,.type-card .pt,.tech-pt,.dramatic{color:var(--belong-green-dark)}
+.action{border-radius:4px;background:var(--belong-magenta);box-shadow:none}
+.action.greenbtn,.choice-btn.selected{background:var(--belong-green)}
+.action.secondary{color:var(--belong-magenta);border-color:var(--belong-magenta)}
+.footer-nav{background:linear-gradient(to top,rgba(255,255,255,1) 72%,rgba(255,255,255,0));}
+.scroll-hint{border-radius:4px;background:var(--belong-magenta)}
+.compare .traditional{border-top-color:#737373}
+.compare .lexical{border-top-color:var(--belong-green)}
+.chunk-box,.pattern-equivalence{background:var(--belong-green-soft);border-color:#B9D7BB}
+.chunk-box .chunk,.flow span,.type-card .type,.pitch-chunk-map strong{color:var(--belong-magenta)}
+.flow span{border-radius:4px}
+.lexical-intro{background:var(--belong-magenta);border-radius:8px}
+.lexical-intro:after{background:rgba(60,153,66,.25)}
+.lexical-pill{background:var(--belong-green);border-radius:3px}
+.lexical-equation .arrow{color:var(--belong-green)}
+.collocation-connector{background-color:var(--belong-green)}
+.collocation-connector::after{border-color:var(--belong-green)}
+.collocation-source{background:var(--belong-pink-soft);border-color:#E7CADC}
+.collocation-target{background:var(--belong-green-soft);border-color:#B9D7BB}
+.final-brand{font-size:clamp(52px,10vw,110px);font-weight:400;letter-spacing:-.09em;margin:12px 0 18px}
+.final-brand .on{color:var(--belong-green)}
+.bubble-info.contrast-card.negative{background:#FFF4F3!important;border-color:#E5BDBB!important}
+.bubble-info.contrast-card.positive{background:var(--belong-green-soft)!important}
+.brand-logo{
+  position:relative;
+  display:block;
+  flex:0 0 128px;
+  width:128px;
+  height:40px;
+  overflow:hidden;
+  line-height:0;
+  letter-spacing:0;
+}
+.brand-logo img{
+  position:absolute;
+  display:block;
+  width:180px;
+  max-width:none;
+  height:auto;
+  left:-29px;
+  top:-33px;
+}
+.final-brand.brand-logo{
+  flex:none;
+  width:270px;
+  height:126px;
+  margin:12px auto 18px;
+}
+.final-brand.brand-logo img{
+  width:330px;
+  left:-53px;
+  top:-60px;
+}
 @media (forced-colors:active){
   .inline-input.autofill-attention,.answer-input.autofill-attention{
     outline:2px dashed Highlight;
@@ -1304,7 +1440,7 @@ p{
 <div class="app pitch-app" id="pitch-app">
 <header class="topbar">
 <div class="brand-lockup">
-<div class="brand">bel<span class="on">on</span>g</div>
+<span class="brand brand-logo brand-logo-negative" aria-label="Belong"><img src="assets/belong-logo-negative.png" alt="Belong"/></span>
 <div class="system-name">inglês online ao vivo</div>
 </div>
 <div class="progress" id="pitch-progress" role="progressbar" aria-label="Progresso da apresentação breve" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><div id="pitch-bar" aria-hidden="true"></div></div>
@@ -1423,7 +1559,7 @@ p{
 <section class="pitch-panel final-slide">
 <div class="wrap center">
 <div class="eyebrow"><span class="screen-num">Seu próximo passo</span></div>
-<div class="brand final-brand">bel<span class="on">on</span>g</div>
+<div class="brand final-brand brand-logo brand-logo-primary"><img src="assets/belong-logo-primary.png" alt="Belong"/></div>
 <h1>Quer conhecer as aulas ao vivo da Belong?</h1>
 <p class="lead">Fale com a equipe para receber informações sobre aulas, formatos e investimento.</p>
 <div class="final-actions pitch-final-actions">
@@ -1444,7 +1580,7 @@ p{
 <div class="app" id="presentation-app" hidden>
 <header class="topbar">
 <div class="brand-lockup">
-<div class="brand">bel<span class="on">on</span>g</div>
+<span class="brand brand-logo brand-logo-negative" aria-label="Belong"><img src="assets/belong-logo-negative.png" alt="Belong"/></span>
 <div class="system-name">abordagem lexical • inglês online</div>
 </div>
 <div class="progress" id="progress" role="progressbar" aria-label="Progresso da apresentação" aria-valuemin="1" aria-valuemax="28" aria-valuenow="1"><div id="bar" aria-hidden="true"></div></div>
