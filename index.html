@@ -1413,6 +1413,59 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
   left:-53px;
   top:-60px;
 }
+.final-slide{
+  background:var(--belong-magenta)!important;
+  color:#fff;
+}
+.final-slide .eyebrow{
+  background:transparent;
+  color:#fff;
+  border-bottom-color:var(--belong-green);
+}
+.final-slide .screen-num,.final-slide h1{color:#fff}
+.final-slide .lead{color:rgba(255,255,255,.9)}
+.final-slide .final-brand.brand-logo{
+  padding:0;
+  border:0;
+  background:transparent;
+  border-radius:0;
+}
+.final-slide .final-tagline{color:#fff!important}
+.final-slide .final-next-step{color:rgba(255,255,255,.86)}
+.final-slide .final-actions .secondary{color:#fff;border-color:rgba(255,255,255,.55);background:transparent}
+.meal-options{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.meal-option{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  min-height:48px;
+  padding:8px 10px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+  color:var(--ink);
+  font-size:13px;
+  text-align:left;
+}
+.meal-option span{color:var(--belong-magenta);font-weight:900}
+.meal-option small{color:var(--muted);text-align:right}
+.meal-option:hover{border-color:#C9A5BA;transform:translateY(-1px)}
+.meal-option[aria-pressed="true"]{border-color:var(--belong-green-dark);background:var(--belong-green-soft);color:var(--ink)}
+.pattern-input{width:clamp(220px,29vw,310px);max-width:100%;}
+.pattern-input.meal-input{width:clamp(150px,18vw,190px)}
+.pattern-slot.no-underline{text-decoration:none}
+.processing-chunk-preview{margin:0 0 18px;border-left:5px solid var(--belong-green)}
+.processing-preview-chunks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.processing-preview-chunks span{display:flex;flex-direction:column;gap:5px;padding:11px 10px;border:1px solid #B9D7BB;border-radius:6px;background:#fff;text-align:center}
+.processing-preview-chunks small{color:var(--muted);font-size:11px}
+.processing-preview-chunks strong{color:var(--belong-magenta);font-size:clamp(15px,2.2vw,20px)}
+@media (max-width:600px){
+  .meal-options{grid-template-columns:1fr}
+  .pattern-input{width:min(100%,300px)}
+  .pattern-input.meal-input{width:min(100%,190px)}
+  .processing-preview-chunks{grid-template-columns:1fr}
+}
 @media (forced-colors:active){
   .inline-input.autofill-attention,.answer-input.autofill-attention{
     outline:2px dashed Highlight;
@@ -1559,7 +1612,7 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 <section class="pitch-panel final-slide">
 <div class="wrap center">
 <div class="eyebrow"><span class="screen-num">Seu próximo passo</span></div>
-<div class="brand final-brand brand-logo brand-logo-primary"><img src="assets/belong-logo-primary.png" alt="Belong"/></div>
+<div class="brand final-brand brand-logo brand-logo-negative"><img src="assets/belong-logo-negative.png" alt="Belong"/></div>
 <h1>Quer conhecer as aulas ao vivo da Belong?</h1>
 <p class="lead">Fale com a equipe para receber informações sobre aulas, formatos e investimento.</p>
 <div class="final-actions pitch-final-actions">
@@ -2127,7 +2180,7 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 <h3 class="merged-subtitle">Uma parte pode permanecer fixa e outra variar</h3>
 <div class="card bubble-info">
 <p class="big" lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">_____?</span></p>
-<p><span class="pattern-fixed"><strong>Você gostaria de</strong></span> <span class="pattern-slot"><strong>_____?</strong></span> O início permanece e o complemento muda:</p>
+<p><span class="pattern-fixed"><strong>Você gostaria de</strong></span> <span class="pattern-slot no-underline"><strong>_____?</strong></span> O início permanece e o complemento muda:</p>
 <div class="pattern-list">
 <div class="pattern-example"><span lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">have a coffee?</span></span><span><span class="pattern-fixed">Você gostaria de</span> <span class="pattern-slot">tomar um café?</span></span></div>
 <div class="pattern-example"><span lang="en"><span class="pattern-fixed">Would you like to</span> <span class="pattern-slot">sit down?</span></span><span><span class="pattern-fixed">Você gostaria de</span> <span class="pattern-slot">se sentar?</span></span></div>
@@ -2308,6 +2361,16 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 </div>
 
 <div class="reveal processing-routes" id="processing-routes" hidden>
+<div class="processing-chunk-preview card bubble-tip">
+<span class="activity-part">Primeiro, observe uma montagem por chunks</span>
+<p class="small muted">A mesma mensagem pode ser organizada com três unidades maiores:</p>
+<div class="processing-preview-chunks" aria-label="Montagem por chunks da mensagem">
+<span><small>eu vou</small><strong lang="en">I’ll</strong></span>
+<span><small>entrar em contato com você</small><strong lang="en">get in touch with you</strong></span>
+<span><small>assim que possível</small><strong lang="en">as soon as possible</strong></span>
+</div>
+<p class="small"><strong lang="en">I’ll get in touch with you as soon as possible.</strong></p>
+</div>
 <h3 id="processing-routes-heading" tabindex="-1">O que acontece na montagem parte por parte?</h3>
 <figure class="processing-demo" aria-labelledby="processing-routes-heading" aria-describedby="processing-caption">
 <figcaption class="sr-only" id="processing-caption">Demonstração das decisões necessárias ao montar uma frase seguindo partes isoladas do português.</figcaption>
@@ -2380,7 +2443,7 @@ p,.lead{font-family:Roboto,Arial,sans-serif;color:var(--ink)}
 <section class="slide final-slide">
 <div class="wrap center">
 <div class="eyebrow"><span class="screen-num">Tela 28</span> • Resumo e próximo passo</div>
-<div class="brand final-brand">bel<span class="on">on</span>g</div>
+<div class="brand final-brand brand-logo brand-logo-negative"><img src="assets/belong-logo-negative.png" alt="Belong"/></div>
 <h1>Aprender inglês é também aprender combinações e padrões.</h1>
 <p class="lead">Na proposta da Belong, o aluno observa o inglês em contexto, formula hipóteses e experimenta novos usos.</p>
 <div class="final-steps" aria-label="Ciclo pedagógico apresentado">
